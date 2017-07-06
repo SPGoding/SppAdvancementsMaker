@@ -31,6 +31,7 @@ Partial Class FormSelectSave
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBoxName = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -74,7 +75,7 @@ Partial Class FormSelectSave
         'ButtonEnter
         '
         Me.ButtonEnter.Enabled = False
-        Me.ButtonEnter.Location = New System.Drawing.Point(263, 180)
+        Me.ButtonEnter.Location = New System.Drawing.Point(263, 156)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
         Me.ButtonEnter.TabIndex = 39
@@ -110,11 +111,24 @@ Partial Class FormSelectSave
         Me.TextBoxName.Size = New System.Drawing.Size(340, 26)
         Me.TextBoxName.TabIndex = 42
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 9.0!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Blue
+        Me.Label5.Location = New System.Drawing.Point(12, 212)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(275, 17)
+        Me.Label5.TabIndex = 43
+        Me.Label5.Text = "*软件引用了James Newton-King制作的Json.Net"
+        '
         'FormSelectSave
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(393, 237)
+        Me.ClientSize = New System.Drawing.Size(393, 238)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TextBoxName)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -143,4 +157,5 @@ Partial Class FormSelectSave
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBoxName As TextBox
+    Friend WithEvents Label5 As Label
 End Class

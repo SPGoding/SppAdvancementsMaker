@@ -152,6 +152,7 @@ Partial Class FormJsonTexts
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormJsonTexts"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = ""
         Me.Text = "#2进度修改者_简易Json文本编辑器"
         Me.ResumeLayout(False)
         Me.PerformLayout()
