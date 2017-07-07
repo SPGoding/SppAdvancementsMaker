@@ -107,10 +107,12 @@ Public Class FormCriteria
             Case "minecraft:player_hurt_entity"
             Case "minecraft:player_killed_entity"
             Case "minecraft:recipe_unlocked"
+                FormRecipeUnlocked.Reading(ButtonCriteria.Tag)
             Case "minecraft:slept_in_bed"
             Case "minecraft:summoned_entity"
             Case "minecraft:tame_animal"
             Case "minecraft:tick"
+                FormTick.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_ender_eye"
             Case "minecraft:used_totem"
             Case "minecraft:villager_trade"

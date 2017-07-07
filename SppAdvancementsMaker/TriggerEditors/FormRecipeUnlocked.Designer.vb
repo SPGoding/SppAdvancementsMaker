@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormImpossible
+Partial Class FormRecipeUnlocked
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
@@ -23,18 +23,29 @@ Partial Class FormImpossible
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.ButtonEnter = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBoxRecipe = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'ButtonEnter
         '
-        Me.ButtonEnter.Location = New System.Drawing.Point(166, 97)
+        Me.ButtonEnter.Location = New System.Drawing.Point(212, 150)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
-        Me.ButtonEnter.TabIndex = 40
+        Me.ButtonEnter.TabIndex = 49
         Me.ButtonEnter.Text = "确定"
         Me.ButtonEnter.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(16, 44)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(79, 20)
+        Me.Label2.TabIndex = 47
+        Me.Label2.Text = "配方名称："
         '
         'Label1
         '
@@ -42,32 +53,32 @@ Partial Class FormImpossible
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(277, 20)
-        Me.Label1.TabIndex = 41
-        Me.Label1.Text = "本触发器仅可使用命令#advancement触发"
+        Me.Label1.Size = New System.Drawing.Size(331, 20)
+        Me.Label1.TabIndex = 46
+        Me.Label1.Text = "本触发器在玩家解锁配方时触发（例如用知识之书）"
         '
-        'Label2
+        'TextBoxRecipe
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 29)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(107, 20)
-        Me.Label2.TabIndex = 42
-        Me.Label2.Text = "没有可编辑内容"
+        Me.TextBoxRecipe.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxRecipe.ImeMode = System.Windows.Forms.ImeMode.Disable
+        Me.TextBoxRecipe.Location = New System.Drawing.Point(87, 41)
+        Me.TextBoxRecipe.Name = "TextBoxRecipe"
+        Me.TextBoxRecipe.Size = New System.Drawing.Size(243, 26)
+        Me.TextBoxRecipe.TabIndex = 50
         '
-        'FormImpossible
+        'FormRecipeUnlocked
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(297, 160)
+        Me.ClientSize = New System.Drawing.Size(342, 207)
+        Me.Controls.Add(Me.TextBoxRecipe)
+        Me.Controls.Add(Me.ButtonEnter)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ButtonEnter)
         Me.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Name = "FormImpossible"
+        Me.Name = "FormRecipeUnlocked"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         Me.ResumeLayout(False)
@@ -76,6 +87,7 @@ Partial Class FormImpossible
     End Sub
 
     Friend WithEvents ButtonEnter As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents TextBoxRecipe As TextBox
 End Class

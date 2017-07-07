@@ -91,6 +91,12 @@
     <Compile Include="TriggerEditors\FormChangedDimension.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormEffectsChanged.Designer.vb">
+      <DependentUpon>FormEffectsChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEffectsChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormImpossible.Designer.vb">
       <DependentUpon>FormImpossible.vb</DependentUpon>
     </Compile>
@@ -132,6 +138,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TriggerEditors\FormRecipeUnlocked.Designer.vb">
+      <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormRecipeUnlocked.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormTick.Designer.vb">
+      <DependentUpon>FormTick.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormTick.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormMain.resx">
@@ -142,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormChangedDimension.resx">
       <DependentUpon>FormChangedDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormEffectsChanged.resx">
+      <DependentUpon>FormEffectsChanged.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormImpossible.resx">
       <DependentUpon>FormImpossible.vb</DependentUpon>
@@ -160,6 +181,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormRecipeUnlocked.resx">
+      <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormTick.resx">
+      <DependentUpon>FormTick.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
