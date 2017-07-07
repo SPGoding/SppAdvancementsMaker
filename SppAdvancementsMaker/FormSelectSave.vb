@@ -10,8 +10,9 @@
             FolderBrowserDialog1.SelectedPath = StrPath
         End If
         FolderBrowserDialog1.ShowNewFolderButton = False
-        FolderBrowserDialog1.ShowDialog()
-        TextBoxSavePath.Text = FolderBrowserDialog1.SelectedPath
+        If FolderBrowserDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            TextBoxSavePath.Text = FolderBrowserDialog1.SelectedPath
+        End If
     End Sub
 
     Private Sub ButtonEnter_Click(sender As Object, e As EventArgs) Handles ButtonEnter.Click

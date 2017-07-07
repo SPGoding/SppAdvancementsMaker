@@ -118,6 +118,40 @@ Public Class FormMain
         FormJsonTexts.Reset()
     End Sub
 
+    Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
+        Dim StrTemp As String
+        Dim StrTempPath As String = StrSavePath & "\data\loot_tables"
+        If Dir(StrTempPath, vbDirectory) <> "" Then
+            With OpenFileDialogLoot
+                .AddExtension = True
+                .CheckFileExists = True
+                .CheckPathExists = True
+                .DereferenceLinks = False
+                .InitialDirectory = StrTempPath
+                .Multiselect = False
+                .Filter = "json files (*.json)|*.json"
+                .FileName = ""
+                If .ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                    StrTemp = .FileName
+                Else
+                    Exit Sub
+                End If
+            End With
+            StrTemp = StrTemp.Replace(StrTempPath & "\", "")
+            ' 换斜杠
+            StrTemp = StrTemp.Replace("\", "/")
+            ' 改冒号
+            If StrTemp.IndexOf("/") <> -1 Then
+                StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrTemp, StrTemp.Length - StrTemp.IndexOf("/") - 1)
+            End If
+            ' 去.json
+            StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
+            TextBoxLoot.Text = StrTemp
+        Else
+                MessageBox.Show("没有可用的战利品列表")
+        End If
+    End Sub
+
     '组的 Text 是组X
     '条件的 Text 是条件X
     '组和条件的 Name 分别为组、条

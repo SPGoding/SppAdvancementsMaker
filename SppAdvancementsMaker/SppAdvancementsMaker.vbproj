@@ -79,10 +79,22 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormImpossible.Designer.vb">
+    <Compile Include="TriggerEditors\FormBrewedPotion.Designer.vb">
+      <DependentUpon>FormBrewedPotion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormBrewedPotion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormChangedDimension.Designer.vb">
+      <DependentUpon>FormChangedDimension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormChangedDimension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormImpossible.Designer.vb">
       <DependentUpon>FormImpossible.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormImpossible.vb">
+    <Compile Include="TriggerEditors\FormImpossible.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCriteria.Designer.vb">
@@ -104,6 +116,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module1.vb" />
+    <Compile Include="Module2.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -124,7 +137,13 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormImpossible.resx">
+    <EmbeddedResource Include="TriggerEditors\FormBrewedPotion.resx">
+      <DependentUpon>FormBrewedPotion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormChangedDimension.resx">
+      <DependentUpon>FormChangedDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormImpossible.resx">
       <DependentUpon>FormImpossible.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCriteria.resx">

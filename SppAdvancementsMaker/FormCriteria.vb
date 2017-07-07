@@ -1,4 +1,5 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.Threading
+Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class FormCriteria
@@ -9,13 +10,7 @@ Public Class FormCriteria
         TextBoxName.Text = StrCriteriaName
         '读取触发器-种类
         Dim StrTriggerName As String = ObjJson.Item(StrCriteriaName).Item("trigger").ToString()
-        Dim i As Int16
-        For i = 0 To StrTriggerNames.Count - 1
-            If StrTriggerNames(i) = StrTriggerName Then
-                ComboBoxTrigger.Text = StrTriggerDescriptions(i)
-                Exit For
-            End If
-        Next
+        ComboBoxTrigger.Text = EnToZh(StrTriggerName, ZhTrigger, EnTrigger)
         '读取触发器-条件Json
         ButtonCriteria.Tag = ObjJson.Item(StrCriteriaName).Item("conditions").ToString()
         '读取分组
@@ -38,12 +33,7 @@ Public Class FormCriteria
         Dim StrTemp As String = ""
         Dim i As Int16
         StrResult = Chr(34) & TextBoxName.Text & Chr(34) & ":{"
-        For i = 0 To StrTriggerDescriptions.Count - 1
-            If StrTriggerDescriptions(i) = ComboBoxTrigger.Text Then
-                StrTemp = StrTriggerNames(i)
-                Exit For
-            End If
-        Next
+        StrTemp = ZhToEn(ComboBoxTrigger.Text, ZhTrigger, EnTrigger)
         StrResult &= Chr(34) & "trigger" & Chr(34) & ":" & Chr(34) & StrTemp & Chr(34) & ","
         StrResult &= Chr(34) & "conditions" & Chr(34) & ":" & ButtonCriteria.Tag
         StrResult &= "}"
@@ -82,27 +72,22 @@ Public Class FormCriteria
         Next i
         FormMain.SaveGroupJson()
         Hide()
+        FormMain.Hide 
+        FormMain.Show()
     End Sub
 
     Private Sub ButtonCriteria_Click(sender As Object, e As EventArgs) Handles ButtonCriteria.Click
-        Dim i As Int16
-        Dim StrTemp As String = "minecraft:impossible"
-        For i = 0 To StrTriggerDescriptions.Count - 1
-            ' 找到当前触发器种类的英文
-            If StrTriggerDescriptions(i) = ComboBoxTrigger.Text Then
-                StrTemp = StrTriggerNames(i)
-                Exit For
-            End If
-        Next
+        Dim StrTemp As String
+        ' 找到当前触发器种类的英文
+        StrTemp = ZhToEn(ComboBoxTrigger.Text， ZhTrigger, EnTrigger)
         ' 找到此触发器对应的窗体
-        ' VB.NET 似乎没有类似 VB6 的 Forms 集合，如果有大佬知道如何实现可以告诉本渣
-        ' How to use forms(like vb6) in vb.net? Sorry for my poor English :D
-        Dim FormTemp As Form = FormImpossible
         Select Case StrTemp
             Case "minecraft:bred_animals"
 
             Case "minecraft:brewed_potion"
+                FormBrewedPotion.Reading(ButtonCriteria.Tag)
             Case "minecraft:changed_dimension"
+                FormChangedDimension.Reading(ButtonCriteria.Tag)
             Case "minecraft:construct_beacon"
             Case "minecraft:consume_item"
             Case "minecraft:cured_zombie_villager"
@@ -112,7 +97,7 @@ Public Class FormCriteria
             Case "minecraft:entity_hurt_player"
             Case "minecraft:entity_killed_player"
             Case "minecraft:impossible"
-                FormTemp = FormImpossible
+                FormImpossible.Reading(ButtonCriteria.Tag)
             Case "minecraft:inventory_changed"
             Case "minecraft:item_durability_changed"
             Case "minecraft:levitation"
@@ -129,11 +114,6 @@ Public Class FormCriteria
             Case "minecraft:used_ender_eye"
             Case "minecraft:used_totem"
             Case "minecraft:villager_trade"
-            Case Else
-                FormTemp = FormImpossible
         End Select
-        FormTemp.Visible = False
-        FormTemp.Show(Me)
-        FormTemp.Tag = ButtonCriteria.Tag
     End Sub
 End Class

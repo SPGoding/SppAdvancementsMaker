@@ -59,6 +59,9 @@ Partial Class FormMain
         Me.ButtonAddCriteria = New System.Windows.Forms.Button()
         Me.ButtonRemove = New System.Windows.Forms.Button()
         Me.LabelResult = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ButtonLoot = New System.Windows.Forms.Button()
+        Me.OpenFileDialogLoot = New System.Windows.Forms.OpenFileDialog()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -206,9 +209,9 @@ Partial Class FormMain
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(435, 9)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(271, 20)
+        Me.Label8.Size = New System.Drawing.Size(37, 20)
         Me.Label8.TabIndex = 20
-        Me.Label8.Text = "条件(只要达成任一组条件，即可完成成就)"
+        Me.Label8.Text = "条件"
         '
         'Label10
         '
@@ -268,14 +271,16 @@ Partial Class FormMain
         '
         Me.TextBoxRecipes.Location = New System.Drawing.Point(184, 295)
         Me.TextBoxRecipes.Name = "TextBoxRecipes"
-        Me.TextBoxRecipes.Size = New System.Drawing.Size(232, 26)
+        Me.TextBoxRecipes.ReadOnly = True
+        Me.TextBoxRecipes.Size = New System.Drawing.Size(207, 26)
         Me.TextBoxRecipes.TabIndex = 31
         '
         'TextBoxLoot
         '
         Me.TextBoxLoot.Location = New System.Drawing.Point(184, 327)
         Me.TextBoxLoot.Name = "TextBoxLoot"
-        Me.TextBoxLoot.Size = New System.Drawing.Size(232, 26)
+        Me.TextBoxLoot.ReadOnly = True
+        Me.TextBoxLoot.Size = New System.Drawing.Size(207, 26)
         Me.TextBoxLoot.TabIndex = 32
         '
         'NumericUpDownExperience
@@ -391,11 +396,37 @@ Partial Class FormMain
         Me.LabelResult.TabIndex = 44
         Me.LabelResult.Text = "等待生成..."
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.Red
+        Me.Label1.Location = New System.Drawing.Point(470, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(247, 20)
+        Me.Label1.TabIndex = 45
+        Me.Label1.Text = "【每组各达成一个条件】即可完成进度"
+        '
+        'ButtonLoot
+        '
+        Me.ButtonLoot.Location = New System.Drawing.Point(391, 328)
+        Me.ButtonLoot.Name = "ButtonLoot"
+        Me.ButtonLoot.Size = New System.Drawing.Size(25, 24)
+        Me.ButtonLoot.TabIndex = 46
+        Me.ButtonLoot.Text = "···"
+        Me.ButtonLoot.UseVisualStyleBackColor = True
+        '
+        'OpenFileDialogLoot
+        '
+        Me.OpenFileDialogLoot.FileName = "OpenFileDialog1"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(855, 543)
+        Me.Controls.Add(Me.ButtonLoot)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LabelResult)
         Me.Controls.Add(Me.ButtonRemove)
         Me.Controls.Add(Me.ButtonAddCriteria)
@@ -480,4 +511,7 @@ Partial Class FormMain
     Friend WithEvents ButtonAddCriteria As Button
     Friend WithEvents ButtonRemove As Button
     Friend WithEvents LabelResult As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ButtonLoot As Button
+    Friend WithEvents OpenFileDialogLoot As OpenFileDialog
 End Class
