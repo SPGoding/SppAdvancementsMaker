@@ -96,6 +96,8 @@ Public Class FormCriteria
                 FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
             Case "minecraft:enter_block"
+                '//TODO
+                FormEnterBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_hurt_player"
             Case "minecraft:entity_killed_player"
             Case "minecraft:impossible"

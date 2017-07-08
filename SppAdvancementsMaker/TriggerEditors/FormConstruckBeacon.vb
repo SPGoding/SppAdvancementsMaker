@@ -1,6 +1,5 @@
-﻿
-Imports Newtonsoft.Json
-    Imports Newtonsoft.Json.Linq
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
 Public Class FormConstruckBeacon
     Public Sub Reading(StrJson As String)
