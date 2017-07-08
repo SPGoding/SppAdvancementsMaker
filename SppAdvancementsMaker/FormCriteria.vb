@@ -10,7 +10,7 @@ Public Class FormCriteria
         TextBoxName.Text = StrCriteriaName
         '读取触发器-种类
         Dim StrTriggerName As String = ObjJson.Item(StrCriteriaName).Item("trigger").ToString()
-        ComboBoxTrigger.Text = EnToZh(StrTriggerName, ZhTrigger, EnTrigger)
+        ComboBoxTrigger.Text = EnToZh(StrTriggerName, ZhTriggers, EnTriggers)
         '读取触发器-条件Json
         ButtonCriteria.Tag = ObjJson.Item(StrCriteriaName).Item("conditions").ToString()
         '读取分组
@@ -33,7 +33,7 @@ Public Class FormCriteria
         Dim StrTemp As String = ""
         Dim i As Int16
         StrResult = Chr(34) & TextBoxName.Text & Chr(34) & ":{"
-        StrTemp = ZhToEn(ComboBoxTrigger.Text, ZhTrigger, EnTrigger)
+        StrTemp = ZhToEn(ComboBoxTrigger.Text, ZhTriggers, EnTriggers)
         StrResult &= Chr(34) & "trigger" & Chr(34) & ":" & Chr(34) & StrTemp & Chr(34) & ","
         StrResult &= Chr(34) & "conditions" & Chr(34) & ":" & ButtonCriteria.Tag
         StrResult &= "}"
@@ -79,7 +79,7 @@ Public Class FormCriteria
     Private Sub ButtonCriteria_Click(sender As Object, e As EventArgs) Handles ButtonCriteria.Click
         Dim StrTemp As String
         ' 找到当前触发器种类的英文
-        StrTemp = ZhToEn(ComboBoxTrigger.Text， ZhTrigger, EnTrigger)
+        StrTemp = ZhToEn(ComboBoxTrigger.Text， ZhTriggers, EnTriggers)
         ' 找到此触发器对应的窗体
         Select Case StrTemp
             Case "minecraft:bred_animals"
@@ -89,6 +89,7 @@ Public Class FormCriteria
             Case "minecraft:changed_dimension"
                 FormChangedDimension.Reading(ButtonCriteria.Tag)
             Case "minecraft:construct_beacon"
+                FormConstruckBeacon.Reading(ButtonCriteria.Tag)
             Case "minecraft:consume_item"
             Case "minecraft:cured_zombie_villager"
             Case "minecraft:effects_changed"

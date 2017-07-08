@@ -11,7 +11,7 @@ Public Class FormBrewedPotion
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.Item("potion") IsNot Nothing Then
             StrTemp = ObjJson.Item("potion").ToString
-            ComboBoxPotion.Text = EnToZh(StrTemp, ZhPotion, EnPotion)
+            ComboBoxPotion.Text = EnToZh(StrTemp, ZhPotions, EnPotions)
         Else
             ComboBoxPotion.Text = ""
         End If
@@ -21,7 +21,7 @@ Public Class FormBrewedPotion
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{}"), JObject)
         Dim StrResult As String
         If ComboBoxPotion.Text <> "" Then
-            ObjJson.Add("potion", ZhToEn(ComboBoxPotion.Text, ZhPotion, EnPotion))
+            ObjJson.Add("potion", ZhToEn(ComboBoxPotion.Text, ZhPotions, EnPotions))
         End If
         StrResult = ObjJson.ToString
         ' 将处理后的 Json 文本返回条件窗体

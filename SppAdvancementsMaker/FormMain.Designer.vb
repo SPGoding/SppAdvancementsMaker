@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -36,7 +36,6 @@ Partial Class FormMain
         Me.CheckBoxAnnounce_To_Chat = New System.Windows.Forms.CheckBox()
         Me.CheckBoxHidden = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBoxParent = New System.Windows.Forms.TextBox()
         Me.ButtonGenerate = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -62,6 +61,8 @@ Partial Class FormMain
         Me.ButtonLoot = New System.Windows.Forms.Button()
         Me.OpenFileDialogLoot = New System.Windows.Forms.OpenFileDialog()
         Me.ComboBoxRecipes = New System.Windows.Forms.ComboBox()
+        Me.TextBoxParent = New System.Windows.Forms.TextBox()
+        Me.ButtonParent = New System.Windows.Forms.Button()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -97,7 +98,6 @@ Partial Class FormMain
         '
         Me.TextBoxTitle.Location = New System.Drawing.Point(184, 104)
         Me.TextBoxTitle.Name = "TextBoxTitle"
-        Me.TextBoxTitle.ReadOnly = True
         Me.TextBoxTitle.Size = New System.Drawing.Size(207, 26)
         Me.TextBoxTitle.TabIndex = 7
         '
@@ -141,7 +141,6 @@ Partial Class FormMain
         '
         Me.TextBoxDescription.Location = New System.Drawing.Point(184, 169)
         Me.TextBoxDescription.Name = "TextBoxDescription"
-        Me.TextBoxDescription.ReadOnly = True
         Me.TextBoxDescription.Size = New System.Drawing.Size(207, 26)
         Me.TextBoxDescription.TabIndex = 13
         '
@@ -187,13 +186,6 @@ Partial Class FormMain
         Me.Label7.Size = New System.Drawing.Size(131, 20)
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "上个进度(仅子进度)"
-        '
-        'TextBoxParent
-        '
-        Me.TextBoxParent.Location = New System.Drawing.Point(184, 201)
-        Me.TextBoxParent.Name = "TextBoxParent"
-        Me.TextBoxParent.Size = New System.Drawing.Size(232, 26)
-        Me.TextBoxParent.TabIndex = 18
         '
         'ButtonGenerate
         '
@@ -271,7 +263,6 @@ Partial Class FormMain
         '
         Me.TextBoxLoot.Location = New System.Drawing.Point(184, 327)
         Me.TextBoxLoot.Name = "TextBoxLoot"
-        Me.TextBoxLoot.ReadOnly = True
         Me.TextBoxLoot.Size = New System.Drawing.Size(207, 26)
         Me.TextBoxLoot.TabIndex = 32
         '
@@ -331,7 +322,7 @@ Partial Class FormMain
         Me.ComboBoxBackground.FormattingEnabled = True
         Me.ComboBoxBackground.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxBackground.IntegralHeight = False
-        Me.ComboBoxBackground.Items.AddRange(New Object() {"", "bedrock", "bone_block_side", "bookshelf", "brewing_stand_base", "brick", "chorus_flower", "chorus_flower_dead", "chorus_plant", "clay", "coal_block", "coal_ore", "coarse_dirt", "cobblestone", "concrete_black", "concrete_blue", "concrete_brown", "concrete_cyan", "concrete_gray", "concrete_green", "concrete_light_blue", "concrete_lime", "concrete_magenta", "concrete_orange", "concrete_pink", "concrete_powder_black", "concrete_powder_blue", "concrete_powder_brown", "concrete_powder_cyan", "concrete_powder_gray", "concrete_powder_green", "concrete_powder_light_blue", "concrete_powder_lime", "concrete_powder_magenta", "concrete_powder_orange", "concrete_powder_pink", "concrete_powder_purple", "concrete_powder_red", "concrete_powder_silver", "concrete_powder_white", "concrete_powder_yellow", "concrete_purple", "concrete_red", "concrete_silver", "concrete_white", "concrete_yellow", "crafting_table_front", "crafting_table_side", "diamond_block", "diamond_ore", "dirt", "dirt_podzol_side", "dirt_podzol_top", "dragon_egg", "dropper_front_horizontal", "dropper_front_vertical", "emerald_block", "emerald_ore", "enchanting_table_bottom", "end_bricks", "end_stone", "farmland_dry", "farmland_wet", "frosted_ice_0", "frosted_ice_1", "frosted_ice_2", "frosted_ice_3", "furnace_front_off", "furnace_front_on", "furnace_side", "glass", "glass_black", "glass_blue", "glass_brown", "glass_cyan", "glass_gray", "glass_green", "glass_light_blue", "glass_lime", "glass_magenta", "glass_orange", "glass_pink", "glass_purple", "glass_red", "glass_silver", "glass_white", "glass_yellow", "glazed_terracotta_black", "glazed_terracotta_blue", "glazed_terracotta_brown", "glazed_terracotta_cyan", "glazed_terracotta_gray", "glazed_terracotta_green", "glazed_terracotta_light_blue", "glazed_terracotta_lime", "glazed_terracotta_magenta", "glazed_terracotta_orange", "glazed_terracotta_pink", "glazed_terracotta_purple", "glazed_terracotta_red", "glazed_terracotta_silver", "glazed_terracotta_white", "glazed_terracotta_yellow", "glowstone", "gold_block", "gold_ore", "grass_path_side", "grass_path_top", "grass_side", "grass_side_snowed", "grass_top", "gravel", "hardened_clay", "hardened_clay_stained_black", "hardened_clay_stained_blue", "hardened_clay_stained_brown", "hardened_clay_stained_cyan", "hardened_clay_stained_gray", "hardened_clay_stained_green", "hardened_clay_stained_light_blue", "hardened_clay_stained_lime", "hardened_clay_stained_magenta", "hardened_clay_stained_orange", "hardened_clay_stained_pink", "hardened_clay_stained_purple", "hardened_clay_stained_red", "hardened_clay_stained_silver", "hardened_clay_stained_white", "hardened_clay_stained_yellow", "hay_block_side", "hay_block_top", "hopper_inside", "hopper_outside", "ice", "ice_packed", "iron_block", "iron_ore", "jukebox_side", "lapis_block", "lapis_ore", "log_acacia", "log_acacia_top", "log_big_oak", "log_big_oak_top", "log_birch", "log_birch_top", "log_jungle", "log_jungle_top", "log_oak", "log_oak_top", "log_spruce", "log_spruce_top", "melon_side", "mob_spawner", "mushroom_block_inside", "mushroom_block_skin_brown", "mushroom_block_skin_red", "mushroom_block_skin_stem", "mycelium_side", "mycelium_top", "nether_brick", "nether_wart_block", "netherrack", "noteblock", "observer_front", "output.bat", "piston_side", "planks_acacia", "planks_big_oak", "planks_birch", "planks_jungle", "planks_oak", "planks_spruce", "prismarine_bricks", "prismarine_dark", "pumpkin_face_off", "pumpkin_face_on", "pumpkin_side", "pumpkin_top", "purpur_block", "purpur_pillar", "purpur_pillar_top", "quartz_block_bottom", "quartz_block_chiseled", "quartz_block_chiseled_top", "quartz_block_lines", "quartz_block_lines_top", "quartz_block_side", "quartz_block_top", "red_nether_brick", "red_sand", "red_sandstone_bottom", "red_sandstone_carved", "red_sandstone_normal", "red_sandstone_smooth", "red_sandstone_top", "redstone_block", "redstone_dust_overlay", "redstone_lamp_off", "redstone_lamp_on", "redstone_ore", "sand", "sandstone_bottom", "sandstone_carved", "sandstone_normal", "sandstone_smooth", "sandstone_top", "shulker_top_black", "shulker_top_blue", "shulker_top_brown", "shulker_top_cyan", "shulker_top_gray", "shulker_top_green", "shulker_top_light_blue", "shulker_top_lime", "shulker_top_magenta", "shulker_top_orange", "shulker_top_pink", "shulker_top_purple", "shulker_top_red", "shulker_top_silver", "shulker_top_white", "shulker_top_yellow", "slime", "snow", "soul_sand", "sponge", "sponge_wet", "stone", "stone_andesite", "stone_andesite_smooth", "stone_diorite", "stone_diorite_smooth", "stone_granite", "stone_granite_smooth", "stone_slab_side", "stone_slab_top", "stonebrick", "stonebrick_carved", "stonebrick_cracked", "stonebrick_mossy", "tnt_side", "wool_colored_black", "wool_colored_blue", "wool_colored_brown", "wool_colored_cyan", "wool_colored_gray", "wool_colored_green", "wool_colored_light_blue", "wool_colored_lime", "wool_colored_magenta", "wool_colored_orange", "wool_colored_pink", "wool_colored_purple", "wool_colored_red", "wool_colored_silver", "wool_colored_white", "wool_colored_yellow"})
+        Me.ComboBoxBackground.Items.AddRange(New Object() {"", "基岩", "骨块", "书架", "brewing stand base", "brick", "chorus flower", "chorus flower dead", "chorus plant", "clay", "煤炭块", "煤矿", "coarse dirt", "cobblestone", "混凝土 black", "混凝土 blue", "混凝土 brown", "混凝土 cyan", "混凝土 gray", "混凝土 green", "混凝土 light blue", "混凝土 lime", "混凝土 magenta", "混凝土 orange", "混凝土 pink", "混凝土粉末 black", "混凝土粉末 blue", "混凝土粉末 brown", "混凝土粉末 cyan", "混凝土粉末 gray", "混凝土粉末 green", "混凝土粉末 light blue", "混凝土粉末 lime", "混凝土粉末 magenta", "混凝土粉末 orange", "混凝土粉末 pink", "混凝土粉末 purple", "混凝土粉末 red", "混凝土粉末 silver", "混凝土粉末 white", "混凝土粉末 yellow", "混凝土 purple", "混凝土 red", "混凝土 silver", "混凝土 white", "混凝土 yellow", "crafting table front", "crafting table side", "diamond block", "diamond ore", "dirt", "dirt podzol side", "dirt podzol top", "dragon egg", "dropper front horizontal", "dropper front vertical", "emerald block", "emerald ore", "enchanting table bottom", "end bricks", "end stone", "farmland dry", "farmland wet", "frosted ice 0", "frosted ice 1", "frosted ice 2", "frosted ice 3", "furnace front off", "furnace front on", "furnace side", "玻璃", "玻璃 black", "玻璃 blue", "玻璃 brown", "玻璃 cyan", "玻璃 gray", "玻璃 green", "玻璃 light blue", "玻璃 lime", "玻璃 magenta", "玻璃 orange", "玻璃 pink", "玻璃 purple", "玻璃 red", "玻璃 silver", "玻璃 white", "玻璃 yellow", "带釉陶瓦 black", "带釉陶瓦 blue", "带釉陶瓦 brown", "带釉陶瓦 cyan", "带釉陶瓦 gray", "带釉陶瓦 green", "带釉陶瓦 light blue", "带釉陶瓦 lime", "带釉陶瓦 magenta", "带釉陶瓦 orange", "带釉陶瓦 pink", "带釉陶瓦 purple", "带釉陶瓦 red", "带釉陶瓦 silver", "带釉陶瓦 white", "带釉陶瓦 yellow", "glowstone", "gold block", "gold ore", "grass path side", "grass path top", "grass side", "grass side snowed", "grass top", "gravel", "硬化粘土", "硬化染色粘土 black", "硬化染色粘土 blue", "硬化染色粘土 brown", "硬化染色粘土 cyan", "硬化染色粘土 gray", "硬化染色粘土 green", "硬化染色粘土 light blue", "硬化染色粘土 lime", "硬化染色粘土 magenta", "硬化染色粘土 orange", "硬化染色粘土 pink", "硬化染色粘土 purple", "硬化染色粘土 red", "硬化染色粘土 silver", "硬化染色粘土 white", "硬化染色粘土 yellow", "hay block side", "hay block top", "hopper inside", "hopper outside", "ice", "ice packed", "iron block", "iron ore", "jukebox side", "lapis block", "lapis ore", "log acacia", "log acacia top", "log big oak", "log big oak top", "log birch", "log birch top", "log jungle", "log jungle top", "log oak", "log oak top", "log spruce", "log spruce top", "melon side", "mob spawner", "mushroom block inside", "mushroom block skin brown", "mushroom block skin red", "mushroom block skin stem", "mycelium side", "mycelium top", "nether brick", "nether wart block", "netherrack", "noteblock", "observer front", "output.bat", "piston side", "planks acacia", "planks big oak", "planks birch", "planks jungle", "planks oak", "planks spruce", "prismarine bricks", "prismarine dark", "pumpkin face off", "pumpkin face on", "pumpkin side", "pumpkin top", "purpur block", "purpur pillar", "purpur pillar top", "quartz block bottom", "quartz block chiseled", "quartz block chiseled top", "quartz block lines", "quartz block lines top", "quartz block side", "quartz block top", "red nether brick", "red sand", "red sandstone bottom", "red sandstone carved", "red sandstone normal", "red sandstone smooth", "red sandstone top", "redstone block", "redstone dust overlay", "redstone lamp off", "redstone lamp on", "redstone ore", "sand", "sandstone bottom", "sandstone carved", "sandstone normal", "sandstone smooth", "sandstone top", "潜影盒 black", "潜影盒 blue", "潜影盒 brown", "潜影盒 cyan", "潜影盒 gray", "潜影盒 green", "潜影盒 light blue", "潜影盒 lime", "潜影盒 magenta", "潜影盒 orange", "潜影盒 pink", "潜影盒 purple", "潜影盒 red", "潜影盒 silver", "潜影盒 white", "潜影盒 yellow", "slime", "snow", "soul sand", "sponge", "sponge wet", "stone", "stone andesite", "stone andesite smooth", "stone diorite", "stone diorite smooth", "stone granite", "stone granite smooth", "stone slab side", "stone slab top", "stonebrick", "stonebrick carved", "stonebrick cracked", "stonebrick mossy", "tnt side", "染色羊毛 black", "染色羊毛 blue", "染色羊毛 brown", "染色羊毛 cyan", "染色羊毛 gray", "染色羊毛 green", "染色羊毛 light blue", "染色羊毛 lime", "染色羊毛 magenta", "染色羊毛 orange", "染色羊毛 pink", "染色羊毛 purple", "染色羊毛 red", "染色羊毛 silver", "染色羊毛 white", "染色羊毛 yellow"})
         Me.ComboBoxBackground.Location = New System.Drawing.Point(184, 70)
         Me.ComboBoxBackground.MaxDropDownItems = 16
         Me.ComboBoxBackground.Name = "ComboBoxBackground"
@@ -343,9 +334,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(439, 32)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode1.Name = "组"
-        TreeNode1.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
+        TreeNode2.Name = "组"
+        TreeNode2.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 393)
         Me.TreeViewCriterias.TabIndex = 40
         '
@@ -422,11 +413,29 @@ Partial Class FormMain
         Me.ComboBoxRecipes.Size = New System.Drawing.Size(232, 28)
         Me.ComboBoxRecipes.TabIndex = 47
         '
+        'TextBoxParent
+        '
+        Me.TextBoxParent.Location = New System.Drawing.Point(184, 201)
+        Me.TextBoxParent.Name = "TextBoxParent"
+        Me.TextBoxParent.Size = New System.Drawing.Size(207, 26)
+        Me.TextBoxParent.TabIndex = 48
+        '
+        'ButtonParent
+        '
+        Me.ButtonParent.Location = New System.Drawing.Point(391, 202)
+        Me.ButtonParent.Name = "ButtonParent"
+        Me.ButtonParent.Size = New System.Drawing.Size(25, 24)
+        Me.ButtonParent.TabIndex = 49
+        Me.ButtonParent.Text = "···"
+        Me.ButtonParent.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(855, 543)
+        Me.Controls.Add(Me.ButtonParent)
+        Me.Controls.Add(Me.TextBoxParent)
         Me.Controls.Add(Me.ComboBoxRecipes)
         Me.Controls.Add(Me.ButtonLoot)
         Me.Controls.Add(Me.Label1)
@@ -434,7 +443,6 @@ Partial Class FormMain
         Me.Controls.Add(Me.ButtonRemove)
         Me.Controls.Add(Me.ButtonAddCriteria)
         Me.Controls.Add(Me.ButtonAddGroup)
-        Me.Controls.Add(Me.TextBoxParent)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TreeViewCriterias)
         Me.Controls.Add(Me.ComboBoxBackground)
@@ -490,7 +498,6 @@ Partial Class FormMain
     Friend WithEvents CheckBoxAnnounce_To_Chat As CheckBox
     Friend WithEvents CheckBoxHidden As CheckBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBoxParent As TextBox
     Friend WithEvents ButtonGenerate As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
@@ -516,4 +523,6 @@ Partial Class FormMain
     Friend WithEvents ButtonLoot As Button
     Friend WithEvents OpenFileDialogLoot As OpenFileDialog
     Friend WithEvents ComboBoxRecipes As ComboBox
+    Friend WithEvents TextBoxParent As TextBox
+    Friend WithEvents ButtonParent As Button
 End Class

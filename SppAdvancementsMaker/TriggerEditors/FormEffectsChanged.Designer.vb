@@ -79,7 +79,7 @@ Partial Class FormEffectsChanged
         Me.ComboBoxEffectName.FormattingEnabled = True
         Me.ComboBoxEffectName.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxEffectName.IntegralHeight = False
-        Me.ComboBoxEffectName.Items.AddRange(New Object() {"minecraft:speed", "minecraft:slowness", "minecraft:haste", "minecraft:mining_fatigue", "minecraft:strength", "minecraft:instant_health", "minecraft:instant_damage", "minecraft:jump_boost", "minecraft:nausea", "minecraft:regeneration", "minecraft:resistance", "minecraft:fire_resistance", "minecraft:water_breathing", "minecraft:invisibility", "minecraft:blindness", "minecraft:night_vision", "minecraft:hunger", "minecraft:weakness", "minecraft:poison", "minecraft:wither", "minecraft:health_boost", "minecraft:absorption", "minecraft:saturation", "minecraft:glowing", "minecraft:levitation", "minecraft:luck", "minecraft:unluck"})
+        Me.ComboBoxEffectName.Items.AddRange(New Object() {"", "速度", "缓慢", "急迫", "挖掘疲劳", "力量", "瞬间治疗", "瞬间伤害", "跳跃提升", "反胃", "生命回复", "抗性提升", "防火", "水下呼吸", "隐身", "失明", "夜视", "饥饿", "虚弱", "中毒", "凋零", "生命提升", "伤害吸收", "饱和", "发光", "飘浮", "幸运", "霉运"})
         Me.ComboBoxEffectName.Location = New System.Drawing.Point(171, 202)
         Me.ComboBoxEffectName.Name = "ComboBoxEffectName"
         Me.ComboBoxEffectName.Size = New System.Drawing.Size(232, 28)

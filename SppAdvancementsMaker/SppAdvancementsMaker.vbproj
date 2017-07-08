@@ -91,6 +91,12 @@
     <Compile Include="TriggerEditors\FormChangedDimension.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormConstruckBeacon.Designer.vb">
+      <DependentUpon>FormConstruckBeacon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormConstruckBeacon.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormEffectsChanged.Designer.vb">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormChangedDimension.resx">
       <DependentUpon>FormChangedDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormConstruckBeacon.resx">
+      <DependentUpon>FormConstruckBeacon.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEffectsChanged.resx">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>

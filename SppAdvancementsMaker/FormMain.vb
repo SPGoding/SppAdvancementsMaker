@@ -27,6 +27,11 @@ Public Class FormMain
         bFormDragging = False
     End Sub
 
+    ' 初始化一下界面
+    Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ComboBoxFrame.SelectedIndex = 0
+    End Sub
+
     '生成
     Private Sub ButtonGenerate_Click(sender As Object, e As EventArgs) Handles ButtonGenerate.Click
         Dim StrCriteria As String = ""
@@ -102,7 +107,8 @@ Public Class FormMain
     End Sub
 
     Private Sub ComboBoxBackground_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxBackground.SelectedIndexChanged
-        ComboBoxBackground.Tag = "minecraft:textures/blocks/" & ComboBoxBackground.Text & ".png"
+        Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhImages, EnImages)
+        ComboBoxBackground.Tag = "minecraft:textures/blocks/" & StrTemp & ".png"
     End Sub
 
     Private Sub ButtonTitle_Click(sender As Object, e As EventArgs) Handles ButtonTitle.Click
@@ -129,11 +135,17 @@ Public Class FormMain
                 .DereferenceLinks = False
                 .InitialDirectory = StrTempPath
                 .Multiselect = False
-                .Filter = "json files (*.json)|*.json"
+                .Filter = "loot_table files (*.json)|*.json"
                 .FileName = ""
                 If .ShowDialog() = System.Windows.Forms.DialogResult.OK Then
                     StrTemp = .FileName
+                    If Microsoft.VisualBasic.Left(StrTemp, StrTempPath.Length) <> StrTempPath Then
+                        ' 如果最后选择的文件不在战利品列表目录
+                        TextBoxLoot.Text = ""
+                        Exit Sub
+                    End If
                 Else
+                    TextBoxLoot.Text = ""
                     Exit Sub
                 End If
             End With
@@ -148,7 +160,47 @@ Public Class FormMain
             StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
             TextBoxLoot.Text = StrTemp
         Else
-                MessageBox.Show("没有可用的战利品列表")
+            MessageBox.Show("没有可用的战利品列表")
+        End If
+    End Sub
+
+    Private Sub ButtonParent_Click(sender As Object, e As EventArgs) Handles ButtonParent.Click
+        Dim StrTemp As String
+        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        If Dir(StrTempPath, vbDirectory) <> "" Then
+            With OpenFileDialogLoot
+                .AddExtension = True
+                .CheckFileExists = True
+                .CheckPathExists = True
+                .DereferenceLinks = False
+                .InitialDirectory = StrTempPath
+                .Multiselect = False
+                .Filter = "advancement files (*.json)|*.json"
+                .FileName = ""
+                If .ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                    StrTemp = .FileName
+                    If Microsoft.VisualBasic.Left(StrTemp, StrTempPath.Length) <> StrTempPath Then
+                        ' 如果最后选择的文件不在进度目录
+                        TextBoxParent.Text = ""
+                        Exit Sub
+                    End If
+                Else
+                    TextBoxParent.Text = ""
+                    Exit Sub
+                End If
+            End With
+            StrTemp = StrTemp.Replace(StrTempPath & "\", "")
+            ' 换斜杠
+            StrTemp = StrTemp.Replace("\", "/")
+            ' 改冒号
+            If StrTemp.IndexOf("/") <> -1 Then
+                StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrTemp, StrTemp.Length - StrTemp.IndexOf("/") - 1)
+            End If
+            ' 去.json
+            StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
+            TextBoxParent.Text = StrTemp
+        Else
+            MessageBox.Show("没有可用的进度")
         End If
     End Sub
 

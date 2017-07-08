@@ -2,8 +2,6 @@
 Imports Newtonsoft.Json.Linq
 
 Public Class FormEffectsChanged
-    ' 状态效果ZhToEn
-    ' http://minecraft-zh.gamepedia.com/%E6%95%B0%E6%8D%AE%E5%80%BC#.E7.8A.B6.E6.80.81.E6.95.88.E6.9E.9C
     Private IntEffects As Int16
     Private OldSelectedIndex As Int32 = -1
     Private StrEachEffectJson(127) As String
@@ -20,6 +18,7 @@ Public Class FormEffectsChanged
         ReDim StrEachEffectJson(127)
         ListBoxEffects.Items.Clear()
         ComboBoxEffectName.Text = ""
+        ComboBoxEffectName.Tag = ""
         NumericUpDownAmplifier.Value = 0
         NumericUpDownMax.Value = 0
         NumericUpDownMin.Value = 0
@@ -65,6 +64,7 @@ Public Class FormEffectsChanged
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
         ListBoxEffects.SelectedIndex = ListBoxEffects.Items.Add("效果" & IntEffects)
         ComboBoxEffectName.Text = ""
+        ComboBoxEffectName.Tag = ""
         NumericUpDownAmplifier.Value = 0
         NumericUpDownMax.Value = 0
         NumericUpDownMin.Value = 0
@@ -92,21 +92,22 @@ Public Class FormEffectsChanged
                     Dim StrTemp As String = StrEachEffectJson(ListBoxEffects.SelectedIndex)
                     StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf(":", 12))
                     StrTemp = StrTemp.Replace(Chr(34), "")
-                    ComboBoxEffectName.Text = StrTemp
-                    If ObjJson.Item(ComboBoxEffectName.Text) IsNot Nothing Then
-                        If ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier") IsNot Nothing Then
-                            NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier").ToString
+                    ComboBoxEffectName.Tag = StrTemp
+                    ComboBoxEffectName.Text = EnToZh(ComboBoxEffectName.Tag, ZhEffects, EnEffects)
+                    If ObjJson.Item(ComboBoxEffectName.Tag) IsNot Nothing Then
+                        If ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier") IsNot Nothing Then
+                            NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").ToString
                         Else
                             NumericUpDownAmplifier.Value = 0
                         End If
-                        If ObjJson.Item(ComboBoxEffectName.Text).Item("duration") IsNot Nothing Then
-                            If ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min") IsNot Nothing Then
-                                NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min").ToString
+                        If ObjJson.Item(ComboBoxEffectName.Tag).Item("duration") IsNot Nothing Then
+                            If ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("min") IsNot Nothing Then
+                                NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("min").ToString
                             Else
                                 NumericUpDownMin.Value = 0
                             End If
-                            If ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max") IsNot Nothing Then
-                                NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max").ToString
+                            If ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("max") IsNot Nothing Then
+                                NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("max").ToString
                             Else
                                 NumericUpDownMax.Value = 0
                             End If
@@ -125,7 +126,7 @@ Public Class FormEffectsChanged
     Private Sub SaveCurrentEffect(OldSelectedIndex As Int32)
         ' 保存当前的编辑
         If OldSelectedIndex >= 0 Then
-            Dim StrResult As String = Chr(34) & ComboBoxEffectName.Text & Chr(34) & ":" & "{"
+            Dim StrResult As String = Chr(34) & ComboBoxEffectName.Tag & Chr(34) & ":" & "{"
             If NumericUpDownAmplifier.Value <> 0 Then
                 StrResult &= Chr(34) & "amplifier" & Chr(34) & ":" & NumericUpDownAmplifier.Value & ","
             End If
@@ -141,5 +142,9 @@ Public Class FormEffectsChanged
             StrResult = StrResult.Replace(",]", "]")
             StrEachEffectJson(OldSelectedIndex) = StrResult
         End If
+    End Sub
+
+    Private Sub ComboBoxEffectName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEffectName.SelectedIndexChanged
+        ComboBoxEffectName.Tag = ZhToEn(ComboBoxEffectName.Text, ZhEffects, EnEffects)
     End Sub
 End Class
