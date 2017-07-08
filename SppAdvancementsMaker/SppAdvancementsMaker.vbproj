@@ -103,6 +103,12 @@
     <Compile Include="TriggerEditors\FormEffectsChanged.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormEnterBlock.Designer.vb">
+      <DependentUpon>FormEnterBlock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEnterBlock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormImpossible.Designer.vb">
       <DependentUpon>FormImpossible.vb</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEffectsChanged.resx">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormEnterBlock.resx">
+      <DependentUpon>FormEnterBlock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormImpossible.resx">
       <DependentUpon>FormImpossible.vb</DependentUpon>
