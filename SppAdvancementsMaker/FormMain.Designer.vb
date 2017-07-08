@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -45,7 +45,6 @@ Partial Class FormMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBoxRecipes = New System.Windows.Forms.TextBox()
         Me.TextBoxLoot = New System.Windows.Forms.TextBox()
         Me.NumericUpDownExperience = New System.Windows.Forms.NumericUpDown()
         Me.TextBoxItem = New System.Windows.Forms.TextBox()
@@ -62,6 +61,7 @@ Partial Class FormMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ButtonLoot = New System.Windows.Forms.Button()
         Me.OpenFileDialogLoot = New System.Windows.Forms.OpenFileDialog()
+        Me.ComboBoxRecipes = New System.Windows.Forms.ComboBox()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -267,14 +267,6 @@ Partial Class FormMain
         Me.Label15.TabIndex = 30
         Me.Label15.Text = "批量执行命令(一行一个，不输入斜杠/)"
         '
-        'TextBoxRecipes
-        '
-        Me.TextBoxRecipes.Location = New System.Drawing.Point(184, 295)
-        Me.TextBoxRecipes.Name = "TextBoxRecipes"
-        Me.TextBoxRecipes.ReadOnly = True
-        Me.TextBoxRecipes.Size = New System.Drawing.Size(207, 26)
-        Me.TextBoxRecipes.TabIndex = 31
-        '
         'TextBoxLoot
         '
         Me.TextBoxLoot.Location = New System.Drawing.Point(184, 327)
@@ -339,7 +331,7 @@ Partial Class FormMain
         Me.ComboBoxBackground.FormattingEnabled = True
         Me.ComboBoxBackground.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxBackground.IntegralHeight = False
-        Me.ComboBoxBackground.Items.AddRange(New Object() {"bedrock", "bone_block_side", "bookshelf", "brewing_stand_base", "brick", "chorus_flower", "chorus_flower_dead", "chorus_plant", "clay", "coal_block", "coal_ore", "coarse_dirt", "cobblestone", "concrete_black", "concrete_blue", "concrete_brown", "concrete_cyan", "concrete_gray", "concrete_green", "concrete_light_blue", "concrete_lime", "concrete_magenta", "concrete_orange", "concrete_pink", "concrete_powder_black", "concrete_powder_blue", "concrete_powder_brown", "concrete_powder_cyan", "concrete_powder_gray", "concrete_powder_green", "concrete_powder_light_blue", "concrete_powder_lime", "concrete_powder_magenta", "concrete_powder_orange", "concrete_powder_pink", "concrete_powder_purple", "concrete_powder_red", "concrete_powder_silver", "concrete_powder_white", "concrete_powder_yellow", "concrete_purple", "concrete_red", "concrete_silver", "concrete_white", "concrete_yellow", "crafting_table_front", "crafting_table_side", "diamond_block", "diamond_ore", "dirt", "dirt_podzol_side", "dirt_podzol_top", "dragon_egg", "dropper_front_horizontal", "dropper_front_vertical", "emerald_block", "emerald_ore", "enchanting_table_bottom", "end_bricks", "end_stone", "farmland_dry", "farmland_wet", "frosted_ice_0", "frosted_ice_1", "frosted_ice_2", "frosted_ice_3", "furnace_front_off", "furnace_front_on", "furnace_side", "glass", "glass_black", "glass_blue", "glass_brown", "glass_cyan", "glass_gray", "glass_green", "glass_light_blue", "glass_lime", "glass_magenta", "glass_orange", "glass_pink", "glass_purple", "glass_red", "glass_silver", "glass_white", "glass_yellow", "glazed_terracotta_black", "glazed_terracotta_blue", "glazed_terracotta_brown", "glazed_terracotta_cyan", "glazed_terracotta_gray", "glazed_terracotta_green", "glazed_terracotta_light_blue", "glazed_terracotta_lime", "glazed_terracotta_magenta", "glazed_terracotta_orange", "glazed_terracotta_pink", "glazed_terracotta_purple", "glazed_terracotta_red", "glazed_terracotta_silver", "glazed_terracotta_white", "glazed_terracotta_yellow", "glowstone", "gold_block", "gold_ore", "grass_path_side", "grass_path_top", "grass_side", "grass_side_snowed", "grass_top", "gravel", "hardened_clay", "hardened_clay_stained_black", "hardened_clay_stained_blue", "hardened_clay_stained_brown", "hardened_clay_stained_cyan", "hardened_clay_stained_gray", "hardened_clay_stained_green", "hardened_clay_stained_light_blue", "hardened_clay_stained_lime", "hardened_clay_stained_magenta", "hardened_clay_stained_orange", "hardened_clay_stained_pink", "hardened_clay_stained_purple", "hardened_clay_stained_red", "hardened_clay_stained_silver", "hardened_clay_stained_white", "hardened_clay_stained_yellow", "hay_block_side", "hay_block_top", "hopper_inside", "hopper_outside", "ice", "ice_packed", "iron_block", "iron_ore", "jukebox_side", "lapis_block", "lapis_ore", "log_acacia", "log_acacia_top", "log_big_oak", "log_big_oak_top", "log_birch", "log_birch_top", "log_jungle", "log_jungle_top", "log_oak", "log_oak_top", "log_spruce", "log_spruce_top", "melon_side", "mob_spawner", "mushroom_block_inside", "mushroom_block_skin_brown", "mushroom_block_skin_red", "mushroom_block_skin_stem", "mycelium_side", "mycelium_top", "nether_brick", "nether_wart_block", "netherrack", "noteblock", "observer_front", "output.bat", "piston_side", "planks_acacia", "planks_big_oak", "planks_birch", "planks_jungle", "planks_oak", "planks_spruce", "prismarine_bricks", "prismarine_dark", "pumpkin_face_off", "pumpkin_face_on", "pumpkin_side", "pumpkin_top", "purpur_block", "purpur_pillar", "purpur_pillar_top", "quartz_block_bottom", "quartz_block_chiseled", "quartz_block_chiseled_top", "quartz_block_lines", "quartz_block_lines_top", "quartz_block_side", "quartz_block_top", "red_nether_brick", "red_sand", "red_sandstone_bottom", "red_sandstone_carved", "red_sandstone_normal", "red_sandstone_smooth", "red_sandstone_top", "redstone_block", "redstone_dust_overlay", "redstone_lamp_off", "redstone_lamp_on", "redstone_ore", "sand", "sandstone_bottom", "sandstone_carved", "sandstone_normal", "sandstone_smooth", "sandstone_top", "shulker_top_black", "shulker_top_blue", "shulker_top_brown", "shulker_top_cyan", "shulker_top_gray", "shulker_top_green", "shulker_top_light_blue", "shulker_top_lime", "shulker_top_magenta", "shulker_top_orange", "shulker_top_pink", "shulker_top_purple", "shulker_top_red", "shulker_top_silver", "shulker_top_white", "shulker_top_yellow", "slime", "snow", "soul_sand", "sponge", "sponge_wet", "stone", "stone_andesite", "stone_andesite_smooth", "stone_diorite", "stone_diorite_smooth", "stone_granite", "stone_granite_smooth", "stone_slab_side", "stone_slab_top", "stonebrick", "stonebrick_carved", "stonebrick_cracked", "stonebrick_mossy", "tnt_side", "wool_colored_black", "wool_colored_blue", "wool_colored_brown", "wool_colored_cyan", "wool_colored_gray", "wool_colored_green", "wool_colored_light_blue", "wool_colored_lime", "wool_colored_magenta", "wool_colored_orange", "wool_colored_pink", "wool_colored_purple", "wool_colored_red", "wool_colored_silver", "wool_colored_white", "wool_colored_yellow"})
+        Me.ComboBoxBackground.Items.AddRange(New Object() {"", "bedrock", "bone_block_side", "bookshelf", "brewing_stand_base", "brick", "chorus_flower", "chorus_flower_dead", "chorus_plant", "clay", "coal_block", "coal_ore", "coarse_dirt", "cobblestone", "concrete_black", "concrete_blue", "concrete_brown", "concrete_cyan", "concrete_gray", "concrete_green", "concrete_light_blue", "concrete_lime", "concrete_magenta", "concrete_orange", "concrete_pink", "concrete_powder_black", "concrete_powder_blue", "concrete_powder_brown", "concrete_powder_cyan", "concrete_powder_gray", "concrete_powder_green", "concrete_powder_light_blue", "concrete_powder_lime", "concrete_powder_magenta", "concrete_powder_orange", "concrete_powder_pink", "concrete_powder_purple", "concrete_powder_red", "concrete_powder_silver", "concrete_powder_white", "concrete_powder_yellow", "concrete_purple", "concrete_red", "concrete_silver", "concrete_white", "concrete_yellow", "crafting_table_front", "crafting_table_side", "diamond_block", "diamond_ore", "dirt", "dirt_podzol_side", "dirt_podzol_top", "dragon_egg", "dropper_front_horizontal", "dropper_front_vertical", "emerald_block", "emerald_ore", "enchanting_table_bottom", "end_bricks", "end_stone", "farmland_dry", "farmland_wet", "frosted_ice_0", "frosted_ice_1", "frosted_ice_2", "frosted_ice_3", "furnace_front_off", "furnace_front_on", "furnace_side", "glass", "glass_black", "glass_blue", "glass_brown", "glass_cyan", "glass_gray", "glass_green", "glass_light_blue", "glass_lime", "glass_magenta", "glass_orange", "glass_pink", "glass_purple", "glass_red", "glass_silver", "glass_white", "glass_yellow", "glazed_terracotta_black", "glazed_terracotta_blue", "glazed_terracotta_brown", "glazed_terracotta_cyan", "glazed_terracotta_gray", "glazed_terracotta_green", "glazed_terracotta_light_blue", "glazed_terracotta_lime", "glazed_terracotta_magenta", "glazed_terracotta_orange", "glazed_terracotta_pink", "glazed_terracotta_purple", "glazed_terracotta_red", "glazed_terracotta_silver", "glazed_terracotta_white", "glazed_terracotta_yellow", "glowstone", "gold_block", "gold_ore", "grass_path_side", "grass_path_top", "grass_side", "grass_side_snowed", "grass_top", "gravel", "hardened_clay", "hardened_clay_stained_black", "hardened_clay_stained_blue", "hardened_clay_stained_brown", "hardened_clay_stained_cyan", "hardened_clay_stained_gray", "hardened_clay_stained_green", "hardened_clay_stained_light_blue", "hardened_clay_stained_lime", "hardened_clay_stained_magenta", "hardened_clay_stained_orange", "hardened_clay_stained_pink", "hardened_clay_stained_purple", "hardened_clay_stained_red", "hardened_clay_stained_silver", "hardened_clay_stained_white", "hardened_clay_stained_yellow", "hay_block_side", "hay_block_top", "hopper_inside", "hopper_outside", "ice", "ice_packed", "iron_block", "iron_ore", "jukebox_side", "lapis_block", "lapis_ore", "log_acacia", "log_acacia_top", "log_big_oak", "log_big_oak_top", "log_birch", "log_birch_top", "log_jungle", "log_jungle_top", "log_oak", "log_oak_top", "log_spruce", "log_spruce_top", "melon_side", "mob_spawner", "mushroom_block_inside", "mushroom_block_skin_brown", "mushroom_block_skin_red", "mushroom_block_skin_stem", "mycelium_side", "mycelium_top", "nether_brick", "nether_wart_block", "netherrack", "noteblock", "observer_front", "output.bat", "piston_side", "planks_acacia", "planks_big_oak", "planks_birch", "planks_jungle", "planks_oak", "planks_spruce", "prismarine_bricks", "prismarine_dark", "pumpkin_face_off", "pumpkin_face_on", "pumpkin_side", "pumpkin_top", "purpur_block", "purpur_pillar", "purpur_pillar_top", "quartz_block_bottom", "quartz_block_chiseled", "quartz_block_chiseled_top", "quartz_block_lines", "quartz_block_lines_top", "quartz_block_side", "quartz_block_top", "red_nether_brick", "red_sand", "red_sandstone_bottom", "red_sandstone_carved", "red_sandstone_normal", "red_sandstone_smooth", "red_sandstone_top", "redstone_block", "redstone_dust_overlay", "redstone_lamp_off", "redstone_lamp_on", "redstone_ore", "sand", "sandstone_bottom", "sandstone_carved", "sandstone_normal", "sandstone_smooth", "sandstone_top", "shulker_top_black", "shulker_top_blue", "shulker_top_brown", "shulker_top_cyan", "shulker_top_gray", "shulker_top_green", "shulker_top_light_blue", "shulker_top_lime", "shulker_top_magenta", "shulker_top_orange", "shulker_top_pink", "shulker_top_purple", "shulker_top_red", "shulker_top_silver", "shulker_top_white", "shulker_top_yellow", "slime", "snow", "soul_sand", "sponge", "sponge_wet", "stone", "stone_andesite", "stone_andesite_smooth", "stone_diorite", "stone_diorite_smooth", "stone_granite", "stone_granite_smooth", "stone_slab_side", "stone_slab_top", "stonebrick", "stonebrick_carved", "stonebrick_cracked", "stonebrick_mossy", "tnt_side", "wool_colored_black", "wool_colored_blue", "wool_colored_brown", "wool_colored_cyan", "wool_colored_gray", "wool_colored_green", "wool_colored_light_blue", "wool_colored_lime", "wool_colored_magenta", "wool_colored_orange", "wool_colored_pink", "wool_colored_purple", "wool_colored_red", "wool_colored_silver", "wool_colored_white", "wool_colored_yellow"})
         Me.ComboBoxBackground.Location = New System.Drawing.Point(184, 70)
         Me.ComboBoxBackground.MaxDropDownItems = 16
         Me.ComboBoxBackground.Name = "ComboBoxBackground"
@@ -351,9 +343,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(439, 32)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode2.Name = "组"
-        TreeNode2.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2})
+        TreeNode1.Name = "组"
+        TreeNode1.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 393)
         Me.TreeViewCriterias.TabIndex = 40
         '
@@ -420,11 +412,22 @@ Partial Class FormMain
         '
         Me.OpenFileDialogLoot.FileName = "OpenFileDialog1"
         '
+        'ComboBoxRecipes
+        '
+        Me.ComboBoxRecipes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxRecipes.FormattingEnabled = True
+        Me.ComboBoxRecipes.Items.AddRange(New Object() {"普通的默认进度", "有穗的挑战进度", "更圆的目标进度"})
+        Me.ComboBoxRecipes.Location = New System.Drawing.Point(184, 295)
+        Me.ComboBoxRecipes.Name = "ComboBoxRecipes"
+        Me.ComboBoxRecipes.Size = New System.Drawing.Size(232, 28)
+        Me.ComboBoxRecipes.TabIndex = 47
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(855, 543)
+        Me.Controls.Add(Me.ComboBoxRecipes)
         Me.Controls.Add(Me.ButtonLoot)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LabelResult)
@@ -442,7 +445,6 @@ Partial Class FormMain
         Me.Controls.Add(Me.TextBoxItem)
         Me.Controls.Add(Me.NumericUpDownExperience)
         Me.Controls.Add(Me.TextBoxLoot)
-        Me.Controls.Add(Me.TextBoxRecipes)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label13)
@@ -497,7 +499,6 @@ Partial Class FormMain
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents TextBoxRecipes As TextBox
     Friend WithEvents TextBoxLoot As TextBox
     Friend WithEvents NumericUpDownExperience As NumericUpDown
     Friend WithEvents TextBoxItem As TextBox
@@ -514,4 +515,5 @@ Partial Class FormMain
     Friend WithEvents Label1 As Label
     Friend WithEvents ButtonLoot As Button
     Friend WithEvents OpenFileDialogLoot As OpenFileDialog
+    Friend WithEvents ComboBoxRecipes As ComboBox
 End Class

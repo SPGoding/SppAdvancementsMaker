@@ -84,6 +84,8 @@ Module Module1
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")
+        StrResult = StrResult.Replace(",[]", "")
+        StrResult = StrResult.Replace(",{}", "")
         Return StrResult
     End Function
 End Module

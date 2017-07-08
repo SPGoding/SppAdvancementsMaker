@@ -28,6 +28,7 @@ Partial Class FormChangedDimension
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBoxTo = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonEnter
@@ -45,7 +46,7 @@ Partial Class FormChangedDimension
         Me.ComboBoxFrom.FormattingEnabled = True
         Me.ComboBoxFrom.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxFrom.IntegralHeight = False
-        Me.ComboBoxFrom.Items.AddRange(New Object() {"主世界", "地狱", "末地"})
+        Me.ComboBoxFrom.Items.AddRange(New Object() {"", "主世界", "地狱", "末地"})
         Me.ComboBoxFrom.Location = New System.Drawing.Point(105, 41)
         Me.ComboBoxFrom.Name = "ComboBoxFrom"
         Me.ComboBoxFrom.Size = New System.Drawing.Size(214, 28)
@@ -77,7 +78,7 @@ Partial Class FormChangedDimension
         Me.ComboBoxTo.FormattingEnabled = True
         Me.ComboBoxTo.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxTo.IntegralHeight = False
-        Me.ComboBoxTo.Items.AddRange(New Object() {"主世界", "地狱", "末地"})
+        Me.ComboBoxTo.Items.AddRange(New Object() {"", "主世界", "地狱", "末地"})
         Me.ComboBoxTo.Location = New System.Drawing.Point(105, 75)
         Me.ComboBoxTo.Name = "ComboBoxTo"
         Me.ComboBoxTo.Size = New System.Drawing.Size(214, 28)
@@ -93,11 +94,23 @@ Partial Class FormChangedDimension
         Me.Label3.TabIndex = 50
         Me.Label3.Text = "到达维度："
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(16, 116)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(135, 20)
+        Me.Label4.TabIndex = 52
+        Me.Label4.Text = "大多数条件是可选的"
+        '
         'FormChangedDimension
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(338, 193)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ComboBoxTo)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEnter)
@@ -121,4 +134,5 @@ Partial Class FormChangedDimension
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBoxTo As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

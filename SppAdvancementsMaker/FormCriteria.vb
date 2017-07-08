@@ -92,6 +92,7 @@ Public Class FormCriteria
             Case "minecraft:consume_item"
             Case "minecraft:cured_zombie_villager"
             Case "minecraft:effects_changed"
+                FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
             Case "minecraft:enter_block"
             Case "minecraft:entity_hurt_player"
@@ -101,6 +102,7 @@ Public Class FormCriteria
             Case "minecraft:inventory_changed"
             Case "minecraft:item_durability_changed"
             Case "minecraft:levitation"
+                FormLevitation.Reading(ButtonCriteria.Tag)
             Case "minecraft:location"
             Case "minecraft:nether_travel"
             Case "minecraft:placed_block"

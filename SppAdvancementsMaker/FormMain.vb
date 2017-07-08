@@ -45,8 +45,8 @@ Public Class FormMain
         Next
         Try
             ' 把奖励 rewards 并列起来
-            If TextBoxRecipes.Text <> "" Then
-                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & TextBoxRecipes.Text & ","
+            If ComboBoxRecipes.Text <> "" Then
+                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & ComboBoxRecipes.Text & ","
             End If
             If TextBoxLoot.Text <> "" Then
                 StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & TextBoxLoot.Text & ","

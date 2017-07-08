@@ -26,6 +26,7 @@ Partial Class FormRecipeUnlocked
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBoxRecipe = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonEnter
@@ -66,11 +67,23 @@ Partial Class FormRecipeUnlocked
         Me.TextBoxRecipe.Size = New System.Drawing.Size(243, 26)
         Me.TextBoxRecipe.TabIndex = 50
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(16, 132)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 20)
+        Me.Label3.TabIndex = 51
+        Me.Label3.Text = "大多数条件是可选的"
+        '
         'FormRecipeUnlocked
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(342, 207)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TextBoxRecipe)
         Me.Controls.Add(Me.ButtonEnter)
         Me.Controls.Add(Me.Label2)
@@ -90,4 +103,5 @@ Partial Class FormRecipeUnlocked
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBoxRecipe As TextBox
+    Friend WithEvents Label3 As Label
 End Class
