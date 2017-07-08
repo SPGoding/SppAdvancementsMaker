@@ -64,7 +64,7 @@ Partial Class FormLevitation
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(16, 293)
+        Me.Label3.Location = New System.Drawing.Point(18, 270)
         Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(135, 20)
@@ -73,7 +73,7 @@ Partial Class FormLevitation
         '
         'ButtonEnter
         '
-        Me.ButtonEnter.Location = New System.Drawing.Point(218, 267)
+        Me.ButtonEnter.Location = New System.Drawing.Point(220, 244)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
         Me.ButtonEnter.TabIndex = 50
@@ -83,7 +83,7 @@ Partial Class FormLevitation
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(137, 52)
+        Me.Label2.Location = New System.Drawing.Point(139, 29)
         Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(51, 20)
@@ -103,7 +103,7 @@ Partial Class FormLevitation
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(273, 52)
+        Me.Label4.Location = New System.Drawing.Point(275, 29)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 20)
@@ -113,7 +113,7 @@ Partial Class FormLevitation
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(19, 77)
+        Me.Label5.Location = New System.Drawing.Point(21, 54)
         Me.Label5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 20)
@@ -123,7 +123,7 @@ Partial Class FormLevitation
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(19, 109)
+        Me.Label6.Location = New System.Drawing.Point(21, 86)
         Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 20)
@@ -133,7 +133,7 @@ Partial Class FormLevitation
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(19, 141)
+        Me.Label7.Location = New System.Drawing.Point(21, 118)
         Me.Label7.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(18, 20)
@@ -143,7 +143,7 @@ Partial Class FormLevitation
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(19, 173)
+        Me.Label8.Location = New System.Drawing.Point(21, 150)
         Me.Label8.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(83, 20)
@@ -153,7 +153,7 @@ Partial Class FormLevitation
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(19, 205)
+        Me.Label9.Location = New System.Drawing.Point(21, 182)
         Me.Label9.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(18, 20)
@@ -163,7 +163,7 @@ Partial Class FormLevitation
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(19, 237)
+        Me.Label10.Location = New System.Drawing.Point(21, 214)
         Me.Label10.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(65, 20)
@@ -172,7 +172,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownAbsoluteMax
         '
-        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(127, 75)
+        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(129, 52)
         Me.NumericUpDownAbsoluteMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAbsoluteMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownAbsoluteMax.Name = "NumericUpDownAbsoluteMax"
@@ -181,7 +181,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownAbsoluteMin
         '
-        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(261, 75)
+        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(263, 52)
         Me.NumericUpDownAbsoluteMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAbsoluteMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownAbsoluteMin.Name = "NumericUpDownAbsoluteMin"
@@ -190,7 +190,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownHorizontalMax
         '
-        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(127, 107)
+        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(129, 84)
         Me.NumericUpDownHorizontalMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownHorizontalMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownHorizontalMax.Name = "NumericUpDownHorizontalMax"
@@ -199,7 +199,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownHorizontalMin
         '
-        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(261, 107)
+        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(263, 84)
         Me.NumericUpDownHorizontalMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownHorizontalMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownHorizontalMin.Name = "NumericUpDownHorizontalMin"
@@ -208,7 +208,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownXMax
         '
-        Me.NumericUpDownXMax.Location = New System.Drawing.Point(127, 139)
+        Me.NumericUpDownXMax.Location = New System.Drawing.Point(129, 116)
         Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
@@ -217,7 +217,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownXMin
         '
-        Me.NumericUpDownXMin.Location = New System.Drawing.Point(261, 139)
+        Me.NumericUpDownXMin.Location = New System.Drawing.Point(263, 116)
         Me.NumericUpDownXMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMin.Name = "NumericUpDownXMin"
@@ -226,7 +226,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownYMax
         '
-        Me.NumericUpDownYMax.Location = New System.Drawing.Point(127, 171)
+        Me.NumericUpDownYMax.Location = New System.Drawing.Point(129, 148)
         Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
@@ -235,7 +235,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownYMin
         '
-        Me.NumericUpDownYMin.Location = New System.Drawing.Point(261, 171)
+        Me.NumericUpDownYMin.Location = New System.Drawing.Point(263, 148)
         Me.NumericUpDownYMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMin.Name = "NumericUpDownYMin"
@@ -244,7 +244,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownZMax
         '
-        Me.NumericUpDownZMax.Location = New System.Drawing.Point(127, 203)
+        Me.NumericUpDownZMax.Location = New System.Drawing.Point(129, 180)
         Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
@@ -253,7 +253,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownZMin
         '
-        Me.NumericUpDownZMin.Location = New System.Drawing.Point(261, 203)
+        Me.NumericUpDownZMin.Location = New System.Drawing.Point(263, 180)
         Me.NumericUpDownZMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMin.Name = "NumericUpDownZMin"
@@ -262,7 +262,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownDurationMax
         '
-        Me.NumericUpDownDurationMax.Location = New System.Drawing.Point(127, 235)
+        Me.NumericUpDownDurationMax.Location = New System.Drawing.Point(129, 212)
         Me.NumericUpDownDurationMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownDurationMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownDurationMax.Name = "NumericUpDownDurationMax"
@@ -271,7 +271,7 @@ Partial Class FormLevitation
         '
         'NumericUpDownDurationMin
         '
-        Me.NumericUpDownDurationMin.Location = New System.Drawing.Point(261, 235)
+        Me.NumericUpDownDurationMin.Location = New System.Drawing.Point(263, 212)
         Me.NumericUpDownDurationMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownDurationMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownDurationMin.Name = "NumericUpDownDurationMin"
@@ -281,7 +281,8 @@ Partial Class FormLevitation
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(16, 29)
+        Me.Label11.ForeColor = System.Drawing.Color.Red
+        Me.Label11.Location = New System.Drawing.Point(18, 250)
         Me.Label11.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(107, 20)
@@ -292,7 +293,7 @@ Partial Class FormLevitation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(355, 324)
+        Me.ClientSize = New System.Drawing.Size(355, 301)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.NumericUpDownDurationMin)
         Me.Controls.Add(Me.NumericUpDownDurationMax)

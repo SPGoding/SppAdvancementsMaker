@@ -71,7 +71,7 @@ Partial Class FormRecipeUnlocked
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(16, 132)
+        Me.Label3.Location = New System.Drawing.Point(16, 150)
         Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(135, 20)

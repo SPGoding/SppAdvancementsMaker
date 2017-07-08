@@ -9,9 +9,11 @@ Public Class FormBrewedPotion
         ' 读取传送过来的 Json 文本
         Dim StrTemp As String
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
-        If ObjJson.Item("potion") <> Nothing Then
+        If ObjJson.Item("potion") IsNot Nothing Then
             StrTemp = ObjJson.Item("potion").ToString
             ComboBoxPotion.Text = EnToZh(StrTemp, ZhPotion, EnPotion)
+        Else
+            ComboBoxPotion.Text = ""
         End If
     End Sub
 

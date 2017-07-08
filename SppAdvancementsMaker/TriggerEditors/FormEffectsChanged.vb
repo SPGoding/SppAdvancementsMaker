@@ -5,6 +5,7 @@ Public Class FormEffectsChanged
     ' 状态效果ZhToEn
     ' http://minecraft-zh.gamepedia.com/%E6%95%B0%E6%8D%AE%E5%80%BC#.E7.8A.B6.E6.80.81.E6.95.88.E6.9E.9C
     Private IntEffects As Int16
+    Private OldSelectedIndex As Int32 = -1
     Private StrEachEffectJson(127) As String
 
     Public Sub Reading(StrJson As String)
@@ -15,6 +16,7 @@ Public Class FormEffectsChanged
         Dim i As Int16
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         IntEffects = 0
+        OldSelectedIndex = -1
         ReDim StrEachEffectJson(127)
         ListBoxEffects.Items.Clear()
         ComboBoxEffectName.Text = ""
@@ -44,6 +46,8 @@ Public Class FormEffectsChanged
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim i As Int16
         Dim StrResult As String
+        ' 先保存
+        SaveCurrentEffect(OldSelectedIndex)
         StrResult = "{" & Chr(34) & "effects" & Chr(34) & ":" & "{"
         For i = 0 To ListBoxEffects.Items.Count - 1
             StrResult &= StrEachEffectJson(i) & ","
@@ -73,9 +77,11 @@ Public Class FormEffectsChanged
     End Sub
 
     Private Sub ListBoxEffects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxEffects.SelectedIndexChanged
+        ' 保存旧的Effect
+        SaveCurrentEffect(OldSelectedIndex)
+        OldSelectedIndex = ListBoxEffects.SelectedIndex
         If ListBoxEffects.SelectedIndex >= 0 Then
             ButtonDel.Enabled = True
-            ButtonSave.Enabled = True
         End If
         ' 读取新选中的编辑
         Dim ObjJson As Object
@@ -87,44 +93,53 @@ Public Class FormEffectsChanged
                     StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf(":", 12))
                     StrTemp = StrTemp.Replace(Chr(34), "")
                     ComboBoxEffectName.Text = StrTemp
-                    Try
-                        NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier").ToString
-                        NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min").ToString
-                        NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max").ToString
-                    Catch ex As Exception
-                    End Try
+                    If ObjJson.Item(ComboBoxEffectName.Text) IsNot Nothing Then
+                        If ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier") IsNot Nothing Then
+                            NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier").ToString
+                        Else
+                            NumericUpDownAmplifier.Value = 0
+                        End If
+                        If ObjJson.Item(ComboBoxEffectName.Text).Item("duration") IsNot Nothing Then
+                            If ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min") IsNot Nothing Then
+                                NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min").ToString
+                            Else
+                                NumericUpDownMin.Value = 0
+                            End If
+                            If ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max") IsNot Nothing Then
+                                NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max").ToString
+                            Else
+                                NumericUpDownMax.Value = 0
+                            End If
+                        End If
+                    End If
+                Else
+                    ComboBoxEffectName.ResetText()
+                    NumericUpDownAmplifier.Value = 0
+                    NumericUpDownMax.Value = 0
+                    NumericUpDownMin.Value = 0
                 End If
-            Else
-                ComboBoxEffectName.Text = ""
-                NumericUpDownAmplifier.Value = 0
-                NumericUpDownMax.Value = 0
-                NumericUpDownMin.Value = 0
             End If
         End If
     End Sub
 
-    Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+    Private Sub SaveCurrentEffect(OldSelectedIndex As Int32)
         ' 保存当前的编辑
-        If ComboBoxEffectName.Text <> "" Then
-            If ListBoxEffects.SelectedIndex >= 0 Then
-                Dim StrResult As String = Chr(34) & ComboBoxEffectName.Text & Chr(34) & ":" & "{"
-                If NumericUpDownAmplifier.Value <> 0 Then
-                    StrResult &= Chr(34) & "amplifier" & Chr(34) & ":" & NumericUpDownAmplifier.Value & ","
-                End If
-                StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
-                If NumericUpDownMin.Value <> 0 Then
-                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value & ","
-                End If
-                If NumericUpDownMax.Value <> 0 Then
-                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value
-                End If
-                StrResult &= "}}"
-                StrResult = StrResult.Replace(",}", "}")
-                StrResult = StrResult.Replace(",]", "]")
-                StrEachEffectJson(ListBoxEffects.SelectedIndex) = StrResult
+        If OldSelectedIndex >= 0 Then
+            Dim StrResult As String = Chr(34) & ComboBoxEffectName.Text & Chr(34) & ":" & "{"
+            If NumericUpDownAmplifier.Value <> 0 Then
+                StrResult &= Chr(34) & "amplifier" & Chr(34) & ":" & NumericUpDownAmplifier.Value & ","
             End If
-            Else
-            MessageBox.Show("保存失败: 请选择效果名称")
+            StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
+            If NumericUpDownMin.Value <> 0 Then
+                StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value & ","
+            End If
+            If NumericUpDownMax.Value <> 0 Then
+                StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value
+            End If
+            StrResult &= "}}"
+            StrResult = StrResult.Replace(",}", "}")
+            StrResult = StrResult.Replace(",]", "]")
+            StrEachEffectJson(OldSelectedIndex) = StrResult
         End If
     End Sub
 End Class

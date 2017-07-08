@@ -10,41 +10,65 @@ Public Class FormLevitation
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
             Try
-                If ObjJson.Item("disatance").Item("absolute").Item("max").ToString <> "" Then
+                If ObjJson.Item("disatance").Item("absolute").Item("max") IsNot Nothing Then
                     NumericUpDownAbsoluteMax.Value = ObjJson.Item("disatance").Item("absolute").Item("max").ToString
+                Else
+                    NumericUpDownAbsoluteMax.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("absolute").Item("min") <> Nothing Then
+                If ObjJson.Item("disatance").Item("absolute").Item("min") IsNot Nothing Then
                     NumericUpDownAbsoluteMin.Value = ObjJson.Item("disatance").Item("absolute").Item("min").ToString
+                Else
+                    NumericUpDownAbsoluteMin.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("horizontal").Item("max") <> Nothing Then
+                If ObjJson.Item("disatance").Item("horizontal").Item("max") IsNot Nothing Then
                     NumericUpDownHorizontalMax.Value = ObjJson.Item("disatance").Item("horizontal").Item("max").ToString
+                Else
+                    NumericUpDownHorizontalMax.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("horizontal").Item("min") <> Nothing Then
+                If ObjJson.Item("disatance").Item("horizontal").Item("min") IsNot Nothing Then
                     NumericUpDownHorizontalMin.Value = ObjJson.Item("disatance").Item("horizontal").Item("min").ToString
+                Else
+                    NumericUpDownHorizontalMin.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("x").Item("max") <> Nothing Then
+                If ObjJson.Item("disatance").Item("x").Item("max") IsNot Nothing Then
                     NumericUpDownXMax.Value = ObjJson.Item("disatance").Item("x").Item("max").ToString
+                Else
+                    NumericUpDownXMax.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("x").Item("min") <> Nothing Then
+                If ObjJson.Item("disatance").Item("x").Item("min") IsNot Nothing Then
                     NumericUpDownXMin.Value = ObjJson.Item("disatance").Item("x").Item("min").ToString
+                Else
+                    NumericUpDownXMin.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("y").Item("max") <> Nothing Then
+                If ObjJson.Item("disatance").Item("y").Item("max") IsNot Nothing Then
                     NumericUpDownYMax.Value = ObjJson.Item("disatance").Item("y").Item("max").ToString
+                Else
+                    NumericUpDownYMax.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("y").Item("min") <> Nothing Then
+                If ObjJson.Item("disatance").Item("y").Item("min") IsNot Nothing Then
                     NumericUpDownYMin.Value = ObjJson.Item("disatance").Item("y").Item("min").ToString
+                Else
+                    NumericUpDownYMin.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("z").Item("max") <> Nothing Then
+                If ObjJson.Item("disatance").Item("z").Item("max") IsNot Nothing Then
                     NumericUpDownZMax.Value = ObjJson.Item("disatance").Item("z").Item("max").ToString
+                Else
+                    NumericUpDownZMax.Value = 0
                 End If
-                If ObjJson.Item("disatance").Item("z").Item("min") <> Nothing Then
+                If ObjJson.Item("disatance").Item("z").Item("min") IsNot Nothing Then
                     NumericUpDownZMin.Value = ObjJson.Item("disatance").Item("z").Item("min").ToString
+                Else
+                    NumericUpDownZMin.Value = 0
                 End If
-                If ObjJson.Item("duration").Item("max") <> Nothing Then
+                If ObjJson.Item("duration").Item("max") IsNot Nothing Then
                     NumericUpDownDurationMax.Value = ObjJson.Item("duration").Item("max").ToString
+                Else
+                    NumericUpDownDurationMax.Value = 0
                 End If
-                If ObjJson.Item("duration").Item("min") <> Nothing Then
+                If ObjJson.Item("duration").Item("min") IsNot Nothing Then
                     NumericUpDownDurationMin.Value = ObjJson.Item("duration").Item("min").ToString
+                Else
+                    NumericUpDownDurationMin.Value = 0
                 End If
             Catch ex As Exception
             End Try

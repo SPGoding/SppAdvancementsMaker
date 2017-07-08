@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormEffectsChanged
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormEffectsChanged
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.ButtonEnter = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,7 +38,7 @@ Partial Class FormEffectsChanged
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.NumericUpDownMax = New System.Windows.Forms.NumericUpDown()
-        Me.ButtonSave = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownAmplifier, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownMin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownMax, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -145,7 +145,7 @@ Partial Class FormEffectsChanged
         '
         Me.ButtonAdd.Location = New System.Drawing.Point(361, 32)
         Me.ButtonAdd.Name = "ButtonAdd"
-        Me.ButtonAdd.Size = New System.Drawing.Size(42, 48)
+        Me.ButtonAdd.Size = New System.Drawing.Size(42, 79)
         Me.ButtonAdd.TabIndex = 56
         Me.ButtonAdd.Text = "添加"
         Me.ButtonAdd.UseVisualStyleBackColor = True
@@ -153,9 +153,9 @@ Partial Class FormEffectsChanged
         'ButtonDel
         '
         Me.ButtonDel.Enabled = False
-        Me.ButtonDel.Location = New System.Drawing.Point(361, 86)
+        Me.ButtonDel.Location = New System.Drawing.Point(361, 117)
         Me.ButtonDel.Name = "ButtonDel"
-        Me.ButtonDel.Size = New System.Drawing.Size(42, 48)
+        Me.ButtonDel.Size = New System.Drawing.Size(42, 79)
         Me.ButtonDel.TabIndex = 57
         Me.ButtonDel.Text = "删除"
         Me.ButtonDel.UseVisualStyleBackColor = True
@@ -164,7 +164,7 @@ Partial Class FormEffectsChanged
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.Red
-        Me.Label6.Location = New System.Drawing.Point(16, 344)
+        Me.Label6.Location = New System.Drawing.Point(16, 356)
         Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(135, 20)
@@ -199,22 +199,23 @@ Partial Class FormEffectsChanged
         Me.NumericUpDownMax.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownMax.TabIndex = 61
         '
-        'ButtonSave
+        'Label11
         '
-        Me.ButtonSave.Enabled = False
-        Me.ButtonSave.Location = New System.Drawing.Point(361, 140)
-        Me.ButtonSave.Name = "ButtonSave"
-        Me.ButtonSave.Size = New System.Drawing.Size(42, 56)
-        Me.ButtonSave.TabIndex = 62
-        Me.ButtonSave.Text = "保存"
-        Me.ButtonSave.UseVisualStyleBackColor = True
+        Me.Label11.AutoSize = True
+        Me.Label11.ForeColor = System.Drawing.Color.Red
+        Me.Label11.Location = New System.Drawing.Point(16, 336)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(107, 20)
+        Me.Label11.TabIndex = 72
+        Me.Label11.Text = "填零代表不限制"
         '
         'FormEffectsChanged
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(415, 401)
-        Me.Controls.Add(Me.ButtonSave)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.NumericUpDownMax)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -261,5 +262,5 @@ Partial Class FormEffectsChanged
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents NumericUpDownMax As NumericUpDown
-    Friend WithEvents ButtonSave As Button
+    Friend WithEvents Label11 As Label
 End Class
