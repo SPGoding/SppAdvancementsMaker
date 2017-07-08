@@ -87,9 +87,12 @@ Public Class FormEffectsChanged
                     StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf(":", 12))
                     StrTemp = StrTemp.Replace(Chr(34), "")
                     ComboBoxEffectName.Text = StrTemp
-                    NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier").ToString
-                    NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min").ToString
-                    NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max").ToString
+                    Try
+                        NumericUpDownAmplifier.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("amplifier").ToString
+                        NumericUpDownMin.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("min").ToString
+                        NumericUpDownMax.Value = ObjJson.Item(ComboBoxEffectName.Text).Item("duration").Item("max").ToString
+                    Catch ex As Exception
+                    End Try
                 End If
             Else
                 ComboBoxEffectName.Text = ""
@@ -105,14 +108,22 @@ Public Class FormEffectsChanged
         If ComboBoxEffectName.Text <> "" Then
             If ListBoxEffects.SelectedIndex >= 0 Then
                 Dim StrResult As String = Chr(34) & ComboBoxEffectName.Text & Chr(34) & ":" & "{"
-                StrResult &= Chr(34) & "amplifier" & Chr(34) & ":" & NumericUpDownAmplifier.Value & ","
+                If NumericUpDownAmplifier.Value <> 0 Then
+                    StrResult &= Chr(34) & "amplifier" & Chr(34) & ":" & NumericUpDownAmplifier.Value & ","
+                End If
                 StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
-                StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value & ","
-                StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value
+                If NumericUpDownMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value & ","
+                End If
+                If NumericUpDownMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value
+                End If
                 StrResult &= "}}"
+                StrResult = StrResult.Replace(",}", "}")
+                StrResult = StrResult.Replace(",]", "]")
                 StrEachEffectJson(ListBoxEffects.SelectedIndex) = StrResult
             End If
-        Else
+            Else
             MessageBox.Show("保存失败: 请选择效果名称")
         End If
     End Sub
