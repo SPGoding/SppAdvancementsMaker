@@ -96,7 +96,6 @@ Public Class FormCriteria
                 FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
             Case "minecraft:enter_block"
-                '//TODO
                 FormEnterBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_hurt_player"
             Case "minecraft:entity_killed_player"
@@ -108,6 +107,7 @@ Public Class FormCriteria
                 FormLevitation.Reading(ButtonCriteria.Tag)
             Case "minecraft:location"
             Case "minecraft:nether_travel"
+                FormNetherTravel.Reading(ButtonCriteria.Tag)
             Case "minecraft:placed_block"
             Case "minecraft:player_hurt_entity"
             Case "minecraft:player_killed_entity"

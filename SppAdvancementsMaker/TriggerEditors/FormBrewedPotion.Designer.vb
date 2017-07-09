@@ -55,7 +55,6 @@ Partial Class FormBrewedPotion
         Me.ComboBoxPotion.FormattingEnabled = True
         Me.ComboBoxPotion.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxPotion.IntegralHeight = False
-        Me.ComboBoxPotion.Items.AddRange(New Object() {"", "中毒", "伤害", "再生", "力量", "夜视", "平凡的药水", "幸运", "抗火", "水下呼吸", "水瓶", "治疗", "浑浊的药水", "粗制的药水", "缓慢", "虚弱", "跳跃", "迅捷", "隐身", "II级中毒", "II级伤害", "II级再生", "II级力量", "II级治疗", "II级跳跃", "II级迅捷", "延长版中毒", "延长版再生", "延长版力量", "延长版夜视", "延长版抗火", "延长版水下呼吸", "延长版缓慢", "延长版虚弱", "延长版跳跃", "延长版迅捷", "延长版隐身"})
         Me.ComboBoxPotion.Location = New System.Drawing.Point(105, 41)
         Me.ComboBoxPotion.Name = "ComboBoxPotion"
         Me.ComboBoxPotion.Size = New System.Drawing.Size(214, 28)

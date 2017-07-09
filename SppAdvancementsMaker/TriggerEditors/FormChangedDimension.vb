@@ -36,5 +36,17 @@ Public Class FormChangedDimension
         ' 将处理后的 Json 文本返回条件窗体
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()
+        FormCriteria.Hide()
+        FormCriteria.Show(FormMain)
+    End Sub
+
+    Private Sub FormChangedDimension_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        ComboBoxFrom.Items.Add("")
+        ComboBoxTo.Items.Add("")
+        For i = 0 To UBound(ZhDimensions)
+            ComboBoxFrom.Items.Add(ZhDimensions(i))
+            ComboBoxTo.Items.Add(ZhDimensions(i))
+        Next
     End Sub
 End Class

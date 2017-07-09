@@ -156,6 +156,12 @@
     <Compile Include="TriggerEditors\FormLevitation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormNetherTravel.Designer.vb">
+      <DependentUpon>FormNetherTravel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormNetherTravel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormRecipeUnlocked.Designer.vb">
       <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormLevitation.resx">
       <DependentUpon>FormLevitation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormNetherTravel.resx">
+      <DependentUpon>FormNetherTravel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormRecipeUnlocked.resx">
       <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>

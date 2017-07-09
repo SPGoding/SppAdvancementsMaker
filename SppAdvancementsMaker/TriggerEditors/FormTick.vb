@@ -4,7 +4,9 @@
         Show(FormCriteria)
     End Sub
 
-    Private Sub ButtonEnter_Click(sender As Object, e As EventArgs) Handles ButtonEnter.Click
+    Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Hide()
+        FormCriteria.Hide()
+        FormCriteria.Show(FormMain)
     End Sub
 End Class

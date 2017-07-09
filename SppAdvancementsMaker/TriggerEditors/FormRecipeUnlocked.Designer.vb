@@ -25,8 +25,8 @@ Partial Class FormRecipeUnlocked
         Me.ButtonEnter = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBoxRecipe = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.ComboBoxRecipes = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'ButtonEnter
@@ -58,15 +58,6 @@ Partial Class FormRecipeUnlocked
         Me.Label1.TabIndex = 46
         Me.Label1.Text = "本触发器在玩家解锁配方时触发（例如用知识之书）"
         '
-        'TextBoxRecipe
-        '
-        Me.TextBoxRecipe.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBoxRecipe.ImeMode = System.Windows.Forms.ImeMode.Disable
-        Me.TextBoxRecipe.Location = New System.Drawing.Point(87, 41)
-        Me.TextBoxRecipe.Name = "TextBoxRecipe"
-        Me.TextBoxRecipe.Size = New System.Drawing.Size(243, 26)
-        Me.TextBoxRecipe.TabIndex = 50
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -78,13 +69,23 @@ Partial Class FormRecipeUnlocked
         Me.Label3.TabIndex = 51
         Me.Label3.Text = "大多数条件是可选的"
         '
+        'ComboBoxRecipes
+        '
+        Me.ComboBoxRecipes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxRecipes.FormattingEnabled = True
+        Me.ComboBoxRecipes.IntegralHeight = False
+        Me.ComboBoxRecipes.Location = New System.Drawing.Point(98, 41)
+        Me.ComboBoxRecipes.Name = "ComboBoxRecipes"
+        Me.ComboBoxRecipes.Size = New System.Drawing.Size(232, 28)
+        Me.ComboBoxRecipes.TabIndex = 52
+        '
         'FormRecipeUnlocked
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(342, 207)
+        Me.Controls.Add(Me.ComboBoxRecipes)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBoxRecipe)
         Me.Controls.Add(Me.ButtonEnter)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -102,6 +103,6 @@ Partial Class FormRecipeUnlocked
     Friend WithEvents ButtonEnter As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBoxRecipe As TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents ComboBoxRecipes As ComboBox
 End Class

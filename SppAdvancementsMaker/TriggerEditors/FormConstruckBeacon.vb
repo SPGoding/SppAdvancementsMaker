@@ -41,6 +41,6 @@ Public Class FormConstruckBeacon
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()
         FormCriteria.Hide()
-        FormCriteria.Show()
+        FormCriteria.Show(FormMain)
     End Sub
 End Class

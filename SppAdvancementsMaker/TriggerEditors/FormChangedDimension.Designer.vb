@@ -46,7 +46,6 @@ Partial Class FormChangedDimension
         Me.ComboBoxFrom.FormattingEnabled = True
         Me.ComboBoxFrom.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxFrom.IntegralHeight = False
-        Me.ComboBoxFrom.Items.AddRange(New Object() {"", "主世界", "地狱", "末地"})
         Me.ComboBoxFrom.Location = New System.Drawing.Point(105, 41)
         Me.ComboBoxFrom.Name = "ComboBoxFrom"
         Me.ComboBoxFrom.Size = New System.Drawing.Size(214, 28)
@@ -78,7 +77,6 @@ Partial Class FormChangedDimension
         Me.ComboBoxTo.FormattingEnabled = True
         Me.ComboBoxTo.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxTo.IntegralHeight = False
-        Me.ComboBoxTo.Items.AddRange(New Object() {"", "主世界", "地狱", "末地"})
         Me.ComboBoxTo.Location = New System.Drawing.Point(105, 75)
         Me.ComboBoxTo.Name = "ComboBoxTo"
         Me.ComboBoxTo.Size = New System.Drawing.Size(214, 28)
@@ -98,7 +96,7 @@ Partial Class FormChangedDimension
         '
         Me.Label4.AutoSize = True
         Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(16, 116)
+        Me.Label4.Location = New System.Drawing.Point(16, 136)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(135, 20)

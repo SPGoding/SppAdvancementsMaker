@@ -27,5 +27,15 @@ Public Class FormBrewedPotion
         ' 将处理后的 Json 文本返回条件窗体
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()
+        FormCriteria.Hide()
+        FormCriteria.Show(FormMain)
+    End Sub
+
+    Private Sub FormBrewedPotion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        ComboBoxPotion.Items.Add("")
+        For i = 0 To UBound(ZhPotions)
+            ComboBoxPotion.Items.Add(ZhPotions(i))
+        Next
     End Sub
 End Class

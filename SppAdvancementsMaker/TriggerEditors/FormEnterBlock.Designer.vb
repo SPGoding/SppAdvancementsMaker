@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormEnterBlock
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormEnterBlock
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ButtonEnter = New System.Windows.Forms.Button()
@@ -28,13 +28,32 @@ Partial Class FormEnterBlock
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBoxBlock = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.LabelStateName1 = New System.Windows.Forms.Label()
+        Me.LabelStateName2 = New System.Windows.Forms.Label()
+        Me.LabelStateName3 = New System.Windows.Forms.Label()
+        Me.LabelStateName4 = New System.Windows.Forms.Label()
+        Me.LabelStateName5 = New System.Windows.Forms.Label()
+        Me.LabelStateName6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBoxStateName1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateName2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateName3 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateName4 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateName5 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateName6 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue3 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue4 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue5 = New System.Windows.Forms.TextBox()
+        Me.TextBoxStateValue6 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(16, 150)
+        Me.Label3.Location = New System.Drawing.Point(15, 362)
         Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(135, 20)
@@ -43,7 +62,7 @@ Partial Class FormEnterBlock
         '
         'ButtonEnter
         '
-        Me.ButtonEnter.Location = New System.Drawing.Point(212, 150)
+        Me.ButtonEnter.Location = New System.Drawing.Point(211, 362)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
         Me.ButtonEnter.TabIndex = 54
@@ -63,12 +82,12 @@ Partial Class FormEnterBlock
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 9)
+        Me.Label1.Location = New System.Drawing.Point(15, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(313, 20)
+        Me.Label1.Size = New System.Drawing.Size(327, 20)
         Me.Label1.TabIndex = 52
-        Me.Label1.Text = "本触发器在玩家进入方块时触发(需将身子卡进去)"
+        Me.Label1.Text = "本触发器在玩家进入方块(与方块在同一格内)时触发"
         '
         'ComboBoxBlock
         '
@@ -76,7 +95,6 @@ Partial Class FormEnterBlock
         Me.ComboBoxBlock.FormattingEnabled = True
         Me.ComboBoxBlock.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxBlock.IntegralHeight = False
-        Me.ComboBoxBlock.Items.AddRange(New Object() {"", "基岩", "骨块", "书架", "brewing stand base", "brick", "chorus flower", "chorus flower dead", "chorus plant", "clay", "煤炭块", "煤矿", "coarse dirt", "cobblestone", "混凝土 black", "混凝土 blue", "混凝土 brown", "混凝土 cyan", "混凝土 gray", "混凝土 green", "混凝土 light blue", "混凝土 lime", "混凝土 magenta", "混凝土 orange", "混凝土 pink", "混凝土粉末 black", "混凝土粉末 blue", "混凝土粉末 brown", "混凝土粉末 cyan", "混凝土粉末 gray", "混凝土粉末 green", "混凝土粉末 light blue", "混凝土粉末 lime", "混凝土粉末 magenta", "混凝土粉末 orange", "混凝土粉末 pink", "混凝土粉末 purple", "混凝土粉末 red", "混凝土粉末 silver", "混凝土粉末 white", "混凝土粉末 yellow", "混凝土 purple", "混凝土 red", "混凝土 silver", "混凝土 white", "混凝土 yellow", "crafting table front", "crafting table side", "diamond block", "diamond ore", "dirt", "dirt podzol side", "dirt podzol top", "dragon egg", "dropper front horizontal", "dropper front vertical", "emerald block", "emerald ore", "enchanting table bottom", "end bricks", "end stone", "farmland dry", "farmland wet", "frosted ice 0", "frosted ice 1", "frosted ice 2", "frosted ice 3", "furnace front off", "furnace front on", "furnace side", "玻璃", "玻璃 black", "玻璃 blue", "玻璃 brown", "玻璃 cyan", "玻璃 gray", "玻璃 green", "玻璃 light blue", "玻璃 lime", "玻璃 magenta", "玻璃 orange", "玻璃 pink", "玻璃 purple", "玻璃 red", "玻璃 silver", "玻璃 white", "玻璃 yellow", "带釉陶瓦 black", "带釉陶瓦 blue", "带釉陶瓦 brown", "带釉陶瓦 cyan", "带釉陶瓦 gray", "带釉陶瓦 green", "带釉陶瓦 light blue", "带釉陶瓦 lime", "带釉陶瓦 magenta", "带釉陶瓦 orange", "带釉陶瓦 pink", "带釉陶瓦 purple", "带釉陶瓦 red", "带釉陶瓦 silver", "带釉陶瓦 white", "带釉陶瓦 yellow", "glowstone", "gold block", "gold ore", "grass path side", "grass path top", "grass side", "grass side snowed", "grass top", "gravel", "硬化粘土", "硬化染色粘土 black", "硬化染色粘土 blue", "硬化染色粘土 brown", "硬化染色粘土 cyan", "硬化染色粘土 gray", "硬化染色粘土 green", "硬化染色粘土 light blue", "硬化染色粘土 lime", "硬化染色粘土 magenta", "硬化染色粘土 orange", "硬化染色粘土 pink", "硬化染色粘土 purple", "硬化染色粘土 red", "硬化染色粘土 silver", "硬化染色粘土 white", "硬化染色粘土 yellow", "hay block side", "hay block top", "hopper inside", "hopper outside", "ice", "ice packed", "iron block", "iron ore", "jukebox side", "lapis block", "lapis ore", "log acacia", "log acacia top", "log big oak", "log big oak top", "log birch", "log birch top", "log jungle", "log jungle top", "log oak", "log oak top", "log spruce", "log spruce top", "melon side", "mob spawner", "mushroom block inside", "mushroom block skin brown", "mushroom block skin red", "mushroom block skin stem", "mycelium side", "mycelium top", "nether brick", "nether wart block", "netherrack", "noteblock", "observer front", "output.bat", "piston side", "planks acacia", "planks big oak", "planks birch", "planks jungle", "planks oak", "planks spruce", "prismarine bricks", "prismarine dark", "pumpkin face off", "pumpkin face on", "pumpkin side", "pumpkin top", "purpur block", "purpur pillar", "purpur pillar top", "quartz block bottom", "quartz block chiseled", "quartz block chiseled top", "quartz block lines", "quartz block lines top", "quartz block side", "quartz block top", "red nether brick", "red sand", "red sandstone bottom", "red sandstone carved", "red sandstone normal", "red sandstone smooth", "red sandstone top", "redstone block", "redstone dust overlay", "redstone lamp off", "redstone lamp on", "redstone ore", "sand", "sandstone bottom", "sandstone carved", "sandstone normal", "sandstone smooth", "sandstone top", "潜影盒 black", "潜影盒 blue", "潜影盒 brown", "潜影盒 cyan", "潜影盒 gray", "潜影盒 green", "潜影盒 light blue", "潜影盒 lime", "潜影盒 magenta", "潜影盒 orange", "潜影盒 pink", "潜影盒 purple", "潜影盒 red", "潜影盒 silver", "潜影盒 white", "潜影盒 yellow", "slime", "snow", "soul sand", "sponge", "sponge wet", "stone", "stone andesite", "stone andesite smooth", "stone diorite", "stone diorite smooth", "stone granite", "stone granite smooth", "stone slab side", "stone slab top", "stonebrick", "stonebrick carved", "stonebrick cracked", "stonebrick mossy", "tnt side", "染色羊毛 black", "染色羊毛 blue", "染色羊毛 brown", "染色羊毛 cyan", "染色羊毛 gray", "染色羊毛 green", "染色羊毛 light blue", "染色羊毛 lime", "染色羊毛 magenta", "染色羊毛 orange", "染色羊毛 pink", "染色羊毛 purple", "染色羊毛 red", "染色羊毛 silver", "染色羊毛 white", "染色羊毛 yellow"})
         Me.ComboBoxBlock.Location = New System.Drawing.Point(92, 41)
         Me.ComboBoxBlock.MaxDropDownItems = 16
         Me.ComboBoxBlock.Name = "ComboBoxBlock"
@@ -93,11 +111,205 @@ Partial Class FormEnterBlock
         Me.Label4.TabIndex = 59
         Me.Label4.Text = "方块状态："
         '
+        'LabelStateName1
+        '
+        Me.LabelStateName1.AutoSize = True
+        Me.LabelStateName1.Location = New System.Drawing.Point(127, 99)
+        Me.LabelStateName1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName1.Name = "LabelStateName1"
+        Me.LabelStateName1.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName1.TabIndex = 60
+        Me.LabelStateName1.Text = "："
+        Me.LabelStateName1.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'LabelStateName2
+        '
+        Me.LabelStateName2.AutoSize = True
+        Me.LabelStateName2.Location = New System.Drawing.Point(127, 131)
+        Me.LabelStateName2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName2.Name = "LabelStateName2"
+        Me.LabelStateName2.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName2.TabIndex = 61
+        Me.LabelStateName2.Text = "："
+        Me.LabelStateName2.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'LabelStateName3
+        '
+        Me.LabelStateName3.AutoSize = True
+        Me.LabelStateName3.Location = New System.Drawing.Point(127, 163)
+        Me.LabelStateName3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName3.Name = "LabelStateName3"
+        Me.LabelStateName3.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName3.TabIndex = 62
+        Me.LabelStateName3.Text = "："
+        Me.LabelStateName3.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'LabelStateName4
+        '
+        Me.LabelStateName4.AutoSize = True
+        Me.LabelStateName4.Location = New System.Drawing.Point(127, 195)
+        Me.LabelStateName4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName4.Name = "LabelStateName4"
+        Me.LabelStateName4.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName4.TabIndex = 63
+        Me.LabelStateName4.Text = "："
+        Me.LabelStateName4.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'LabelStateName5
+        '
+        Me.LabelStateName5.AutoSize = True
+        Me.LabelStateName5.Location = New System.Drawing.Point(127, 227)
+        Me.LabelStateName5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName5.Name = "LabelStateName5"
+        Me.LabelStateName5.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName5.TabIndex = 64
+        Me.LabelStateName5.Text = "："
+        Me.LabelStateName5.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'LabelStateName6
+        '
+        Me.LabelStateName6.AutoSize = True
+        Me.LabelStateName6.Location = New System.Drawing.Point(127, 259)
+        Me.LabelStateName6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelStateName6.Name = "LabelStateName6"
+        Me.LabelStateName6.Size = New System.Drawing.Size(23, 20)
+        Me.LabelStateName6.TabIndex = 65
+        Me.LabelStateName6.Text = "："
+        Me.LabelStateName6.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label5.Font = New System.Drawing.Font("微软雅黑", 10.5!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(109, 73)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(121, 20)
+        Me.Label5.TabIndex = 66
+        Me.Label5.Text = "点击查看状态列表"
+        '
+        'TextBoxStateName1
+        '
+        Me.TextBoxStateName1.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName1.Location = New System.Drawing.Point(20, 96)
+        Me.TextBoxStateName1.Name = "TextBoxStateName1"
+        Me.TextBoxStateName1.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName1.TabIndex = 67
+        '
+        'TextBoxStateName2
+        '
+        Me.TextBoxStateName2.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName2.Location = New System.Drawing.Point(20, 128)
+        Me.TextBoxStateName2.Name = "TextBoxStateName2"
+        Me.TextBoxStateName2.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName2.TabIndex = 68
+        '
+        'TextBoxStateName3
+        '
+        Me.TextBoxStateName3.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName3.Location = New System.Drawing.Point(20, 160)
+        Me.TextBoxStateName3.Name = "TextBoxStateName3"
+        Me.TextBoxStateName3.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName3.TabIndex = 69
+        '
+        'TextBoxStateName4
+        '
+        Me.TextBoxStateName4.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName4.Location = New System.Drawing.Point(20, 192)
+        Me.TextBoxStateName4.Name = "TextBoxStateName4"
+        Me.TextBoxStateName4.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName4.TabIndex = 70
+        '
+        'TextBoxStateName5
+        '
+        Me.TextBoxStateName5.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName5.Location = New System.Drawing.Point(20, 224)
+        Me.TextBoxStateName5.Name = "TextBoxStateName5"
+        Me.TextBoxStateName5.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName5.TabIndex = 71
+        '
+        'TextBoxStateName6
+        '
+        Me.TextBoxStateName6.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateName6.Location = New System.Drawing.Point(19, 256)
+        Me.TextBoxStateName6.Name = "TextBoxStateName6"
+        Me.TextBoxStateName6.Size = New System.Drawing.Size(106, 26)
+        Me.TextBoxStateName6.TabIndex = 72
+        '
+        'TextBoxStateValue1
+        '
+        Me.TextBoxStateValue1.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue1.Location = New System.Drawing.Point(160, 96)
+        Me.TextBoxStateValue1.Name = "TextBoxStateValue1"
+        Me.TextBoxStateValue1.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue1.TabIndex = 73
+        '
+        'TextBoxStateValue2
+        '
+        Me.TextBoxStateValue2.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue2.Location = New System.Drawing.Point(160, 128)
+        Me.TextBoxStateValue2.Name = "TextBoxStateValue2"
+        Me.TextBoxStateValue2.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue2.TabIndex = 74
+        '
+        'TextBoxStateValue3
+        '
+        Me.TextBoxStateValue3.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue3.Location = New System.Drawing.Point(160, 160)
+        Me.TextBoxStateValue3.Name = "TextBoxStateValue3"
+        Me.TextBoxStateValue3.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue3.TabIndex = 75
+        '
+        'TextBoxStateValue4
+        '
+        Me.TextBoxStateValue4.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue4.Location = New System.Drawing.Point(159, 192)
+        Me.TextBoxStateValue4.Name = "TextBoxStateValue4"
+        Me.TextBoxStateValue4.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue4.TabIndex = 76
+        '
+        'TextBoxStateValue5
+        '
+        Me.TextBoxStateValue5.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue5.Location = New System.Drawing.Point(160, 224)
+        Me.TextBoxStateValue5.Name = "TextBoxStateValue5"
+        Me.TextBoxStateValue5.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue5.TabIndex = 77
+        '
+        'TextBoxStateValue6
+        '
+        Me.TextBoxStateValue6.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBoxStateValue6.Location = New System.Drawing.Point(160, 256)
+        Me.TextBoxStateValue6.Name = "TextBoxStateValue6"
+        Me.TextBoxStateValue6.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxStateValue6.TabIndex = 78
+        '
         'FormEnterBlock
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(345, 207)
+        Me.ClientSize = New System.Drawing.Size(345, 419)
+        Me.Controls.Add(Me.TextBoxStateValue6)
+        Me.Controls.Add(Me.TextBoxStateValue5)
+        Me.Controls.Add(Me.TextBoxStateValue4)
+        Me.Controls.Add(Me.TextBoxStateValue3)
+        Me.Controls.Add(Me.TextBoxStateValue2)
+        Me.Controls.Add(Me.TextBoxStateValue1)
+        Me.Controls.Add(Me.TextBoxStateName6)
+        Me.Controls.Add(Me.TextBoxStateName5)
+        Me.Controls.Add(Me.TextBoxStateName4)
+        Me.Controls.Add(Me.TextBoxStateName3)
+        Me.Controls.Add(Me.TextBoxStateName2)
+        Me.Controls.Add(Me.TextBoxStateName1)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.LabelStateName6)
+        Me.Controls.Add(Me.LabelStateName5)
+        Me.Controls.Add(Me.LabelStateName4)
+        Me.Controls.Add(Me.LabelStateName3)
+        Me.Controls.Add(Me.LabelStateName2)
+        Me.Controls.Add(Me.LabelStateName1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ComboBoxBlock)
         Me.Controls.Add(Me.Label3)
@@ -121,4 +333,23 @@ Partial Class FormEnterBlock
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBoxBlock As ComboBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents LabelStateName1 As Label
+    Friend WithEvents LabelStateName2 As Label
+    Friend WithEvents LabelStateName3 As Label
+    Friend WithEvents LabelStateName4 As Label
+    Friend WithEvents LabelStateName5 As Label
+    Friend WithEvents LabelStateName6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents TextBoxStateName1 As TextBox
+    Friend WithEvents TextBoxStateName2 As TextBox
+    Friend WithEvents TextBoxStateName3 As TextBox
+    Friend WithEvents TextBoxStateName4 As TextBox
+    Friend WithEvents TextBoxStateName5 As TextBox
+    Friend WithEvents TextBoxStateName6 As TextBox
+    Friend WithEvents TextBoxStateValue1 As TextBox
+    Friend WithEvents TextBoxStateValue2 As TextBox
+    Friend WithEvents TextBoxStateValue3 As TextBox
+    Friend WithEvents TextBoxStateValue4 As TextBox
+    Friend WithEvents TextBoxStateValue5 As TextBox
+    Friend WithEvents TextBoxStateValue6 As TextBox
 End Class

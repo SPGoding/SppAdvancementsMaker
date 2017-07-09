@@ -1,7 +1,8 @@
-﻿Imports Newtonsoft.Json
+﻿
+Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormLevitation
+Public Class FormNetherTravel
     Public Sub Reading(StrJson As String)
         ' 显示本窗体
         Visible = False
@@ -71,18 +72,6 @@ Public Class FormLevitation
                     End If
                 End If
             End If
-            If ObjJson.Item("duration") IsNot Nothing Then
-                If ObjJson.Item("duration").Item("max") IsNot Nothing Then
-                    NumericUpDownDurationMax.Value = ObjJson.Item("duration").Item("max").ToString
-                Else
-                    NumericUpDownDurationMax.Value = 0
-                End If
-                If ObjJson.Item("duration").Item("min") IsNot Nothing Then
-                    NumericUpDownDurationMin.Value = ObjJson.Item("duration").Item("min").ToString
-                Else
-                    NumericUpDownDurationMin.Value = 0
-                End If
-            End If
         End If
     End Sub
 
@@ -129,14 +118,6 @@ Public Class FormLevitation
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value
         End If
         StrResult &= "}"
-        StrResult &= "},"
-        StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
-        If NumericUpDownDurationMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownDurationMax.Value
-        End If
-        If NumericUpDownDurationMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownDurationMin.Value
-        End If
         StrResult &= "}"
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")

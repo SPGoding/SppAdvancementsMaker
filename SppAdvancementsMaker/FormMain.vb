@@ -30,6 +30,15 @@ Public Class FormMain
     ' 初始化一下界面
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         ComboBoxFrame.SelectedIndex = 0
+        Dim i As Int16
+        ComboBoxRecipes.Items.Add("")
+        For i = 0 To UBound(ZhRecipes)
+            ComboBoxRecipes.Items.Add(ZhRecipes(i))
+        Next
+        ComboBoxBackground.Items.Add("")
+        For i = 0 To UBound(ZhBackgrounds)
+            ComboBoxRecipes.Items.Add(ZhBackgrounds(i))
+        Next
     End Sub
 
     '生成
@@ -50,11 +59,11 @@ Public Class FormMain
         Next
         Try
             ' 把奖励 rewards 并列起来
-            If ComboBoxRecipes.Text <> "" Then
-                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & ComboBoxRecipes.Text & ","
+            If ComboBoxRecipes.Tag <> "" Then
+                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & Chr(34) & ComboBoxRecipes.Tag & Chr(34) & ","
             End If
             If TextBoxLoot.Text <> "" Then
-                StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & TextBoxLoot.Text & ","
+                StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & Chr(34) & TextBoxLoot.Text & Chr(34) & ","
             End If
             StrRewards &= Chr(34) & "experience" & Chr(34) & ":" & NumericUpDownExperience.Value & ","
             If TextBoxFunction.Text <> "" Then
@@ -77,7 +86,7 @@ Public Class FormMain
             LabelResult.Text = "已生成"
             LabelResult.ForeColor = Color.Green
         Catch ex As Exception
-            LabelResult.Text = "错误: " & ex.Message
+            LabelResult.Text = "生成不能: " & ex.Message
             LabelResult.ForeColor = Color.Red
         End Try
     End Sub
@@ -107,8 +116,12 @@ Public Class FormMain
     End Sub
 
     Private Sub ComboBoxBackground_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxBackground.SelectedIndexChanged
-        Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhImages, EnImages)
+        Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhBackgrounds, EnBackgrounds)
         ComboBoxBackground.Tag = "minecraft:textures/blocks/" & StrTemp & ".png"
+    End Sub
+
+    Private Sub ComboBoxRecipes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxRecipes.SelectedIndexChanged
+        ComboBoxRecipes.Tag = ZhToEn(ComboBoxRecipes.Text, ZhRecipes, EnRecipes)
     End Sub
 
     Private Sub ButtonTitle_Click(sender As Object, e As EventArgs) Handles ButtonTitle.Click

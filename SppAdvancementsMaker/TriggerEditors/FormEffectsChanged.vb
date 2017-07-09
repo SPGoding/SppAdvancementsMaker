@@ -58,7 +58,7 @@ Public Class FormEffectsChanged
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()
         FormCriteria.Hide()
-        FormCriteria.Show()
+        FormCriteria.Show(FormMain)
     End Sub
 
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
@@ -146,5 +146,13 @@ Public Class FormEffectsChanged
 
     Private Sub ComboBoxEffectName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEffectName.SelectedIndexChanged
         ComboBoxEffectName.Tag = ZhToEn(ComboBoxEffectName.Text, ZhEffects, EnEffects)
+    End Sub
+
+    Private Sub FormEffectsChanged_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        ComboBoxEffectName.Items.Add("")
+        For i = 0 To UBound(ZhEffects)
+            ComboBoxEffectName.Items.Add(ZhEffects(i))
+        Next
     End Sub
 End Class
