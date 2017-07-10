@@ -21,6 +21,7 @@
     End Function
 
     ' 触发器
+    ' 来自 minecraft wiki
     Public EnTriggers As String() = {
         "minecraft:bred_animals",
         "minecraft:brewed_potion",
@@ -83,6 +84,7 @@
         }
 
     ' 药水ID
+    ' 来自 minecraft wiki 列表
     Public EnPotions As String() = {
         "poison",
         "harming",
@@ -161,6 +163,7 @@
         }
 
     ' 维度
+    ' 来自 minecraft wiki
     Public EnDimensions As String() = {
         "overworld",
         "the_nether",
@@ -173,6 +176,7 @@
     }
 
     ' 根进度图片
+    ' 来自 bat 文件输出文件列表
     Public EnBackgrounds As String() = {
         "bedrock",
         "bone_block_side",
@@ -691,6 +695,7 @@
     }
 
     ' 状态效果
+    ' 来自 minecraft wiki 列表
     Public EnEffects As String() = {
 "minecraft:speed",
 "minecraft:slowness",
@@ -751,6 +756,7 @@
         }
 
     ' 方块ID
+    ' 来自 minecraft wiki 列表
     Public EnBlocks As String() = {
 "minecraft:air",
 "minecraft:stone",
@@ -1263,6 +1269,7 @@
     }
 
     ' 物品ID
+    ' 来自 minecraft wiki 列表
     Public EnItems As String() = {
 "minecraft:iron_shovel",
 "minecraft:iron_pickaxe",
@@ -2575,5 +2582,255 @@
 "黄色 染色 玻璃板",
 "黄色 染色 硬化 粘土",
 "黄色 羊毛"
+    }
+
+    ' 配方列表
+    ' 来自 minecraft wiki 列表
+    Public EnAdvancements As String() = {
+"minecraft:story/root",
+"minecraft:story/mine_stone",
+"minecraft:story/upgrade_tools",
+"minecraft:story/smelt_iron",
+"minecraft:story/obtain_armor",
+"minecraft:story/lava_bucket",
+"minecraft:story/iron_tools",
+"minecraft:story/deflect_arrow",
+"minecraft:story/form_obsidian",
+"minecraft:story/mine_diamond",
+"minecraft:story/enter_the_nether",
+"minecraft:story/shiny_gear",
+"minecraft:story/enchant_item",
+"minecraft:story/cure_zombie_villager",
+"minecraft:story/follow_ender_eye",
+"minecraft:story/enter_the_end",
+"minecraft:nether/root",
+"minecraft:nether/fast_travel",
+"minecraft:nether/find_fortress",
+"minecraft:nether/return_to_sender",
+"minecraft:nether/obtain_blaze_rod",
+"minecraft:nether/get_wither_skull",
+"minecraft:nether/uneasy_alliance",
+"minecraft:nether/brew_potion",
+"minecraft:nether/summon_wither",
+"minecraft:nether/create_beacon",
+"minecraft:nether/all_effects",
+"minecraft:nether/create_full_beacon",
+"minecraft:end/root",
+"minecraft:end/kill_dragon",
+"minecraft:end/dragon_egg",
+"minecraft:end/enter_end_gateway",
+"minecraft:end/respawn_dragon",
+"minecraft:end/dragon_breath",
+"minecraft:end/find_end_city",
+"minecraft:end/elytra",
+"minecraft:end/levitate",
+"minecraft:adventure/root",
+"minecraft:adventure/kill_a_mob",
+"minecraft:adventure/trade",
+"minecraft:adventure/sleep_in_bed",
+"minecraft:adventure/shoot_arrow",
+"minecraft:adventure/kill_all_mobs",
+"minecraft:adventure/totem_of_undying",
+"minecraft:adventure/summon_iron_golem",
+"minecraft:adventure/adventuring_time",
+"minecraft:adventure/sniper_duel",
+"minecraft:husbandry/root",
+"minecraft:husbandry/breed_an_animal",
+"minecraft:husbandry/tame_an_animal",
+"minecraft:husbandry/plant_seed",
+"minecraft:husbandry/breed_all_animals",
+"minecraft:husbandry/balanced_diet",
+"minecraft:husbandry/break_diamond_hoe"
+    }
+    Public ZhAdvancements As String() = {
+"Minecraft",
+"石器时代",
+"获得升级",
+"来硬的",
+"整装上阵",
+"热腾腾的",
+"这不是铁镐么",
+"抱歉，今天不行",
+"冰桶挑战",
+"钻石！",
+"我们需要再深入些",
+"用钻石包裹我",
+"附魔师",
+"僵尸科医生",
+"隔墙有眼",
+"结束了？",
+"下界",
+"子空间泡泡",
+"可怕的要塞",
+"见鬼去吧",
+"与火共舞",
+"诡异又可怕的骷髅",
+"不稳定的同盟",
+"本地的酿造厂",
+"凋零山庄",
+"带信标回家",
+"为什么会变成这样呢？",
+"信标工程师",
+"末地",
+"解放末地",
+"下一世代",
+"远程折跃",
+"结束了…再一次…",
+"你需要来点薄荷糖",
+"在游戏尽头的城市",
+"天空即为极限",
+"这上面的风景不错",
+"冒险",
+"怪物猎人",
+"这交易不错！",
+"甜蜜的梦",
+"瞄准目标",
+"怪物狩猎完成",
+"超越生死",
+"招募援兵",
+"探索的时光",
+"狙击手间的对决",
+"农牧业",
+"我从哪儿来？",
+"永恒的伙伴",
+"开荒垦地",
+"成双成对",
+"均衡饮食",
+"终极奉献"
+    }
+
+    ' 战利品表
+    ' 来自 minecraft wiki http://minecraft-zh.gamepedia.com/%E6%88%98%E5%88%A9%E5%93%81%E8%A1%A8
+    Public EnLootTables As String() = {
+"minecraft:chests/abandoned_mineshaft",
+"minecraft:chests/desert_pyramid",
+"minecraft:chests/end_city_treasure",
+"minecraft:chests/igloo_chest",
+"minecraft:chests/jungle_temple",
+"minecraft:chests/nether_bridge",
+"minecraft:chests/simple_dungeon",
+"minecraft:chests/spawn_bonus_chest",
+"minecraft:chests/stronghold_corridor",
+"minecraft:chests/stronghold_crossing",
+"minecraft:chests/stronghold_library",
+"minecraft:chests/village_blacksmith",
+"minecraft:entities/sheep/black",
+"minecraft:entities/sheep/blue",
+"minecraft:entities/sheep/brown",
+"minecraft:entities/sheep/cyan",
+"minecraft:entities/sheep/gray",
+"minecraft:entities/sheep/green",
+"minecraft:entities/sheep/light_blue",
+"minecraft:entities/sheep/lime",
+"minecraft:entities/sheep/magenta",
+"minecraft:entities/sheep/orange",
+"minecraft:entities/sheep/pink",
+"minecraft:entities/sheep/purple",
+"minecraft:entities/sheep/red",
+"minecraft:entities/sheep/silver",
+"minecraft:entities/sheep/white",
+"minecraft:entities/sheep/yellow",
+"minecraft:entities/bat",
+"minecraft:entities/blaze",
+"minecraft:entities/cave_spider",
+"minecraft:entities/chicken",
+"minecraft:entities/cow",
+"minecraft:entities/creeper",
+"minecraft:entities/elder_guardian",
+"minecraft:entities/enderman",
+"minecraft:entities/endermite",
+"minecraft:entities/ghast",
+"minecraft:entities/giant",
+"minecraft:entities/guardian",
+"minecraft:entities/horse",
+"minecraft:entities/magma_cube",
+"minecraft:entities/mushroom_cow",
+"minecraft:entities/ocelot",
+"minecraft:entities/pig",
+"minecraft:entities/rabbit",
+"minecraft:entities/sheep",
+"minecraft:entities/shulker",
+"minecraft:entities/silverfish",
+"minecraft:entities/skeleton",
+"minecraft:entities/skeleton_horse",
+"minecraft:entities/slime",
+"minecraft:entities/snowman",
+"minecraft:entities/spider",
+"minecraft:entities/squid",
+"minecraft:entities/wolf",
+"minecraft:entities/zombie",
+"minecraft:entities/zombie_horse",
+"minecraft:entities/zombie_pigman",
+"minecraft:gameplay/fishing/fish",
+"minecraft:gameplay/fishing/junk",
+"minecraft:gameplay/fishing/treasure",
+"minecraft:gameplay/fishing",
+"minecraft:empty"
+    }
+    Public ZhLootTables As String() = {
+"废弃矿井中找到的运输矿车",
+"沙漠神殿的宝藏室里的箱子",
+"末地城里的箱子",
+"雪屋地下室里的箱子",
+"丛林神庙里的箱子",
+"下界要塞里的箱子",
+"地牢里的箱子",
+"如果打开奖励箱选项的话，新世界生成时的奖励箱",
+"要塞台阶祭坛里的箱子",
+"要塞储存室里的箱子",
+"要塞图书馆里的箱子",
+"村庄中的铁匠铺里的箱子",
+"黑色羊",
+"蓝色羊",
+"棕色羊",
+"青色羊",
+"灰色羊",
+"绿色羊",
+"淡蓝色羊",
+"黄绿色羊",
+"品红色羊",
+"橙色羊",
+"粉色羊",
+"紫色羊",
+"红色羊",
+"银色羊",
+"淡灰羊",
+"黄色羊",
+"蝙蝠",
+"烈焰人",
+"洞穴蜘蛛",
+"鸡",
+"牛",
+"爬行者",
+"远古守卫者",
+"末影人",
+"末影螨",
+"恶魂",
+"巨人",
+"守卫者",
+"马",
+"岩浆怪",
+"哞菇",
+"豹猫",
+"猪",
+"兔子",
+"没毛的羊",
+"潜影贝",
+"蠹虫",
+"骷髅",
+"骷髅马",
+"史莱姆",
+"雪傀儡",
+"蜘蛛",
+"墨鱼",
+"狼",
+"僵尸",
+"僵尸马",
+"僵尸猪人",
+"钓上来的鱼",
+"钓上来的垃圾",
+"钓上来的宝物",
+"钓鱼随机",
+"空"
     }
 End Module

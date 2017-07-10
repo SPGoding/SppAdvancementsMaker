@@ -3,6 +3,14 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class FormCriteria
+    '//TODO
+    'Private Sub FormCriteria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    Dim i As Int16
+    '    For i = 0 To UBound(ZhTriggers)
+    '        ComboBoxTrigger.Items.Add(ZhTriggers(i))
+    '    Next
+    'End Sub
+
     Public Sub Reading(StrCriteriaName As String, StrCriteriaJson As String, StrGroupJson As String)
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{" & StrCriteriaJson & "}"), JObject)
         '读取条件名
@@ -72,7 +80,7 @@ Public Class FormCriteria
         Next i
         FormMain.SaveGroupJson()
         Hide()
-        FormMain.Hide 
+        FormMain.Hide()
         FormMain.Show()
     End Sub
 
@@ -91,36 +99,53 @@ Public Class FormCriteria
             Case "minecraft:construct_beacon"
                 FormConstruckBeacon.Reading(ButtonCriteria.Tag)
             Case "minecraft:consume_item"
+
             Case "minecraft:cured_zombie_villager"
+
             Case "minecraft:effects_changed"
                 FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
+
             Case "minecraft:enter_block"
                 FormEnterBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_hurt_player"
+
             Case "minecraft:entity_killed_player"
+
             Case "minecraft:impossible"
                 FormImpossible.Reading(ButtonCriteria.Tag)
             Case "minecraft:inventory_changed"
+
             Case "minecraft:item_durability_changed"
+
             Case "minecraft:levitation"
                 FormLevitation.Reading(ButtonCriteria.Tag)
             Case "minecraft:location"
+
             Case "minecraft:nether_travel"
                 FormNetherTravel.Reading(ButtonCriteria.Tag)
             Case "minecraft:placed_block"
+
             Case "minecraft:player_hurt_entity"
+
             Case "minecraft:player_killed_entity"
+
             Case "minecraft:recipe_unlocked"
                 FormRecipeUnlocked.Reading(ButtonCriteria.Tag)
             Case "minecraft:slept_in_bed"
+
             Case "minecraft:summoned_entity"
+
             Case "minecraft:tame_animal"
+
             Case "minecraft:tick"
                 FormTick.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_ender_eye"
+
             Case "minecraft:used_totem"
+
             Case "minecraft:villager_trade"
+
         End Select
     End Sub
 End Class

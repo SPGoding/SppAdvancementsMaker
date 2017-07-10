@@ -5,6 +5,12 @@ Module Module1
     Public StrSavePath As String
     Public StrProjectAdvancementName As String
 
+    ' 奖励类型 用于 FormRecipeLoot
+    Public Enum RewardType
+        Recipe
+        Loot
+    End Enum
+
     Public Sub CreateFile(StrFilePath As String, StrFileParentPath As String, StrFileText As String)
         ' 检测路径是否存在
         If Dir(StrFileParentPath, vbDirectory) = "" Then

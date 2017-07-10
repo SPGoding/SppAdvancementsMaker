@@ -32,6 +32,7 @@ Partial Class FormCriteria
         Me.ButtonCriteria = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label2
@@ -50,7 +51,7 @@ Partial Class FormCriteria
         Me.ComboBoxTrigger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxTrigger.FormattingEnabled = True
         Me.ComboBoxTrigger.IntegralHeight = False
-        Me.ComboBoxTrigger.Items.AddRange(New Object() {"繁殖动物", "从酿造台取出药水", "在两个维度间旅行", "更改信标结构", "损耗物品", "治愈僵尸村民", "获得/消除状态效果", "通过附魔台附魔物品", "进入方块", "实体伤害玩家", "实体杀死玩家", "不可能触发", "物品栏变化", "物品栏中任何物品以任何形式损耗", "获得漂浮状态效果", "玩家的位置", "进入下界，然后返回主世界", "放置方块", "伤害实体", "杀死实体", "解锁配方", "上床睡觉", "召唤实体", "驯服动物", "每个游戏刻", "使用末影之眼", "使用图腾", "与村民交易"})
+        Me.ComboBoxTrigger.Items.AddRange(New Object() {"从酿造台取出药水", "在两个维度间旅行", "更改信标结构", "获得/消除状态效果", "进入方块", "不可能触发", "获得漂浮状态效果", "进入下界，然后返回主世界", "解锁配方", "每个游戏刻", "使用末影之眼"})
         Me.ComboBoxTrigger.Location = New System.Drawing.Point(81, 99)
         Me.ComboBoxTrigger.MaxDropDownItems = 16
         Me.ComboBoxTrigger.Name = "ComboBoxTrigger"
@@ -133,11 +134,23 @@ Partial Class FormCriteria
         Me.Label5.TabIndex = 41
         Me.Label5.Text = "条件"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label6.Location = New System.Drawing.Point(77, 75)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(121, 20)
+        Me.Label6.TabIndex = 47
+        Me.Label6.Text = "更多触发器制作中"
+        '
         'FormCriteria
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(342, 242)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonCriteria)
@@ -169,4 +182,5 @@ Partial Class FormCriteria
     Friend WithEvents ButtonCriteria As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
 End Class

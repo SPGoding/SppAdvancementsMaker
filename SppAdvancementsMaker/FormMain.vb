@@ -27,21 +27,32 @@ Public Class FormMain
         bFormDragging = False
     End Sub
 
-    ' 初始化一下界面
+    ' 初始化界面
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ComboBoxItem.SelectedIndex = 0
         ComboBoxFrame.SelectedIndex = 0
         Dim i As Int16
-        ComboBoxRecipes.Items.Add("")
-        For i = 0 To UBound(ZhRecipes)
-            ComboBoxRecipes.Items.Add(ZhRecipes(i))
-        Next
+        ' 背景图片
         ComboBoxBackground.Items.Add("")
         For i = 0 To UBound(ZhBackgrounds)
-            ComboBoxRecipes.Items.Add(ZhBackgrounds(i))
+            ComboBoxBackground.Items.Add(ZhBackgrounds(i))
+        Next
+        ' 上一个进度
+        ComboBoxParent.Items.Add("")
+        ComboBoxParent.Items.Add("[浏览...]")
+        For i = 0 To UBound(ZhAdvancements)
+            ComboBoxParent.Items.Add(ZhAdvancements(i))
+        Next
+        ' 物品ID
+        For i = 0 To UBound(ZhBlocks)
+            ComboBoxItem.Items.Add(ZhBlocks(i))
+        Next
+        For i = 0 To UBound(ZhItems)
+            ComboBoxItem.Items.Add(ZhItems(i))
         Next
     End Sub
 
-    '生成
+    ' 生成
     Private Sub ButtonGenerate_Click(sender As Object, e As EventArgs) Handles ButtonGenerate.Click
         Dim StrCriteria As String = ""
         Dim StrRewards As String = ""
@@ -51,19 +62,16 @@ Public Class FormMain
         For i = 0 To TreeViewCriterias.GetNodeCount(False) - 1
             For j = 0 To TreeViewCriterias.Nodes.Item(i).GetNodeCount(False) - 1
                 StrCriteria &= TreeViewCriterias.Nodes.Item(i).Nodes.Item(j).Tag
-                'If i <= TreeViewCriterias.GetNodeCount(False) - 1 And j < TreeViewCriterias.Nodes.Item(i).GetNodeCount(False) - 1 Then
-                '    ' 目前这个不是最后一个条件
                 StrCriteria &= ","
-                'End If
             Next
         Next
         Try
             ' 把奖励 rewards 并列起来
-            If ComboBoxRecipes.Tag <> "" Then
-                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & Chr(34) & ComboBoxRecipes.Tag & Chr(34) & ","
+            If ButtonRecipes.Tag <> "" Then
+                StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & ButtonRecipes.Tag & ","
             End If
-            If TextBoxLoot.Text <> "" Then
-                StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & Chr(34) & TextBoxLoot.Text & Chr(34) & ","
+            If ButtonLoot.Tag <> "" Then
+                StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & ButtonLoot.Tag & ","
             End If
             StrRewards &= Chr(34) & "experience" & Chr(34) & ":" & NumericUpDownExperience.Value & ","
             If TextBoxFunction.Text <> "" Then
@@ -74,11 +82,12 @@ Public Class FormMain
                 StrRewards &= Chr(34) & "function" & Chr(34) & ":" & Chr(34) & StrFunctionName & Chr(34)
             End If
             ' 调用函數
-            Dim StrResult As String = GenerateAdvancement(TextBoxItem.Tag, NumericUpDownData.Value, TextBoxTitle.Text,
+            Dim StrResult As String = GenerateAdvancement(ComboBoxItem.Tag, NumericUpDownData.Value, TextBoxTitle.Text,
                                                      ComboBoxFrame.Tag, ComboBoxBackground.Tag, TextBoxDescription.Text,
                                                      CheckBoxShow_Toast.Checked, CheckBoxAnnounce_To_Chat.Checked,
-                                                     CheckBoxHidden.Checked, TextBoxParent.Text, StrCriteria,
-                                                     TreeViewCriterias.Tag, StrRewards)
+                                                     CheckBoxHidden.Checked,
+                                                     ZhToEn(ComboBoxParent.Text, ZhAdvancements, EnAdvancements),
+                                                     StrCriteria, TreeViewCriterias.Tag, StrRewards)
             ' 将进度写入文件
             Dim StrAdvancementsParentPath As String = StrSavePath & "\data\advancements\sppadvancementsmaker\"
             Dim StrAdvancementsPath As String = StrAdvancementsParentPath & StrProjectAdvancementName & ".json"
@@ -102,28 +111,24 @@ Public Class FormMain
                 ComboBoxFrame.Tag = "goal"
         End Select
     End Sub
-
-    Private Sub TextBoxItem_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItem.TextChanged
-        If Microsoft.VisualBasic.Left(TextBoxItem.Text, 10) = "minecraft:" Then
-            TextBoxItem.Tag = TextBoxItem.Text
-        Else
-            TextBoxItem.Tag = "minecraft:" & TextBoxItem.Text
-        End If
-    End Sub
-
     Private Sub TextBoxFunction_TextChanged(sender As Object, e As EventArgs) Handles TextBoxFunction.TextChanged
         TextBoxFunction.Tag = "#Created By SppAdvancementsMaker" & vbNewLine & TextBoxFunction.Text
     End Sub
-
     Private Sub ComboBoxBackground_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxBackground.SelectedIndexChanged
         Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhBackgrounds, EnBackgrounds)
-        ComboBoxBackground.Tag = "minecraft:textures/blocks/" & StrTemp & ".png"
+        If ComboBoxBackground.Text <> "" Then
+            ComboBoxBackground.Tag = "minecraft:textures/blocks/" & StrTemp & ".png"
+        End If
+    End Sub
+    Private Sub ComboBoxItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem.SelectedIndexChanged
+        If ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks) <> "" Then
+            ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks)
+        Else
+            ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhItems, EnItems)
+        End If
     End Sub
 
-    Private Sub ComboBoxRecipes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxRecipes.SelectedIndexChanged
-        ComboBoxRecipes.Tag = ZhToEn(ComboBoxRecipes.Text, ZhRecipes, EnRecipes)
-    End Sub
-
+    ' Json文本
     Private Sub ButtonTitle_Click(sender As Object, e As EventArgs) Handles ButtonTitle.Click
         FormJsonTexts.Visible = False
         FormJsonTexts.Show(Me)
@@ -137,51 +142,18 @@ Public Class FormMain
         FormJsonTexts.Reset()
     End Sub
 
-    Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
-        Dim StrTemp As String
-        Dim StrTempPath As String = StrSavePath & "\data\loot_tables"
-        If Dir(StrTempPath, vbDirectory) <> "" Then
-            With OpenFileDialogLoot
-                .AddExtension = True
-                .CheckFileExists = True
-                .CheckPathExists = True
-                .DereferenceLinks = False
-                .InitialDirectory = StrTempPath
-                .Multiselect = False
-                .Filter = "loot_table files (*.json)|*.json"
-                .FileName = ""
-                If .ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                    StrTemp = .FileName
-                    If Microsoft.VisualBasic.Left(StrTemp, StrTempPath.Length) <> StrTempPath Then
-                        ' 如果最后选择的文件不在战利品列表目录
-                        TextBoxLoot.Text = ""
-                        Exit Sub
-                    End If
-                Else
-                    TextBoxLoot.Text = ""
-                    Exit Sub
-                End If
-            End With
-            StrTemp = StrTemp.Replace(StrTempPath & "\", "")
-            ' 换斜杠
-            StrTemp = StrTemp.Replace("\", "/")
-            ' 改冒号
-            If StrTemp.IndexOf("/") <> -1 Then
-                StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrTemp, StrTemp.Length - StrTemp.IndexOf("/") - 1)
-            End If
-            ' 去.json
-            StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
-            TextBoxLoot.Text = StrTemp
-        Else
-            MessageBox.Show("没有可用的战利品列表")
+    ' 细节处理
+    Private Sub ComboBoxParent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxParent.SelectedIndexChanged
+        If ComboBoxParent.SelectedIndex = 1 Then
+            ' 选中了[浏览...]
+            SelectParent()
         End If
     End Sub
-
-    Private Sub ButtonParent_Click(sender As Object, e As EventArgs) Handles ButtonParent.Click
+    Private Sub SelectParent()
         Dim StrTemp As String
         Dim StrTempPath As String = StrSavePath & "\data\advancements"
         If Dir(StrTempPath, vbDirectory) <> "" Then
-            With OpenFileDialogLoot
+            With OpenFileDialogParent
                 .AddExtension = True
                 .CheckFileExists = True
                 .CheckPathExists = True
@@ -194,11 +166,11 @@ Public Class FormMain
                     StrTemp = .FileName
                     If Microsoft.VisualBasic.Left(StrTemp, StrTempPath.Length) <> StrTempPath Then
                         ' 如果最后选择的文件不在进度目录
-                        TextBoxParent.Text = ""
+                        ComboBoxParent.Text = ""
                         Exit Sub
                     End If
                 Else
-                    TextBoxParent.Text = ""
+                    ComboBoxParent.Text = ""
                     Exit Sub
                 End If
             End With
@@ -211,17 +183,14 @@ Public Class FormMain
             End If
             ' 去.json
             StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
-            TextBoxParent.Text = StrTemp
+            ComboBoxParent.Text = StrTemp
         Else
             MessageBox.Show("没有可用的进度")
+            ComboBoxParent.Text = ""
         End If
     End Sub
 
-    '组的 Text 是组X
-    '条件的 Text 是条件X
-    '组和条件的 Name 分别为组、条
-    ' TreeView 的 Tag 储存分组的 Json
-    ' Node 的 Tag 储存每个条件的 Json
+    '条件、分组相关
     Public Sub SaveGroupJson()
         '编辑分组的 Json
         '    不包含 requirements 层级的中括号
@@ -245,7 +214,6 @@ Public Class FormMain
         Next
         TreeViewCriterias.Tag = StrTemp
     End Sub
-
     Private Sub TreeViewCriterias_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles TreeViewCriterias.NodeMouseDoubleClick
         If e.Node.Name = "条" Then
             FormCriteria.Visible = False
@@ -253,7 +221,6 @@ Public Class FormMain
             FormCriteria.Reading(e.Node.Text, e.Node.Tag, TreeViewCriterias.Tag.ToString) '告诉窗体: 所编辑的条件 Json 和分组 Group
         End If
     End Sub
-
     Private Sub ButtonAddGroup_Click(sender As Object, e As EventArgs) Handles ButtonAddGroup.Click
         IntGroupCount += 1
         Dim Node As TreeNode = TreeViewCriterias.Nodes.Add("组" & IntGroupCount)
@@ -288,7 +255,6 @@ Public Class FormMain
         End Select
         SaveGroupJson()
     End Sub
-
     Private Sub TreeViewCriterias_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeViewCriterias.AfterSelect
         Select Case e.Node.Name
             Case "组"
@@ -298,5 +264,13 @@ Public Class FormMain
                 ButtonAddCriteria.Enabled = True
                 ButtonRemove.Enabled = True
         End Select
+    End Sub
+
+    ' 奖励相关
+    Private Sub ButtonRecipes_Click(sender As Object, e As EventArgs) Handles ButtonRecipes.Click
+        FormRecipeLoot.Reading(ButtonRecipes.Tag, RewardType.Recipe)
+    End Sub
+    Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
+        FormRecipeLoot.Reading(ButtonLoot.Tag, RewardType.Loot)
     End Sub
 End Class

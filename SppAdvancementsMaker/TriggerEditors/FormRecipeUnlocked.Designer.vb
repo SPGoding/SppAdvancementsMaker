@@ -75,6 +75,7 @@ Partial Class FormRecipeUnlocked
         Me.ComboBoxRecipes.FormattingEnabled = True
         Me.ComboBoxRecipes.IntegralHeight = False
         Me.ComboBoxRecipes.Location = New System.Drawing.Point(98, 41)
+        Me.ComboBoxRecipes.MaxDropDownItems = 16
         Me.ComboBoxRecipes.Name = "ComboBoxRecipes"
         Me.ComboBoxRecipes.Size = New System.Drawing.Size(232, 28)
         Me.ComboBoxRecipes.TabIndex = 52

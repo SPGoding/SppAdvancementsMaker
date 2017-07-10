@@ -79,6 +79,12 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainEditors\FormRecipeLoot.Designer.vb">
+      <DependentUpon>FormRecipeLoot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainEditors\FormRecipeLoot.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormBrewedPotion.Designer.vb">
       <DependentUpon>FormBrewedPotion.vb</DependentUpon>
     </Compile>
@@ -115,16 +121,16 @@
     <Compile Include="TriggerEditors\FormImpossible.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCriteria.Designer.vb">
+    <Compile Include="MainEditors\FormCriteria.Designer.vb">
       <DependentUpon>FormCriteria.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormCriteria.vb">
+    <Compile Include="MainEditors\FormCriteria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormJsonTexts.Designer.vb">
+    <Compile Include="MainEditors\FormJsonTexts.Designer.vb">
       <DependentUpon>FormJsonTexts.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormJsonTexts.vb">
+    <Compile Include="MainEditors\FormJsonTexts.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSelectSave.Designer.vb">
@@ -179,6 +185,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainEditors\FormRecipeLoot.resx">
+      <DependentUpon>FormRecipeLoot.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormBrewedPotion.resx">
       <DependentUpon>FormBrewedPotion.vb</DependentUpon>
     </EmbeddedResource>
@@ -197,10 +206,10 @@
     <EmbeddedResource Include="TriggerEditors\FormImpossible.resx">
       <DependentUpon>FormImpossible.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCriteria.resx">
+    <EmbeddedResource Include="MainEditors\FormCriteria.resx">
       <DependentUpon>FormCriteria.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormJsonTexts.resx">
+    <EmbeddedResource Include="MainEditors\FormJsonTexts.resx">
       <DependentUpon>FormJsonTexts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectSave.resx">

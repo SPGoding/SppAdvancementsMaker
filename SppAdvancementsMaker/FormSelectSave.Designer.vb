@@ -32,6 +32,8 @@ Partial Class FormSelectSave
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBoxName = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.LabelException = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -99,9 +101,9 @@ Partial Class FormSelectSave
         Me.Label4.Location = New System.Drawing.Point(37, 101)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(200, 20)
+        Me.Label4.Size = New System.Drawing.Size(65, 20)
         Me.Label4.TabIndex = 41
-        Me.Label4.Text = "必须唯一，用于Minecraft识别"
+        Me.Label4.Text = "必须唯一"
         '
         'TextBoxName
         '
@@ -117,17 +119,41 @@ Partial Class FormSelectSave
         Me.Label5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 9.0!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Blue
-        Me.Label5.Location = New System.Drawing.Point(12, 212)
+        Me.Label5.Location = New System.Drawing.Point(106, 12)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(275, 17)
         Me.Label5.TabIndex = 43
         Me.Label5.Text = "*软件引用了James Newton-King制作的Json.Net"
+        '
+        'LabelException
+        '
+        Me.LabelException.AutoSize = True
+        Me.LabelException.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LabelException.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.LabelException.ForeColor = System.Drawing.Color.Red
+        Me.LabelException.Location = New System.Drawing.Point(12, 210)
+        Me.LabelException.Name = "LabelException"
+        Me.LabelException.Size = New System.Drawing.Size(0, 19)
+        Me.LabelException.TabIndex = 44
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label6.Location = New System.Drawing.Point(105, 101)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(177, 20)
+        Me.Label6.TabIndex = 45
+        Me.Label6.Text = "自定义命名空间功能计划中"
         '
         'FormSelectSave
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(393, 238)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.LabelException)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TextBoxName)
         Me.Controls.Add(Me.Label4)
@@ -158,4 +184,6 @@ Partial Class FormSelectSave
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBoxName As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents LabelException As Label
+    Friend WithEvents Label6 As Label
 End Class
