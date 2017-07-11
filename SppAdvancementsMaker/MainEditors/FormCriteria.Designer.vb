@@ -51,7 +51,7 @@ Partial Class FormCriteria
         Me.ComboBoxTrigger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxTrigger.FormattingEnabled = True
         Me.ComboBoxTrigger.IntegralHeight = False
-        Me.ComboBoxTrigger.Items.AddRange(New Object() {"从酿造台取出药水", "在两个维度间旅行", "更改信标结构", "获得/消除状态效果", "进入方块", "不可能触发", "获得漂浮状态效果", "进入下界，然后返回主世界", "解锁配方", "每个游戏刻", "使用末影之眼"})
+        Me.ComboBoxTrigger.Items.AddRange(New Object() {"从酿造台取出药水", "在两个维度间旅行", "更改信标结构", "获得/消除状态效果", "进入方块", "不可能触发", "获得漂浮状态效果", "进入下界，然后返回主世界", "解锁配方", "每个游戏刻", "使用末影之眼", "玩家的位置", "上床睡觉"})
         Me.ComboBoxTrigger.Location = New System.Drawing.Point(81, 99)
         Me.ComboBoxTrigger.MaxDropDownItems = 16
         Me.ComboBoxTrigger.Name = "ComboBoxTrigger"

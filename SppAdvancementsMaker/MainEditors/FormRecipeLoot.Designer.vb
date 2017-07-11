@@ -45,6 +45,7 @@ Partial Class FormRecipeLoot
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple
         Me.ListBox1.Size = New System.Drawing.Size(289, 324)
+        Me.ListBox1.Sorted = True
         Me.ListBox1.TabIndex = 29
         '
         'ButtonEnter

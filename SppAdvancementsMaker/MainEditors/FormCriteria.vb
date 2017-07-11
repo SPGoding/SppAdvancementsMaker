@@ -121,7 +121,7 @@ Public Class FormCriteria
             Case "minecraft:levitation"
                 FormLevitation.Reading(ButtonCriteria.Tag)
             Case "minecraft:location"
-
+                FormLocation.Reading(ButtonCriteria.Tag)
             Case "minecraft:nether_travel"
                 FormNetherTravel.Reading(ButtonCriteria.Tag)
             Case "minecraft:placed_block"
@@ -133,7 +133,7 @@ Public Class FormCriteria
             Case "minecraft:recipe_unlocked"
                 FormRecipeUnlocked.Reading(ButtonCriteria.Tag)
             Case "minecraft:slept_in_bed"
-
+                FormSleptInBed.Reading(ButtonCriteria.Tag)
             Case "minecraft:summoned_entity"
 
             Case "minecraft:tame_animal"
@@ -141,7 +141,7 @@ Public Class FormCriteria
             Case "minecraft:tick"
                 FormTick.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_ender_eye"
-
+                FormUsedEnderEye.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_totem"
 
             Case "minecraft:villager_trade"

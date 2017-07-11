@@ -1,5 +1,4 @@
-﻿
-Imports Newtonsoft.Json
+﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class FormNetherTravel
@@ -80,7 +79,7 @@ Public Class FormNetherTravel
         StrResult = "{" & Chr(34) & "distance" & Chr(34) & ":{"
         StrResult &= Chr(34) & "absolute" & Chr(34) & ":{"
         If NumericUpDownAbsoluteMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAbsoluteMax.Value
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAbsoluteMax.Value & ","
         End If
         If NumericUpDownAbsoluteMin.Value <> 0 Then
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAbsoluteMin.Value
@@ -88,7 +87,7 @@ Public Class FormNetherTravel
         StrResult &= "},"
         StrResult &= Chr(34) & "horizontal" & Chr(34) & ":{"
         If NumericUpDownHorizontalMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownHorizontalMax.Value
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownHorizontalMax.Value & ","
         End If
         If NumericUpDownHorizontalMin.Value <> 0 Then
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownHorizontalMin.Value
@@ -96,7 +95,7 @@ Public Class FormNetherTravel
         StrResult &= "},"
         StrResult &= Chr(34) & "x" & Chr(34) & ":{"
         If NumericUpDownXMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
         End If
         If NumericUpDownXMin.Value <> 0 Then
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value
@@ -104,7 +103,7 @@ Public Class FormNetherTravel
         StrResult &= "},"
         StrResult &= Chr(34) & "y" & Chr(34) & ":{"
         If NumericUpDownYMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
         End If
         If NumericUpDownYMin.Value <> 0 Then
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value
@@ -112,7 +111,7 @@ Public Class FormNetherTravel
         StrResult &= "},"
         StrResult &= Chr(34) & "z" & Chr(34) & ":{"
         If NumericUpDownZMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
         End If
         If NumericUpDownZMin.Value <> 0 Then
             StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value

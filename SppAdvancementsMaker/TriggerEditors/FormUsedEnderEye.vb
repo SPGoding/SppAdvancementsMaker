@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormConstruckBeacon
+Public Class FormUsedEnderEye
     Public Sub Reading(StrJson As String)
         ' 显示本窗体
         Visible = False
@@ -9,28 +9,20 @@ Public Class FormConstruckBeacon
         ' 读取传送过来的 Json 文本
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
-            If ObjJson.Item("level") IsNot Nothing Then
-                If ObjJson.Item("level").Item("max") IsNot Nothing Then
-                    NumericUpDownMax.Value = ObjJson.Item("level").Item("max").ToString
-                Else
-                    NumericUpDownMax.Value = 0
+            If ObjJson.Item("disatance") IsNot Nothing Then
+                If ObjJson.Item("disatance").Item("max") IsNot Nothing Then
+                    NumericUpDownMax.Value = ObjJson.Item("disatance").Item("max").ToString
                 End If
-                If ObjJson.Item("level").Item("min") IsNot Nothing Then
-                    NumericUpDownMin.Value = ObjJson.Item("level").Item("min").ToString
-                Else
-                    NumericUpDownMin.Value = 0
+                If ObjJson.Item("disatance").Item("min") IsNot Nothing Then
+                    NumericUpDownMin.Value = ObjJson.Item("disatance").Item("min").ToString
                 End If
-            Else
-
-                NumericUpDownMax.Value = 0
-                NumericUpDownMin.Value = 0
             End If
         End If
     End Sub
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
-        StrResult = "{" & Chr(34) & "level" & Chr(34) & ":{"
+        StrResult = "{" & Chr(34) & "distance" & Chr(34) & ":{"
         If NumericUpDownMax.Value <> 0 Then
             StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value & ","
         End If

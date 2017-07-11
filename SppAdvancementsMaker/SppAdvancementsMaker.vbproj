@@ -45,6 +45,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SppAdvancementsMaker.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Json80r2\Bin\Net40\Newtonsoft.Json.dll</HintPath>
@@ -162,6 +165,12 @@
     <Compile Include="TriggerEditors\FormLevitation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormLocation.Designer.vb">
+      <DependentUpon>FormLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormLocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormNetherTravel.Designer.vb">
       <DependentUpon>FormNetherTravel.vb</DependentUpon>
     </Compile>
@@ -174,10 +183,28 @@
     <Compile Include="TriggerEditors\FormRecipeUnlocked.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormSleptInBed.Designer.vb">
+      <DependentUpon>FormSleptInBed.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormSleptInBed.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormTick.Designer.vb">
       <DependentUpon>FormTick.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\FormTick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormUsedEnderEye.Designer.vb">
+      <DependentUpon>FormUsedEnderEye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormUsedEnderEye.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalLocation.Designer.vb">
+      <DependentUpon>FormGlobalLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalLocation.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -224,14 +251,26 @@
     <EmbeddedResource Include="TriggerEditors\FormLevitation.resx">
       <DependentUpon>FormLevitation.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormLocation.resx">
+      <DependentUpon>FormLocation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormNetherTravel.resx">
       <DependentUpon>FormNetherTravel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormRecipeUnlocked.resx">
       <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormSleptInBed.resx">
+      <DependentUpon>FormSleptInBed.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormTick.resx">
       <DependentUpon>FormTick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormUsedEnderEye.resx">
+      <DependentUpon>FormUsedEnderEye.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\Global\FormGlobalLocation.resx">
+      <DependentUpon>FormGlobalLocation.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +283,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SppAdvancementsMaker.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -67,7 +67,6 @@ Partial Class FormJsonTexts
         Me.ComboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxColor.FormattingEnabled = True
         Me.ComboBoxColor.ImeMode = System.Windows.Forms.ImeMode.Disable
-        Me.ComboBoxColor.Items.AddRange(New Object() {"白色", "黑色", "金色", "黄色", "浅湖蓝色", "深湖蓝色", "浅蓝色", "深蓝色", "浅绿色", "深绿色", "亮红色", "深红色", "亮紫色", "深紫色", "浅灰色", "深灰色"})
         Me.ComboBoxColor.Location = New System.Drawing.Point(57, 38)
         Me.ComboBoxColor.Name = "ComboBoxColor"
         Me.ComboBoxColor.Size = New System.Drawing.Size(232, 28)

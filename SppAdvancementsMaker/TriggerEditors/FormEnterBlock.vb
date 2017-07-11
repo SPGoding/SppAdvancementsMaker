@@ -9,56 +9,54 @@ Public Class FormEnterBlock
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
-        If ObjJson.ToString <> "{}" Then
-            ' 读取方块
-            If ObjJson.Item("block") IsNot Nothing Then
-                ComboBoxBlock.Tag = ObjJson.Item("block").ToString
-                ComboBoxBlock.Text = EnToZh(ComboBoxBlock.Tag, ZhBlocks, EnBlocks)
-            Else
-                ComboBoxBlock.Tag = ""
-                ComboBoxBlock.Text = ""
-            End If
-            ' 读取状态
-            TextBoxStateName1.Text = ""
-            TextBoxStateValue1.Text = ""
-            TextBoxStateName2.Text = ""
-            TextBoxStateValue2.Text = ""
-            TextBoxStateName3.Text = ""
-            TextBoxStateValue3.Text = ""
-            TextBoxStateName4.Text = ""
-            TextBoxStateValue4.Text = ""
-            TextBoxStateName5.Text = ""
-            TextBoxStateValue5.Text = ""
-            TextBoxStateName6.Text = ""
-            TextBoxStateValue6.Text = ""
-            If ObjJson.Item("state") IsNot Nothing Then
-                StrStates = ObjJson.Item("state").ToString.Split(",")
-                ReDim Preserve StrStates(5)
-                If StrStates IsNot Nothing Then
-                    If StrStates(0) IsNot Nothing Then
-                        TextBoxStateName1.Text = StrStates(0).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue1.Text = StrStates(0).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
-                    If StrStates(1) IsNot Nothing Then
-                        TextBoxStateName2.Text = StrStates(1).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue2.Text = StrStates(1).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
-                    If StrStates(2) IsNot Nothing Then
-                        TextBoxStateName3.Text = StrStates(2).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue3.Text = StrStates(2).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
-                    If StrStates(3) IsNot Nothing Then
-                        TextBoxStateName4.Text = StrStates(3).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue4.Text = StrStates(3).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
-                    If StrStates(4) IsNot Nothing Then
-                        TextBoxStateName5.Text = StrStates(4).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue5.Text = StrStates(4).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
-                    If StrStates(5) IsNot Nothing Then
-                        TextBoxStateName6.Text = StrStates(5).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                        TextBoxStateValue6.Text = StrStates(5).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
-                    End If
+        ' 读取方块
+        If ObjJson.Item("block") IsNot Nothing Then
+            ComboBoxBlock.Tag = ObjJson.Item("block").ToString
+            ComboBoxBlock.Text = EnToZh(ComboBoxBlock.Tag, ZhBlocks, EnBlocks)
+        Else
+            ComboBoxBlock.Tag = ""
+            ComboBoxBlock.Text = ""
+        End If
+        ' 读取状态
+        TextBoxStateName1.Text = ""
+        TextBoxStateValue1.Text = ""
+        TextBoxStateName2.Text = ""
+        TextBoxStateValue2.Text = ""
+        TextBoxStateName3.Text = ""
+        TextBoxStateValue3.Text = ""
+        TextBoxStateName4.Text = ""
+        TextBoxStateValue4.Text = ""
+        TextBoxStateName5.Text = ""
+        TextBoxStateValue5.Text = ""
+        TextBoxStateName6.Text = ""
+        TextBoxStateValue6.Text = ""
+        If ObjJson.Item("state") IsNot Nothing Then
+            StrStates = ObjJson.Item("state").ToString.Split(",")
+            ReDim Preserve StrStates(5)
+            If StrStates IsNot Nothing Then
+                If StrStates(0) IsNot Nothing Then
+                    TextBoxStateName1.Text = StrStates(0).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue1.Text = StrStates(0).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                End If
+                If StrStates(1) IsNot Nothing Then
+                    TextBoxStateName2.Text = StrStates(1).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue2.Text = StrStates(1).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                End If
+                If StrStates(2) IsNot Nothing Then
+                    TextBoxStateName3.Text = StrStates(2).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue3.Text = StrStates(2).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                End If
+                If StrStates(3) IsNot Nothing Then
+                    TextBoxStateName4.Text = StrStates(3).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue4.Text = StrStates(3).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                End If
+                If StrStates(4) IsNot Nothing Then
+                    TextBoxStateName5.Text = StrStates(4).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue5.Text = StrStates(4).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                End If
+                If StrStates(5) IsNot Nothing Then
+                    TextBoxStateName6.Text = StrStates(5).Split(":")(0).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
+                    TextBoxStateValue6.Text = StrStates(5).Split(":")(1).Replace(" ", "").Replace("{", "").Replace("}", "").Replace(Chr(34), "")
                 End If
             End If
         End If

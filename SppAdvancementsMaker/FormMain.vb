@@ -29,7 +29,6 @@ Public Class FormMain
 
     ' 初始化界面
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ComboBoxItem.SelectedIndex = 0
         ComboBoxFrame.SelectedIndex = 0
         Dim i As Int16
         ' 背景图片
@@ -39,7 +38,7 @@ Public Class FormMain
         Next
         ' 上一个进度
         ComboBoxParent.Items.Add("")
-        ComboBoxParent.Items.Add("[浏览...]")
+        GetRecipesInSave()
         For i = 0 To UBound(ZhAdvancements)
             ComboBoxParent.Items.Add(ZhAdvancements(i))
         Next
@@ -50,10 +49,31 @@ Public Class FormMain
         For i = 0 To UBound(ZhItems)
             ComboBoxItem.Items.Add(ZhItems(i))
         Next
+        ComboBoxItem.SelectedIndex = 0
+    End Sub
+    Private Sub GetRecipesInSave()
+        Dim StrFileNames As String()
+        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        ' 获取存档目录下所有进度
+        StrFileNames = IO.Directory.GetFileSystemEntries(StrTempPath, "*.json", System.IO.SearchOption.AllDirectories)
+        ' 格式化路径
+        For Each StrFileName As String In StrFileNames
+            ' 把前面一大串删掉
+            StrFileName = StrFileName.Replace(StrTempPath & "\", "")
+            ' 换斜杠
+            StrFileName = StrFileName.Replace("\", "/")
+            ' 改冒号
+            If StrFileName.IndexOf("/") <> -1 Then
+                StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrFileName, StrFileName.Length - StrFileName.IndexOf("/") - 1)
+            End If
+            ' 去.json
+            StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.Length - 5)
+            ComboBoxParent.Items.Add(StrFileName)
+        Next
     End Sub
 
     ' 生成
-    Private Sub ButtonGenerate_Click(sender As Object, e As EventArgs) Handles ButtonGenerate.Click
+    Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonGenerate.Click
         Dim StrCriteria As String = ""
         Dim StrRewards As String = ""
         Dim i As Int16
@@ -82,8 +102,8 @@ Public Class FormMain
                 StrRewards &= Chr(34) & "function" & Chr(34) & ":" & Chr(34) & StrFunctionName & Chr(34)
             End If
             ' 调用函數
-            Dim StrResult As String = GenerateAdvancement(ComboBoxItem.Tag, NumericUpDownData.Value, TextBoxTitle.Text,
-                                                     ComboBoxFrame.Tag, ComboBoxBackground.Tag, TextBoxDescription.Text,
+            Dim StrResult As String = GenerateAdvancement(ComboBoxItem.Tag, NumericUpDownData.Value, ButtonTitle.Tag,
+                                                     ComboBoxFrame.Tag, ComboBoxBackground.Tag, ButtonDescription.Tag,
                                                      CheckBoxShow_Toast.Checked, CheckBoxAnnounce_To_Chat.Checked,
                                                      CheckBoxHidden.Checked,
                                                      ZhToEn(ComboBoxParent.Text, ZhAdvancements, EnAdvancements),
@@ -118,10 +138,12 @@ Public Class FormMain
         Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhBackgrounds, EnBackgrounds)
         If ComboBoxBackground.Text <> "" Then
             ComboBoxBackground.Tag = "minecraft:textures/blocks/" & StrTemp & ".png"
+        Else
+            ComboBoxBackground.Tag = ""
         End If
     End Sub
     Private Sub ComboBoxItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem.SelectedIndexChanged
-        If ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks) <> "" Then
+        If ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks) <> ComboBoxItem.Text Then
             ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks)
         Else
             ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhItems, EnItems)
@@ -130,64 +152,10 @@ Public Class FormMain
 
     ' Json文本
     Private Sub ButtonTitle_Click(sender As Object, e As EventArgs) Handles ButtonTitle.Click
-        FormJsonTexts.Visible = False
-        FormJsonTexts.Show(Me)
-        FormJsonTexts.Tag = "Title"
-        FormJsonTexts.Reset()
+        FormJsonTexts.Reading(ButtonTitle)
     End Sub
     Private Sub ButtonDescription_Click(sender As Object, e As EventArgs) Handles ButtonDescription.Click
-        FormJsonTexts.Visible = False
-        FormJsonTexts.Show(Me)
-        FormJsonTexts.Tag = "Description"
-        FormJsonTexts.Reset()
-    End Sub
-
-    ' 细节处理
-    Private Sub ComboBoxParent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxParent.SelectedIndexChanged
-        If ComboBoxParent.SelectedIndex = 1 Then
-            ' 选中了[浏览...]
-            SelectParent()
-        End If
-    End Sub
-    Private Sub SelectParent()
-        Dim StrTemp As String
-        Dim StrTempPath As String = StrSavePath & "\data\advancements"
-        If Dir(StrTempPath, vbDirectory) <> "" Then
-            With OpenFileDialogParent
-                .AddExtension = True
-                .CheckFileExists = True
-                .CheckPathExists = True
-                .DereferenceLinks = False
-                .InitialDirectory = StrTempPath
-                .Multiselect = False
-                .Filter = "advancement files (*.json)|*.json"
-                .FileName = ""
-                If .ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                    StrTemp = .FileName
-                    If Microsoft.VisualBasic.Left(StrTemp, StrTempPath.Length) <> StrTempPath Then
-                        ' 如果最后选择的文件不在进度目录
-                        ComboBoxParent.Text = ""
-                        Exit Sub
-                    End If
-                Else
-                    ComboBoxParent.Text = ""
-                    Exit Sub
-                End If
-            End With
-            StrTemp = StrTemp.Replace(StrTempPath & "\", "")
-            ' 换斜杠
-            StrTemp = StrTemp.Replace("\", "/")
-            ' 改冒号
-            If StrTemp.IndexOf("/") <> -1 Then
-                StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrTemp, StrTemp.Length - StrTemp.IndexOf("/") - 1)
-            End If
-            ' 去.json
-            StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.Length - 5)
-            ComboBoxParent.Text = StrTemp
-        Else
-            MessageBox.Show("没有可用的进度")
-            ComboBoxParent.Text = ""
-        End If
+        FormJsonTexts.Reading(ButtonDescription)
     End Sub
 
     '条件、分组相关

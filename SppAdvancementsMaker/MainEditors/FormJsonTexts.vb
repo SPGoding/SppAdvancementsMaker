@@ -1,8 +1,19 @@
-﻿Public Class FormJsonTexts
-    Public Sub Reset()
-        ComboBoxColor.Text = "白色"
-        ComboBoxColor.Tag = "white"
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
+
+Public Class FormJsonTexts
+    Private ButtonTarget As Button
+
+    Private Sub FormJsonTexts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        For i = 0 To UBound(ZhJsonColors)
+            ComboBoxColor.Items.Add(ZhJsonColors(i))
+        Next
+    End Sub
+
+    Private Sub Reset()
         TextBoxText.Text = ""
+        ComboBoxColor.SelectedIndex = 0
         CheckBoxBold.Checked = False
         CheckBoxItalic.Checked = False
         CheckBoxObfuscated.Checked = False
@@ -10,50 +21,44 @@
         CheckBoxUnderline.Checked = False
     End Sub
 
-    Private Sub ComboBoxColor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxColor.SelectedIndexChanged
-        With ComboBoxColor
-            Select Case .Text
-                Case "白色"
-                    .Tag = "white"
-                Case "黑色"
-                    .Tag = "black"
-                Case "金色"
-                    .Tag = "gold"
-                Case "黄色"
-                    .Tag = "yelow"
-                Case "浅湖蓝色"
-                    .Tag = "aqua"
-                Case "深湖蓝色"
-                    .Tag = "dark_aqua"
-                Case "浅蓝色"
-                    .Tag = "blue"
-                Case "深蓝色"
-                    .Tag = "dark_blue"
-                Case "浅绿色"
-                    .Tag = "green"
-                Case "深绿色“
-                    .Tag = "dark_green"
-                Case "亮红色"
-                    .Tag = "red"
-                Case "深红色"
-                    .Tag = "dark_red"
-                Case "亮紫色"
-                    .Tag = "light_purple"
-                Case "深紫色"
-                    .Tag = "dark_purple"
-                Case "浅灰色"
-                    .Tag = "gray"
-                Case "深灰色"
-                    .Tag = "dark_gray"
-            End Select
-        End With
+    Public Sub Reading(ByRef ButtonTarget As Button)
+        ' 显示本窗体
+        Visible = False
+        Show(FormMain)
+        ' 读取传送过来的 Json 文本
+        Reset()
+        Me.ButtonTarget = ButtonTarget
+        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        If ObjJson.ToString <> "{}" Then
+            If ObjJson.Item("text") IsNot Nothing Then
+                TextBoxText.Text = ObjJson.Item("text").ToString
+            End If
+            If ObjJson.Item("color") IsNot Nothing Then
+                ComboBoxColor.Text = EnToZh(ObjJson.Item("color").ToString, ZhJsonColors, EnJsonColors)
+            End If
+            If ObjJson.Item("bold") IsNot Nothing Then
+                CheckBoxBold.Checked = CBool(ObjJson.Item("bold").ToString)
+            End If
+            If ObjJson.Item("italic") IsNot Nothing Then
+                CheckBoxItalic.Checked = CBool(ObjJson.Item("italic").ToString)
+            End If
+            If ObjJson.Item("obfuscated") IsNot Nothing Then
+                CheckBoxObfuscated.Checked = CBool(ObjJson.Item("obfuscated").ToString)
+            End If
+            If ObjJson.Item("strikethrough") IsNot Nothing Then
+                CheckBoxStrikethrough.Checked = CBool(ObjJson.Item("strikethrough").ToString)
+            End If
+            If ObjJson.Item("underlined") IsNot Nothing Then
+                CheckBoxUnderline.Checked = CBool(ObjJson.Item("underlined").ToString)
+            End If
+        End If
     End Sub
 
-    Private Sub ButtonEnter_Click(sender As Object, e As EventArgs) Handles ButtonEnter.Click
+    Private Sub Wirting(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String = ""
         StrResult &= "{"
         StrResult &= Chr(34) & "text" & Chr(34) & ":" & Chr(34) & TextBoxText.Text & Chr(34) & ","
-        StrResult &= """color"":""" & ComboBoxColor.Tag & ""","
+        StrResult &= """color"":""" & ZhToEn(ComboBoxColor.Text, ZhJsonColors, EnJsonColors) & ""","
         StrResult &= """bold"":" & CheckBoxBold.Checked.ToString.ToLower & ","
         StrResult &= """underline"":" & CheckBoxUnderline.Checked.ToString.ToLower & ","
         StrResult &= """italic"":" & CheckBoxItalic.Checked.ToString.ToLower & ","
@@ -61,12 +66,9 @@
         StrResult &= """obfuscated"":" & CheckBoxObfuscated.Checked.ToString.ToLower
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
-        Select Case Tag
-            Case "Title"
-                FormMain.TextBoxTitle.Text = StrResult
-            Case "Description"
-                FormMain.TextBoxDescription.Text = StrResult
-        End Select
+        ButtonTarget.Tag = StrResult
         Hide()
+        FormMain.Hide()
+        FormMain.Show()
     End Sub
 End Class
