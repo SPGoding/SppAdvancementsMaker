@@ -73,21 +73,23 @@ Public Class FormRecipeLoot
         Dim StrFileNames As String()
         Dim StrTempPath As String = StrSavePath & "\data\loot_tables"
         ' 获取存档目录下所有战利品表
-        StrFileNames = IO.Directory.GetFileSystemEntries(StrTempPath, "*.json", System.IO.SearchOption.AllDirectories)
-        ' 格式化路径
-        For Each StrFileName As String In StrFileNames
-            ' 把前面一大串删掉
-            StrFileName = StrFileName.Replace(StrTempPath & "\", "")
-            ' 换斜杠
-            StrFileName = StrFileName.Replace("\", "/")
-            ' 改冒号
-            If StrFileName.IndexOf("/") <> -1 Then
-                StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrFileName, StrFileName.Length - StrFileName.IndexOf("/") - 1)
-            End If
-            ' 去.json
-            StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.Length - 5)
-            ListBox1.Items.Add(StrFileName)
-        Next
+        If Dir(StrTempPath) <> "" Then
+            StrFileNames = IO.Directory.GetFileSystemEntries(StrTempPath, "*.json", System.IO.SearchOption.AllDirectories)
+            ' 格式化路径
+            For Each StrFileName As String In StrFileNames
+                ' 把前面一大串删掉
+                StrFileName = StrFileName.Replace(StrTempPath & "\", "")
+                ' 换斜杠
+                StrFileName = StrFileName.Replace("\", "/")
+                ' 改冒号
+                If StrFileName.IndexOf("/") <> -1 Then
+                    StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrFileName, StrFileName.Length - StrFileName.IndexOf("/") - 1)
+                End If
+                ' 去.json
+                StrFileName = Microsoft.VisualBasic.Left(StrFileName, StrFileName.Length - 5)
+                ListBox1.Items.Add(StrFileName)
+            Next
+        End If
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged

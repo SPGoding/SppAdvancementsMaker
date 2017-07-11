@@ -15,7 +15,7 @@ Public Class FormSelectSave
         If FolderBrowserDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             TextBoxSavePath.Text = FolderBrowserDialog1.SelectedPath
         End If
-        TextBoxSavePath.SelectionStart = TextBoxSavePath.TextLength - 1
+        TextBoxSavePath.SelectionStart = TextBoxSavePath.TextLength
     End Sub
 
     Private Sub ButtonEnter_Click(sender As Object, e As EventArgs) Handles ButtonEnter.Click

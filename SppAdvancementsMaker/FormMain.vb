@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports System.Text
-
-Public Class FormMain
+﻿Public Class FormMain
     '条件列表 一些数据
     Private IntGroupCount As Int16 = 0
     Private IntCriteriaCount As Int32 = 0
@@ -240,5 +237,9 @@ Public Class FormMain
     End Sub
     Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
         FormRecipeLoot.Reading(ButtonLoot.Tag, RewardType.Loot)
+    End Sub
+
+    Private Sub FormMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        End
     End Sub
 End Class
