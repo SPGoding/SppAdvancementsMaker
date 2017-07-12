@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormJsonTexts
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormJsonTexts
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBoxText = New System.Windows.Forms.TextBox()
@@ -32,7 +32,6 @@ Partial Class FormJsonTexts
         Me.CheckBoxStrikethrough = New System.Windows.Forms.CheckBox()
         Me.CheckBoxObfuscated = New System.Windows.Forms.CheckBox()
         Me.ButtonEnter = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label2
@@ -132,23 +131,11 @@ Partial Class FormJsonTexts
         Me.ButtonEnter.Text = "确定"
         Me.ButtonEnter.UseVisualStyleBackColor = True
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(16, 129)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(149, 20)
-        Me.Label6.TabIndex = 46
-        Me.Label6.Text = "读取与预览功能计划中"
-        '
         'FormJsonTexts
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(300, 187)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButtonEnter)
         Me.Controls.Add(Me.CheckBoxObfuscated)
         Me.Controls.Add(Me.CheckBoxStrikethrough)
@@ -180,5 +167,4 @@ Partial Class FormJsonTexts
     Friend WithEvents CheckBoxStrikethrough As CheckBox
     Friend WithEvents CheckBoxObfuscated As CheckBox
     Friend WithEvents ButtonEnter As Button
-    Friend WithEvents Label6 As Label
 End Class

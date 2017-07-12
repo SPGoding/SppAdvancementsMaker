@@ -1,29 +1,36 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormEffectsChanged
+Public Class FormGlobalEntity
+    Private ButtonTarget As Button
+    ' 状态效果相关
     Private IntEffects As Int16
     Private OldSelectedIndex As Int32 = -1
     Private StrEachEffectJson(127) As String
 
-    Public Sub Reading(StrJson As String)
+    ' 常规
+    Private Sub FormGlobalEntity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        ' 读取 ComboBox 们
+        ComboBoxEffectName.Items.Add("")
+        For i = 0 To UBound(ZhEffects)
+            ComboBoxEffectName.Items.Add(ZhEffects(i))
+        Next
+        ComboBoxType.Items.Add("")
+        For i = 0 To UBound(ZhEntityIds)
+            ComboBoxType.Items.Add(ZhEntityIds(i))
+        Next
+    End Sub
+    Public Sub Reading(ByRef ButtonTarget As Button)
         ' 显示本窗体
         Visible = False
-        Show(FormCriteria)
+        Show()
         ' 读取传送过来的 Json 文本
-        Dim i As Int16
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
-        IntEffects = 0
-        OldSelectedIndex = -1
-        ReDim StrEachEffectJson(127)
-        ListBoxEffects.Items.Clear()
-        ComboBoxEffectName.Text = ""
-        ComboBoxEffectName.Tag = ""
-        NumericUpDownAmplifierMax.Value = 0
-        NumericUpDownAmplifierMin.Value = 0
-        NumericUpDownDurationMax.Value = 0
-        NumericUpDownDurationMin.Value = 0
+        Reset()
+        Me.ButtonTarget = ButtonTarget
+        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
+            ' 读取状态效果
             If ObjJson.Item("effects").ToString <> "" Then
                 For i = 0 To ObjJson.Item("effects").Count - 1
                     ListBoxEffects.Items.Add("效果" & IntEffects)
@@ -44,28 +51,151 @@ Public Class FormEffectsChanged
                 Next
                 ListBoxEffects.SelectedIndex = ListBoxEffects.Items.Count - 1
             End If
+            ' 读取常规
+            If ObjJson.Item("distance") IsNot Nothing Then
+                If ObjJson.Item("distance").Item("absolute") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("absolute").Item("max") IsNot Nothing Then
+                        NumericUpDownAbsoluteMax.Value = ObjJson.Item("distance").Item("absolute").Item("max").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("absolute").Item("min") IsNot Nothing Then
+                        NumericUpDownAbsoluteMin.Value = ObjJson.Item("distance").Item("absolute").Item("min").ToString
+                    End If
+                End If
+                If ObjJson.Item("distance").Item("horizontal") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("horizontal").Item("max") IsNot Nothing Then
+                        NumericUpDownHorizontalMax.Value = ObjJson.Item("distance").Item("horizontal").Item("max").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("horizontal").Item("min") IsNot Nothing Then
+                        NumericUpDownHorizontalMin.Value = ObjJson.Item("distance").Item("horizontal").Item("min").ToString
+                    End If
+                End If
+                If ObjJson.Item("distance").Item("x") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("x").Item("max") IsNot Nothing Then
+                        NumericUpDownXMax.Value = ObjJson.Item("distance").Item("x").Item("max").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("x").Item("min") IsNot Nothing Then
+                        NumericUpDownXMin.Value = ObjJson.Item("distance").Item("x").Item("min").ToString
+                    End If
+                End If
+                If ObjJson.Item("distance").Item("y") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("y").Item("max") IsNot Nothing Then
+                        NumericUpDownYMax.Value = ObjJson.Item("distance").Item("y").Item("max").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("y").Item("min") IsNot Nothing Then
+                        NumericUpDownYMin.Value = ObjJson.Item("distance").Item("y").Item("min").ToString
+                    End If
+                End If
+                If ObjJson.Item("distance").Item("z") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("z").Item("max") IsNot Nothing Then
+                        NumericUpDownZMax.Value = ObjJson.Item("distance").Item("z").Item("max").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("z").Item("min") IsNot Nothing Then
+                        NumericUpDownZMin.Value = ObjJson.Item("distance").Item("z").Item("min").ToString
+                    End If
+                End If
+            End If
+            If ObjJson.Item("location") IsNot Nothing Then
+                ButtonLocation.Tag = ObjJson.Item("location").ToString
+            End If
+            If ObjJson.Item("nbt") IsNot Nothing Then
+                TextBoxNbt.Text = ObjJson.Item("nbt").ToString
+            End If
+            If ObjJson.Item("type") IsNot Nothing Then
+                ComboBoxType.Text = EnToZh(ObjJson.Item("type").ToString, ZhEntityIds, EnEntityIds)
+            End If
         End If
     End Sub
-
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim i As Int16
         Dim StrResult As String
-        ' 先保存
+        ' 写入状态效果
         SaveCurrentEffect(OldSelectedIndex)
         StrResult = "{" & Chr(34) & "effects" & Chr(34) & ":" & "{"
         For i = 0 To ListBoxEffects.Items.Count - 1
             StrResult &= StrEachEffectJson(i) & ","
         Next
-        StrResult &= "}}"
+        StrResult &= "},"
+        ' 写入常规
+        StrResult &= Chr(34) & "distance" & Chr(34) & ":" & "{"
+        StrResult &= Chr(34) & "absolute" & Chr(34) & ":" & "{"
+        If NumericUpDownAbsoluteMax.Value <> 0 Then
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAbsoluteMax.Value & ","
+        End If
+        If NumericUpDownAbsoluteMin.Value <> 0 Then
+            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAbsoluteMin.Value
+        End If
+        StrResult &= "},"
+        StrResult &= Chr(34) & "horizontal" & Chr(34) & ":" & "{"
+        If NumericUpDownHorizontalMax.Value <> 0 Then
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownHorizontalMax.Value & ","
+        End If
+        If NumericUpDownHorizontalMin.Value <> 0 Then
+            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownHorizontalMin.Value
+        End If
+        StrResult &= "},"
+        StrResult &= Chr(34) & "x" & Chr(34) & ":" & "{"
+        If NumericUpDownXMax.Value <> 0 Then
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
+        End If
+        If NumericUpDownXMin.Value <> 0 Then
+            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value
+        End If
+        StrResult &= "},"
+        StrResult &= Chr(34) & "y" & Chr(34) & ":" & "{"
+        If NumericUpDownYMax.Value <> 0 Then
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
+        End If
+        If NumericUpDownYMin.Value <> 0 Then
+            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value
+        End If
+        StrResult &= "},"
+        StrResult &= Chr(34) & "z" & Chr(34) & ":" & "{"
+        If NumericUpDownZMax.Value <> 0 Then
+            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
+        End If
+        If NumericUpDownZMin.Value <> 0 Then
+            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value
+        End If
+        StrResult &= "}"
+        StrResult &= "},"
+        StrResult &= Chr(34) & "location" & Chr(34) & ":" & ButtonLocation.Tag & ","
+        StrResult &= Chr(34) & "nbt" & Chr(34) & ":" & Chr(34) & TextBoxNbt.Text & Chr(34) & ","
+        StrResult &= Chr(34) & "type" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxType.Text, ZhEntityIds, EnEntityIds) & Chr(34)
+        StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")
         ' 将处理后的 Json 文本返回条件窗体
-        FormCriteria.ButtonCriteria.Tag = StrResult
+        ButtonTarget.Tag = StrResult
         Hide()
-        FormCriteria.Hide()
-        FormCriteria.Show(FormMain)
+        ButtonTarget.Parent.Hide()
+        ButtonTarget.Parent.Show()
+    End Sub
+    Private Sub Reset()
+        IntEffects = 0
+        OldSelectedIndex = -1
+        ReDim StrEachEffectJson(127)
+        ButtonLocation.Tag = "{}"
+        ComboBoxEffectName.SelectedIndex = 0
+        ComboBoxType.SelectedIndex = 0
+        ListBoxEffects.Items.Clear()
+        NumericUpDownAbsoluteMax.Value = 0
+        NumericUpDownAbsoluteMin.Value = 0
+        NumericUpDownAmplifierMax.Value = 0
+        NumericUpDownAmplifierMin.Value = 0
+        NumericUpDownDurationMax.Value = 0
+        NumericUpDownDurationMin.Value = 0
+        NumericUpDownHorizontalMax.Value = 0
+        NumericUpDownHorizontalMin.Value = 0
+        NumericUpDownXMax.Value = 0
+        NumericUpDownXMin.Value = 0
+        NumericUpDownYMax.Value = 0
+        NumericUpDownYMin.Value = 0
+        NumericUpDownZMax.Value = 0
+        NumericUpDownZMin.Value = 0
+        TextBoxNbt.Text = ""
     End Sub
 
+    ' 状态效果相关
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
         ComboBoxEffectName.Enabled = True
         NumericUpDownAmplifierMax.Enabled = True
@@ -81,12 +211,10 @@ Public Class FormEffectsChanged
         NumericUpDownDurationMin.Value = 0
         IntEffects += 1
     End Sub
-
     Private Sub ButtonDel_Click(sender As Object, e As EventArgs) Handles ButtonDel.Click
         StrEachEffectJson(ListBoxEffects.SelectedIndex) = ""
         ListBoxEffects.Items.Remove(ListBoxEffects.SelectedItem)
     End Sub
-
     Private Sub ListBoxEffects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxEffects.SelectedIndexChanged
         ' 保存旧的Effect
         SaveCurrentEffect(OldSelectedIndex)
@@ -155,7 +283,6 @@ Public Class FormEffectsChanged
             End If
         End If
     End Sub
-
     Private Sub SaveCurrentEffect(OldSelectedIndex As Int32)
         ' 保存当前的编辑
         If OldSelectedIndex >= 0 Then
@@ -181,16 +308,11 @@ Public Class FormEffectsChanged
             StrEachEffectJson(OldSelectedIndex) = StrResult
         End If
     End Sub
-
     Private Sub ComboBoxEffectName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEffectName.SelectedIndexChanged
         ComboBoxEffectName.Tag = ZhToEn(ComboBoxEffectName.Text, ZhEffects, EnEffects)
     End Sub
 
-    Private Sub FormEffectsChanged_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim i As Int16
-        ComboBoxEffectName.Items.Add("")
-        For i = 0 To UBound(ZhEffects)
-            ComboBoxEffectName.Items.Add(ZhEffects(i))
-        Next
+    Private Sub ButtonLocation_Click(sender As Object, e As EventArgs) Handles ButtonLocation.Click
+        FormGlobalLocation.Reading(ButtonLocation)
     End Sub
 End Class

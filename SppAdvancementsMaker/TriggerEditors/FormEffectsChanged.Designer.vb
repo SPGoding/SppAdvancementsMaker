@@ -28,20 +28,22 @@ Partial Class FormEffectsChanged
         Me.ComboBoxEffectName = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.NumericUpDownAmplifier = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownMin = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownAmplifierMin = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownDurationMin = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ListBoxEffects = New System.Windows.Forms.ListBox()
         Me.ButtonAdd = New System.Windows.Forms.Button()
         Me.ButtonDel = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.NumericUpDownMax = New System.Windows.Forms.NumericUpDown()
         Me.Label11 = New System.Windows.Forms.Label()
-        CType(Me.NumericUpDownAmplifier, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.NumericUpDownAmplifierMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownDurationMax = New System.Windows.Forms.NumericUpDown()
+        Me.Label8 = New System.Windows.Forms.Label()
+        CType(Me.NumericUpDownAmplifierMin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownDurationMin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownAmplifierMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownDurationMax, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ButtonEnter
@@ -76,55 +78,58 @@ Partial Class FormEffectsChanged
         'ComboBoxEffectName
         '
         Me.ComboBoxEffectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEffectName.Enabled = False
         Me.ComboBoxEffectName.FormattingEnabled = True
         Me.ComboBoxEffectName.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxEffectName.IntegralHeight = False
-        Me.ComboBoxEffectName.Location = New System.Drawing.Point(171, 202)
+        Me.ComboBoxEffectName.Location = New System.Drawing.Point(133, 200)
         Me.ComboBoxEffectName.Name = "ComboBoxEffectName"
-        Me.ComboBoxEffectName.Size = New System.Drawing.Size(232, 28)
+        Me.ComboBoxEffectName.Size = New System.Drawing.Size(270, 28)
         Me.ComboBoxEffectName.TabIndex = 48
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(16, 238)
+        Me.Label3.Location = New System.Drawing.Point(16, 256)
         Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(93, 20)
+        Me.Label3.Size = New System.Drawing.Size(79, 20)
         Me.Label3.TabIndex = 50
-        Me.Label3.Text = "效果放大器："
+        Me.Label3.Text = "效果放大器"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 270)
+        Me.Label4.Location = New System.Drawing.Point(16, 288)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(145, 20)
+        Me.Label4.Size = New System.Drawing.Size(89, 20)
         Me.Label4.TabIndex = 51
-        Me.Label4.Text = "持续时间(刻为单位)："
+        Me.Label4.Text = "持续时间(刻)"
         '
-        'NumericUpDownAmplifier
+        'NumericUpDownAmplifierMin
         '
-        Me.NumericUpDownAmplifier.Location = New System.Drawing.Point(171, 236)
-        Me.NumericUpDownAmplifier.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
-        Me.NumericUpDownAmplifier.Name = "NumericUpDownAmplifier"
-        Me.NumericUpDownAmplifier.Size = New System.Drawing.Size(232, 26)
-        Me.NumericUpDownAmplifier.TabIndex = 52
+        Me.NumericUpDownAmplifierMin.Enabled = False
+        Me.NumericUpDownAmplifierMin.Location = New System.Drawing.Point(133, 254)
+        Me.NumericUpDownAmplifierMin.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
+        Me.NumericUpDownAmplifierMin.Name = "NumericUpDownAmplifierMin"
+        Me.NumericUpDownAmplifierMin.Size = New System.Drawing.Size(130, 26)
+        Me.NumericUpDownAmplifierMin.TabIndex = 52
         '
-        'NumericUpDownMin
+        'NumericUpDownDurationMin
         '
-        Me.NumericUpDownMin.Location = New System.Drawing.Point(96, 293)
-        Me.NumericUpDownMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownMin.Name = "NumericUpDownMin"
-        Me.NumericUpDownMin.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownMin.TabIndex = 53
+        Me.NumericUpDownDurationMin.Enabled = False
+        Me.NumericUpDownDurationMin.Location = New System.Drawing.Point(133, 286)
+        Me.NumericUpDownDurationMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownDurationMin.Name = "NumericUpDownDurationMin"
+        Me.NumericUpDownDurationMin.Size = New System.Drawing.Size(130, 26)
+        Me.NumericUpDownDurationMin.TabIndex = 53
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.Blue
-        Me.Label5.Location = New System.Drawing.Point(167, 270)
+        Me.Label5.Location = New System.Drawing.Point(16, 308)
         Me.Label5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(101, 20)
@@ -163,7 +168,7 @@ Partial Class FormEffectsChanged
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.Red
-        Me.Label6.Location = New System.Drawing.Point(16, 356)
+        Me.Label6.Location = New System.Drawing.Point(16, 364)
         Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(135, 20)
@@ -173,58 +178,69 @@ Partial Class FormEffectsChanged
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(42, 295)
+        Me.Label7.Location = New System.Drawing.Point(171, 231)
         Me.Label7.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(44, 20)
+        Me.Label7.Size = New System.Drawing.Size(51, 20)
         Me.Label7.TabIndex = 59
-        Me.Label7.Text = "最小: "
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(181, 295)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(44, 20)
-        Me.Label8.TabIndex = 60
-        Me.Label8.Text = "最大: "
-        '
-        'NumericUpDownMax
-        '
-        Me.NumericUpDownMax.Location = New System.Drawing.Point(235, 293)
-        Me.NumericUpDownMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownMax.Name = "NumericUpDownMax"
-        Me.NumericUpDownMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownMax.TabIndex = 61
+        Me.Label7.Text = "最小值"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.Red
-        Me.Label11.Location = New System.Drawing.Point(16, 336)
+        Me.Label11.Location = New System.Drawing.Point(16, 344)
         Me.Label11.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(107, 20)
         Me.Label11.TabIndex = 72
         Me.Label11.Text = "填零代表不限制"
         '
+        'NumericUpDownAmplifierMax
+        '
+        Me.NumericUpDownAmplifierMax.Enabled = False
+        Me.NumericUpDownAmplifierMax.Location = New System.Drawing.Point(273, 254)
+        Me.NumericUpDownAmplifierMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownAmplifierMax.Name = "NumericUpDownAmplifierMax"
+        Me.NumericUpDownAmplifierMax.Size = New System.Drawing.Size(130, 26)
+        Me.NumericUpDownAmplifierMax.TabIndex = 76
+        '
+        'NumericUpDownDurationMax
+        '
+        Me.NumericUpDownDurationMax.Enabled = False
+        Me.NumericUpDownDurationMax.Location = New System.Drawing.Point(273, 286)
+        Me.NumericUpDownDurationMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownDurationMax.Name = "NumericUpDownDurationMax"
+        Me.NumericUpDownDurationMax.Size = New System.Drawing.Size(130, 26)
+        Me.NumericUpDownDurationMax.TabIndex = 75
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(314, 231)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(51, 20)
+        Me.Label8.TabIndex = 74
+        Me.Label8.Text = "最大值"
+        '
         'FormEffectsChanged
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(415, 401)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.NumericUpDownMax)
+        Me.ClientSize = New System.Drawing.Size(415, 400)
+        Me.Controls.Add(Me.NumericUpDownAmplifierMax)
+        Me.Controls.Add(Me.NumericUpDownDurationMax)
         Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButtonDel)
         Me.Controls.Add(Me.ButtonAdd)
         Me.Controls.Add(Me.ListBoxEffects)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.NumericUpDownMin)
-        Me.Controls.Add(Me.NumericUpDownAmplifier)
+        Me.Controls.Add(Me.NumericUpDownDurationMin)
+        Me.Controls.Add(Me.NumericUpDownAmplifierMin)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEnter)
@@ -237,9 +253,10 @@ Partial Class FormEffectsChanged
         Me.Name = "FormEffectsChanged"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
-        CType(Me.NumericUpDownAmplifier, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownAmplifierMin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownDurationMin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownAmplifierMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownDurationMax, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -251,15 +268,16 @@ Partial Class FormEffectsChanged
     Friend WithEvents ComboBoxEffectName As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents NumericUpDownAmplifier As NumericUpDown
-    Friend WithEvents NumericUpDownMin As NumericUpDown
+    Friend WithEvents NumericUpDownAmplifierMin As NumericUpDown
+    Friend WithEvents NumericUpDownDurationMin As NumericUpDown
     Friend WithEvents Label5 As Label
     Friend WithEvents ListBoxEffects As ListBox
     Friend WithEvents ButtonAdd As Button
     Friend WithEvents ButtonDel As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents NumericUpDownMax As NumericUpDown
     Friend WithEvents Label11 As Label
+    Friend WithEvents NumericUpDownAmplifierMax As NumericUpDown
+    Friend WithEvents NumericUpDownDurationMax As NumericUpDown
+    Friend WithEvents Label8 As Label
 End Class

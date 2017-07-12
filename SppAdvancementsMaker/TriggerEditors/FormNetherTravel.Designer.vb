@@ -24,15 +24,10 @@ Partial Class FormNetherTravel
     Private Sub InitializeComponent()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.NumericUpDownZMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownZMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownYMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownYMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownXMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownXMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownHorizontalMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownHorizontalMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownAbsoluteMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownAbsoluteMax = New System.Windows.Forms.NumericUpDown()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -41,18 +36,23 @@ Partial Class FormNetherTravel
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ButtonEnter = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.NumericUpDownZMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownYMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownXMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownHorizontalMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownAbsoluteMax = New System.Windows.Forms.NumericUpDown()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownZMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownYMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownXMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownHorizontalMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownHorizontalMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownAbsoluteMin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownHorizontalMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownAbsoluteMax, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -69,93 +69,48 @@ Partial Class FormNetherTravel
         '
         'NumericUpDownZMin
         '
-        Me.NumericUpDownZMin.Location = New System.Drawing.Point(263, 191)
+        Me.NumericUpDownZMin.Location = New System.Drawing.Point(151, 191)
         Me.NumericUpDownZMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMin.Name = "NumericUpDownZMin"
         Me.NumericUpDownZMin.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownZMin.TabIndex = 92
         '
-        'NumericUpDownZMax
-        '
-        Me.NumericUpDownZMax.Location = New System.Drawing.Point(129, 191)
-        Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
-        Me.NumericUpDownZMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownZMax.TabIndex = 91
-        '
         'NumericUpDownYMin
         '
-        Me.NumericUpDownYMin.Location = New System.Drawing.Point(263, 159)
+        Me.NumericUpDownYMin.Location = New System.Drawing.Point(151, 159)
         Me.NumericUpDownYMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMin.Name = "NumericUpDownYMin"
         Me.NumericUpDownYMin.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownYMin.TabIndex = 90
         '
-        'NumericUpDownYMax
-        '
-        Me.NumericUpDownYMax.Location = New System.Drawing.Point(129, 159)
-        Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
-        Me.NumericUpDownYMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownYMax.TabIndex = 89
-        '
         'NumericUpDownXMin
         '
-        Me.NumericUpDownXMin.Location = New System.Drawing.Point(263, 127)
+        Me.NumericUpDownXMin.Location = New System.Drawing.Point(151, 127)
         Me.NumericUpDownXMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMin.Name = "NumericUpDownXMin"
         Me.NumericUpDownXMin.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownXMin.TabIndex = 88
         '
-        'NumericUpDownXMax
-        '
-        Me.NumericUpDownXMax.Location = New System.Drawing.Point(129, 127)
-        Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
-        Me.NumericUpDownXMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownXMax.TabIndex = 87
-        '
         'NumericUpDownHorizontalMin
         '
-        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(263, 95)
+        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(151, 95)
         Me.NumericUpDownHorizontalMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownHorizontalMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownHorizontalMin.Name = "NumericUpDownHorizontalMin"
         Me.NumericUpDownHorizontalMin.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownHorizontalMin.TabIndex = 86
         '
-        'NumericUpDownHorizontalMax
-        '
-        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(129, 95)
-        Me.NumericUpDownHorizontalMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownHorizontalMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownHorizontalMax.Name = "NumericUpDownHorizontalMax"
-        Me.NumericUpDownHorizontalMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownHorizontalMax.TabIndex = 85
-        '
         'NumericUpDownAbsoluteMin
         '
-        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(263, 63)
+        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(151, 63)
         Me.NumericUpDownAbsoluteMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAbsoluteMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownAbsoluteMin.Name = "NumericUpDownAbsoluteMin"
         Me.NumericUpDownAbsoluteMin.Size = New System.Drawing.Size(75, 26)
         Me.NumericUpDownAbsoluteMin.TabIndex = 84
-        '
-        'NumericUpDownAbsoluteMax
-        '
-        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(129, 63)
-        Me.NumericUpDownAbsoluteMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownAbsoluteMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownAbsoluteMax.Name = "NumericUpDownAbsoluteMax"
-        Me.NumericUpDownAbsoluteMax.Size = New System.Drawing.Size(75, 26)
-        Me.NumericUpDownAbsoluteMax.TabIndex = 83
         '
         'Label9
         '
@@ -210,7 +165,7 @@ Partial Class FormNetherTravel
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(275, 40)
+        Me.Label4.Location = New System.Drawing.Point(163, 40)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 20)
@@ -237,16 +192,6 @@ Partial Class FormNetherTravel
         Me.ButtonEnter.Text = "确定"
         Me.ButtonEnter.UseVisualStyleBackColor = True
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(139, 40)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(51, 20)
-        Me.Label2.TabIndex = 73
-        Me.Label2.Text = "最大值"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -267,23 +212,79 @@ Partial Class FormNetherTravel
         Me.Label10.TabIndex = 96
         Me.Label10.Text = "在主世界的移动"
         '
+        'NumericUpDownZMax
+        '
+        Me.NumericUpDownZMax.Location = New System.Drawing.Point(263, 191)
+        Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
+        Me.NumericUpDownZMax.Size = New System.Drawing.Size(75, 26)
+        Me.NumericUpDownZMax.TabIndex = 102
+        '
+        'NumericUpDownYMax
+        '
+        Me.NumericUpDownYMax.Location = New System.Drawing.Point(263, 159)
+        Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
+        Me.NumericUpDownYMax.Size = New System.Drawing.Size(75, 26)
+        Me.NumericUpDownYMax.TabIndex = 101
+        '
+        'NumericUpDownXMax
+        '
+        Me.NumericUpDownXMax.Location = New System.Drawing.Point(263, 127)
+        Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
+        Me.NumericUpDownXMax.Size = New System.Drawing.Size(75, 26)
+        Me.NumericUpDownXMax.TabIndex = 100
+        '
+        'NumericUpDownHorizontalMax
+        '
+        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(263, 95)
+        Me.NumericUpDownHorizontalMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownHorizontalMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownHorizontalMax.Name = "NumericUpDownHorizontalMax"
+        Me.NumericUpDownHorizontalMax.Size = New System.Drawing.Size(75, 26)
+        Me.NumericUpDownHorizontalMax.TabIndex = 99
+        '
+        'NumericUpDownAbsoluteMax
+        '
+        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(263, 63)
+        Me.NumericUpDownAbsoluteMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownAbsoluteMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownAbsoluteMax.Name = "NumericUpDownAbsoluteMax"
+        Me.NumericUpDownAbsoluteMax.Size = New System.Drawing.Size(75, 26)
+        Me.NumericUpDownAbsoluteMax.TabIndex = 98
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(273, 40)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(51, 20)
+        Me.Label2.TabIndex = 97
+        Me.Label2.Text = "最大值"
+        '
         'FormNetherTravel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(355, 277)
+        Me.Controls.Add(Me.NumericUpDownZMax)
+        Me.Controls.Add(Me.NumericUpDownYMax)
+        Me.Controls.Add(Me.NumericUpDownXMax)
+        Me.Controls.Add(Me.NumericUpDownHorizontalMax)
+        Me.Controls.Add(Me.NumericUpDownAbsoluteMax)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.NumericUpDownZMin)
-        Me.Controls.Add(Me.NumericUpDownZMax)
         Me.Controls.Add(Me.NumericUpDownYMin)
-        Me.Controls.Add(Me.NumericUpDownYMax)
         Me.Controls.Add(Me.NumericUpDownXMin)
-        Me.Controls.Add(Me.NumericUpDownXMax)
         Me.Controls.Add(Me.NumericUpDownHorizontalMin)
-        Me.Controls.Add(Me.NumericUpDownHorizontalMax)
         Me.Controls.Add(Me.NumericUpDownAbsoluteMin)
-        Me.Controls.Add(Me.NumericUpDownAbsoluteMax)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -292,7 +293,6 @@ Partial Class FormNetherTravel
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEnter)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -301,14 +301,14 @@ Partial Class FormNetherTravel
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         CType(Me.NumericUpDownZMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownYMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownXMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownHorizontalMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownHorizontalMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownAbsoluteMin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownHorizontalMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownAbsoluteMax, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -317,15 +317,10 @@ Partial Class FormNetherTravel
 
     Friend WithEvents Label11 As Label
     Friend WithEvents NumericUpDownZMin As NumericUpDown
-    Friend WithEvents NumericUpDownZMax As NumericUpDown
     Friend WithEvents NumericUpDownYMin As NumericUpDown
-    Friend WithEvents NumericUpDownYMax As NumericUpDown
     Friend WithEvents NumericUpDownXMin As NumericUpDown
-    Friend WithEvents NumericUpDownXMax As NumericUpDown
     Friend WithEvents NumericUpDownHorizontalMin As NumericUpDown
-    Friend WithEvents NumericUpDownHorizontalMax As NumericUpDown
     Friend WithEvents NumericUpDownAbsoluteMin As NumericUpDown
-    Friend WithEvents NumericUpDownAbsoluteMax As NumericUpDown
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
@@ -334,7 +329,12 @@ Partial Class FormNetherTravel
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents ButtonEnter As Button
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents NumericUpDownZMax As NumericUpDown
+    Friend WithEvents NumericUpDownYMax As NumericUpDown
+    Friend WithEvents NumericUpDownXMax As NumericUpDown
+    Friend WithEvents NumericUpDownHorizontalMax As NumericUpDown
+    Friend WithEvents NumericUpDownAbsoluteMax As NumericUpDown
+    Friend WithEvents Label2 As Label
 End Class

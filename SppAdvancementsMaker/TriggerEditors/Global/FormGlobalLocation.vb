@@ -36,7 +36,7 @@ Public Class FormGlobalLocation
     Public Sub Reading(ByRef ButtonTarget As Button)
         ' 显示本窗体
         Visible = False
-        Show(FormMain)
+        Show()
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget

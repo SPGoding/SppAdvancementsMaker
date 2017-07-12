@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -66,9 +66,9 @@ Partial Class FormMain
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(164, 20)
+        Me.Label2.Size = New System.Drawing.Size(135, 20)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "作为图标的物品的字母ID"
+        Me.Label2.Text = "作为图标的物品种类"
         '
         'Label3
         '
@@ -155,9 +155,9 @@ Partial Class FormMain
         Me.CheckBoxHidden.AutoSize = True
         Me.CheckBoxHidden.Location = New System.Drawing.Point(237, 243)
         Me.CheckBoxHidden.Name = "CheckBoxHidden"
-        Me.CheckBoxHidden.Size = New System.Drawing.Size(98, 24)
+        Me.CheckBoxHidden.Size = New System.Drawing.Size(192, 24)
         Me.CheckBoxHidden.TabIndex = 16
-        Me.CheckBoxHidden.Text = "完成前隐藏"
+        Me.CheckBoxHidden.Text = "完成前隐藏(对子进度生效)"
         Me.CheckBoxHidden.UseVisualStyleBackColor = True
         '
         'Label7
@@ -296,9 +296,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(439, 33)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode1.Name = "组"
-        TreeNode1.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
+        TreeNode3.Name = "组"
+        TreeNode3.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 387)
         Me.TreeViewCriterias.TabIndex = 40
         '

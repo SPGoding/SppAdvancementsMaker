@@ -3,13 +3,14 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class FormCriteria
-    '//TODO
-    'Private Sub FormCriteria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    '    Dim i As Int16
-    '    For i = 0 To UBound(ZhTriggers)
-    '        ComboBoxTrigger.Items.Add(ZhTriggers(i))
-    '    Next
-    'End Sub
+    Private Sub FormCriteria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ComboBoxTrigger.SelectedIndex = 0
+        '//TODO
+        'Dim i As Int16
+        'For i = 0 To UBound(ZhTriggers)
+        '    ComboBoxTrigger.Items.Add(ZhTriggers(i))
+        'Next
+    End Sub
 
     Public Sub Reading(StrCriteriaName As String, StrCriteriaJson As String, StrGroupJson As String)
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{" & StrCriteriaJson & "}"), JObject)
@@ -91,7 +92,7 @@ Public Class FormCriteria
         ' 找到此触发器对应的窗体
         Select Case StrTemp
             Case "minecraft:bred_animals"
-
+                FormBredAnimals.Reading(ButtonCriteria.Tag)
             Case "minecraft:brewed_potion"
                 FormBrewedPotion.Reading(ButtonCriteria.Tag)
             Case "minecraft:changed_dimension"
@@ -135,9 +136,9 @@ Public Class FormCriteria
             Case "minecraft:slept_in_bed"
                 FormSleptInBed.Reading(ButtonCriteria.Tag)
             Case "minecraft:summoned_entity"
-
+                FormSummonedEntity.Reading(ButtonCriteria.Tag)
             Case "minecraft:tame_animal"
-
+                FormTameAnimal.Reading(ButtonCriteria.Tag)
             Case "minecraft:tick"
                 FormTick.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_ender_eye"
