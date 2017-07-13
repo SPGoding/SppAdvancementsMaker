@@ -62,10 +62,11 @@ Partial Class FormLocation
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(301, 20)
+        Me.Label1.Size = New System.Drawing.Size(303, 19)
         Me.Label1.TabIndex = 47
         Me.Label1.Text = "本触发器每个游戏刻(每秒20次)检查玩家的位置"
         '

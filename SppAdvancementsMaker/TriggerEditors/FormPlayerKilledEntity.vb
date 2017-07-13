@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormSummonedEntity
+Public Class FormPlayerKilledEntity
     Public Sub Reading(StrJson As String)
         ' 显示本窗体
         Visible = False
@@ -11,18 +11,25 @@ Public Class FormSummonedEntity
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("entity") IsNot Nothing Then
-                Button1.Tag = ObjJson.Item("entity").ToString
+                ButtonEntity.Tag = ObjJson.Item("entity").ToString
+            End If
+            If ObjJson.Item("killing_blow") IsNot Nothing Then
+                ButtonKillingBlow.Tag = ObjJson.Item("killing_blow").ToString
             End If
         End If
     End Sub
     Private Sub Reset()
-        Button1.Tag = "{}"
+        ButtonEntity.Tag = "{}"
+        ButtonKillingBlow.Tag = "{}"
     End Sub
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        If Button1.Tag <> "{}" Then
-            StrResult &= Chr(34) & "entity" & Chr(34) & ":" & Button1.Tag
+        If ButtonEntity.Tag <> "{}" Then
+            StrResult &= Chr(34) & "entity" & Chr(34) & ":" & ButtonEntity.Tag & ","
+        End If
+        If ButtonKillingBlow.Tag <> "{}" Then
+            StrResult &= Chr(34) & "killing_blow" & Chr(34) & ":" & ButtonKillingBlow.Tag
         End If
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
@@ -34,7 +41,10 @@ Public Class FormSummonedEntity
         FormCriteria.Show(FormMain)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FormGlobalEntity.Reading(Button1)
+    Private Sub ButtonEntity_Click(sender As Object, e As EventArgs) Handles ButtonEntity.Click
+        FormGlobalEntity.Reading(ButtonEntity)
+    End Sub
+    Private Sub ButtonKillingBlow_Click(sender As Object, e As EventArgs) Handles ButtonKillingBlow.Click
+        FormGlobalKillingBlow.Reading(ButtonKillingBlow)
     End Sub
 End Class

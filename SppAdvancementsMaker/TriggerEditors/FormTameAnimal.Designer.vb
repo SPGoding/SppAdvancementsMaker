@@ -72,10 +72,11 @@ Partial Class FormTameAnimal
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(205, 20)
+        Me.Label1.Size = New System.Drawing.Size(205, 19)
         Me.Label1.TabIndex = 64
         Me.Label1.Text = "本触发器在玩家驯服动物时触发"
         '

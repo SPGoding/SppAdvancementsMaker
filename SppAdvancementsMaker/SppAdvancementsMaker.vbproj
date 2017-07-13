@@ -127,6 +127,12 @@
     <Compile Include="TriggerEditors\FormConstruckBeacon.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormCuredZombieVillager.Designer.vb">
+      <DependentUpon>FormCuredZombieVillager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormCuredZombieVillager.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormEffectsChanged.Designer.vb">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
     </Compile>
@@ -137,6 +143,18 @@
       <DependentUpon>FormEnterBlock.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\FormEnterBlock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEntityHurtPlayer.Designer.vb">
+      <DependentUpon>FormEntityHurtPlayer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEntityHurtPlayer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEntityKilledPlayer.Designer.vb">
+      <DependentUpon>FormEntityKilledPlayer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEntityKilledPlayer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TriggerEditors\FormImpossible.Designer.vb">
@@ -198,6 +216,18 @@
     <Compile Include="TriggerEditors\FormNetherTravel.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormPlayerHurtEntity.Designer.vb">
+      <DependentUpon>FormPlayerHurtEntity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormPlayerHurtEntity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormPlayerKilledEntity.Designer.vb">
+      <DependentUpon>FormPlayerKilledEntity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormPlayerKilledEntity.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormRecipeUnlocked.Designer.vb">
       <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
     </Compile>
@@ -234,10 +264,22 @@
     <Compile Include="TriggerEditors\FormUsedEnderEye.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalDamage.Designer.vb">
+      <DependentUpon>FormGlobalDamage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalDamage.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalEntity.Designer.vb">
       <DependentUpon>FormGlobalEntity.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalEntity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalKillingBlow.Designer.vb">
+      <DependentUpon>FormGlobalKillingBlow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalKillingBlow.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalLocation.Designer.vb">
@@ -266,11 +308,20 @@
     <EmbeddedResource Include="TriggerEditors\FormConstruckBeacon.resx">
       <DependentUpon>FormConstruckBeacon.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormCuredZombieVillager.resx">
+      <DependentUpon>FormCuredZombieVillager.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEffectsChanged.resx">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEnterBlock.resx">
       <DependentUpon>FormEnterBlock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormEntityHurtPlayer.resx">
+      <DependentUpon>FormEntityHurtPlayer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormEntityKilledPlayer.resx">
+      <DependentUpon>FormEntityKilledPlayer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormImpossible.resx">
       <DependentUpon>FormImpossible.vb</DependentUpon>
@@ -299,6 +350,12 @@
     <EmbeddedResource Include="TriggerEditors\FormNetherTravel.resx">
       <DependentUpon>FormNetherTravel.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormPlayerHurtEntity.resx">
+      <DependentUpon>FormPlayerHurtEntity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormPlayerKilledEntity.resx">
+      <DependentUpon>FormPlayerKilledEntity.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormRecipeUnlocked.resx">
       <DependentUpon>FormRecipeUnlocked.vb</DependentUpon>
     </EmbeddedResource>
@@ -317,8 +374,14 @@
     <EmbeddedResource Include="TriggerEditors\FormUsedEnderEye.resx">
       <DependentUpon>FormUsedEnderEye.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\Global\FormGlobalDamage.resx">
+      <DependentUpon>FormGlobalDamage.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalEntity.resx">
       <DependentUpon>FormGlobalEntity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\Global\FormGlobalKillingBlow.resx">
+      <DependentUpon>FormGlobalKillingBlow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalLocation.resx">
       <DependentUpon>FormGlobalLocation.vb</DependentUpon>

@@ -21,8 +21,12 @@ Public Class FormTameAnimal
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        StrResult &= Chr(34) & "entity" & Chr(34) & ":" & Button1.Tag
+        If Button1.Tag <> "{}" Then
+            StrResult &= Chr(34) & "entity" & Chr(34) & ":" & Button1.Tag
+        End If
         StrResult &= "}"
+        StrResult = StrResult.Replace(",}", "}")
+        StrResult = StrResult.Replace(",]", "]")
         ' 将处理后的 Json 文本返回条件窗体
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()

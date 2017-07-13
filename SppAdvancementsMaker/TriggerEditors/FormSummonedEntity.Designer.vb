@@ -73,20 +73,22 @@ Partial Class FormSummonedEntity
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(233, 20)
+        Me.Label1.Size = New System.Drawing.Size(219, 19)
         Me.Label1.TabIndex = 58
-        Me.Label1.Text = "本触发器在玩家召唤了实体时触发。"
+        Me.Label1.Text = "本触发器在玩家召唤了实体时触发"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(16, 29)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(261, 20)
+        Me.Label4.Size = New System.Drawing.Size(261, 19)
         Me.Label4.TabIndex = 63
         Me.Label4.Text = "刷怪蛋、命令和刷怪箱不会激活此触发器"
         '

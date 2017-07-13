@@ -195,10 +195,11 @@ Partial Class FormNetherTravel
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(317, 20)
+        Me.Label1.Size = New System.Drawing.Size(317, 19)
         Me.Label1.TabIndex = 72
         Me.Label1.Text = "本触发器在玩家进入下界，然后返回主世界时触发"
         '

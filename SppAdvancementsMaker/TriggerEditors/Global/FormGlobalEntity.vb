@@ -31,7 +31,7 @@ Public Class FormGlobalEntity
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             ' 读取状态效果
-            If ObjJson.Item("effects").ToString <> "" Then
+            If ObjJson.Item("effects") IsNot Nothing Then
                 For i = 0 To ObjJson.Item("effects").Count - 1
                     ListBoxEffects.Items.Add("效果" & IntEffects)
                     IntEffects += 1
@@ -108,59 +108,80 @@ Public Class FormGlobalEntity
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim i As Int16
         Dim StrResult As String
+        StrResult = "{"
         ' 写入状态效果
         SaveCurrentEffect(OldSelectedIndex)
-        StrResult = "{" & Chr(34) & "effects" & Chr(34) & ":" & "{"
-        For i = 0 To ListBoxEffects.Items.Count - 1
-            StrResult &= StrEachEffectJson(i) & ","
-        Next
-        StrResult &= "},"
+        If ListBoxEffects.Items.Count >= 1 Then
+            StrResult &= Chr(34) & "effects" & Chr(34) & ":" & "{"
+            For i = 0 To ListBoxEffects.Items.Count - 1
+                StrResult &= StrEachEffectJson(i) & ","
+            Next
+            StrResult &= "},"
+        End If
         ' 写入常规
-        StrResult &= Chr(34) & "distance" & Chr(34) & ":" & "{"
-        StrResult &= Chr(34) & "absolute" & Chr(34) & ":" & "{"
-        If NumericUpDownAbsoluteMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAbsoluteMax.Value & ","
+        If NumericUpDownAbsoluteMax.Value <> 0 Or NumericUpDownAbsoluteMin.Value <> 0 Or NumericUpDownHorizontalMax.Value <> 0 Or NumericUpDownHorizontalMin.Value Or NumericUpDownXMax.Value <> 0 Or NumericUpDownXMin.Value Or NumericUpDownYMax.Value <> 0 Or NumericUpDownYMin.Value Or NumericUpDownZMax.Value <> 0 Or NumericUpDownZMin.Value Then
+            StrResult &= Chr(34) & "distance" & Chr(34) & ":" & "{"
+            If NumericUpDownAbsoluteMax.Value <> 0 Or NumericUpDownAbsoluteMin.Value <> 0 Then
+                StrResult &= Chr(34) & "absolute" & Chr(34) & ":" & "{"
+                If NumericUpDownAbsoluteMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAbsoluteMax.Value & ","
+                End If
+                If NumericUpDownAbsoluteMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAbsoluteMin.Value
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownHorizontalMax.Value <> 0 Or NumericUpDownHorizontalMin.Value <> 0 Then
+                StrResult &= Chr(34) & "horizontal" & Chr(34) & ":" & "{"
+                If NumericUpDownHorizontalMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownHorizontalMax.Value & ","
+                End If
+                If NumericUpDownHorizontalMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownHorizontalMin.Value
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownXMax.Value <> 0 Or NumericUpDownXMin.Value <> 0 Then
+                StrResult &= Chr(34) & "x" & Chr(34) & ":" & "{"
+                If NumericUpDownXMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
+                End If
+                If NumericUpDownXMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownYMax.Value <> 0 Or NumericUpDownYMin.Value <> 0 Then
+                StrResult &= Chr(34) & "y" & Chr(34) & ":" & "{"
+                If NumericUpDownYMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
+                End If
+                If NumericUpDownYMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownZMax.Value <> 0 Or NumericUpDownZMin.Value <> 0 Then
+                StrResult &= Chr(34) & "z" & Chr(34) & ":" & "{"
+                If NumericUpDownZMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
+                End If
+                If NumericUpDownZMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value
+                End If
+                StrResult &= "}"
+            End If
+            StrResult &= "},"
         End If
-        If NumericUpDownAbsoluteMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAbsoluteMin.Value
+        If ButtonLocation.Tag <> "{}" Then
+            StrResult &= Chr(34) & "location" & Chr(34) & ":" & ButtonLocation.Tag & ","
         End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "horizontal" & Chr(34) & ":" & "{"
-        If NumericUpDownHorizontalMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownHorizontalMax.Value & ","
+        If TextBoxNbt.Text <> "" Then
+            StrResult &= Chr(34) & "nbt" & Chr(34) & ":" & Chr(34) & TextBoxNbt.Text & Chr(34) & ","
         End If
-        If NumericUpDownHorizontalMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownHorizontalMin.Value
+        If ComboBoxType.Text <> "" Then
+            StrResult &= Chr(34) & "type" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxType.Text, ZhEntityIds, EnEntityIds) & Chr(34)
         End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "x" & Chr(34) & ":" & "{"
-        If NumericUpDownXMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
-        End If
-        If NumericUpDownXMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value
-        End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "y" & Chr(34) & ":" & "{"
-        If NumericUpDownYMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
-        End If
-        If NumericUpDownYMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value
-        End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "z" & Chr(34) & ":" & "{"
-        If NumericUpDownZMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
-        End If
-        If NumericUpDownZMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value
-        End If
-        StrResult &= "}"
-        StrResult &= "},"
-        StrResult &= Chr(34) & "location" & Chr(34) & ":" & ButtonLocation.Tag & ","
-        StrResult &= Chr(34) & "nbt" & Chr(34) & ":" & Chr(34) & TextBoxNbt.Text & Chr(34) & ","
-        StrResult &= Chr(34) & "type" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxType.Text, ZhEntityIds, EnEntityIds) & Chr(34)
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")

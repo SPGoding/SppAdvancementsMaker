@@ -1,4 +1,7 @@
-﻿Public Class FormMain
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
+
+Public Class FormMain
     '条件列表 一些数据
     Private IntGroupCount As Int16 = 0
     Private IntCriteriaCount As Int32 = 0
@@ -84,13 +87,15 @@
         Next
         Try
             ' 把奖励 rewards 并列起来
-            If ButtonRecipes.Tag <> "" Then
+            If ButtonRecipes.Tag <> "[]" Then
                 StrRewards &= Chr(34) & "recipes" & Chr(34) & ":" & ButtonRecipes.Tag & ","
             End If
-            If ButtonLoot.Tag <> "" Then
+            If ButtonLoot.Tag <> "[]" Then
                 StrRewards &= Chr(34) & "loot" & Chr(34) & ":" & ButtonLoot.Tag & ","
             End If
-            StrRewards &= Chr(34) & "experience" & Chr(34) & ":" & NumericUpDownExperience.Value & ","
+            If NumericUpDownExperience.Value <> 0 Then
+                StrRewards &= Chr(34) & "experience" & Chr(34) & ":" & NumericUpDownExperience.Value & ","
+            End If
             If TextBoxFunction.Text <> "" Then
                 Dim StrFunctionPath As String = StrSavePath & "\data\functions\sppadvancementsmaker\" & StrProjectAdvancementName & ".mcfunction"
                 Dim StrFunctionName As String = "sppadvancementsmaker:" & StrProjectAdvancementName
@@ -105,6 +110,9 @@
                                                      CheckBoxHidden.Checked,
                                                      ZhToEn(ComboBoxParent.Text, ZhAdvancements, EnAdvancements),
                                                      StrCriteria, TreeViewCriterias.Tag, StrRewards)
+            ' 格式化 Json
+            Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrResult), JObject)
+            StrResult = ObjJson.ToString
             ' 将进度写入文件
             Dim StrAdvancementsParentPath As String = StrSavePath & "\data\advancements\sppadvancementsmaker\"
             Dim StrAdvancementsPath As String = StrAdvancementsParentPath & StrProjectAdvancementName & ".json"

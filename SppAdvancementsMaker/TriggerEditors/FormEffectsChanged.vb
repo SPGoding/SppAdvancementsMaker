@@ -24,7 +24,7 @@ Public Class FormEffectsChanged
         NumericUpDownDurationMax.Value = 0
         NumericUpDownDurationMin.Value = 0
         If ObjJson.ToString <> "{}" Then
-            If ObjJson.Item("effects").ToString <> "" Then
+            If ObjJson.Item("effects") IsNot Nothing Then
                 For i = 0 To ObjJson.Item("effects").Count - 1
                     ListBoxEffects.Items.Add("效果" & IntEffects)
                     IntEffects += 1
@@ -52,11 +52,15 @@ Public Class FormEffectsChanged
         Dim StrResult As String
         ' 先保存
         SaveCurrentEffect(OldSelectedIndex)
-        StrResult = "{" & Chr(34) & "effects" & Chr(34) & ":" & "{"
-        For i = 0 To ListBoxEffects.Items.Count - 1
-            StrResult &= StrEachEffectJson(i) & ","
-        Next
-        StrResult &= "}}"
+        StrResult = "{"
+        If ListBoxEffects.Items.Count >= 1 Then
+            StrResult &= Chr(34) & "effects" & Chr(34) & ":" & "{"
+            For i = 0 To ListBoxEffects.Items.Count - 1
+                StrResult &= StrEachEffectJson(i) & ","
+            Next
+            StrResult &= "}"
+        End If
+        StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")
         ' 将处理后的 Json 文本返回条件窗体

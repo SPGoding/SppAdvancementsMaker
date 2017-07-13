@@ -29,10 +29,18 @@ Public Class FormBredAnimals
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        StrResult &= Chr(34) & "child" & Chr(34) & ":" & ButtonChild.Tag & ","
-        StrResult &= Chr(34) & "parent" & Chr(34) & ":" & ButtonParent.Tag & ","
-        StrResult &= Chr(34) & "partner" & Chr(34) & ":" & ButtonPartner.Tag
+        If ButtonChild.Tag <> "{}" Then
+            StrResult &= Chr(34) & "child" & Chr(34) & ":" & ButtonChild.Tag & ","
+        End If
+        If ButtonParent.Tag <> "{}" Then
+            StrResult &= Chr(34) & "parent" & Chr(34) & ":" & ButtonParent.Tag & ","
+        End If
+        If ButtonPartner.Tag <> "{}" Then
+            StrResult &= Chr(34) & "partner" & Chr(34) & ":" & ButtonPartner.Tag
+        End If
         StrResult &= "}"
+        StrResult = StrResult.Replace(",}", "}")
+        StrResult = StrResult.Replace(",]", "]")
         ' 将处理后的 Json 文本返回条件窗体
         FormCriteria.ButtonCriteria.Tag = StrResult
         Hide()

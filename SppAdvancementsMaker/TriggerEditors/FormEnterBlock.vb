@@ -68,24 +68,26 @@ Public Class FormEnterBlock
         If ComboBoxBlock.Tag <> "" Then
             StrResult &= Chr(34) & "block" & Chr(34) & ":" & Chr(34) & ComboBoxBlock.Tag & Chr(34) & ","
         End If
-        StrResult &= Chr(34) & "state" & Chr(34) & ":" & "{"
-        If TextBoxStateName1.Text <> "" And TextBoxStateValue1.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName1.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue1.Text & Chr(34) & ","
-        End If
-        If TextBoxStateName2.Text <> "" And TextBoxStateValue2.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName2.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue2.Text & Chr(34) & ","
-        End If
-        If TextBoxStateName3.Text <> "" And TextBoxStateValue3.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName3.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue3.Text & Chr(34) & ","
-        End If
-        If TextBoxStateName4.Text <> "" And TextBoxStateValue4.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName4.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue4.Text & Chr(34) & ","
-        End If
-        If TextBoxStateName5.Text <> "" And TextBoxStateValue5.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName5.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue5.Text & Chr(34) & ","
-        End If
-        If TextBoxStateName6.Text <> "" And TextBoxStateValue6.Text <> "" Then
-            StrResult &= Chr(34) & TextBoxStateName6.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue6.Text & Chr(34) & ","
+        If (TextBoxStateName1.Text <> "" And TextBoxStateValue1.Text <> "") Or (TextBoxStateName2.Text <> "" And TextBoxStateValue2.Text <> "") Or (TextBoxStateName3.Text <> "" And TextBoxStateValue3.Text <> "") Or (TextBoxStateName4.Text <> "" And TextBoxStateValue4.Text <> "") Or (TextBoxStateName5.Text <> "" And TextBoxStateValue5.Text <> "") Or (TextBoxStateName6.Text <> "" And TextBoxStateValue6.Text <> "") Then
+            StrResult &= Chr(34) & "state" & Chr(34) & ":" & "{"
+            If TextBoxStateName1.Text <> "" And TextBoxStateValue1.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName1.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue1.Text & Chr(34) & ","
+            End If
+            If TextBoxStateName2.Text <> "" And TextBoxStateValue2.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName2.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue2.Text & Chr(34) & ","
+            End If
+            If TextBoxStateName3.Text <> "" And TextBoxStateValue3.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName3.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue3.Text & Chr(34) & ","
+            End If
+            If TextBoxStateName4.Text <> "" And TextBoxStateValue4.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName4.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue4.Text & Chr(34) & ","
+            End If
+            If TextBoxStateName5.Text <> "" And TextBoxStateValue5.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName5.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue5.Text & Chr(34) & ","
+            End If
+            If TextBoxStateName6.Text <> "" And TextBoxStateValue6.Text <> "" Then
+                StrResult &= Chr(34) & TextBoxStateName6.Text & Chr(34) & ":" & Chr(34) & TextBoxStateValue6.Text & Chr(34) & ","
+            End If
         End If
         StrResult &= "}"
         StrResult &= "}"

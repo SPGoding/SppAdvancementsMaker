@@ -40,10 +40,11 @@ Partial Class FormTick
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(12, 11)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(249, 20)
+        Me.Label1.Size = New System.Drawing.Size(251, 19)
         Me.Label1.TabIndex = 44
         Me.Label1.Text = "本触发器每个游戏刻触发（每秒20次）"
         '

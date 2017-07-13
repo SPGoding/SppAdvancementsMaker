@@ -92,32 +92,40 @@ Public Class FormGlobalLocation
         If ComboBoxFeature.Text <> "" Then
             StrResult &= Chr(34) & "feature" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxFeature.Text, ZhFeatures, EnFeatures) & Chr(34) & ","
         End If
-        StrResult &= Chr(34) & "position" & Chr(34) & ":{"
-        StrResult &= Chr(34) & "x" & Chr(34) & ":{"
-        If NumericUpDownXMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
+        If NumericUpDownXMax.Value <> 0 Or NumericUpDownXMin.Value <> 0 Or NumericUpDownYMax.Value <> 0 Or NumericUpDownYMin.Value <> 0 Or NumericUpDownZMax.Value <> 0 Or NumericUpDownZMin.Value <> 0 Then
+            StrResult &= Chr(34) & "position" & Chr(34) & ":{"
+            If NumericUpDownXMax.Value <> 0 Or NumericUpDownXMin.Value <> 0 Then
+                StrResult &= Chr(34) & "x" & Chr(34) & ":{"
+                If NumericUpDownXMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownXMax.Value & ","
+                End If
+                If NumericUpDownXMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value & ","
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownYMax.Value <> 0 Or NumericUpDownYMin.Value <> 0 Then
+                StrResult &= Chr(34) & "y" & Chr(34) & ":{"
+                If NumericUpDownYMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
+                End If
+                If NumericUpDownYMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value & ","
+                End If
+                StrResult &= "},"
+            End If
+            If NumericUpDownZMax.Value <> 0 Or NumericUpDownZMin.Value <> 0 Then
+                StrResult &= Chr(34) & "z" & Chr(34) & ":{"
+                If NumericUpDownZMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
+                End If
+                If NumericUpDownZMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value & ","
+                End If
+                StrResult &= "}"
+            End If
+            StrResult &= "}"
         End If
-        If NumericUpDownXMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownXMin.Value & ","
-        End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "y" & Chr(34) & ":{"
-        If NumericUpDownYMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownYMax.Value & ","
-        End If
-        If NumericUpDownYMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownYMin.Value & ","
-        End If
-        StrResult &= "},"
-        StrResult &= Chr(34) & "z" & Chr(34) & ":{"
-        If NumericUpDownZMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownZMax.Value & ","
-        End If
-        If NumericUpDownZMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownZMin.Value & ","
-        End If
-        StrResult &= "}"
-        StrResult &= "}"
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")

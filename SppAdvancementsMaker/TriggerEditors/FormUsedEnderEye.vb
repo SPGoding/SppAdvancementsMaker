@@ -22,14 +22,17 @@ Public Class FormUsedEnderEye
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
-        StrResult = "{" & Chr(34) & "distance" & Chr(34) & ":{"
-        If NumericUpDownMax.Value <> 0 Then
-            StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value & ","
+        StrResult = "{"
+        If NumericUpDownMax.Value <> 0 Or NumericUpDownMin.Value <> 0 Then
+            StrResult &= Chr(34) & "distance" & Chr(34) & ":{"
+            If NumericUpDownMax.Value <> 0 Then
+                StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownMax.Value & ","
+            End If
+            If NumericUpDownMin.Value <> 0 Then
+                StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value
+            End If
+            StrResult &= "}"
         End If
-        If NumericUpDownMin.Value <> 0 Then
-            StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownMin.Value
-        End If
-        StrResult &= "}"
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")

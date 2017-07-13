@@ -34,21 +34,21 @@ Partial Class FormGlobalLocation
         Me.ComboBoxFeature = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.NumericUpDownZMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownZMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownYMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownYMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownXMin = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDownXMax = New System.Windows.Forms.NumericUpDown()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.NumericUpDownZMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownYMax = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDownXMax = New System.Windows.Forms.NumericUpDown()
         Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownZMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownYMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownXMin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -118,10 +118,11 @@ Partial Class FormGlobalLocation
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(205, 20)
+        Me.Label1.Size = New System.Drawing.Size(205, 19)
         Me.Label1.TabIndex = 76
         Me.Label1.Text = "本共通条件限定实体的位置信息"
         '
@@ -171,63 +172,33 @@ Partial Class FormGlobalLocation
         '
         'NumericUpDownZMin
         '
-        Me.NumericUpDownZMin.DecimalPlaces = 12
-        Me.NumericUpDownZMin.Location = New System.Drawing.Point(270, 218)
+        Me.NumericUpDownZMin.DecimalPlaces = 2
+        Me.NumericUpDownZMin.Location = New System.Drawing.Point(133, 218)
         Me.NumericUpDownZMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMin.Name = "NumericUpDownZMin"
         Me.NumericUpDownZMin.Size = New System.Drawing.Size(133, 26)
         Me.NumericUpDownZMin.TabIndex = 107
         '
-        'NumericUpDownZMax
-        '
-        Me.NumericUpDownZMax.DecimalPlaces = 12
-        Me.NumericUpDownZMax.Location = New System.Drawing.Point(133, 218)
-        Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
-        Me.NumericUpDownZMax.Size = New System.Drawing.Size(131, 26)
-        Me.NumericUpDownZMax.TabIndex = 106
-        '
         'NumericUpDownYMin
         '
-        Me.NumericUpDownYMin.DecimalPlaces = 12
-        Me.NumericUpDownYMin.Location = New System.Drawing.Point(270, 186)
+        Me.NumericUpDownYMin.DecimalPlaces = 2
+        Me.NumericUpDownYMin.Location = New System.Drawing.Point(133, 186)
         Me.NumericUpDownYMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMin.Name = "NumericUpDownYMin"
         Me.NumericUpDownYMin.Size = New System.Drawing.Size(133, 26)
         Me.NumericUpDownYMin.TabIndex = 105
         '
-        'NumericUpDownYMax
-        '
-        Me.NumericUpDownYMax.DecimalPlaces = 12
-        Me.NumericUpDownYMax.Location = New System.Drawing.Point(133, 186)
-        Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
-        Me.NumericUpDownYMax.Size = New System.Drawing.Size(131, 26)
-        Me.NumericUpDownYMax.TabIndex = 104
-        '
         'NumericUpDownXMin
         '
-        Me.NumericUpDownXMin.DecimalPlaces = 12
-        Me.NumericUpDownXMin.Location = New System.Drawing.Point(270, 154)
+        Me.NumericUpDownXMin.DecimalPlaces = 2
+        Me.NumericUpDownXMin.Location = New System.Drawing.Point(133, 154)
         Me.NumericUpDownXMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMin.Name = "NumericUpDownXMin"
         Me.NumericUpDownXMin.Size = New System.Drawing.Size(133, 26)
         Me.NumericUpDownXMin.TabIndex = 103
-        '
-        'NumericUpDownXMax
-        '
-        Me.NumericUpDownXMax.DecimalPlaces = 12
-        Me.NumericUpDownXMax.Location = New System.Drawing.Point(133, 154)
-        Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
-        Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
-        Me.NumericUpDownXMax.Size = New System.Drawing.Size(131, 26)
-        Me.NumericUpDownXMax.TabIndex = 102
         '
         'Label9
         '
@@ -262,21 +233,51 @@ Partial Class FormGlobalLocation
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(313, 130)
+        Me.Label4.Location = New System.Drawing.Point(176, 130)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 20)
         Me.Label4.TabIndex = 98
         Me.Label4.Text = "最小值"
         '
+        'NumericUpDownZMax
+        '
+        Me.NumericUpDownZMax.DecimalPlaces = 2
+        Me.NumericUpDownZMax.Location = New System.Drawing.Point(272, 218)
+        Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
+        Me.NumericUpDownZMax.Size = New System.Drawing.Size(131, 26)
+        Me.NumericUpDownZMax.TabIndex = 112
+        '
+        'NumericUpDownYMax
+        '
+        Me.NumericUpDownYMax.DecimalPlaces = 2
+        Me.NumericUpDownYMax.Location = New System.Drawing.Point(272, 186)
+        Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
+        Me.NumericUpDownYMax.Size = New System.Drawing.Size(131, 26)
+        Me.NumericUpDownYMax.TabIndex = 111
+        '
+        'NumericUpDownXMax
+        '
+        Me.NumericUpDownXMax.DecimalPlaces = 2
+        Me.NumericUpDownXMax.Location = New System.Drawing.Point(272, 154)
+        Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
+        Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
+        Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
+        Me.NumericUpDownXMax.Size = New System.Drawing.Size(131, 26)
+        Me.NumericUpDownXMax.TabIndex = 110
+        '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(170, 131)
+        Me.Label12.Location = New System.Drawing.Point(309, 131)
         Me.Label12.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(51, 20)
-        Me.Label12.TabIndex = 97
+        Me.Label12.TabIndex = 109
         Me.Label12.Text = "最大值"
         '
         'FormGlobalLocation
@@ -284,18 +285,18 @@ Partial Class FormGlobalLocation
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(434, 335)
+        Me.Controls.Add(Me.NumericUpDownZMax)
+        Me.Controls.Add(Me.NumericUpDownYMax)
+        Me.Controls.Add(Me.NumericUpDownXMax)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.NumericUpDownZMin)
-        Me.Controls.Add(Me.NumericUpDownZMax)
         Me.Controls.Add(Me.NumericUpDownYMin)
-        Me.Controls.Add(Me.NumericUpDownYMax)
         Me.Controls.Add(Me.NumericUpDownXMin)
-        Me.Controls.Add(Me.NumericUpDownXMax)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.ComboBoxFeature)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ComboBoxDimension)
@@ -313,10 +314,10 @@ Partial Class FormGlobalLocation
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         CType(Me.NumericUpDownZMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownYMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownXMin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDownYMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownXMax, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -334,14 +335,14 @@ Partial Class FormGlobalLocation
     Friend WithEvents ComboBoxFeature As ComboBox
     Friend WithEvents Label10 As Label
     Friend WithEvents NumericUpDownZMin As NumericUpDown
-    Friend WithEvents NumericUpDownZMax As NumericUpDown
     Friend WithEvents NumericUpDownYMin As NumericUpDown
-    Friend WithEvents NumericUpDownYMax As NumericUpDown
     Friend WithEvents NumericUpDownXMin As NumericUpDown
-    Friend WithEvents NumericUpDownXMax As NumericUpDown
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents NumericUpDownZMax As NumericUpDown
+    Friend WithEvents NumericUpDownYMax As NumericUpDown
+    Friend WithEvents NumericUpDownXMax As NumericUpDown
     Friend WithEvents Label12 As Label
 End Class

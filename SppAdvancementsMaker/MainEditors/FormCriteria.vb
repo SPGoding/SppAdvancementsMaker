@@ -102,7 +102,7 @@ Public Class FormCriteria
             Case "minecraft:consume_item"
 
             Case "minecraft:cured_zombie_villager"
-
+                FormCuredZombieVillager.Reading(ButtonCriteria.Tag)
             Case "minecraft:effects_changed"
                 FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
@@ -110,9 +110,9 @@ Public Class FormCriteria
             Case "minecraft:enter_block"
                 FormEnterBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_hurt_player"
-
+                FormEntityHurtPlayer.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_killed_player"
-
+                FormEntityKilledPlayer.Reading(ButtonCriteria.Tag)
             Case "minecraft:impossible"
                 FormImpossible.Reading(ButtonCriteria.Tag)
             Case "minecraft:inventory_changed"
@@ -128,9 +128,9 @@ Public Class FormCriteria
             Case "minecraft:placed_block"
 
             Case "minecraft:player_hurt_entity"
-
+                FormPlayerHurtEntity.Reading(ButtonCriteria.Tag)
             Case "minecraft:player_killed_entity"
-
+                FormPlayerKilledEntity.Reading(ButtonCriteria.Tag)
             Case "minecraft:recipe_unlocked"
                 FormRecipeUnlocked.Reading(ButtonCriteria.Tag)
             Case "minecraft:slept_in_bed"

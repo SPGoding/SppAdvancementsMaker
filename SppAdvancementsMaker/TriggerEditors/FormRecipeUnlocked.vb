@@ -21,7 +21,9 @@ Public Class FormRecipeUnlocked
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{}"), JObject)
         Dim StrResult As String
-        ObjJson.Add("recipe", ZhToEn(ComboBoxRecipes.Text, ZhRecipes, EnRecipes))
+        If ComboBoxRecipes.Text <> "" Then
+            ObjJson.Add("recipe", ZhToEn(ComboBoxRecipes.Text, ZhRecipes, EnRecipes))
+        End If
         StrResult = ObjJson.ToString
         ' 将处理后的 Json 文本返回条件窗体
         FormCriteria.ButtonCriteria.Tag = StrResult

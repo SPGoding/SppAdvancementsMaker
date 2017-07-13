@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormSummonedEntity
+Public Class FormEntityHurtPlayer
     Public Sub Reading(StrJson As String)
         ' 显示本窗体
         Visible = False
@@ -10,19 +10,19 @@ Public Class FormSummonedEntity
         Reset()
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
-            If ObjJson.Item("entity") IsNot Nothing Then
-                Button1.Tag = ObjJson.Item("entity").ToString
+            If ObjJson.Item("damage") IsNot Nothing Then
+                ButtonDamage.Tag = ObjJson.Item("damage").ToString
             End If
         End If
     End Sub
     Private Sub Reset()
-        Button1.Tag = "{}"
+        ButtonDamage.Tag = "{}"
     End Sub
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        If Button1.Tag <> "{}" Then
-            StrResult &= Chr(34) & "entity" & Chr(34) & ":" & Button1.Tag
+        If ButtonDamage.Tag <> "{}" Then
+            StrResult &= Chr(34) & "damage" & Chr(34) & ":" & ButtonDamage.Tag
         End If
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
@@ -34,7 +34,7 @@ Public Class FormSummonedEntity
         FormCriteria.Show(FormMain)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FormGlobalEntity.Reading(Button1)
+    Private Sub ButtonDamage_Click(sender As Object, e As EventArgs) Handles ButtonDamage.Click
+        FormGlobalDamage.Reading(ButtonDamage)
     End Sub
 End Class

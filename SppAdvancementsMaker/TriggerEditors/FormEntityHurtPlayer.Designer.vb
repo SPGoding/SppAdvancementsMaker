@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormRecipeUnlocked
+Partial Class FormEntityHurtPlayer
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
@@ -22,31 +22,52 @@ Partial Class FormRecipeUnlocked
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.ButtonDamage = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.ButtonEnter = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBoxRecipes = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
+        '
+        'ButtonDamage
+        '
+        Me.ButtonDamage.Location = New System.Drawing.Point(91, 41)
+        Me.ButtonDamage.Name = "ButtonDamage"
+        Me.ButtonDamage.Size = New System.Drawing.Size(228, 30)
+        Me.ButtonDamage.TabIndex = 62
+        Me.ButtonDamage.Tag = ""
+        Me.ButtonDamage.Text = "伤害信息共通标签"
+        Me.ButtonDamage.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.Red
+        Me.Label3.Location = New System.Drawing.Point(16, 147)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 20)
+        Me.Label3.TabIndex = 61
+        Me.Label3.Text = "大多数条件是可选的"
         '
         'ButtonEnter
         '
-        Me.ButtonEnter.Location = New System.Drawing.Point(212, 150)
+        Me.ButtonEnter.Location = New System.Drawing.Point(201, 147)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
-        Me.ButtonEnter.TabIndex = 49
+        Me.ButtonEnter.TabIndex = 60
         Me.ButtonEnter.Text = "确定"
         Me.ButtonEnter.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 44)
+        Me.Label2.Location = New System.Drawing.Point(16, 46)
         Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(79, 20)
-        Me.Label2.TabIndex = 47
-        Me.Label2.Text = "配方名称："
+        Me.Label2.Size = New System.Drawing.Size(65, 20)
+        Me.Label2.TabIndex = 59
+        Me.Label2.Text = "伤害信息"
         '
         'Label1
         '
@@ -55,38 +76,16 @@ Partial Class FormRecipeUnlocked
         Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(331, 19)
-        Me.Label1.TabIndex = 46
-        Me.Label1.Text = "本触发器在玩家解锁配方时触发（例如用知识之书）"
+        Me.Label1.Size = New System.Drawing.Size(219, 19)
+        Me.Label1.TabIndex = 58
+        Me.Label1.Text = "本触发器在玩家被实体伤害时触发"
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(16, 150)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(135, 20)
-        Me.Label3.TabIndex = 51
-        Me.Label3.Text = "大多数条件是可选的"
-        '
-        'ComboBoxRecipes
-        '
-        Me.ComboBoxRecipes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxRecipes.FormattingEnabled = True
-        Me.ComboBoxRecipes.IntegralHeight = False
-        Me.ComboBoxRecipes.Location = New System.Drawing.Point(98, 41)
-        Me.ComboBoxRecipes.MaxDropDownItems = 16
-        Me.ComboBoxRecipes.Name = "ComboBoxRecipes"
-        Me.ComboBoxRecipes.Size = New System.Drawing.Size(232, 28)
-        Me.ComboBoxRecipes.TabIndex = 52
-        '
-        'FormRecipeUnlocked
+        'FormEntityHurtPlayer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(342, 207)
-        Me.Controls.Add(Me.ComboBoxRecipes)
+        Me.ClientSize = New System.Drawing.Size(339, 208)
+        Me.Controls.Add(Me.ButtonDamage)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEnter)
         Me.Controls.Add(Me.Label2)
@@ -94,7 +93,7 @@ Partial Class FormRecipeUnlocked
         Me.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Name = "FormRecipeUnlocked"
+        Me.Name = "FormEntityHurtPlayer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         Me.ResumeLayout(False)
@@ -102,9 +101,9 @@ Partial Class FormRecipeUnlocked
 
     End Sub
 
+    Friend WithEvents ButtonDamage As Button
+    Friend WithEvents Label3 As Label
     Friend WithEvents ButtonEnter As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents ComboBoxRecipes As ComboBox
 End Class
