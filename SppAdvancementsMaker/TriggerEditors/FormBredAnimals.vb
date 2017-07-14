@@ -49,12 +49,12 @@ Public Class FormBredAnimals
     End Sub
 
     Private Sub ButtonChild_Click(sender As Object, e As EventArgs) Handles ButtonChild.Click
-        FormGlobalEntity.Reading(ButtonChild)
+        FormGlobalEntity.Reading(ButtonChild, EnTameAnimalIds)
     End Sub
     Private Sub ButtonParent_Click(sender As Object, e As EventArgs) Handles ButtonParent.Click
-        FormGlobalEntity.Reading(ButtonParent)
+        FormGlobalEntity.Reading(ButtonParent, EnTameAnimalIds)
     End Sub
     Private Sub ButtonPartner_Click(sender As Object, e As EventArgs) Handles ButtonPartner.Click
-        FormGlobalEntity.Reading(ButtonPartner)
+        FormGlobalEntity.Reading(ButtonPartner, EnTameAnimalIds)
     End Sub
 End Class

@@ -21,10 +21,23 @@ Public Class FormGlobalEntity
             ComboBoxType.Items.Add(ZhEntityIds(i))
         Next
     End Sub
-    Public Sub Reading(ByRef ButtonTarget As Button)
+    Public Sub Reading(ByRef ButtonTarget As Button, StrType As String())
         ' 显示本窗体
         Visible = False
         Show()
+        ' 读取缺省信息
+        ComboBoxType.Items.Clear()
+        If StrType(0) <> "N/A" Then
+            ComboBoxType.Items.Add("")
+            For i As Int16 = 0 To UBound(StrType)
+                ComboBoxType.Items.Add(EnToZh(StrType(i), ZhEntityIds, EnEntityIds))
+            Next
+        Else
+            ComboBoxType.Items.Add("")
+            For i = 0 To UBound(ZhEntityIds)
+                ComboBoxType.Items.Add(ZhEntityIds(i))
+            Next
+        End If
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
@@ -98,7 +111,7 @@ Public Class FormGlobalEntity
                 ButtonLocation.Tag = ObjJson.Item("location").ToString
             End If
             If ObjJson.Item("nbt") IsNot Nothing Then
-                TextBoxNbt.Text = ObjJson.Item("nbt").ToString
+                TextBoxNbt.Text = ObjJson.Item("nbt").ToString.Replace("\" & Chr(34), Chr(34))
             End If
             If ObjJson.Item("type") IsNot Nothing Then
                 ComboBoxType.Text = EnToZh(ObjJson.Item("type").ToString, ZhEntityIds, EnEntityIds)
@@ -177,7 +190,7 @@ Public Class FormGlobalEntity
             StrResult &= Chr(34) & "location" & Chr(34) & ":" & ButtonLocation.Tag & ","
         End If
         If TextBoxNbt.Text <> "" Then
-            StrResult &= Chr(34) & "nbt" & Chr(34) & ":" & Chr(34) & TextBoxNbt.Text & Chr(34) & ","
+            StrResult &= Chr(34) & "nbt" & Chr(34) & ":" & Chr(34) & TextBoxNbt.Text.Replace(Chr(34), "\" & Chr(34)) & Chr(34) & ","
         End If
         If ComboBoxType.Text <> "" Then
             StrResult &= Chr(34) & "type" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxType.Text, ZhEntityIds, EnEntityIds) & Chr(34)

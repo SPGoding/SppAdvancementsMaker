@@ -95,10 +95,10 @@ Public Class FormGlobalKillingBlow
     End Sub
 
     Private Sub ButtonDirectEntity_Click(sender As Object, e As EventArgs) Handles ButtonDirectEntity.Click
-        FormGlobalEntity.Reading(ButtonDirectEntity)
+        FormGlobalEntity.Reading(ButtonDirectEntity, {"N/A"})
     End Sub
 
     Private Sub ButtonSourceEntity_Click(sender As Object, e As EventArgs) Handles ButtonSourceEntity.Click
-        FormGlobalEntity.Reading(ButtonSourceEntity)
+        FormGlobalEntity.Reading(ButtonSourceEntity, {"N/A"})
     End Sub
 End Class

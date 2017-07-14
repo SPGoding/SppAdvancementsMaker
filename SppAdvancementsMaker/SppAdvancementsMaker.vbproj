@@ -127,6 +127,12 @@
     <Compile Include="TriggerEditors\FormConstruckBeacon.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormConsumeItem.Designer.vb">
+      <DependentUpon>FormConsumeItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormConsumeItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormCuredZombieVillager.Designer.vb">
       <DependentUpon>FormCuredZombieVillager.vb</DependentUpon>
     </Compile>
@@ -137,6 +143,12 @@
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\FormEffectsChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEnchantedItem.Designer.vb">
+      <DependentUpon>FormEnchantedItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormEnchantedItem.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TriggerEditors\FormEnterBlock.Designer.vb">
@@ -264,6 +276,12 @@
     <Compile Include="TriggerEditors\FormUsedEnderEye.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormUsedTotem.Designer.vb">
+      <DependentUpon>FormUsedTotem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormUsedTotem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalDamage.Designer.vb">
       <DependentUpon>FormGlobalDamage.vb</DependentUpon>
     </Compile>
@@ -274,6 +292,12 @@
       <DependentUpon>FormGlobalEntity.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalEntity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalItem.Designer.vb">
+      <DependentUpon>FormGlobalItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\Global\FormGlobalItem.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalKillingBlow.Designer.vb">
@@ -308,11 +332,17 @@
     <EmbeddedResource Include="TriggerEditors\FormConstruckBeacon.resx">
       <DependentUpon>FormConstruckBeacon.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormConsumeItem.resx">
+      <DependentUpon>FormConsumeItem.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormCuredZombieVillager.resx">
       <DependentUpon>FormCuredZombieVillager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEffectsChanged.resx">
       <DependentUpon>FormEffectsChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormEnchantedItem.resx">
+      <DependentUpon>FormEnchantedItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormEnterBlock.resx">
       <DependentUpon>FormEnterBlock.vb</DependentUpon>
@@ -374,11 +404,17 @@
     <EmbeddedResource Include="TriggerEditors\FormUsedEnderEye.resx">
       <DependentUpon>FormUsedEnderEye.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormUsedTotem.resx">
+      <DependentUpon>FormUsedTotem.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalDamage.resx">
       <DependentUpon>FormGlobalDamage.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalEntity.resx">
       <DependentUpon>FormGlobalEntity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\Global\FormGlobalItem.resx">
+      <DependentUpon>FormGlobalItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalKillingBlow.resx">
       <DependentUpon>FormGlobalKillingBlow.vb</DependentUpon>

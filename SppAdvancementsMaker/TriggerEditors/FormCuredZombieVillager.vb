@@ -40,9 +40,9 @@ Public Class FormCuredZombieVillager
     End Sub
 
     Private Sub ButtonVillager_Click(sender As Object, e As EventArgs) Handles ButtonVillager.Click
-        FormGlobalEntity.Reading(ButtonVillager)
+        FormGlobalEntity.Reading(ButtonVillager, {"villager"})
     End Sub
     Private Sub ButtonZombie_Click(sender As Object, e As EventArgs) Handles ButtonZombie.Click
-        FormGlobalEntity.Reading(ButtonZombie)
+        FormGlobalEntity.Reading(ButtonZombie, {"zombie"})
     End Sub
 End Class

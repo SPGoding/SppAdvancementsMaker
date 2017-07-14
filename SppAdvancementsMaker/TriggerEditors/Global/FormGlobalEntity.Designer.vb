@@ -380,9 +380,9 @@ Partial Class FormGlobalEntity
         Me.ComboBoxEffectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEffectName.Enabled = False
         Me.ComboBoxEffectName.FormattingEnabled = True
-        Me.ComboBoxEffectName.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxEffectName.IntegralHeight = False
         Me.ComboBoxEffectName.Location = New System.Drawing.Point(133, 200)
+        Me.ComboBoxEffectName.MaxDropDownItems = 16
         Me.ComboBoxEffectName.Name = "ComboBoxEffectName"
         Me.ComboBoxEffectName.Size = New System.Drawing.Size(270, 28)
         Me.ComboBoxEffectName.TabIndex = 121
@@ -442,9 +442,9 @@ Partial Class FormGlobalEntity
         '
         Me.ComboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxType.FormattingEnabled = True
-        Me.ComboBoxType.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxType.IntegralHeight = False
         Me.ComboBoxType.Location = New System.Drawing.Point(133, 579)
+        Me.ComboBoxType.MaxDropDownItems = 16
         Me.ComboBoxType.Name = "ComboBoxType"
         Me.ComboBoxType.Size = New System.Drawing.Size(270, 28)
         Me.ComboBoxType.TabIndex = 140

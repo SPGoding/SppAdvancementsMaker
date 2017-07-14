@@ -42,7 +42,7 @@ Public Class FormEntityKilledPlayer
     End Sub
 
     Private Sub ButtonEntity_Click(sender As Object, e As EventArgs) Handles ButtonEntity.Click
-        FormGlobalEntity.Reading(ButtonEntity)
+        FormGlobalEntity.Reading(ButtonEntity, {"N/A"})
     End Sub
     Private Sub ButtonKillingBlow_Click(sender As Object, e As EventArgs) Handles ButtonKillingBlow.Click
         FormGlobalKillingBlow.Reading(ButtonKillingBlow)

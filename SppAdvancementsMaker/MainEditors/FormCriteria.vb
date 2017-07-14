@@ -4,12 +4,11 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormCriteria
     Private Sub FormCriteria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim i As Int16
+        For i = 0 To UBound(ZhTriggers)
+            ComboBoxTrigger.Items.Add(ZhTriggers(i))
+        Next
         ComboBoxTrigger.SelectedIndex = 0
-        '//TODO
-        'Dim i As Int16
-        'For i = 0 To UBound(ZhTriggers)
-        '    ComboBoxTrigger.Items.Add(ZhTriggers(i))
-        'Next
     End Sub
 
     Public Sub Reading(StrCriteriaName As String, StrCriteriaJson As String, StrGroupJson As String)
@@ -100,13 +99,13 @@ Public Class FormCriteria
             Case "minecraft:construct_beacon"
                 FormConstruckBeacon.Reading(ButtonCriteria.Tag)
             Case "minecraft:consume_item"
-
+                FormConsumeItem.Reading(ButtonCriteria.Tag)
             Case "minecraft:cured_zombie_villager"
                 FormCuredZombieVillager.Reading(ButtonCriteria.Tag)
             Case "minecraft:effects_changed"
                 FormEffectsChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:enchanted_item"
-
+                FormEnchantedItem.Reading(ButtonCriteria.Tag)
             Case "minecraft:enter_block"
                 FormEnterBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:entity_hurt_player"
@@ -144,7 +143,7 @@ Public Class FormCriteria
             Case "minecraft:used_ender_eye"
                 FormUsedEnderEye.Reading(ButtonCriteria.Tag)
             Case "minecraft:used_totem"
-
+                FormUsedTotem.Reading(ButtonCriteria.Tag)
             Case "minecraft:villager_trade"
 
         End Select

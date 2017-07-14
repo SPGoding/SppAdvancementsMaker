@@ -31,6 +31,8 @@ Public Class FormMain
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         ComboBoxFrame.SelectedIndex = 0
         Dim i As Int16
+        Dim j As Int16
+        Dim IntTemp As Int16 = 0
         ' 背景图片
         ComboBoxBackground.Items.Add("")
         For i = 0 To UBound(ZhBackgrounds)
@@ -43,9 +45,18 @@ Public Class FormMain
             ComboBoxParent.Items.Add(ZhAdvancements(i))
         Next
         ' 物品ID
+        '   加载方块
         For i = 0 To UBound(ZhBlocks)
             ComboBoxItem.Items.Add(ZhBlocks(i))
+            ' 删掉技术性方块
+            For j = 0 To UBound(EnTechnologhBlocks)
+                If EnBlocks(i) = EnTechnologhBlocks(j) Then
+                    ComboBoxItem.Items.RemoveAt(i - IntTemp)
+                    IntTemp += 1
+                End If
+            Next
         Next
+        '   加载物品
         For i = 0 To UBound(ZhItems)
             ComboBoxItem.Items.Add(ZhItems(i))
         Next
@@ -136,7 +147,7 @@ Public Class FormMain
                 ComboBoxFrame.Tag = "goal"
         End Select
     End Sub
-    Private Sub TextBoxFunction_TextChanged(sender As Object, e As EventArgs) Handles TextBoxFunction.TextChanged
+    Private Sub TextBoxFunction_TextChanged(sender As Object, e As EventArgs)
         TextBoxFunction.Tag = "#Created By SppAdvancementsMaker" & vbNewLine & TextBoxFunction.Text
     End Sub
     Private Sub ComboBoxBackground_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxBackground.SelectedIndexChanged
@@ -250,4 +261,5 @@ Public Class FormMain
     Private Sub FormMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         End
     End Sub
+
 End Class
