@@ -13,7 +13,20 @@ Public Class FormSelectSave
         End If
         FolderBrowserDialog1.ShowNewFolderButton = False
         If FolderBrowserDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            TextBoxSavePath.Text = FolderBrowserDialog1.SelectedPath
+            Dim StrTemps As String() = FolderBrowserDialog1.SelectedPath.Split("\")
+            If StrTemps(UBound(StrTemps) - 1) = "saves" Then
+                TextBoxSavePath.Text = FolderBrowserDialog1.SelectedPath
+            Else
+                If StrTemps(UBound(StrTemps)) = "saves" Then
+                    MessageBox.Show("选择存档，不是选择 saves 文件夹！")
+                ElseIf StrTemps(UBound(StrTemps)) = ".minecraft" Then
+                    MessageBox.Show("选择存档，不是选择 .minecraft 文件夹！")
+                ElseIf StrTemps(UBound(StrTemps)) = "data" Then
+                    MessageBox.Show("选择存档，不是选择 data 文件夹！")
+                Else
+                    MessageBox.Show("请选择正确的游戏存档")
+                End If
+            End If
         End If
         TextBoxSavePath.SelectionStart = TextBoxSavePath.TextLength
     End Sub
@@ -27,7 +40,7 @@ Public Class FormSelectSave
             Dim StrAdvancementsParentPath As String = StrSavePath & "\data\advancements\sppadvancementsmaker\"
             Dim StrAdvancementsPath As String = StrAdvancementsParentPath & StrProjectAdvancementName & ".json"
             If Dir(StrAdvancementsPath) <> "" Then
-                Dim Result As DialogResult = MessageBox.Show("名称为 " & StrProjectAdvancementName & " 的进度已经存在，是否继续？" & vbNewLine & "点击继续将立刻删除原有文件", "#2进度修改者_提示", MessageBoxButtons.YesNo)
+                Dim Result As DialogResult = MessageBox.Show("名称为 " & StrProjectAdvancementName & " 的进度已经存在，是否继续？" & vbNewLine & "点击[是]将立刻删除原有文件", "#2进度修改者_提示", MessageBoxButtons.YesNo)
                 If Result = DialogResult.No Then
                     Exit Sub
                 End If
@@ -36,7 +49,7 @@ Public Class FormSelectSave
             File.Delete(StrAdvancementsPath)
         Catch ex As Exception
             ' 出现错误
-            LabelException.Text = "异常: " & ex.Message
+            LabelException.Text = "异常: " & ex.Message & vbNewLine & "可尝试用管理员权限运行本程序，如有问题请咨询作者"
             Exit Sub
         End Try
         FormMain.Show()

@@ -3242,23 +3242,6 @@
 "玩家",
 "闪电"
     }
-    Public EnTameAnimalIds As String() = {
-"pig",
-"sheep",
-"cow",
-"chicken",
-"wolf",
-"mooshroom",
-"ocelot",
-"horse",
-"rabbit",
-"llama",
-"parrot"
-    }
-    Public EnSummonAnimalIds As String() = {
-"villager_golem",
-"snowman"
-    }
 
     ' 魔咒ID
     ' 来自 minecraft wiki http://minecraft-zh.gamepedia.com/%E6%95%B0%E6%8D%AE%E5%80%BC#.E9.99.84.E9.AD.94ID

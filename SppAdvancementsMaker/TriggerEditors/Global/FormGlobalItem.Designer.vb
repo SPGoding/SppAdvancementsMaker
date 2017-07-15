@@ -82,6 +82,7 @@ Partial Class FormGlobalItem
         'ComboBoxPotion
         '
         Me.ComboBoxPotion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxPotion.Enabled = False
         Me.ComboBoxPotion.FormattingEnabled = True
         Me.ComboBoxPotion.IntegralHeight = False
         Me.ComboBoxPotion.Location = New System.Drawing.Point(133, 444)

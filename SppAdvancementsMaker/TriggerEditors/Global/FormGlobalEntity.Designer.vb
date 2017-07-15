@@ -22,7 +22,6 @@ Partial Class FormGlobalEntity
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.NumericUpDownZMin = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownZMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownYMin = New System.Windows.Forms.NumericUpDown()
@@ -41,7 +40,6 @@ Partial Class FormGlobalEntity
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ButtonEnter = New System.Windows.Forms.Button()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.NumericUpDownAmplifierMax = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDownDurationMax = New System.Windows.Forms.NumericUpDown()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -56,12 +54,14 @@ Partial Class FormGlobalEntity
         Me.ComboBoxEffectName = New System.Windows.Forms.ComboBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.ButtonLocation = New System.Windows.Forms.Button()
-        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBoxType = New System.Windows.Forms.ComboBox()
         Me.TextBoxNbt = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         CType(Me.NumericUpDownZMin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownZMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownYMin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,22 +76,14 @@ Partial Class FormGlobalEntity
         CType(Me.NumericUpDownDurationMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownDurationMin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownAmplifierMin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label10.Location = New System.Drawing.Point(16, 326)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(121, 19)
-        Me.Label10.TabIndex = 114
-        Me.Label10.Text = "实体到玩家的距离"
         '
         'NumericUpDownZMin
         '
-        Me.NumericUpDownZMin.Location = New System.Drawing.Point(133, 476)
+        Me.NumericUpDownZMin.Location = New System.Drawing.Point(118, 147)
         Me.NumericUpDownZMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMin.Name = "NumericUpDownZMin"
@@ -100,7 +92,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownZMax
         '
-        Me.NumericUpDownZMax.Location = New System.Drawing.Point(273, 476)
+        Me.NumericUpDownZMax.Location = New System.Drawing.Point(258, 147)
         Me.NumericUpDownZMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownZMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownZMax.Name = "NumericUpDownZMax"
@@ -109,7 +101,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownYMin
         '
-        Me.NumericUpDownYMin.Location = New System.Drawing.Point(133, 444)
+        Me.NumericUpDownYMin.Location = New System.Drawing.Point(118, 115)
         Me.NumericUpDownYMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMin.Name = "NumericUpDownYMin"
@@ -118,7 +110,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownYMax
         '
-        Me.NumericUpDownYMax.Location = New System.Drawing.Point(273, 444)
+        Me.NumericUpDownYMax.Location = New System.Drawing.Point(258, 115)
         Me.NumericUpDownYMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownYMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownYMax.Name = "NumericUpDownYMax"
@@ -127,7 +119,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownXMin
         '
-        Me.NumericUpDownXMin.Location = New System.Drawing.Point(133, 412)
+        Me.NumericUpDownXMin.Location = New System.Drawing.Point(118, 83)
         Me.NumericUpDownXMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMin.Name = "NumericUpDownXMin"
@@ -136,7 +128,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownXMax
         '
-        Me.NumericUpDownXMax.Location = New System.Drawing.Point(273, 412)
+        Me.NumericUpDownXMax.Location = New System.Drawing.Point(258, 83)
         Me.NumericUpDownXMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownXMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownXMax.Name = "NumericUpDownXMax"
@@ -145,7 +137,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownHorizontalMin
         '
-        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(133, 380)
+        Me.NumericUpDownHorizontalMin.Location = New System.Drawing.Point(118, 51)
         Me.NumericUpDownHorizontalMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownHorizontalMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownHorizontalMin.Name = "NumericUpDownHorizontalMin"
@@ -154,7 +146,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownHorizontalMax
         '
-        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(273, 380)
+        Me.NumericUpDownHorizontalMax.Location = New System.Drawing.Point(258, 51)
         Me.NumericUpDownHorizontalMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownHorizontalMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownHorizontalMax.Name = "NumericUpDownHorizontalMax"
@@ -163,7 +155,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownAbsoluteMin
         '
-        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(133, 348)
+        Me.NumericUpDownAbsoluteMin.Location = New System.Drawing.Point(118, 19)
         Me.NumericUpDownAbsoluteMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAbsoluteMin.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownAbsoluteMin.Name = "NumericUpDownAbsoluteMin"
@@ -172,7 +164,7 @@ Partial Class FormGlobalEntity
         '
         'NumericUpDownAbsoluteMax
         '
-        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(273, 348)
+        Me.NumericUpDownAbsoluteMax.Location = New System.Drawing.Point(258, 19)
         Me.NumericUpDownAbsoluteMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAbsoluteMax.Minimum = New Decimal(New Integer() {2147483647, 0, 0, -2147483648})
         Me.NumericUpDownAbsoluteMax.Name = "NumericUpDownAbsoluteMax"
@@ -182,7 +174,7 @@ Partial Class FormGlobalEntity
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(30, 478)
+        Me.Label9.Location = New System.Drawing.Point(15, 149)
         Me.Label9.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(18, 20)
@@ -192,7 +184,7 @@ Partial Class FormGlobalEntity
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(30, 446)
+        Me.Label8.Location = New System.Drawing.Point(15, 117)
         Me.Label8.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(83, 20)
@@ -202,7 +194,7 @@ Partial Class FormGlobalEntity
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(30, 414)
+        Me.Label7.Location = New System.Drawing.Point(15, 85)
         Me.Label7.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(18, 20)
@@ -212,7 +204,7 @@ Partial Class FormGlobalEntity
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(30, 382)
+        Me.Label6.Location = New System.Drawing.Point(15, 53)
         Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 20)
@@ -222,7 +214,7 @@ Partial Class FormGlobalEntity
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(30, 350)
+        Me.Label5.Location = New System.Drawing.Point(15, 21)
         Me.Label5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 20)
@@ -233,7 +225,7 @@ Partial Class FormGlobalEntity
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.Red
-        Me.Label11.Location = New System.Drawing.Point(16, 645)
+        Me.Label11.Location = New System.Drawing.Point(18, 658)
         Me.Label11.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(107, 20)
@@ -244,7 +236,7 @@ Partial Class FormGlobalEntity
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(16, 665)
+        Me.Label3.Location = New System.Drawing.Point(18, 678)
         Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(135, 20)
@@ -253,28 +245,17 @@ Partial Class FormGlobalEntity
         '
         'ButtonEnter
         '
-        Me.ButtonEnter.Location = New System.Drawing.Point(285, 645)
+        Me.ButtonEnter.Location = New System.Drawing.Point(288, 658)
         Me.ButtonEnter.Name = "ButtonEnter"
         Me.ButtonEnter.Size = New System.Drawing.Size(118, 45)
         Me.ButtonEnter.TabIndex = 115
         Me.ButtonEnter.Text = "确定"
         Me.ButtonEnter.UseVisualStyleBackColor = True
         '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label14.Location = New System.Drawing.Point(16, 9)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(107, 19)
-        Me.Label14.TabIndex = 119
-        Me.Label14.Text = "实体的状态效果"
-        '
         'NumericUpDownAmplifierMax
         '
         Me.NumericUpDownAmplifierMax.Enabled = False
-        Me.NumericUpDownAmplifierMax.Location = New System.Drawing.Point(273, 254)
+        Me.NumericUpDownAmplifierMax.Location = New System.Drawing.Point(258, 246)
         Me.NumericUpDownAmplifierMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownAmplifierMax.Name = "NumericUpDownAmplifierMax"
         Me.NumericUpDownAmplifierMax.Size = New System.Drawing.Size(130, 26)
@@ -283,7 +264,7 @@ Partial Class FormGlobalEntity
         'NumericUpDownDurationMax
         '
         Me.NumericUpDownDurationMax.Enabled = False
-        Me.NumericUpDownDurationMax.Location = New System.Drawing.Point(273, 286)
+        Me.NumericUpDownDurationMax.Location = New System.Drawing.Point(258, 278)
         Me.NumericUpDownDurationMax.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownDurationMax.Name = "NumericUpDownDurationMax"
         Me.NumericUpDownDurationMax.Size = New System.Drawing.Size(130, 26)
@@ -292,7 +273,7 @@ Partial Class FormGlobalEntity
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(316, 231)
+        Me.Label12.Location = New System.Drawing.Point(301, 223)
         Me.Label12.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(51, 20)
@@ -302,7 +283,7 @@ Partial Class FormGlobalEntity
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(168, 231)
+        Me.Label13.Location = New System.Drawing.Point(153, 223)
         Me.Label13.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(51, 20)
@@ -312,7 +293,7 @@ Partial Class FormGlobalEntity
         'ButtonDel
         '
         Me.ButtonDel.Enabled = False
-        Me.ButtonDel.Location = New System.Drawing.Point(361, 117)
+        Me.ButtonDel.Location = New System.Drawing.Point(346, 109)
         Me.ButtonDel.Name = "ButtonDel"
         Me.ButtonDel.Size = New System.Drawing.Size(42, 79)
         Me.ButtonDel.TabIndex = 129
@@ -321,7 +302,7 @@ Partial Class FormGlobalEntity
         '
         'ButtonAdd
         '
-        Me.ButtonAdd.Location = New System.Drawing.Point(361, 32)
+        Me.ButtonAdd.Location = New System.Drawing.Point(346, 24)
         Me.ButtonAdd.Name = "ButtonAdd"
         Me.ButtonAdd.Size = New System.Drawing.Size(42, 79)
         Me.ButtonAdd.TabIndex = 128
@@ -332,7 +313,7 @@ Partial Class FormGlobalEntity
         '
         Me.ListBoxEffects.FormattingEnabled = True
         Me.ListBoxEffects.ItemHeight = 20
-        Me.ListBoxEffects.Location = New System.Drawing.Point(34, 32)
+        Me.ListBoxEffects.Location = New System.Drawing.Point(19, 24)
         Me.ListBoxEffects.Name = "ListBoxEffects"
         Me.ListBoxEffects.Size = New System.Drawing.Size(321, 164)
         Me.ListBoxEffects.TabIndex = 127
@@ -340,7 +321,7 @@ Partial Class FormGlobalEntity
         'NumericUpDownDurationMin
         '
         Me.NumericUpDownDurationMin.Enabled = False
-        Me.NumericUpDownDurationMin.Location = New System.Drawing.Point(133, 286)
+        Me.NumericUpDownDurationMin.Location = New System.Drawing.Point(118, 278)
         Me.NumericUpDownDurationMin.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.NumericUpDownDurationMin.Name = "NumericUpDownDurationMin"
         Me.NumericUpDownDurationMin.Size = New System.Drawing.Size(130, 26)
@@ -349,7 +330,7 @@ Partial Class FormGlobalEntity
         'NumericUpDownAmplifierMin
         '
         Me.NumericUpDownAmplifierMin.Enabled = False
-        Me.NumericUpDownAmplifierMin.Location = New System.Drawing.Point(133, 254)
+        Me.NumericUpDownAmplifierMin.Location = New System.Drawing.Point(118, 246)
         Me.NumericUpDownAmplifierMin.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.NumericUpDownAmplifierMin.Name = "NumericUpDownAmplifierMin"
         Me.NumericUpDownAmplifierMin.Size = New System.Drawing.Size(130, 26)
@@ -358,7 +339,7 @@ Partial Class FormGlobalEntity
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(30, 288)
+        Me.Label16.Location = New System.Drawing.Point(15, 280)
         Me.Label16.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 20)
@@ -368,7 +349,7 @@ Partial Class FormGlobalEntity
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(30, 256)
+        Me.Label17.Location = New System.Drawing.Point(15, 248)
         Me.Label17.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(79, 20)
@@ -381,7 +362,7 @@ Partial Class FormGlobalEntity
         Me.ComboBoxEffectName.Enabled = False
         Me.ComboBoxEffectName.FormattingEnabled = True
         Me.ComboBoxEffectName.IntegralHeight = False
-        Me.ComboBoxEffectName.Location = New System.Drawing.Point(133, 200)
+        Me.ComboBoxEffectName.Location = New System.Drawing.Point(118, 192)
         Me.ComboBoxEffectName.MaxDropDownItems = 16
         Me.ComboBoxEffectName.Name = "ComboBoxEffectName"
         Me.ComboBoxEffectName.Size = New System.Drawing.Size(270, 28)
@@ -390,7 +371,7 @@ Partial Class FormGlobalEntity
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(30, 203)
+        Me.Label18.Location = New System.Drawing.Point(15, 195)
         Me.Label18.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(93, 20)
@@ -399,7 +380,7 @@ Partial Class FormGlobalEntity
         '
         'ButtonLocation
         '
-        Me.ButtonLocation.Location = New System.Drawing.Point(133, 543)
+        Me.ButtonLocation.Location = New System.Drawing.Point(117, 14)
         Me.ButtonLocation.Name = "ButtonLocation"
         Me.ButtonLocation.Size = New System.Drawing.Size(270, 30)
         Me.ButtonLocation.TabIndex = 137
@@ -407,21 +388,10 @@ Partial Class FormGlobalEntity
         Me.ButtonLocation.Text = "位置信息共通标签"
         Me.ButtonLocation.UseVisualStyleBackColor = True
         '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label19.Location = New System.Drawing.Point(16, 521)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(65, 19)
-        Me.Label19.TabIndex = 136
-        Me.Label19.Text = "其它信息"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(30, 548)
+        Me.Label2.Location = New System.Drawing.Point(14, 19)
         Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 20)
@@ -431,7 +401,7 @@ Partial Class FormGlobalEntity
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(30, 582)
+        Me.Label1.Location = New System.Drawing.Point(14, 53)
         Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 20)
@@ -443,7 +413,7 @@ Partial Class FormGlobalEntity
         Me.ComboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxType.FormattingEnabled = True
         Me.ComboBoxType.IntegralHeight = False
-        Me.ComboBoxType.Location = New System.Drawing.Point(133, 579)
+        Me.ComboBoxType.Location = New System.Drawing.Point(117, 50)
         Me.ComboBoxType.MaxDropDownItems = 16
         Me.ComboBoxType.Name = "ComboBoxType"
         Me.ComboBoxType.Size = New System.Drawing.Size(270, 28)
@@ -451,7 +421,7 @@ Partial Class FormGlobalEntity
         '
         'TextBoxNbt
         '
-        Me.TextBoxNbt.Location = New System.Drawing.Point(133, 613)
+        Me.TextBoxNbt.Location = New System.Drawing.Point(117, 84)
         Me.TextBoxNbt.Name = "TextBoxNbt"
         Me.TextBoxNbt.Size = New System.Drawing.Size(269, 26)
         Me.TextBoxNbt.TabIndex = 141
@@ -459,58 +429,85 @@ Partial Class FormGlobalEntity
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(30, 616)
+        Me.Label4.Location = New System.Drawing.Point(14, 87)
         Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(79, 20)
         Me.Label4.TabIndex = 142
         Me.Label4.Text = "NBT字符串"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownAmplifierMax)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownDurationMax)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.ButtonDel)
+        Me.GroupBox1.Controls.Add(Me.ButtonAdd)
+        Me.GroupBox1.Controls.Add(Me.ListBoxEffects)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownDurationMin)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownAmplifierMin)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.ComboBoxEffectName)
+        Me.GroupBox1.Controls.Add(Me.Label18)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(400, 318)
+        Me.GroupBox1.TabIndex = 143
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "实体的状态效果"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownZMin)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownZMax)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownYMin)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownYMax)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownXMin)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownXMax)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownHorizontalMin)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownHorizontalMax)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownAbsoluteMin)
+        Me.GroupBox2.Controls.Add(Me.NumericUpDownAbsoluteMax)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.Label8)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 336)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(403, 192)
+        Me.GroupBox2.TabIndex = 144
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "实体到玩家的距离"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label4)
+        Me.GroupBox3.Controls.Add(Me.TextBoxNbt)
+        Me.GroupBox3.Controls.Add(Me.ComboBoxType)
+        Me.GroupBox3.Controls.Add(Me.Label1)
+        Me.GroupBox3.Controls.Add(Me.Label2)
+        Me.GroupBox3.Controls.Add(Me.ButtonLocation)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 534)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(393, 118)
+        Me.GroupBox3.TabIndex = 145
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "其它信息"
+        '
         'FormGlobalEntity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(418, 707)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBoxNbt)
-        Me.Controls.Add(Me.ComboBoxType)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.ButtonLocation)
-        Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.NumericUpDownAmplifierMax)
-        Me.Controls.Add(Me.NumericUpDownDurationMax)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.ButtonDel)
-        Me.Controls.Add(Me.ButtonAdd)
-        Me.Controls.Add(Me.ListBoxEffects)
-        Me.Controls.Add(Me.NumericUpDownDurationMin)
-        Me.Controls.Add(Me.NumericUpDownAmplifierMin)
-        Me.Controls.Add(Me.Label16)
-        Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.ComboBoxEffectName)
-        Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.Label14)
+        Me.ClientSize = New System.Drawing.Size(418, 713)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEnter)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.NumericUpDownZMin)
-        Me.Controls.Add(Me.NumericUpDownZMax)
-        Me.Controls.Add(Me.NumericUpDownYMin)
-        Me.Controls.Add(Me.NumericUpDownYMax)
-        Me.Controls.Add(Me.NumericUpDownXMin)
-        Me.Controls.Add(Me.NumericUpDownXMax)
-        Me.Controls.Add(Me.NumericUpDownHorizontalMin)
-        Me.Controls.Add(Me.NumericUpDownHorizontalMax)
-        Me.Controls.Add(Me.NumericUpDownAbsoluteMin)
-        Me.Controls.Add(Me.NumericUpDownAbsoluteMax)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
         Me.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -531,12 +528,16 @@ Partial Class FormGlobalEntity
         CType(Me.NumericUpDownDurationMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownDurationMin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownAmplifierMin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Label10 As Label
     Friend WithEvents NumericUpDownZMin As NumericUpDown
     Friend WithEvents NumericUpDownZMax As NumericUpDown
     Friend WithEvents NumericUpDownYMin As NumericUpDown
@@ -555,7 +556,6 @@ Partial Class FormGlobalEntity
     Friend WithEvents Label11 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents ButtonEnter As Button
-    Friend WithEvents Label14 As Label
     Friend WithEvents NumericUpDownAmplifierMax As NumericUpDown
     Friend WithEvents NumericUpDownDurationMax As NumericUpDown
     Friend WithEvents Label12 As Label
@@ -570,10 +570,12 @@ Partial Class FormGlobalEntity
     Friend WithEvents ComboBoxEffectName As ComboBox
     Friend WithEvents Label18 As Label
     Friend WithEvents ButtonLocation As Button
-    Friend WithEvents Label19 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBoxType As ComboBox
     Friend WithEvents TextBoxNbt As TextBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
 End Class

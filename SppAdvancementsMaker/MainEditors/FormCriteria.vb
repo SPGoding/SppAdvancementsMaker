@@ -115,9 +115,9 @@ Public Class FormCriteria
             Case "minecraft:impossible"
                 FormImpossible.Reading(ButtonCriteria.Tag)
             Case "minecraft:inventory_changed"
-
+                FormInventoryChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:item_durability_changed"
-
+                FormItemDurabilityChanged.Reading(ButtonCriteria.Tag)
             Case "minecraft:levitation"
                 FormLevitation.Reading(ButtonCriteria.Tag)
             Case "minecraft:location"
@@ -125,7 +125,7 @@ Public Class FormCriteria
             Case "minecraft:nether_travel"
                 FormNetherTravel.Reading(ButtonCriteria.Tag)
             Case "minecraft:placed_block"
-
+                FormPlacedBlock.Reading(ButtonCriteria.Tag)
             Case "minecraft:player_hurt_entity"
                 FormPlayerHurtEntity.Reading(ButtonCriteria.Tag)
             Case "minecraft:player_killed_entity"
@@ -145,7 +145,7 @@ Public Class FormCriteria
             Case "minecraft:used_totem"
                 FormUsedTotem.Reading(ButtonCriteria.Tag)
             Case "minecraft:villager_trade"
-
+                FormVillagerTrade.Reading(ButtonCriteria.Tag)
         End Select
     End Sub
 End Class

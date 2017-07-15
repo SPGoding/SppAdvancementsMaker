@@ -49,12 +49,12 @@ Public Class FormBredAnimals
     End Sub
 
     Private Sub ButtonChild_Click(sender As Object, e As EventArgs) Handles ButtonChild.Click
-        FormGlobalEntity.Reading(ButtonChild, EnTameAnimalIds)
+        FormGlobalEntity.Reading(ButtonChild, {"pig", "sheep", "cow", "chicken", "wolf", "mooshroom", "ocelot", "horse", "rabbit", "llama", "parrot"})
     End Sub
     Private Sub ButtonParent_Click(sender As Object, e As EventArgs) Handles ButtonParent.Click
-        FormGlobalEntity.Reading(ButtonParent, EnTameAnimalIds)
+        FormGlobalEntity.Reading(ButtonParent, {"pig", "sheep", "cow", "chicken", "wolf", "mooshroom", "ocelot", "horse", "rabbit", "llama", "parrot"})
     End Sub
     Private Sub ButtonPartner_Click(sender As Object, e As EventArgs) Handles ButtonPartner.Click
-        FormGlobalEntity.Reading(ButtonPartner, EnTameAnimalIds)
+        FormGlobalEntity.Reading(ButtonPartner, {"pig", "sheep", "cow", "chicken", "wolf", "mooshroom", "ocelot", "horse", "rabbit", "llama", "parrot"})
     End Sub
 End Class

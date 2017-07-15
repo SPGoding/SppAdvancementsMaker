@@ -252,17 +252,17 @@ Public Class FormGlobalEntity
     Private Sub ListBoxEffects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxEffects.SelectedIndexChanged
         ' 保存旧的Effect
         SaveCurrentEffect(OldSelectedIndex)
-        OldSelectedIndex = ListBoxEffects.SelectedIndex
         If ListBoxEffects.SelectedIndex >= 0 Then
+            OldSelectedIndex = Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
         Dim ObjJson As Object
         If ListBoxEffects.SelectedIndex >= 0 Then
-            If StrEachEffectJson(ListBoxEffects.SelectedIndex) <> "" Then
-                ObjJson = CType(JsonConvert.DeserializeObject("{" & StrEachEffectJson(ListBoxEffects.SelectedIndex) & "}"), JObject)
+            If StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) <> "" Then
+                ObjJson = CType(JsonConvert.DeserializeObject("{" & StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) & "}"), JObject)
                 If ObjJson.ToString <> "{}" Then
-                    Dim StrTemp As String = StrEachEffectJson(ListBoxEffects.SelectedIndex)
+                    Dim StrTemp As String = StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2))
                     StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf(":", 12))
                     StrTemp = StrTemp.Replace(Chr(34), "")
                     ComboBoxEffectName.Tag = StrTemp

@@ -53,6 +53,7 @@ Public Class FormGlobalItem
             ' 读取魔咒
             If ObjJson.Item("enchantments") IsNot Nothing Then
                 For i = 0 To ObjJson.Item("enchantments").Count - 1
+                    ListBoxEnchantments.Items.Add("魔咒" & IntEnchantments)
                     StrEachEnchantmentJson(i) = ObjJson.Item("enchantments").Item(i).ToString()
                 Next
                 ListBoxEnchantments.SelectedIndex = ListBoxEnchantments.Items.Count - 1
@@ -102,7 +103,7 @@ Public Class FormGlobalItem
         If ListBoxEnchantments.Items.Count >= 1 Then
             StrResult &= Chr(34) & "enchantments" & Chr(34) & ":" & "["
             For i = 0 To ListBoxEnchantments.Items.Count - 1
-                StrResult &= StrEachEnchantmentJson(i)
+                StrResult &= StrEachEnchantmentJson(i) & ","
             Next
             StrResult &= "],"
         End If
@@ -192,17 +193,16 @@ Public Class FormGlobalItem
     Private Sub ListBoxEnchantments_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxEnchantments.SelectedIndexChanged
         ' 保存旧的魔咒
         SaveCurrentEnchantment(OldSelectedIndex)
-        OldSelectedIndex = ListBoxEnchantments.SelectedIndex
         If ListBoxEnchantments.SelectedIndex >= 0 Then
+            OldSelectedIndex = Microsoft.VisualBasic.Right(ListBoxEnchantments.SelectedItem.ToString, ListBoxEnchantments.SelectedItem.ToString.Length - 2)
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
         Dim ObjJson As Object
         If ListBoxEnchantments.SelectedIndex >= 0 Then
-            If StrEachEnchantmentJson(ListBoxEnchantments.SelectedIndex) <> "" Then
-                ObjJson = CType(JsonConvert.DeserializeObject(StrEachEnchantmentJson(ListBoxEnchantments.SelectedIndex)), JArray)
-                If ObjJson.ToString <> "[]" Then
-                    Dim StrTemp As String = StrEachEnchantmentJson(ListBoxEnchantments.SelectedIndex)
+            If StrEachEnchantmentJson(Microsoft.VisualBasic.Right(ListBoxEnchantments.SelectedItem.ToString, ListBoxEnchantments.SelectedItem.ToString.Length - 2)) <> "" Then
+                ObjJson = CType(JsonConvert.DeserializeObject(StrEachEnchantmentJson(Microsoft.VisualBasic.Right(ListBoxEnchantments.SelectedItem.ToString, ListBoxEnchantments.SelectedItem.ToString.Length - 2))), JObject)
+                If ObjJson.ToString <> "{}" Then
                     ComboBoxEnchantment.Text = EnToZh(ObjJson.Item("enchantment"), ZhEnchantmentsIds, EnEnchantmentsIds)
                     If ObjJson.Item("levels") IsNot Nothing Then
                         If ObjJson.Item("levels").Item("max") IsNot Nothing Then
@@ -229,7 +229,7 @@ Public Class FormGlobalItem
     Private Sub SaveCurrentEnchantment(OldSelectedIndex As Int32)
         ' 保存当前的魔咒
         If OldSelectedIndex >= 0 Then
-            Dim StrResult As String = "["
+            Dim StrResult As String = "{"
             If NumericUpDownLevelsMin.Value <> 0 Or NumericUpDownLevelsMax.Value <> 0 Then
                 StrResult &= Chr(34) & "levels" & Chr(34) & ":{"
                 If NumericUpDownLevelsMin.Value <> 0 Then
@@ -243,10 +243,20 @@ Public Class FormGlobalItem
             If ComboBoxEnchantment.Text <> "" Then
                 StrResult &= Chr(34) & "enchantment" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxEnchantment.Text, ZhEnchantmentsIds, EnEnchantmentsIds) & Chr(34)
             End If
-            StrResult &= "]"
+            StrResult &= "}"
             StrResult = StrResult.Replace(",}", "}")
             StrResult = StrResult.Replace(",]", "]")
             StrEachEnchantmentJson(OldSelectedIndex) = StrResult
+        End If
+    End Sub
+
+    Private Sub ComboBoxItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem.SelectedIndexChanged
+        If ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) = "minecraft:potion" Or
+           ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) = "minecraft:splash_potion" Or
+           ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) = "minecraft:lingering_potion" Then
+            ComboBoxPotion.Enabled = True
+        Else
+            ComboBoxPotion.Enabled = False
         End If
     End Sub
 End Class

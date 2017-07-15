@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -52,12 +52,13 @@ Partial Class FormMain
         Me.ButtonRecipes = New System.Windows.Forms.Button()
         Me.ButtonLoot = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TextBoxFunction = New System.Windows.Forms.TextBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.CheckBoxHidden = New System.Windows.Forms.CheckBox()
         Me.CheckBoxAnnounce_To_Chat = New System.Windows.Forms.CheckBox()
         Me.CheckBoxShow_Toast = New System.Windows.Forms.CheckBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TextBoxFunction = New System.Windows.Forms.TextBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.LabelHelper = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -239,9 +240,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(11, 46)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode3.Name = "组"
-        TreeNode3.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
+        TreeNode4.Name = "组"
+        TreeNode4.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 402)
         Me.TreeViewCriterias.TabIndex = 40
         '
@@ -277,7 +278,7 @@ Partial Class FormMain
         'LabelResult
         '
         Me.LabelResult.AutoSize = True
-        Me.LabelResult.Location = New System.Drawing.Point(153, 542)
+        Me.LabelResult.Location = New System.Drawing.Point(154, 529)
         Me.LabelResult.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.LabelResult.Name = "LabelResult"
         Me.LabelResult.Size = New System.Drawing.Size(74, 20)
@@ -363,6 +364,40 @@ Partial Class FormMain
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "进度的显示设置"
         '
+        'CheckBoxHidden
+        '
+        Me.CheckBoxHidden.AutoSize = True
+        Me.CheckBoxHidden.Location = New System.Drawing.Point(235, 257)
+        Me.CheckBoxHidden.Name = "CheckBoxHidden"
+        Me.CheckBoxHidden.Size = New System.Drawing.Size(192, 24)
+        Me.CheckBoxHidden.TabIndex = 53
+        Me.CheckBoxHidden.Text = "完成前隐藏(对子进度生效)"
+        Me.CheckBoxHidden.UseVisualStyleBackColor = True
+        '
+        'CheckBoxAnnounce_To_Chat
+        '
+        Me.CheckBoxAnnounce_To_Chat.AutoSize = True
+        Me.CheckBoxAnnounce_To_Chat.Checked = True
+        Me.CheckBoxAnnounce_To_Chat.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxAnnounce_To_Chat.Location = New System.Drawing.Point(117, 257)
+        Me.CheckBoxAnnounce_To_Chat.Name = "CheckBoxAnnounce_To_Chat"
+        Me.CheckBoxAnnounce_To_Chat.Size = New System.Drawing.Size(112, 24)
+        Me.CheckBoxAnnounce_To_Chat.TabIndex = 52
+        Me.CheckBoxAnnounce_To_Chat.Text = "广播到聊天栏"
+        Me.CheckBoxAnnounce_To_Chat.UseVisualStyleBackColor = True
+        '
+        'CheckBoxShow_Toast
+        '
+        Me.CheckBoxShow_Toast.AutoSize = True
+        Me.CheckBoxShow_Toast.Checked = True
+        Me.CheckBoxShow_Toast.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBoxShow_Toast.Location = New System.Drawing.Point(13, 257)
+        Me.CheckBoxShow_Toast.Name = "CheckBoxShow_Toast"
+        Me.CheckBoxShow_Toast.Size = New System.Drawing.Size(98, 24)
+        Me.CheckBoxShow_Toast.TabIndex = 51
+        Me.CheckBoxShow_Toast.Text = "完成后提示"
+        Me.CheckBoxShow_Toast.UseVisualStyleBackColor = True
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.TextBoxFunction)
@@ -403,45 +438,26 @@ Partial Class FormMain
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "条件列表(双击条件进行编辑)"
         '
-        'CheckBoxHidden
+        'LabelHelper
         '
-        Me.CheckBoxHidden.AutoSize = True
-        Me.CheckBoxHidden.Location = New System.Drawing.Point(235, 257)
-        Me.CheckBoxHidden.Name = "CheckBoxHidden"
-        Me.CheckBoxHidden.Size = New System.Drawing.Size(192, 24)
-        Me.CheckBoxHidden.TabIndex = 53
-        Me.CheckBoxHidden.Text = "完成前隐藏(对子进度生效)"
-        Me.CheckBoxHidden.UseVisualStyleBackColor = True
-        '
-        'CheckBoxAnnounce_To_Chat
-        '
-        Me.CheckBoxAnnounce_To_Chat.AutoSize = True
-        Me.CheckBoxAnnounce_To_Chat.Checked = True
-        Me.CheckBoxAnnounce_To_Chat.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxAnnounce_To_Chat.Location = New System.Drawing.Point(117, 257)
-        Me.CheckBoxAnnounce_To_Chat.Name = "CheckBoxAnnounce_To_Chat"
-        Me.CheckBoxAnnounce_To_Chat.Size = New System.Drawing.Size(112, 24)
-        Me.CheckBoxAnnounce_To_Chat.TabIndex = 52
-        Me.CheckBoxAnnounce_To_Chat.Text = "广播到聊天栏"
-        Me.CheckBoxAnnounce_To_Chat.UseVisualStyleBackColor = True
-        '
-        'CheckBoxShow_Toast
-        '
-        Me.CheckBoxShow_Toast.AutoSize = True
-        Me.CheckBoxShow_Toast.Checked = True
-        Me.CheckBoxShow_Toast.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxShow_Toast.Location = New System.Drawing.Point(13, 257)
-        Me.CheckBoxShow_Toast.Name = "CheckBoxShow_Toast"
-        Me.CheckBoxShow_Toast.Size = New System.Drawing.Size(98, 24)
-        Me.CheckBoxShow_Toast.TabIndex = 51
-        Me.CheckBoxShow_Toast.Text = "完成后提示"
-        Me.CheckBoxShow_Toast.UseVisualStyleBackColor = True
+        Me.LabelHelper.AutoSize = True
+        Me.LabelHelper.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LabelHelper.Font = New System.Drawing.Font("微软雅黑", 10.5!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.LabelHelper.ForeColor = System.Drawing.Color.Blue
+        Me.LabelHelper.Location = New System.Drawing.Point(154, 549)
+        Me.LabelHelper.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.LabelHelper.Name = "LabelHelper"
+        Me.LabelHelper.Size = New System.Drawing.Size(191, 20)
+        Me.LabelHelper.TabIndex = 56
+        Me.LabelHelper.Text = "遇到问题？点我打开疑难解答"
+        Me.LabelHelper.Visible = False
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(881, 584)
+        Me.Controls.Add(Me.LabelHelper)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -500,4 +516,5 @@ Partial Class FormMain
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents TextBoxFunction As TextBox
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents LabelHelper As Label
 End Class

@@ -130,9 +130,11 @@ Public Class FormMain
             CreateFile(StrAdvancementsPath, StrAdvancementsParentPath, StrResult)
             LabelResult.Text = "已生成"
             LabelResult.ForeColor = Color.Green
+            LabelHelper.Visible = True
         Catch ex As Exception
             LabelResult.Text = "生成不能: " & ex.Message
             LabelResult.ForeColor = Color.Red
+            LabelHelper.Visible = False
         End Try
     End Sub
 
@@ -262,4 +264,7 @@ Public Class FormMain
         End
     End Sub
 
+    Private Sub LabelHelper_Click(sender As Object, e As EventArgs) Handles LabelHelper.Click
+        FormHelper.Reading
+    End Sub
 End Class

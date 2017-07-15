@@ -55,6 +55,6 @@ Public Class FormEnchantedItem
     End Sub
 
     Private Sub ButtonItem_Click(sender As Object, e As EventArgs) Handles ButtonItem.Click
-        FormGlobalItem.Reading(ButtonItem, {"N/A"})
+        FormGlobalItem.Reading(ButtonItem, {"leather_helmet", "leather_chestplate", "leather_leggings", "leather_boots", "chainmail_helmet", "chainmail_chestplate", "chainmail_leggings", "chainmail_boots", "iron_helmet", "iron_chestplate", "iron_leggings", "iron_boots", "diamond_helmet", "diamond_chestplate", "diamond_leggings", "diamond_boots", "golden_helmet", "golden_chestplate", "golden_leggings", "golden_boots", "iron_sword", "wooden_sword", "stone_sword", "diamond_sword", "golden_sword", "book", "bow", "wooden_axe", "stone_axe", "iron_axe", "diamond_axe", "golden_axe", "wooden_pickaxe", "stone_pickaxe", "iron_pickaxe", "diamond_pickaxe", "golden_pickaxe", "wooden_shovel", "stone_shovel", "iron_shovel", "diamond_shovel", "golden_shovel", "flint_and_steel", "fishing_rod", "wooden_hoe", "stone_hoe", "iron_hoe", "dia", "ond_hoe", "golden_hoe", "shield", "carrot_on_a_stick", "shears"})
     End Sub
 End Class

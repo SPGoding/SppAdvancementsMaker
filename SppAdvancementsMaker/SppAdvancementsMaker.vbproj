@@ -97,6 +97,12 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainEditors\FormHelper.Designer.vb">
+      <DependentUpon>FormHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainEditors\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainEditors\FormRecipeLoot.Designer.vb">
       <DependentUpon>FormRecipeLoot.vb</DependentUpon>
     </Compile>
@@ -210,6 +216,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TriggerEditors\FormInventoryChanged.Designer.vb">
+      <DependentUpon>FormInventoryChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormInventoryChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormItemDurabilityChanged.Designer.vb">
+      <DependentUpon>FormItemDurabilityChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormItemDurabilityChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\FormLevitation.Designer.vb">
       <DependentUpon>FormLevitation.vb</DependentUpon>
     </Compile>
@@ -226,6 +244,12 @@
       <DependentUpon>FormNetherTravel.vb</DependentUpon>
     </Compile>
     <Compile Include="TriggerEditors\FormNetherTravel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerEditors\FormPlacedBlock.Designer.vb">
+      <DependentUpon>FormPlacedBlock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormPlacedBlock.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TriggerEditors\FormPlayerHurtEntity.Designer.vb">
@@ -282,6 +306,12 @@
     <Compile Include="TriggerEditors\FormUsedTotem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TriggerEditors\FormVillagerTrade.Designer.vb">
+      <DependentUpon>FormVillagerTrade.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerEditors\FormVillagerTrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TriggerEditors\Global\FormGlobalDamage.Designer.vb">
       <DependentUpon>FormGlobalDamage.vb</DependentUpon>
     </Compile>
@@ -316,6 +346,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainEditors\FormHelper.resx">
+      <DependentUpon>FormHelper.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainEditors\FormRecipeLoot.resx">
       <DependentUpon>FormRecipeLoot.vb</DependentUpon>
@@ -371,6 +404,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormInventoryChanged.resx">
+      <DependentUpon>FormInventoryChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormItemDurabilityChanged.resx">
+      <DependentUpon>FormItemDurabilityChanged.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormLevitation.resx">
       <DependentUpon>FormLevitation.vb</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormNetherTravel.resx">
       <DependentUpon>FormNetherTravel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormPlacedBlock.resx">
+      <DependentUpon>FormPlacedBlock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormPlayerHurtEntity.resx">
       <DependentUpon>FormPlayerHurtEntity.vb</DependentUpon>
@@ -406,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\FormUsedTotem.resx">
       <DependentUpon>FormUsedTotem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerEditors\FormVillagerTrade.resx">
+      <DependentUpon>FormVillagerTrade.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TriggerEditors\Global\FormGlobalDamage.resx">
       <DependentUpon>FormGlobalDamage.vb</DependentUpon>

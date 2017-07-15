@@ -35,6 +35,6 @@ Public Class FormTameAnimal
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FormGlobalEntity.Reading(Button1, EnTameAnimalIds)
+        FormGlobalEntity.Reading(Button1, {"pig", "sheep", "cow", "chicken", "wolf", "mooshroom", "ocelot", "horse", "rabbit", "llama", "parrot"})
     End Sub
 End Class

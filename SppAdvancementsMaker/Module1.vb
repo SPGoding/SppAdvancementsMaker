@@ -40,7 +40,7 @@ Module Module1
         End If
         StrResult &= """data"":" & IntData
         StrResult &= "},"
-        If StrTitle <> "" Then
+        If StrTitle <> "{}" Then
             StrResult &= """title"":" & StrTitle & ","
         Else
             Throw New Exception("未输入进度名称")
@@ -56,7 +56,7 @@ Module Module1
         Else
             BooRoot = False
         End If
-        If StrDescription <> "" Then
+        If StrDescription <> "{}" Then
             StrResult &= """description"":" & StrDescription & ","
         Else
             Throw New Exception("未输入进度描述")

@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
-Public Class FormSummonedEntity
+Public Class FormVillagerTrade
     Public Sub Reading(StrJson As String)
         ' 显示本窗体
         Visible = False
@@ -10,19 +10,26 @@ Public Class FormSummonedEntity
         Reset()
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
-            If ObjJson.Item("entity") IsNot Nothing Then
-                Button1.Tag = ObjJson.Item("entity").ToString
+            If ObjJson.Item("item") IsNot Nothing Then
+                ButtonItem.Tag = ObjJson.Item("item").ToString
+            End If
+            If ObjJson.Item("villager") IsNot Nothing Then
+                ButtonVillager.Tag = ObjJson.Item("villager").ToString
             End If
         End If
     End Sub
     Private Sub Reset()
-        Button1.Tag = "{}"
+        ButtonItem.Tag = "{}"
+        ButtonVillager.Tag = "{}"
     End Sub
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        If Button1.Tag <> "{}" Then
-            StrResult &= Chr(34) & "entity" & Chr(34) & ":" & Button1.Tag
+        If ButtonItem.Tag <> "{}" Then
+            StrResult &= Chr(34) & "item" & Chr(34) & ":" & ButtonItem.Tag & ","
+        End If
+        If ButtonVillager.Tag <> "{}" Then
+            StrResult &= Chr(34) & "villager" & Chr(34) & ":" & ButtonVillager.Tag
         End If
         StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
@@ -34,7 +41,10 @@ Public Class FormSummonedEntity
         FormCriteria.Show(FormMain)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FormGlobalEntity.Reading(Button1, {"villager_golem", "snowman", "ender_gragon", "wither"})
+    Private Sub ButtonItem_Click(sender As Object, e As EventArgs) Handles ButtonItem.Click
+        FormGlobalItem.Reading(ButtonItem, {"N/A"})
+    End Sub
+    Private Sub ButtonVillager_Click(sender As Object, e As EventArgs) Handles ButtonVillager.Click
+        FormGlobalEntity.Reading(ButtonVillager, {"villager"})
     End Sub
 End Class
