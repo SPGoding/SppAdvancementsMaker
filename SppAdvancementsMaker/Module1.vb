@@ -3,9 +3,9 @@ Imports System.Text
 
 Module Module1
     Public StrSavePath As String
-    Public StrProjectAdvancementName As String
+    Public StrEditingAdvancementName As String
 
-    ' 奖励类型 用于 FormRecipeLoot
+    ' 奖励类型 用于   FormRecipeLoot
     Public Enum RewardType
         Recipe
         Loot
@@ -22,6 +22,77 @@ Module Module1
         FS.Write(Info, 0, Info.Length)
         FS.Close()
     End Sub
+
+    Public Function GetParentPath(StrPath As String) As String
+        Dim StrTemps As String() = StrPath.Split("\")
+        Dim StrTemp As String = ""
+        For i = 0 To UBound(StrTemps) - 1
+            StrTemp &= StrTemps(i) & "\"
+        Next
+        Return StrTemp
+    End Function
+
+    Public Function GetAdvancementPath(StrName As String)
+        Dim StrPathName As String
+        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        ' 加后缀
+        StrPathName = StrName & ".json"
+        ' 改斜杠
+        StrPathName = StrPathName.Replace("/", "\")
+        StrPathName = StrPathName.Replace(":", "\")
+        ' 加前缀
+        StrPathName = StrTempPath & "\" & StrPathName
+        Return StrPathName
+    End Function
+    Public Function GetAdvancementName(StrPath As String)
+        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        ' 把前面一大串删掉
+        StrPath = StrPath.Replace(StrTempPath & "\", "")
+        ' 换斜杠
+        StrPath = StrPath.Replace("\", "/")
+        ' 改冒号
+        If StrPath.IndexOf("/") <> -1 Then
+            StrPath = Microsoft.VisualBasic.Left(StrPath, StrPath.IndexOf("/")) & ":" & Microsoft.VisualBasic.Right(StrPath, StrPath.Length - StrPath.IndexOf("/") - 1)
+        End If
+        ' 去.json
+        StrPath = Microsoft.VisualBasic.Left(StrPath, StrPath.Length - 5)
+        ' 如果和原版进度名称相同
+        For i = 0 To UBound(EnAdvancements)
+            If StrPath = EnAdvancements(i) Then
+                ' 就用原版的中文名代替
+                StrPath = ZhAdvancements(i)
+                Exit For
+            End If
+        Next
+        Return StrPath
+    End Function
+
+    Public Function GetFunctionPath(StrName As String)
+        Dim StrPathName As String
+        Dim StrTempPath As String = StrSavePath & "\data\functions"
+        ' 加后缀
+        StrPathName = StrName & ".mcfunction"
+        ' 改斜杠
+        StrPathName = StrPathName.Replace("/", "\")
+        StrPathName = StrPathName.Replace(":", "\")
+        ' 加前缀
+        StrPathName = StrTempPath & "\" & StrPathName
+        Return StrPathName
+    End Function
+    Public Function GetFunctionName(StrPath As String)
+        Dim StrTempPath As String = StrSavePath & "\data\functions"
+        ' 把前面一大串删掉
+        StrPath = StrPath.Replace(StrTempPath & "\", "")
+        ' 换斜杠
+        StrPath = StrPath.Replace("\", "/")
+        ' 改冒号
+        If StrPath.IndexOf("/") <> -1 Then
+            StrPath = Left(StrPath, StrPath.IndexOf("/")) & ":" & Right(StrPath, StrPath.Length - StrPath.IndexOf("/") - 1)
+        End If
+        ' 去.mcfunction
+        StrPath = Left(StrPath, StrPath.Length - 11)
+        Return StrPath
+    End Function
 
     Public Function GenerateAdvancement(StrItem As String, IntData As Int16, StrTitle As String, StrFrame As String,
                                         StrBackground As String, StrDescription As String, BoolShowToast As Boolean,

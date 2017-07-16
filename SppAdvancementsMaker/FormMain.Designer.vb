@@ -30,9 +30,9 @@ Partial Class FormMain
         Me.NumericUpDownData = New System.Windows.Forms.NumericUpDown()
         Me.ComboBoxFrame = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.LabelParent = New System.Windows.Forms.Label()
         Me.ButtonGenerate = New System.Windows.Forms.Button()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.LabelBackground = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -59,6 +59,8 @@ Partial Class FormMain
         Me.TextBoxFunction = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.LabelHelper = New System.Windows.Forms.Label()
+        Me.TextBoxId = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -69,7 +71,7 @@ Partial Class FormMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 23)
+        Me.Label2.Location = New System.Drawing.Point(1, 28)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(135, 20)
         Me.Label2.TabIndex = 2
@@ -78,7 +80,7 @@ Partial Class FormMain
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 56)
+        Me.Label3.Location = New System.Drawing.Point(1, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(163, 20)
         Me.Label3.TabIndex = 3
@@ -87,7 +89,7 @@ Partial Class FormMain
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(8, 124)
+        Me.Label4.Location = New System.Drawing.Point(1, 163)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 20)
         Me.Label4.TabIndex = 6
@@ -96,7 +98,7 @@ Partial Class FormMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 158)
+        Me.Label5.Location = New System.Drawing.Point(1, 197)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 20)
         Me.Label5.TabIndex = 8
@@ -104,7 +106,7 @@ Partial Class FormMain
         '
         'NumericUpDownData
         '
-        Me.NumericUpDownData.Location = New System.Drawing.Point(180, 54)
+        Me.NumericUpDownData.Location = New System.Drawing.Point(173, 59)
         Me.NumericUpDownData.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
         Me.NumericUpDownData.Name = "NumericUpDownData"
         Me.NumericUpDownData.Size = New System.Drawing.Size(232, 26)
@@ -115,8 +117,8 @@ Partial Class FormMain
         Me.ComboBoxFrame.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxFrame.FormattingEnabled = True
         Me.ComboBoxFrame.IntegralHeight = False
-        Me.ComboBoxFrame.Items.AddRange(New Object() {"普通的默认进度", "有穗的挑战进度", "更圆的目标进度"})
-        Me.ComboBoxFrame.Location = New System.Drawing.Point(180, 155)
+        Me.ComboBoxFrame.Items.AddRange(New Object() {"默认的普通进度", "有穗的挑战进度", "更圆的目标进度"})
+        Me.ComboBoxFrame.Location = New System.Drawing.Point(173, 194)
         Me.ComboBoxFrame.MaxDropDownItems = 16
         Me.ComboBoxFrame.Name = "ComboBoxFrame"
         Me.ComboBoxFrame.Size = New System.Drawing.Size(232, 28)
@@ -125,38 +127,38 @@ Partial Class FormMain
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(8, 193)
+        Me.Label6.Location = New System.Drawing.Point(1, 232)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(37, 20)
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "描述"
         '
-        'Label7
+        'LabelParent
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(8, 226)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(131, 20)
-        Me.Label7.TabIndex = 17
-        Me.Label7.Text = "上个进度(仅子进度)"
+        Me.LabelParent.AutoSize = True
+        Me.LabelParent.Location = New System.Drawing.Point(0, 128)
+        Me.LabelParent.Name = "LabelParent"
+        Me.LabelParent.Size = New System.Drawing.Size(131, 20)
+        Me.LabelParent.TabIndex = 17
+        Me.LabelParent.Text = "上个进度(仅子进度)"
         '
         'ButtonGenerate
         '
-        Me.ButtonGenerate.Location = New System.Drawing.Point(12, 529)
+        Me.ButtonGenerate.Location = New System.Drawing.Point(12, 577)
         Me.ButtonGenerate.Name = "ButtonGenerate"
         Me.ButtonGenerate.Size = New System.Drawing.Size(132, 47)
         Me.ButtonGenerate.TabIndex = 19
         Me.ButtonGenerate.Text = "生成"
         Me.ButtonGenerate.UseVisualStyleBackColor = True
         '
-        'Label11
+        'LabelBackground
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(8, 89)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(159, 20)
-        Me.Label11.TabIndex = 25
-        Me.Label11.Text = "背景方块材质(仅根进度)"
+        Me.LabelBackground.AutoSize = True
+        Me.LabelBackground.Location = New System.Drawing.Point(1, 94)
+        Me.LabelBackground.Name = "LabelBackground"
+        Me.LabelBackground.Size = New System.Drawing.Size(159, 20)
+        Me.LabelBackground.TabIndex = 25
+        Me.LabelBackground.Text = "背景方块材质(仅根进度)"
         '
         'Label12
         '
@@ -205,7 +207,7 @@ Partial Class FormMain
         '
         'ButtonTitle
         '
-        Me.ButtonTitle.Location = New System.Drawing.Point(180, 120)
+        Me.ButtonTitle.Location = New System.Drawing.Point(173, 159)
         Me.ButtonTitle.Name = "ButtonTitle"
         Me.ButtonTitle.Size = New System.Drawing.Size(232, 29)
         Me.ButtonTitle.TabIndex = 37
@@ -215,7 +217,7 @@ Partial Class FormMain
         '
         'ButtonDescription
         '
-        Me.ButtonDescription.Location = New System.Drawing.Point(180, 189)
+        Me.ButtonDescription.Location = New System.Drawing.Point(173, 228)
         Me.ButtonDescription.Name = "ButtonDescription"
         Me.ButtonDescription.Size = New System.Drawing.Size(232, 28)
         Me.ButtonDescription.TabIndex = 38
@@ -229,7 +231,7 @@ Partial Class FormMain
         Me.ComboBoxBackground.FormattingEnabled = True
         Me.ComboBoxBackground.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxBackground.IntegralHeight = False
-        Me.ComboBoxBackground.Location = New System.Drawing.Point(180, 86)
+        Me.ComboBoxBackground.Location = New System.Drawing.Point(173, 91)
         Me.ComboBoxBackground.MaxDropDownItems = 16
         Me.ComboBoxBackground.Name = "ComboBoxBackground"
         Me.ComboBoxBackground.Size = New System.Drawing.Size(232, 28)
@@ -243,12 +245,12 @@ Partial Class FormMain
         TreeNode4.Name = "组"
         TreeNode4.Text = "组0"
         Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
-        Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 402)
+        Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 443)
         Me.TreeViewCriterias.TabIndex = 40
         '
         'ButtonAddGroup
         '
-        Me.ButtonAddGroup.Location = New System.Drawing.Point(10, 454)
+        Me.ButtonAddGroup.Location = New System.Drawing.Point(11, 495)
         Me.ButtonAddGroup.Name = "ButtonAddGroup"
         Me.ButtonAddGroup.Size = New System.Drawing.Size(129, 47)
         Me.ButtonAddGroup.TabIndex = 41
@@ -258,7 +260,7 @@ Partial Class FormMain
         'ButtonAddCriteria
         '
         Me.ButtonAddCriteria.Enabled = False
-        Me.ButtonAddCriteria.Location = New System.Drawing.Point(145, 454)
+        Me.ButtonAddCriteria.Location = New System.Drawing.Point(146, 495)
         Me.ButtonAddCriteria.Name = "ButtonAddCriteria"
         Me.ButtonAddCriteria.Size = New System.Drawing.Size(129, 47)
         Me.ButtonAddCriteria.TabIndex = 42
@@ -268,7 +270,7 @@ Partial Class FormMain
         'ButtonRemove
         '
         Me.ButtonRemove.Enabled = False
-        Me.ButtonRemove.Location = New System.Drawing.Point(280, 454)
+        Me.ButtonRemove.Location = New System.Drawing.Point(281, 495)
         Me.ButtonRemove.Name = "ButtonRemove"
         Me.ButtonRemove.Size = New System.Drawing.Size(130, 47)
         Me.ButtonRemove.TabIndex = 43
@@ -278,7 +280,7 @@ Partial Class FormMain
         'LabelResult
         '
         Me.LabelResult.AutoSize = True
-        Me.LabelResult.Location = New System.Drawing.Point(154, 529)
+        Me.LabelResult.Location = New System.Drawing.Point(154, 577)
         Me.LabelResult.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.LabelResult.Name = "LabelResult"
         Me.LabelResult.Size = New System.Drawing.Size(74, 20)
@@ -301,7 +303,7 @@ Partial Class FormMain
         Me.ComboBoxParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxParent.FormattingEnabled = True
         Me.ComboBoxParent.IntegralHeight = False
-        Me.ComboBoxParent.Location = New System.Drawing.Point(180, 223)
+        Me.ComboBoxParent.Location = New System.Drawing.Point(173, 125)
         Me.ComboBoxParent.MaxDropDownItems = 16
         Me.ComboBoxParent.Name = "ComboBoxParent"
         Me.ComboBoxParent.Size = New System.Drawing.Size(232, 28)
@@ -312,7 +314,7 @@ Partial Class FormMain
         Me.ComboBoxItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxItem.FormattingEnabled = True
         Me.ComboBoxItem.IntegralHeight = False
-        Me.ComboBoxItem.Location = New System.Drawing.Point(180, 20)
+        Me.ComboBoxItem.Location = New System.Drawing.Point(173, 25)
         Me.ComboBoxItem.MaxDropDownItems = 16
         Me.ComboBoxItem.Name = "ComboBoxItem"
         Me.ComboBoxItem.Size = New System.Drawing.Size(232, 28)
@@ -345,11 +347,11 @@ Partial Class FormMain
         Me.GroupBox1.Controls.Add(Me.CheckBoxShow_Toast)
         Me.GroupBox1.Controls.Add(Me.ComboBoxItem)
         Me.GroupBox1.Controls.Add(Me.ComboBoxParent)
-        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.LabelParent)
         Me.GroupBox1.Controls.Add(Me.ComboBoxBackground)
         Me.GroupBox1.Controls.Add(Me.ButtonDescription)
         Me.GroupBox1.Controls.Add(Me.ButtonTitle)
-        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.LabelBackground)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.ComboBoxFrame)
         Me.GroupBox1.Controls.Add(Me.NumericUpDownData)
@@ -357,9 +359,9 @@ Partial Class FormMain
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 44)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(430, 289)
+        Me.GroupBox1.Size = New System.Drawing.Size(430, 294)
         Me.GroupBox1.TabIndex = 53
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "进度的显示设置"
@@ -367,7 +369,7 @@ Partial Class FormMain
         'CheckBoxHidden
         '
         Me.CheckBoxHidden.AutoSize = True
-        Me.CheckBoxHidden.Location = New System.Drawing.Point(235, 257)
+        Me.CheckBoxHidden.Location = New System.Drawing.Point(232, 262)
         Me.CheckBoxHidden.Name = "CheckBoxHidden"
         Me.CheckBoxHidden.Size = New System.Drawing.Size(192, 24)
         Me.CheckBoxHidden.TabIndex = 53
@@ -379,7 +381,7 @@ Partial Class FormMain
         Me.CheckBoxAnnounce_To_Chat.AutoSize = True
         Me.CheckBoxAnnounce_To_Chat.Checked = True
         Me.CheckBoxAnnounce_To_Chat.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxAnnounce_To_Chat.Location = New System.Drawing.Point(117, 257)
+        Me.CheckBoxAnnounce_To_Chat.Location = New System.Drawing.Point(114, 262)
         Me.CheckBoxAnnounce_To_Chat.Name = "CheckBoxAnnounce_To_Chat"
         Me.CheckBoxAnnounce_To_Chat.Size = New System.Drawing.Size(112, 24)
         Me.CheckBoxAnnounce_To_Chat.TabIndex = 52
@@ -391,7 +393,7 @@ Partial Class FormMain
         Me.CheckBoxShow_Toast.AutoSize = True
         Me.CheckBoxShow_Toast.Checked = True
         Me.CheckBoxShow_Toast.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBoxShow_Toast.Location = New System.Drawing.Point(13, 257)
+        Me.CheckBoxShow_Toast.Location = New System.Drawing.Point(10, 262)
         Me.CheckBoxShow_Toast.Name = "CheckBoxShow_Toast"
         Me.CheckBoxShow_Toast.Size = New System.Drawing.Size(98, 24)
         Me.CheckBoxShow_Toast.TabIndex = 51
@@ -408,7 +410,7 @@ Partial Class FormMain
         Me.GroupBox2.Controls.Add(Me.Label14)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 307)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 344)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(430, 216)
         Me.GroupBox2.TabIndex = 54
@@ -433,7 +435,7 @@ Partial Class FormMain
         Me.GroupBox3.Controls.Add(Me.TreeViewCriterias)
         Me.GroupBox3.Location = New System.Drawing.Point(448, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(419, 511)
+        Me.GroupBox3.Size = New System.Drawing.Size(419, 548)
         Me.GroupBox3.TabIndex = 55
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "条件列表(双击条件进行编辑)"
@@ -444,7 +446,7 @@ Partial Class FormMain
         Me.LabelHelper.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LabelHelper.Font = New System.Drawing.Font("微软雅黑", 10.5!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.LabelHelper.ForeColor = System.Drawing.Color.Blue
-        Me.LabelHelper.Location = New System.Drawing.Point(154, 549)
+        Me.LabelHelper.Location = New System.Drawing.Point(154, 597)
         Me.LabelHelper.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.LabelHelper.Name = "LabelHelper"
         Me.LabelHelper.Size = New System.Drawing.Size(191, 20)
@@ -452,11 +454,29 @@ Partial Class FormMain
         Me.LabelHelper.Text = "遇到问题？点我打开疑难解答"
         Me.LabelHelper.Visible = False
         '
+        'TextBoxId
+        '
+        Me.TextBoxId.Location = New System.Drawing.Point(185, 12)
+        Me.TextBoxId.Name = "TextBoxId"
+        Me.TextBoxId.Size = New System.Drawing.Size(232, 26)
+        Me.TextBoxId.TabIndex = 60
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(13, 15)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(52, 20)
+        Me.Label7.TabIndex = 59
+        Me.Label7.Text = "内部ID"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(881, 584)
+        Me.ClientSize = New System.Drawing.Size(881, 635)
+        Me.Controls.Add(Me.TextBoxId)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.LabelHelper)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -468,7 +488,7 @@ Partial Class FormMain
         Me.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.Name = "FormMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "#2进度修改者"
+        Me.Text = "#2进度修改者_编辑进度"
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -488,9 +508,9 @@ Partial Class FormMain
     Friend WithEvents NumericUpDownData As NumericUpDown
     Friend WithEvents ComboBoxFrame As ComboBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents LabelParent As Label
     Friend WithEvents ButtonGenerate As Button
-    Friend WithEvents Label11 As Label
+    Friend WithEvents LabelBackground As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
@@ -517,4 +537,6 @@ Partial Class FormMain
     Friend WithEvents TextBoxFunction As TextBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents LabelHelper As Label
+    Friend WithEvents TextBoxId As TextBox
+    Friend WithEvents Label7 As Label
 End Class

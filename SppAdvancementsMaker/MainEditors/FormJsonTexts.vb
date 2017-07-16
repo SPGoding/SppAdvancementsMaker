@@ -21,7 +21,7 @@ Public Class FormJsonTexts
         CheckBoxUnderline.Checked = False
     End Sub
 
-    Public Sub Reading(ByRef ButtonTarget As Button)
+    Public Sub Reading(ByRef ButtonTarget As Button, Optional ByVal FromIDE As Boolean = False)
         ' 显示本窗体
         Visible = False
         Show(FormMain)
@@ -51,7 +51,22 @@ Public Class FormJsonTexts
             If ObjJson.Item("underlined") IsNot Nothing Then
                 CheckBoxUnderline.Checked = CBool(ObjJson.Item("underlined").ToString)
             End If
-        End If
+            ' 有复杂的Json文本
+            If ObjJson.Item("keybind") IsNot Nothing Or
+               ObjJson.Item("extra") IsNot Nothing Or
+               ObjJson.Item("clickEvent") IsNot Nothing Or
+               ObjJson.Item("hoverEvent") IsNot Nothing Or
+               ObjJson.Item("translate") IsNot Nothing Or
+               ObjJson.Item("with") IsNot Nothing Or
+               ObjJson.Item("score") IsNot Nothing Or
+               ObjJson.Item("selector") IsNot Nothing Or
+               ObjJson.Item("insertion") IsNot Nothing Then
+                If Not FromIDE Then
+                    Hide()
+                    FormJsonTextIDE.Reading(ButtonTarget)
+                End If
+            End If
+            End If
     End Sub
 
     Private Sub Wirting(sender As Object, e As EventArgs) Handles ButtonEnter.Click

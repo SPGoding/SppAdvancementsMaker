@@ -97,10 +97,22 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormSelectAdvancement.Designer.vb">
+      <DependentUpon>FormSelectAdvancement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelectAdvancement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainEditors\FormHelper.Designer.vb">
       <DependentUpon>FormHelper.vb</DependentUpon>
     </Compile>
     <Compile Include="MainEditors\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainEditors\FormJsonTextIDE.Designer.vb">
+      <DependentUpon>FormJsonTextIDE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainEditors\FormJsonTextIDE.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainEditors\FormRecipeLoot.Designer.vb">
@@ -347,8 +359,14 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectAdvancement.resx">
+      <DependentUpon>FormSelectAdvancement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainEditors\FormHelper.resx">
       <DependentUpon>FormHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainEditors\FormJsonTextIDE.resx">
+      <DependentUpon>FormJsonTextIDE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainEditors\FormRecipeLoot.resx">
       <DependentUpon>FormRecipeLoot.vb</DependentUpon>

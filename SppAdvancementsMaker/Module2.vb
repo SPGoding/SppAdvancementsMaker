@@ -12,6 +12,13 @@
     End Function
     Public Function EnToZh(StrEn As String, ZH As String(), EN As String()) As String
         Dim i As Int16
+        If Left(StrEn, 10) <> "minecraft:" And Left(EN(0), 10) = "minecraft:" Then
+            ' 如果传入的文本没有前缀，但应有前缀
+            StrEn = "minecraft:" & StrEn
+        ElseIf Left(StrEn, 10) = "minecraft:" And Left(EN(0), 10) <> "minecraft:" Then
+            ' 如果传入的文本有前缀，但应没有前缀
+            StrEn = Right(StrEn, StrEn.Length - 10)
+        End If
         For i = 0 To EN.Count - 1
             If EN(i) = StrEn Then
                 Return ZH(i)
@@ -3308,5 +3315,17 @@
 "饵钓",
 "经验修补",
 "消失诅咒"
+    }
+
+    ' 进度边框
+    Public EnFrames As String() = {
+"task",
+"challenge",
+"goal"
+    }
+    Public ZhFrames As String() = {
+"默认的普通进度",
+"有穗的挑战进度",
+"更圆的目标进度"
     }
 End Module

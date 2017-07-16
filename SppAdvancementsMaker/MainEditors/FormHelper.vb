@@ -29,7 +29,7 @@
     End Sub
     Private Sub SubB()
         LabelInfo.Text = "请继续在游戏中执行以下命令"
-        TextBoxCommand.Text = "/advancement test @p sppadvancementsmaker:" & StrProjectAdvancementName
+        TextBoxCommand.Text = "/advancement test @p sppadvancementsmaker:" & StrEditingAdvancementName
         LabelInfo2.Visible = True
         LabelChoice1.Visible = True
         LabelChoice2.Visible = True
@@ -38,9 +38,9 @@
         LabelChoice2.Tag = LabelChoice1.Tag
         LabelChoice3.Tag = LabelChoice1.Tag
         LabelInfo2.Text = "游戏返回内容为"
-        LabelChoice1.Text = "没有找到名为'" & "sppadvancementsmaker:" & StrProjectAdvancementName & "'的进度"
-        LabelChoice2.Text = "玩家xxx尚未完成进度'" & "sppadvancementsmaker:" & StrProjectAdvancementName & "'"
-        LabelChoice3.Text = "玩家xxx已达成了'" & "sppadvancementsmaker:" & StrProjectAdvancementName & "'进度"
+        LabelChoice1.Text = "没有找到名为'" & "sppadvancementsmaker:" & StrEditingAdvancementName & "'的进度"
+        LabelChoice2.Text = "玩家xxx尚未完成进度'" & "sppadvancementsmaker:" & StrEditingAdvancementName & "'"
+        LabelChoice3.Text = "玩家xxx已达成了'" & "sppadvancementsmaker:" & StrEditingAdvancementName & "'进度"
     End Sub
     Private Sub SubB1()
         LabelInfo.Text = "你进的是'" & StrSavePath.Split("\")(UBound(StrSavePath.Split("\"))) & "'这个存档吗？"
@@ -56,8 +56,8 @@
         LabelChoice2.Text = "不是"
     End Sub
     Private Sub SubB11()
-        If Dir(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrProjectAdvancementName & ".json") <> "" Then
-            TextBoxCommand.Text = IO.File.ReadAllText(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrProjectAdvancementName & ".json")
+        If Dir(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrEditingAdvancementName & ".json") <> "" Then
+            TextBoxCommand.Text = IO.File.ReadAllText(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrEditingAdvancementName & ".json")
         Else
             SubB11Throw()
         End If
@@ -112,7 +112,7 @@
     End Sub
     Private Sub SubB21()
         LabelInfo.Text = "那就完全没问题啊，你点我干嘛！输入以下命令使该进度未完成"
-        TextBoxCommand.Text = "/advancement revoke @p only sppadvancementsmaker:" & StrProjectAdvancementName
+        TextBoxCommand.Text = "/advancement revoke @p only sppadvancementsmaker:" & StrEditingAdvancementName
         LabelInfo2.Visible = False
         LabelChoice1.Visible = True
         LabelChoice2.Visible = False
@@ -127,7 +127,7 @@
     End Sub
     Private Sub SubB3()
         LabelInfo.Text = "在游戏中执行以下命令后，问题将解决~"
-        TextBoxCommand.Text = "/advancement revoke @p only sppadvancementsmaker:" & StrProjectAdvancementName
+        TextBoxCommand.Text = "/advancement revoke @p only sppadvancementsmaker:" & StrEditingAdvancementName
         LabelInfo2.Visible = True
         LabelChoice1.Visible = True
         LabelChoice2.Visible = False
