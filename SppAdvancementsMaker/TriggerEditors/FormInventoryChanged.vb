@@ -12,7 +12,7 @@ Public Class FormInventoryChanged
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim i As Int16
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         IntItems = 0
         OldSelectedIndex = -1
         ReDim StrEachItemJson(127)
@@ -131,7 +131,7 @@ Public Class FormInventoryChanged
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
-        Dim ObjJson As Object
+        Dim ObjJson As JObject
         If ListBoxItems.SelectedIndex >= 0 Then
             If StrEachItemJson(Microsoft.VisualBasic.Right(ListBoxItems.SelectedItem.ToString, ListBoxItems.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject(StrEachItemJson(Microsoft.VisualBasic.Right(ListBoxItems.SelectedItem.ToString, ListBoxItems.SelectedItem.ToString.Length - 2))), JObject)

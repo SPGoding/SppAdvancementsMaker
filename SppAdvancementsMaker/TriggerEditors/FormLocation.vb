@@ -7,7 +7,7 @@ Public Class FormLocation
         Visible = False
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         Button1.Tag = ObjJson.ToString
     End Sub
 

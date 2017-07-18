@@ -8,7 +8,7 @@ Public Class FormChangedDimension
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim StrTemp As String
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.Item("from") IsNot Nothing Then
             StrTemp = ObjJson.Item("from").ToString
             ComboBoxFrom.Text = EnToZh(StrTemp, ZhDimensions, EnDimensions)
@@ -24,7 +24,7 @@ Public Class FormChangedDimension
     End Sub
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{}"), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject("{}"), JObject)
         Dim StrResult As String
         If ComboBoxFrom.Text <> "" Then
             ObjJson.Add("from", ZhToEn(ComboBoxFrom.Text, ZhDimensions, EnDimensions))

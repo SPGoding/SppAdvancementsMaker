@@ -7,7 +7,7 @@ Public Class FormLevitation
         Visible = False
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("disatance") IsNot Nothing Then
                 If ObjJson.Item("disatance").Item("absolute") IsNot Nothing Then

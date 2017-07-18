@@ -12,7 +12,7 @@ Public Class FormEffectsChanged
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim i As Int16
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         IntEffects = 0
         OldSelectedIndex = -1
         ReDim StrEachEffectJson(127)
@@ -99,7 +99,7 @@ Public Class FormEffectsChanged
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
-        Dim ObjJson As Object
+        Dim ObjJson As JObject
         If ListBoxEffects.SelectedIndex >= 0 Then
             If StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject("{" & StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) & "}"), JObject)

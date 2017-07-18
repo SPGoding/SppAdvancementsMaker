@@ -8,7 +8,7 @@ Public Class FormVillagerTrade
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Reset()
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("item") IsNot Nothing Then
                 ButtonItem.Tag = ObjJson.Item("item").ToString

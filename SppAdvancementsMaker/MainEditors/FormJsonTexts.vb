@@ -28,7 +28,7 @@ Public Class FormJsonTexts
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("text") IsNot Nothing Then
                 TextBoxText.Text = ObjJson.Item("text").ToString

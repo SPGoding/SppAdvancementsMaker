@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -227,7 +227,6 @@ Partial Class FormMain
         '
         'ComboBoxBackground
         '
-        Me.ComboBoxBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxBackground.FormattingEnabled = True
         Me.ComboBoxBackground.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBoxBackground.IntegralHeight = False
@@ -242,9 +241,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(11, 46)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode4.Name = "组"
-        TreeNode4.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
+        TreeNode3.Name = "组"
+        TreeNode3.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 443)
         Me.TreeViewCriterias.TabIndex = 40
         '

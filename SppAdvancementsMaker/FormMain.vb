@@ -82,6 +82,7 @@ Public Class FormMain
         Show()
         Reset(BoolEditing)
         Try
+            StrJson = StrJson.Replace(vbNewLine, "").Replace("  ", "")
             Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
             If ObjJson IsNot Nothing And ObjJson.ToString <> "{}" Then
                 If ObjJson.Item("display") IsNot Nothing Then
@@ -90,7 +91,7 @@ Public Class FormMain
                             ComboBoxItem.Text = EnToZh(ObjJson.Item("display").Item("icon").Item("item").ToString, ZhBlocks, EnBlocks)
                             ComboBoxItem.Text = EnToZh(ObjJson.Item("display").Item("icon").Item("item").ToString, ZhItems, EnItems)
                         End If
-                            If ObjJson.Item("display").Item("icon").Item("data") IsNot Nothing Then
+                        If ObjJson.Item("display").Item("icon").Item("data") IsNot Nothing Then
                             NumericUpDownData.Value = ObjJson.Item("display").Item("icon").Item("data").ToString
                         End If
                     End If
@@ -131,7 +132,9 @@ Public Class FormMain
                 If ObjJson.Item("parent") IsNot Nothing Then
                     ComboBoxParent.Text = EnToZh(ObjJson.Item("parent").ToString, ZhAdvancements, EnAdvancements)
                 End If
+                Dim HaveRequirements As Boolean
                 If ObjJson.Item("requirements") IsNot Nothing Then
+                    HaveRequirements = True
                     TreeViewCriterias.Tag = ObjJson.Item("requirements").ToString
                     For i As Int16 = 0 To ObjJson.Item("requirements").Count - 1
                         Dim NodeGroup As TreeNode
@@ -148,8 +151,31 @@ Public Class FormMain
                     SaveGroupJson()
                 End If
                 If ObjJson.Item("criteria") IsNot Nothing Then
-                    For i As Int16 = 0 To ObjJson.Item("criteria").Count
-
+                    Dim StrTemp As String = ObjJson.Item("criteria").ToString
+                    Dim ObjTempJson As JObject = CType(JsonConvert.DeserializeObject(StrTemp), JObject)
+                    ' 遍历所有的条件
+                    For Each ObjJP As JProperty In ObjTempJson.Children
+                        ' 分离出当前条件的名称
+                        ' Mid的起始位置是1, IndexOf的起始位置是0
+                        ' 淦他妈的巨硬
+                        Debug.Print(ObjJP.ToString)
+                        Debug.Print(ObjJP.ToString.IndexOf(Chr(34)))
+                        Debug.Print(ObjJP.ToString.IndexOf(Chr(34)))
+                        Dim StrCritariaName As String = Mid(ObjJP.ToString, 2, ObjJP.ToString.IndexOf(Chr(34), 2) + 1 - 2)
+                        If HaveRequirements Then
+                            ' 循环找到各个条件的 Node ，并把 Json 写入
+                            For Each Group As TreeNode In TreeViewCriterias.Nodes
+                                For Each Criteria As TreeNode In Group.Nodes
+                                    Criteria.Tag = ObjJP.ToString
+                                Next
+                            Next
+                        Else
+                            ' 为每个 Node 创建一个组
+                            Dim Group As TreeNode = TreeViewCriterias.Nodes.Add("组" & IntGroupCount)
+                            Dim Criteria As TreeNode = Group.Nodes.Add(StrCritariaName)
+                            Criteria.Name = "条"
+                            Criteria.Tag = ObjJP.ToString
+                        End If
                     Next
                 End If
                 If ObjJson.Item("rewards") IsNot Nothing Then
@@ -165,6 +191,7 @@ Public Class FormMain
                     ' 函数
                     If ObjJson.Item("rewards").Item("function") IsNot Nothing Then
                         TextBoxFunction.Text = File.ReadAllText(GetFunctionPath(ObjJson.Item("rewards").Item("function").ToString)).Replace("#Created By SppAdvancementsMaker" & vbNewLine, "")
+                        TextBoxFunction.Tag = ObjJson.Item("rewards").Item("function").ToString
                     End If
                 End If
             End If
@@ -172,13 +199,13 @@ Public Class FormMain
             MessageBox.Show("该进度加载不能: " & ex.Message)
         End Try
     End Sub
-
     Private Sub Reset(BoolEditing As Boolean)
         If BoolEditing Then
             TextBoxId.Text = StrEditingAdvancementName
             TextBoxId.ReadOnly = True
         Else
-            TextBoxId.Text = "sppadvancementsmaker:newadvancement"
+            StrEditingAdvancementName = "sppadvancementsmaker:newadvancement"
+            TextBoxId.Text = StrEditingAdvancementName
             TextBoxId.ReadOnly = False
         End If
         ComboBoxItem.SelectedIndex = 0
@@ -198,7 +225,7 @@ Public Class FormMain
         ButtonLoot.Tag = "[]"
         NumericUpDownExperience.Value = 0
         TextBoxFunction.Text = ""
-        TextBoxFunction.Tag = ""
+        TextBoxFunction.Tag = TextBoxId.Text
         TreeViewCriterias.Nodes.Clear()
         SaveGroupJson()
         IntGroupCount = 0
@@ -230,26 +257,27 @@ Public Class FormMain
                 StrRewards &= Chr(34) & "experience" & Chr(34) & ":" & NumericUpDownExperience.Value & ","
             End If
             If TextBoxFunction.Text <> "" Then
-                Dim StrFunctionPath As String = StrSavePath & "\data\functions\sppadvancementsmaker\" & StrEditingAdvancementName & ".mcfunction"
-                Dim StrFunctionName As String = "sppadvancementsmaker:" & StrEditingAdvancementName
-                CreateFile(StrFunctionPath, StrSavePath & "\data\functions\sppadvancementsmaker\", TextBoxFunction.Tag)
+                Dim StrFunctionPath As String = GetFunctionPath(TextBoxFunction.Tag)
+                CreateFile(StrFunctionPath, GetParentPath(StrFunctionPath), TextBoxFunction.Text)
                 ' 把函数名写入 StrRewards
-                StrRewards &= Chr(34) & "function" & Chr(34) & ":" & Chr(34) & StrFunctionName & Chr(34)
+                StrRewards &= Chr(34) & "function" & Chr(34) & ":" & Chr(34) & TextBoxFunction.Tag & Chr(34)
             End If
             ' 调用函數
+            ComboBoxFrame_SelectedIndexChanged()
             Dim StrResult As String = GenerateAdvancement(ComboBoxItem.Tag, NumericUpDownData.Value, ButtonTitle.Tag,
-                                                     ComboBoxFrame.Tag, ComboBoxBackground.Tag, ButtonDescription.Tag,
+                                                     ComboBoxFrame.Tag,
+                                                     ZhToEn(ComboBoxBackground.Text, ZhBackgrounds, EnBackgrounds),
+                                                     ButtonDescription.Tag,
                                                      CheckBoxShow_Toast.Checked, CheckBoxAnnounce_To_Chat.Checked,
                                                      CheckBoxHidden.Checked,
                                                      ZhToEn(ComboBoxParent.Text, ZhAdvancements, EnAdvancements),
                                                      StrCriteria, TreeViewCriterias.Tag, StrRewards)
             ' 格式化 Json
-            Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrResult), JObject)
+            Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrResult), JObject)
             StrResult = ObjJson.ToString
             ' 将进度写入文件
-            Dim StrAdvancementsParentPath As String = StrSavePath & "\data\advancements\sppadvancementsmaker\"
-            Dim StrAdvancementsPath As String = StrAdvancementsParentPath & StrEditingAdvancementName & ".json"
-            CreateFile(StrAdvancementsPath, StrAdvancementsParentPath, StrResult)
+            Dim StrAdvancementsPath As String = GetAdvancementPath(StrEditingAdvancementName)
+            CreateFile(StrAdvancementsPath, GetParentPath(StrAdvancementsPath), StrResult)
             LabelResult.Text = "已生成"
             LabelResult.ForeColor = Color.Green
             LabelHelper.Visible = True
@@ -261,7 +289,11 @@ Public Class FormMain
     End Sub
 
     ' 生成临时tag
-    Private Sub ComboBoxFrame_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxFrame.SelectedIndexChanged
+    ' 为函数加注释的 Sub 删除了， 并且在下一次读取进度后会自动清除注释
+    ' 注释指的是 #Created By SppAdvancementsMaker 这条注释
+    Private Sub ComboBoxFrame_SelectedIndexChanged() Handles ComboBoxFrame.SelectedIndexChanged
+        ' 不恰当的方式
+        ' 已经堵了各种漏洞
         Select Case ComboBoxFrame.SelectedIndex
             Case 0
                 ComboBoxFrame.Tag = "task"
@@ -270,9 +302,6 @@ Public Class FormMain
             Case 2
                 ComboBoxFrame.Tag = "goal"
         End Select
-    End Sub
-    Private Sub TextBoxFunction_TextChanged(sender As Object, e As EventArgs)
-        TextBoxFunction.Tag = "#Created By SppAdvancementsMaker" & vbNewLine & TextBoxFunction.Text
     End Sub
     Private Sub ComboBoxBackground_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxBackground.SelectedIndexChanged
         Dim StrTemp As String = ZhToEn(ComboBoxBackground.Text, ZhBackgrounds, EnBackgrounds)
@@ -290,6 +319,10 @@ Public Class FormMain
         Else
             ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhItems, EnItems)
         End If
+    End Sub
+    Private Sub TextBoxId_TextChanged(sender As Object, e As EventArgs) Handles TextBoxId.TextChanged
+        TextBoxFunction.Tag = TextBoxId.Text
+        StrEditingAdvancementName = TextBoxId.Text
     End Sub
 
     ' Json文本
@@ -332,10 +365,10 @@ Public Class FormMain
         End If
     End Sub
     Private Sub ButtonAddGroup_Click(sender As Object, e As EventArgs) Handles ButtonAddGroup.Click
-        IntGroupCount += 1
         Dim Node As TreeNode = TreeViewCriterias.Nodes.Add("组" & IntGroupCount)
         Node.Name = "组"
         SaveGroupJson()
+        IntGroupCount += 1
     End Sub
     Private Sub ButtonAddCriteria_Click(sender As Object, e As EventArgs) Handles ButtonAddCriteria.Click
         Dim Node As TreeNode
@@ -381,16 +414,17 @@ Public Class FormMain
     Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
         FormRecipeLoot.Reading(ButtonLoot.Tag, RewardType.Loot)
     End Sub
-
     Private Sub LabelHelper_Click(sender As Object, e As EventArgs) Handles LabelHelper.Click
-        FormHelper.Reading
+        FormHelper.Reading()
     End Sub
 
     ' 细节
     Private Sub TextBoxId_KeyPress(sender As Object, e As KeyPressEventArgs)
         Select Case e.KeyChar
-            Case "/", "\", ":", "?", "|", "*", """", "<", ">"
+            Case ":", "?", "|", "*", Chr(34), "<", ">"
                 e.KeyChar = ""
+            Case "\"
+                e.KeyChar = "/"
         End Select
     End Sub
     Private Function IsReplacedByUser(StrZh As String) As Boolean

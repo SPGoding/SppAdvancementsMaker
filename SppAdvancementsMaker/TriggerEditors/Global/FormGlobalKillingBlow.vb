@@ -23,7 +23,7 @@ Public Class FormGlobalKillingBlow
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("bypasses_armor") IsNot Nothing Then
                 CheckBoxBypassesArmor.Checked = CBool(ObjJson.Item("bypasses_armor").ToString)

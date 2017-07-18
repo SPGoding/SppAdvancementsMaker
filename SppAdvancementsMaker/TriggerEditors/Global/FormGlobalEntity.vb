@@ -41,7 +41,7 @@ Public Class FormGlobalEntity
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             ' 读取状态效果
             If ObjJson.Item("effects") IsNot Nothing Then
@@ -257,7 +257,7 @@ Public Class FormGlobalEntity
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
-        Dim ObjJson As Object
+        Dim ObjJson As JObject
         If ListBoxEffects.SelectedIndex >= 0 Then
             If StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject("{" & StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) & "}"), JObject)

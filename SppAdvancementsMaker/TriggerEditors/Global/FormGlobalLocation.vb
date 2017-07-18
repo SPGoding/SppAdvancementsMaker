@@ -40,7 +40,7 @@ Public Class FormGlobalLocation
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("biome") IsNot Nothing Then
                 ComboBoxBiome.Text = EnToZh(ObjJson.Item("biome").ToString, ZhBiomes, EnBiomes)

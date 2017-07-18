@@ -8,7 +8,7 @@ Public Class FormBrewedPotion
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim StrTemp As String
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.Item("potion") IsNot Nothing Then
             StrTemp = ObjJson.Item("potion").ToString
             ComboBoxPotion.Text = EnToZh(StrTemp, ZhPotions, EnPotions)
@@ -18,7 +18,7 @@ Public Class FormBrewedPotion
     End Sub
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{}"), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject("{}"), JObject)
         Dim StrResult As String
         If ComboBoxPotion.Text <> "" Then
             ObjJson.Add("potion", ZhToEn(ComboBoxPotion.Text, ZhPotions, EnPotions))

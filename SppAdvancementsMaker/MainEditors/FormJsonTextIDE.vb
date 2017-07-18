@@ -15,13 +15,13 @@ Public Class FormJsonTextIDE
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         TextBoxText.Text = ObjJson.ToString
     End Sub
 
     Private Sub Wirting(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Try
-            Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(TextBoxText.Text), JObject)
+            Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(TextBoxText.Text), JObject)
             TextBoxText.Text = ObjJson.ToString
             TextBoxText.Text = TextBoxText.Text.Replace(",}", "}")
             ButtonTarget.Tag = TextBoxText.Text
@@ -40,7 +40,7 @@ Public Class FormJsonTextIDE
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Try
-            Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(TextBoxText.Text), JObject)
+            Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(TextBoxText.Text), JObject)
             TextBoxText.Text = ObjJson.ToString
         Catch ex As Exception
             MessageBox.Show("Json文本不规范: " & ex.Message.Replace("line", "行数").Replace("position", "位置").Replace("Path", "字符"))

@@ -8,7 +8,7 @@ Public Class FormRecipeUnlocked
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim StrTemp As String
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(StrJson), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("recipe") IsNot Nothing Then
                 StrTemp = ObjJson.Item("recipe").ToString
@@ -19,7 +19,7 @@ Public Class FormRecipeUnlocked
     End Sub
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{}"), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject("{}"), JObject)
         Dim StrResult As String
         If ComboBoxRecipes.Text <> "" Then
             ObjJson.Add("recipe", ZhToEn(ComboBoxRecipes.Text, ZhRecipes, EnRecipes))

@@ -48,7 +48,7 @@ Public Class FormGlobalItem
         ' 读取传送过来的 Json 文本
         Reset()
         Me.ButtonTarget = ButtonTarget
-        Dim ObjJson As Object = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
+        Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             ' 读取魔咒
             If ObjJson.Item("enchantments") IsNot Nothing Then
@@ -198,7 +198,7 @@ Public Class FormGlobalItem
             ButtonDel.Enabled = True
         End If
         ' 读取新选中的编辑
-        Dim ObjJson As Object
+        Dim ObjJson As JObject
         If ListBoxEnchantments.SelectedIndex >= 0 Then
             If StrEachEnchantmentJson(Microsoft.VisualBasic.Right(ListBoxEnchantments.SelectedItem.ToString, ListBoxEnchantments.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject(StrEachEnchantmentJson(Microsoft.VisualBasic.Right(ListBoxEnchantments.SelectedItem.ToString, ListBoxEnchantments.SelectedItem.ToString.Length - 2))), JObject)
