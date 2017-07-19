@@ -1,5 +1,6 @@
 ﻿Public Class FormImpossible
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         Visible = False
         Show(FormCriteria)
     End Sub

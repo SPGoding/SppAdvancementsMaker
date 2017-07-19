@@ -7,6 +7,7 @@ Public Class FormInventoryChanged
     Private StrEachItemJson(127) As String
 
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -27,9 +28,13 @@ Public Class FormInventoryChanged
             If ObjJson.Item("items") IsNot Nothing Then
                 For i = 0 To ObjJson.Item("items").Count - 1
                     ListBoxItems.Items.Add("物品" & IntItems)
-                    IntItems += 1
+                    For Each j As JObject In ObjJson.Item("items").Children
+                        StrEachItemJson(IntItems) = j.ToString
+                        IntItems += 1
+                    Next
                 Next
                 ListBoxItems.SelectedIndex = ListBoxItems.Items.Count - 1
+                ButtonItem.Enabled = True
             End If
             If ObjJson.Item("empty") IsNot Nothing Then
                 If ObjJson.Item("empty").Item("max") IsNot Nothing Then
@@ -38,7 +43,12 @@ Public Class FormInventoryChanged
                 If ObjJson.Item("empty").Item("min") IsNot Nothing Then
                     NumericUpDownEmptyMin.Value = ObjJson.Item("empty").Item("min").ToString
                 End If
-            End If
+                If ObjJson.Item("empty").Item("max") Is Nothing And ObjJson.Item("empty").Item("min") Is Nothing Then
+                    If ObjJson.Item("empty").ToString <> "{}" Then
+                        NumericUpDownEmptyMax.Value = ObjJson.Item("empty").ToString
+                        NumericUpDownEmptyMin.Value = ObjJson.Item("empty").ToString
+                    End If
+                End If
             If ObjJson.Item("full") IsNot Nothing Then
                 If ObjJson.Item("full").Item("max") IsNot Nothing Then
                     NumericUpDownFullMax.Value = ObjJson.Item("full").Item("max").ToString
@@ -46,13 +56,26 @@ Public Class FormInventoryChanged
                 If ObjJson.Item("full").Item("min") IsNot Nothing Then
                     NumericUpDownFullMin.Value = ObjJson.Item("full").Item("min").ToString
                 End If
-            End If
-            If ObjJson.Item("occupied") IsNot Nothing Then
-                If ObjJson.Item("occupied").Item("max") IsNot Nothing Then
-                    NumericUpDownOccupiedMax.Value = ObjJson.Item("occupied").Item("max").ToString
+                If ObjJson.Item("full").Item("max") Is Nothing And ObjJson.Item("full").Item("min") Is Nothing Then
+                        If ObjJson.Item("full").ToString <> "{}" Then
+                            NumericUpDownFullMax.Value = ObjJson.Item("full").ToString
+                            NumericUpDownFullMin.Value = ObjJson.Item("full").ToString
+                        End If
+                    End If
                 End If
-                If ObjJson.Item("occupied").Item("min") IsNot Nothing Then
-                    NumericUpDownOccupiedMin.Value = ObjJson.Item("occupied").Item("min").ToString
+                If ObjJson.Item("occupied") IsNot Nothing Then
+                    If ObjJson.Item("occupied").Item("max") IsNot Nothing Then
+                        NumericUpDownOccupiedMax.Value = ObjJson.Item("occupied").Item("max").ToString
+                    End If
+                    If ObjJson.Item("occupied").Item("min") IsNot Nothing Then
+                        NumericUpDownOccupiedMin.Value = ObjJson.Item("occupied").Item("min").ToString
+                    End If
+                    If ObjJson.Item("occupied").Item("max") Is Nothing And ObjJson.Item("occupied").Item("min") Is Nothing Then
+                        If ObjJson.Item("occupied").ToString <> "{}" Then
+                            NumericUpDownOccupiedMax.Value = ObjJson.Item("occupied").ToString
+                            NumericUpDownOccupiedMin.Value = ObjJson.Item("occupied").ToString
+                        End If
+                    End If
                 End If
             End If
         End If
@@ -135,6 +158,7 @@ Public Class FormInventoryChanged
         If ListBoxItems.SelectedIndex >= 0 Then
             If StrEachItemJson(Microsoft.VisualBasic.Right(ListBoxItems.SelectedItem.ToString, ListBoxItems.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject(StrEachItemJson(Microsoft.VisualBasic.Right(ListBoxItems.SelectedItem.ToString, ListBoxItems.SelectedItem.ToString.Length - 2))), JObject)
+                ButtonItem.Enabled = True
                 If ObjJson.ToString <> "{}" Then
                     ButtonItem.Tag = ObjJson.ToString
                 Else
@@ -156,5 +180,9 @@ Public Class FormInventoryChanged
 
     Private Sub ButtonItem_Click(sender As Object, e As EventArgs) Handles ButtonItem.Click
         FormGlobalItem.Reading(ButtonItem, {"N/A"})
+    End Sub
+
+    Private Sub FormInventoryChanged_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

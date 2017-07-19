@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormItemDurabilityChanged
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -20,6 +21,12 @@ Public Class FormItemDurabilityChanged
                 If ObjJson.Item("delta").Item("min") IsNot Nothing Then
                     NumericUpDownDeltaMin.Value = ObjJson.Item("delta").Item("min").ToString
                 End If
+                If ObjJson.Item("delta").Item("max") Is Nothing And ObjJson.Item("delta").Item("min") Is Nothing Then
+                    If ObjJson.Item("delta").ToString <> "{}" Then
+                        NumericUpDownDeltaMax.Value = ObjJson.Item("delta").ToString
+                        NumericUpDownDeltaMin.Value = ObjJson.Item("delta").ToString
+                    End If
+                End If
             End If
             If ObjJson.Item("durability") IsNot Nothing Then
                 If ObjJson.Item("durability").Item("max") IsNot Nothing Then
@@ -27,6 +34,12 @@ Public Class FormItemDurabilityChanged
                 End If
                 If ObjJson.Item("durability").Item("min") IsNot Nothing Then
                     NumericUpDownDurabilityMin.Value = ObjJson.Item("durability").Item("min").ToString
+                End If
+                If ObjJson.Item("durability").Item("max") Is Nothing And ObjJson.Item("durability").Item("min") Is Nothing Then
+                    If ObjJson.Item("durability").ToString <> "{}" Then
+                        NumericUpDownDurabilityMax.Value = ObjJson.Item("durability").ToString
+                        NumericUpDownDurabilityMin.Value = ObjJson.Item("durability").ToString
+                    End If
                 End If
             End If
         End If

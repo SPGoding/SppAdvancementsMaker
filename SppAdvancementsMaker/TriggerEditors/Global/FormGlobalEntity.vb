@@ -22,6 +22,7 @@ Public Class FormGlobalEntity
         Next
     End Sub
     Public Sub Reading(ByRef ButtonTarget As Button, StrType As String())
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show()
@@ -45,22 +46,13 @@ Public Class FormGlobalEntity
         If ObjJson.ToString <> "{}" Then
             ' 读取状态效果
             If ObjJson.Item("effects") IsNot Nothing Then
-                For i = 0 To ObjJson.Item("effects").Count - 1
+                Dim StrTemp As String = ObjJson.Item("effects").ToString
+                Dim ObjTempJson As JObject = CType(JsonConvert.DeserializeObject(StrTemp), JObject)
+                ' 遍历所有的状态效果
+                For Each ObjJP As JProperty In ObjTempJson.Children
                     ListBoxEffects.Items.Add("效果" & IntEffects)
+                    StrEachEffectJson(IntEffects) = ObjJP.ToString.Replace(vbCrLf, "").Replace(" ", "")
                     IntEffects += 1
-                    Dim StrTemp As String = Mid(ObjJson.Item("effects").ToString, 2, ObjJson.Item("effects").ToString.Length - 2).Replace(vbNewLine, "").Replace(" ", "")
-                    Dim StrTemps(ObjJson.Item("effects").Count - 1) As String
-                    StrTemps = Split(StrTemp, "}," & Chr(34) & "minecraft:")
-                    If i <> 0 Then
-                        StrEachEffectJson(i) = Chr(34) & "minecraft:"
-                    Else
-                        StrEachEffectJson(i) = ""
-                    End If
-                    If i < ObjJson.Item("effects").Count - 1 Then
-                        StrEachEffectJson(i) &= StrTemps(i) & "}"
-                    Else
-                        StrEachEffectJson(i) &= StrTemps(i)
-                    End If
                 Next
                 ListBoxEffects.SelectedIndex = ListBoxEffects.Items.Count - 1
             End If
@@ -73,6 +65,12 @@ Public Class FormGlobalEntity
                     If ObjJson.Item("distance").Item("absolute").Item("min") IsNot Nothing Then
                         NumericUpDownAbsoluteMin.Value = ObjJson.Item("distance").Item("absolute").Item("min").ToString
                     End If
+                    If ObjJson.Item("distance").Item("absolute").Item("max") Is Nothing And ObjJson.Item("distance").Item("absolute").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("absolute").ToString <> "{}" Then
+                            NumericUpDownAbsoluteMax.Value = ObjJson.Item("distance").Item("absolute").ToString
+                            NumericUpDownAbsoluteMin.Value = ObjJson.Item("distance").Item("absolute").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("distance").Item("horizontal") IsNot Nothing Then
                     If ObjJson.Item("distance").Item("horizontal").Item("max") IsNot Nothing Then
@@ -80,6 +78,12 @@ Public Class FormGlobalEntity
                     End If
                     If ObjJson.Item("distance").Item("horizontal").Item("min") IsNot Nothing Then
                         NumericUpDownHorizontalMin.Value = ObjJson.Item("distance").Item("horizontal").Item("min").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("horizontal").Item("max") Is Nothing And ObjJson.Item("distance").Item("horizontal").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("horizontal").ToString <> "{}" Then
+                            NumericUpDownHorizontalMax.Value = ObjJson.Item("distance").Item("horizontal").ToString
+                            NumericUpDownHorizontalMin.Value = ObjJson.Item("distance").Item("horizontal").ToString
+                        End If
                     End If
                 End If
                 If ObjJson.Item("distance").Item("x") IsNot Nothing Then
@@ -89,6 +93,12 @@ Public Class FormGlobalEntity
                     If ObjJson.Item("distance").Item("x").Item("min") IsNot Nothing Then
                         NumericUpDownXMin.Value = ObjJson.Item("distance").Item("x").Item("min").ToString
                     End If
+                    If ObjJson.Item("distance").Item("x").Item("max") Is Nothing And ObjJson.Item("distance").Item("x").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("x").ToString <> "{}" Then
+                            NumericUpDownXMax.Value = ObjJson.Item("distance").Item("x").ToString
+                            NumericUpDownXMin.Value = ObjJson.Item("distance").Item("x").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("distance").Item("y") IsNot Nothing Then
                     If ObjJson.Item("distance").Item("y").Item("max") IsNot Nothing Then
@@ -97,6 +107,12 @@ Public Class FormGlobalEntity
                     If ObjJson.Item("distance").Item("y").Item("min") IsNot Nothing Then
                         NumericUpDownYMin.Value = ObjJson.Item("distance").Item("y").Item("min").ToString
                     End If
+                    If ObjJson.Item("distance").Item("y").Item("max") Is Nothing And ObjJson.Item("distance").Item("y").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("y").ToString <> "{}" Then
+                            NumericUpDownYMax.Value = ObjJson.Item("distance").Item("y").ToString
+                            NumericUpDownYMin.Value = ObjJson.Item("distance").Item("y").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("distance").Item("z") IsNot Nothing Then
                     If ObjJson.Item("distance").Item("z").Item("max") IsNot Nothing Then
@@ -104,6 +120,12 @@ Public Class FormGlobalEntity
                     End If
                     If ObjJson.Item("distance").Item("z").Item("min") IsNot Nothing Then
                         NumericUpDownZMin.Value = ObjJson.Item("distance").Item("z").Item("min").ToString
+                    End If
+                    If ObjJson.Item("distance").Item("z").Item("max") Is Nothing And ObjJson.Item("distance").Item("z").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("z").ToString <> "{}" Then
+                            NumericUpDownZMax.Value = ObjJson.Item("distance").Item("z").ToString
+                            NumericUpDownZMin.Value = ObjJson.Item("distance").Item("z").ToString
+                        End If
                     End If
                 End If
             End If
@@ -246,8 +268,11 @@ Public Class FormGlobalEntity
         IntEffects += 1
     End Sub
     Private Sub ButtonDel_Click(sender As Object, e As EventArgs) Handles ButtonDel.Click
-        StrEachEffectJson(ListBoxEffects.SelectedIndex) = ""
-        ListBoxEffects.Items.Remove(ListBoxEffects.SelectedItem)
+        If ListBoxEffects.SelectedIndex >= 0 Then
+            StrEachEffectJson(ListBoxEffects.SelectedIndex) = ""
+            ListBoxEffects.Items.Remove(ListBoxEffects.SelectedItem)
+        End If
+        ButtonDel.Enabled = False
     End Sub
     Private Sub ListBoxEffects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxEffects.SelectedIndexChanged
         ' 保存旧的Effect
@@ -262,9 +287,7 @@ Public Class FormGlobalEntity
             If StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) <> "" Then
                 ObjJson = CType(JsonConvert.DeserializeObject("{" & StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2)) & "}"), JObject)
                 If ObjJson.ToString <> "{}" Then
-                    Dim StrTemp As String = StrEachEffectJson(Microsoft.VisualBasic.Right(ListBoxEffects.SelectedItem.ToString, ListBoxEffects.SelectedItem.ToString.Length - 2))
-                    StrTemp = Microsoft.VisualBasic.Left(StrTemp, StrTemp.IndexOf(":", 12))
-                    StrTemp = StrTemp.Replace(Chr(34), "")
+                    Dim StrTemp As String = Mid(ObjJson.ToString.Replace(vbCrLf, "").Replace(" ", ""), 3, ObjJson.ToString.Replace(vbCrLf, "").Replace(" ", "").IndexOf(Chr(34), 2) + 1 - 3)
                     ComboBoxEffectName.Tag = StrTemp
                     ComboBoxEffectName.Text = EnToZh(ComboBoxEffectName.Tag, ZhEffects, EnEffects)
                     If ObjJson.Item(ComboBoxEffectName.Tag) IsNot Nothing Then
@@ -278,6 +301,12 @@ Public Class FormGlobalEntity
                                 NumericUpDownAmplifierMax.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").Item("max").ToString
                             Else
                                 NumericUpDownAmplifierMax.Value = 0
+                            End If
+                            If ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").Item("max") Is Nothing And ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").Item("min") Is Nothing Then
+                                If ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").ToString <> "{}" Then
+                                    NumericUpDownAmplifierMax.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").ToString
+                                    NumericUpDownAmplifierMin.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("amplifier").ToString
+                                End If
                             End If
                         Else
                             NumericUpDownAmplifierMax.Value = 0
@@ -294,7 +323,13 @@ Public Class FormGlobalEntity
                             Else
                                 NumericUpDownDurationMax.Value = 0
                             End If
-                        Else
+                            If ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("max") Is Nothing And ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").Item("min") Is Nothing Then
+                                If ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").ToString <> "{}" Then
+                                    NumericUpDownDurationMax.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").ToString
+                                    NumericUpDownDurationMin.Value = ObjJson.Item(ComboBoxEffectName.Tag).Item("duration").ToString
+                                End If
+                            End If
+                            Else
                             NumericUpDownDurationMax.Value = 0
                             NumericUpDownDurationMin.Value = 0
                         End If
@@ -321,22 +356,27 @@ Public Class FormGlobalEntity
         ' 保存当前的编辑
         If OldSelectedIndex >= 0 Then
             Dim StrResult As String = Chr(34) & ComboBoxEffectName.Tag & Chr(34) & ":" & "{"
-            StrResult &= Chr(34) & "amplifier" & Chr(34) & ":{"
-            If NumericUpDownAmplifierMin.Value <> 0 Then
-                StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAmplifierMin.Value & ","
+            If NumericUpDownAmplifierMin.Value <> 0 And NumericUpDownAmplifierMax.Value <> 0 Then
+                StrResult &= Chr(34) & "amplifier" & Chr(34) & ":{"
+                If NumericUpDownAmplifierMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownAmplifierMin.Value & ","
+                End If
+                If NumericUpDownAmplifierMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAmplifierMax.Value
+                End If
+                StrResult &= "},"
             End If
-            If NumericUpDownAmplifierMax.Value <> 0 Then
-                StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownAmplifierMax.Value
+            If NumericUpDownDurationMin.Value <> 0 And NumericUpDownDurationMax.Value <> 0 Then
+                StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
+                If NumericUpDownDurationMin.Value <> 0 Then
+                    StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownDurationMin.Value & ","
+                End If
+                If NumericUpDownDurationMax.Value <> 0 Then
+                    StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownDurationMax.Value
+                End If
+                StrResult &= "}"
             End If
-            StrResult &= "},"
-            StrResult &= Chr(34) & "duration" & Chr(34) & ":{"
-            If NumericUpDownDurationMin.Value <> 0 Then
-                StrResult &= Chr(34) & "min" & Chr(34) & ":" & NumericUpDownDurationMin.Value & ","
-            End If
-            If NumericUpDownDurationMax.Value <> 0 Then
-                StrResult &= Chr(34) & "max" & Chr(34) & ":" & NumericUpDownDurationMax.Value
-            End If
-            StrResult &= "}}"
+            StrResult &= "}"
             StrResult = StrResult.Replace(",}", "}")
             StrResult = StrResult.Replace(",]", "]")
             StrEachEffectJson(OldSelectedIndex) = StrResult

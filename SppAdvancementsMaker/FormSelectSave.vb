@@ -72,4 +72,15 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
     End Sub
+
+    Private Sub FormSelectSave_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not File.Exists(Application.StartupPath & "\Newtonsoft.Json.dll") Then
+            MessageBox.Show("你为什么要删掉'Newtonsoft.Json.dll'QwQ 软件打不开了啦！")
+            End
+        End If
+        If Not Directory.Exists(Application.StartupPath & "\advancements") Then
+            MessageBox.Show("你为什么要删掉'advancements'文件夹QwQ 软件打不开了啦！")
+            End
+        End If
+    End Sub
 End Class

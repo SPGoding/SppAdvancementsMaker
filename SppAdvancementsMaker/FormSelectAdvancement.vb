@@ -47,7 +47,10 @@ Public Class FormSelectAdvancement
             Dim StrTempPath As String = GetAdvancementPath(ZhToEn(Microsoft.VisualBasic.Right(ListBoxAdvancements.SelectedItem.ToString, ListBoxAdvancements.SelectedItem.ToString.Length - 4), ZhAdvancements, EnAdvancements))
             Dim StrTempJson As String
             Try
-                If Dir(StrTempPath) = "" Then
+                If Not File.Exists(StrTempPath) Then
+                    If Not Directory.Exists(GetParentPath(StrTempPath)) Then
+                        MkDir(GetParentPath(StrTempPath))
+                    End If
                     File.Copy(StrTempPath.Replace(StrSavePath & "\data\advancements\minecraft", Application.StartupPath & "\advancements"), StrTempPath)
                 End If
                 StrEditingAdvancementName = ZhToEn(Microsoft.VisualBasic.Right(ListBoxAdvancements.SelectedItem.ToString, ListBoxAdvancements.SelectedItem.ToString.Length - 4), ZhAdvancements, EnAdvancements)

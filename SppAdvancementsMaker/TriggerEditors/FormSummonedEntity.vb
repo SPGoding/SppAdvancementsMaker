@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormSummonedEntity
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -35,6 +36,6 @@ Public Class FormSummonedEntity
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FormGlobalEntity.Reading(Button1, {"villager_golem", "snowman", "ender_gragon", "wither"})
+        FormGlobalEntity.Reading(Button1, {"villager_golem", "snowman", "ender_dragon", "wither"})
     End Sub
 End Class

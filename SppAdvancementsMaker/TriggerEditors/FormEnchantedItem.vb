@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormEnchantedItem
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -19,6 +20,12 @@ Public Class FormEnchantedItem
                 End If
                 If ObjJson.Item("levels").Item("min") IsNot Nothing Then
                     NumericUpDownMin.Value = ObjJson.Item("levels").Item("min").ToString
+                End If
+                If ObjJson.Item("levels").Item("max") Is Nothing And ObjJson.Item("levels").Item("min") Is Nothing Then
+                    If ObjJson.Item("levels").ToString <> "{}" Then
+                        NumericUpDownMax.Value = ObjJson.Item("levels").ToString
+                        NumericUpDownMin.Value = ObjJson.Item("levels").ToString
+                    End If
                 End If
             End If
         End If

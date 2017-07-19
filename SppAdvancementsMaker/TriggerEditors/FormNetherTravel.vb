@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormNetherTravel
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -21,6 +22,12 @@ Public Class FormNetherTravel
                     Else
                         NumericUpDownAbsoluteMin.Value = 0
                     End If
+                    If ObjJson.Item("disatance").Item("absolute").Item("max") Is Nothing And ObjJson.Item("disatance").Item("absolute").Item("min") Is Nothing Then
+                        If ObjJson.Item("disatance").Item("absolute").ToString <> "{}" Then
+                            NumericUpDownAbsoluteMax.Value = ObjJson.Item("disatance").Item("absolute").ToString
+                            NumericUpDownAbsoluteMin.Value = ObjJson.Item("disatance").Item("absolute").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("disatance").Item("horizontal") IsNot Nothing Then
                     If ObjJson.Item("disatance").Item("horizontal").Item("max") IsNot Nothing Then
@@ -32,6 +39,12 @@ Public Class FormNetherTravel
                         NumericUpDownHorizontalMin.Value = ObjJson.Item("disatance").Item("horizontal").Item("min").ToString
                     Else
                         NumericUpDownHorizontalMin.Value = 0
+                    End If
+                    If ObjJson.Item("disatance").Item("horizontal").Item("max") Is Nothing And ObjJson.Item("disatance").Item("horizontal").Item("min") Is Nothing Then
+                        If ObjJson.Item("disatance").Item("horizontal").ToString <> "{}" Then
+                            NumericUpDownHorizontalMax.Value = ObjJson.Item("disatance").Item("horizontal").ToString
+                            NumericUpDownHorizontalMin.Value = ObjJson.Item("disatance").Item("horizontal").ToString
+                        End If
                     End If
                 End If
                 If ObjJson.Item("disatance").Item("x") IsNot Nothing Then
@@ -45,6 +58,12 @@ Public Class FormNetherTravel
                     Else
                         NumericUpDownXMin.Value = 0
                     End If
+                    If ObjJson.Item("disatance").Item("x").Item("max") Is Nothing And ObjJson.Item("disatance").Item("x").Item("min") Is Nothing Then
+                        If ObjJson.Item("disatance").Item("x").ToString <> "{}" Then
+                            NumericUpDownXMax.Value = ObjJson.Item("disatance").Item("x").ToString
+                            NumericUpDownXMin.Value = ObjJson.Item("disatance").Item("x").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("disatance").Item("y") IsNot Nothing Then
                     If ObjJson.Item("disatance").Item("y").Item("max") IsNot Nothing Then
@@ -57,6 +76,12 @@ Public Class FormNetherTravel
                     Else
                         NumericUpDownYMin.Value = 0
                     End If
+                    If ObjJson.Item("disatance").Item("y").Item("max") Is Nothing And ObjJson.Item("disatance").Item("y").Item("min") Is Nothing Then
+                        If ObjJson.Item("disatance").Item("y").ToString <> "{}" Then
+                            NumericUpDownYMax.Value = ObjJson.Item("disatance").Item("y").ToString
+                            NumericUpDownYMin.Value = ObjJson.Item("disatance").Item("y").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("disatance").Item("z") IsNot Nothing Then
                     If ObjJson.Item("disatance").Item("z").Item("max") IsNot Nothing Then
@@ -68,6 +93,12 @@ Public Class FormNetherTravel
                         NumericUpDownZMin.Value = ObjJson.Item("disatance").Item("z").Item("min").ToString
                     Else
                         NumericUpDownZMin.Value = 0
+                    End If
+                    If ObjJson.Item("disatance").Item("z").Item("max") Is Nothing And ObjJson.Item("disatance").Item("z").Item("min") Is Nothing Then
+                        If ObjJson.Item("disatance").Item("z").ToString <> "{}" Then
+                            NumericUpDownZMax.Value = ObjJson.Item("disatance").Item("z").ToString
+                            NumericUpDownZMin.Value = ObjJson.Item("disatance").Item("z").ToString
+                        End If
                     End If
                 End If
             End If

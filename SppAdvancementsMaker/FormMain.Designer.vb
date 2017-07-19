@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -61,11 +61,19 @@ Partial Class FormMain
         Me.LabelHelper = New System.Windows.Forms.Label()
         Me.TextBoxId = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBoxCommands = New System.Windows.Forms.GroupBox()
+        Me.ButtonCopyRevoke = New System.Windows.Forms.Button()
+        Me.ButtonCopyGrant = New System.Windows.Forms.Button()
+        Me.TextBoxCommandRevoke = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBoxCommandGrant = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBoxCommands.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -93,12 +101,12 @@ Partial Class FormMain
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 20)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "进度名称"
+        Me.Label4.Text = "进度标题"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(1, 197)
+        Me.Label5.Location = New System.Drawing.Point(1, 231)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 20)
         Me.Label5.TabIndex = 8
@@ -118,7 +126,7 @@ Partial Class FormMain
         Me.ComboBoxFrame.FormattingEnabled = True
         Me.ComboBoxFrame.IntegralHeight = False
         Me.ComboBoxFrame.Items.AddRange(New Object() {"默认的普通进度", "有穗的挑战进度", "更圆的目标进度"})
-        Me.ComboBoxFrame.Location = New System.Drawing.Point(173, 194)
+        Me.ComboBoxFrame.Location = New System.Drawing.Point(173, 228)
         Me.ComboBoxFrame.MaxDropDownItems = 16
         Me.ComboBoxFrame.Name = "ComboBoxFrame"
         Me.ComboBoxFrame.Size = New System.Drawing.Size(232, 28)
@@ -127,11 +135,11 @@ Partial Class FormMain
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(1, 232)
+        Me.Label6.Location = New System.Drawing.Point(1, 198)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(37, 20)
+        Me.Label6.Size = New System.Drawing.Size(65, 20)
         Me.Label6.TabIndex = 12
-        Me.Label6.Text = "描述"
+        Me.Label6.Text = "进度描述"
         '
         'LabelParent
         '
@@ -144,7 +152,7 @@ Partial Class FormMain
         '
         'ButtonGenerate
         '
-        Me.ButtonGenerate.Location = New System.Drawing.Point(12, 577)
+        Me.ButtonGenerate.Location = New System.Drawing.Point(12, 589)
         Me.ButtonGenerate.Name = "ButtonGenerate"
         Me.ButtonGenerate.Size = New System.Drawing.Size(132, 47)
         Me.ButtonGenerate.TabIndex = 19
@@ -217,7 +225,7 @@ Partial Class FormMain
         '
         'ButtonDescription
         '
-        Me.ButtonDescription.Location = New System.Drawing.Point(173, 228)
+        Me.ButtonDescription.Location = New System.Drawing.Point(173, 194)
         Me.ButtonDescription.Name = "ButtonDescription"
         Me.ButtonDescription.Size = New System.Drawing.Size(232, 28)
         Me.ButtonDescription.TabIndex = 38
@@ -241,9 +249,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(11, 46)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode3.Name = "组"
-        TreeNode3.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
+        TreeNode6.Name = "组"
+        TreeNode6.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode6})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 443)
         Me.TreeViewCriterias.TabIndex = 40
         '
@@ -279,7 +287,7 @@ Partial Class FormMain
         'LabelResult
         '
         Me.LabelResult.AutoSize = True
-        Me.LabelResult.Location = New System.Drawing.Point(154, 577)
+        Me.LabelResult.Location = New System.Drawing.Point(154, 589)
         Me.LabelResult.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.LabelResult.Name = "LabelResult"
         Me.LabelResult.Size = New System.Drawing.Size(74, 20)
@@ -310,7 +318,6 @@ Partial Class FormMain
         '
         'ComboBoxItem
         '
-        Me.ComboBoxItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxItem.FormattingEnabled = True
         Me.ComboBoxItem.IntegralHeight = False
         Me.ComboBoxItem.Location = New System.Drawing.Point(173, 25)
@@ -445,7 +452,7 @@ Partial Class FormMain
         Me.LabelHelper.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LabelHelper.Font = New System.Drawing.Font("微软雅黑", 10.5!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.LabelHelper.ForeColor = System.Drawing.Color.Blue
-        Me.LabelHelper.Location = New System.Drawing.Point(154, 597)
+        Me.LabelHelper.Location = New System.Drawing.Point(154, 609)
         Me.LabelHelper.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.LabelHelper.Name = "LabelHelper"
         Me.LabelHelper.Size = New System.Drawing.Size(191, 20)
@@ -469,11 +476,80 @@ Partial Class FormMain
         Me.Label7.TabIndex = 59
         Me.Label7.Text = "内部ID"
         '
+        'GroupBoxCommands
+        '
+        Me.GroupBoxCommands.Controls.Add(Me.ButtonCopyRevoke)
+        Me.GroupBoxCommands.Controls.Add(Me.ButtonCopyGrant)
+        Me.GroupBoxCommands.Controls.Add(Me.TextBoxCommandRevoke)
+        Me.GroupBoxCommands.Controls.Add(Me.Label9)
+        Me.GroupBoxCommands.Controls.Add(Me.TextBoxCommandGrant)
+        Me.GroupBoxCommands.Controls.Add(Me.Label8)
+        Me.GroupBoxCommands.Location = New System.Drawing.Point(448, 560)
+        Me.GroupBoxCommands.Name = "GroupBoxCommands"
+        Me.GroupBoxCommands.Size = New System.Drawing.Size(419, 82)
+        Me.GroupBoxCommands.TabIndex = 61
+        Me.GroupBoxCommands.TabStop = False
+        Me.GroupBoxCommands.Text = "相关命令"
+        Me.GroupBoxCommands.Visible = False
+        '
+        'ButtonCopyRevoke
+        '
+        Me.ButtonCopyRevoke.Location = New System.Drawing.Point(364, 50)
+        Me.ButtonCopyRevoke.Name = "ButtonCopyRevoke"
+        Me.ButtonCopyRevoke.Size = New System.Drawing.Size(47, 26)
+        Me.ButtonCopyRevoke.TabIndex = 65
+        Me.ButtonCopyRevoke.Text = "复制"
+        Me.ButtonCopyRevoke.UseVisualStyleBackColor = True
+        '
+        'ButtonCopyGrant
+        '
+        Me.ButtonCopyGrant.Location = New System.Drawing.Point(364, 19)
+        Me.ButtonCopyGrant.Name = "ButtonCopyGrant"
+        Me.ButtonCopyGrant.Size = New System.Drawing.Size(47, 26)
+        Me.ButtonCopyGrant.TabIndex = 64
+        Me.ButtonCopyGrant.Text = "复制"
+        Me.ButtonCopyGrant.UseVisualStyleBackColor = True
+        '
+        'TextBoxCommandRevoke
+        '
+        Me.TextBoxCommandRevoke.Location = New System.Drawing.Point(106, 50)
+        Me.TextBoxCommandRevoke.Name = "TextBoxCommandRevoke"
+        Me.TextBoxCommandRevoke.ReadOnly = True
+        Me.TextBoxCommandRevoke.Size = New System.Drawing.Size(254, 26)
+        Me.TextBoxCommandRevoke.TabIndex = 63
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(21, 53)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 20)
+        Me.Label9.TabIndex = 62
+        Me.Label9.Text = "移除该进度"
+        '
+        'TextBoxCommandGrant
+        '
+        Me.TextBoxCommandGrant.Location = New System.Drawing.Point(106, 19)
+        Me.TextBoxCommandGrant.Name = "TextBoxCommandGrant"
+        Me.TextBoxCommandGrant.ReadOnly = True
+        Me.TextBoxCommandGrant.Size = New System.Drawing.Size(254, 26)
+        Me.TextBoxCommandGrant.TabIndex = 61
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(21, 22)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(79, 20)
+        Me.Label8.TabIndex = 0
+        Me.Label8.Text = "获得该进度"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(881, 635)
+        Me.ClientSize = New System.Drawing.Size(881, 648)
+        Me.Controls.Add(Me.GroupBoxCommands)
         Me.Controls.Add(Me.TextBoxId)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.LabelHelper)
@@ -496,6 +572,8 @@ Partial Class FormMain
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBoxCommands.ResumeLayout(False)
+        Me.GroupBoxCommands.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -538,4 +616,11 @@ Partial Class FormMain
     Friend WithEvents LabelHelper As Label
     Friend WithEvents TextBoxId As TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents GroupBoxCommands As GroupBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TextBoxCommandGrant As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TextBoxCommandRevoke As TextBox
+    Friend WithEvents ButtonCopyRevoke As Button
+    Friend WithEvents ButtonCopyGrant As Button
 End Class

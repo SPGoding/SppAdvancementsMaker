@@ -1,5 +1,6 @@
 ﻿Public Class FormHelper
     Public Sub Reading()
+        On Error Resume Next
         Show(FormMain)
         SubA()
     End Sub
@@ -56,8 +57,8 @@
         LabelChoice2.Text = "不是"
     End Sub
     Private Sub SubB11()
-        If Dir(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrEditingAdvancementName & ".json") <> "" Then
-            TextBoxCommand.Text = IO.File.ReadAllText(StrSavePath & "\data\advancements\sppadvancementsmaker\" & StrEditingAdvancementName & ".json")
+        If Dir(GetAdvancementPath(StrEditingAdvancementName)) <> "" Then
+            TextBoxCommand.Text = IO.File.ReadAllText(GetAdvancementPath(StrEditingAdvancementName))
         Else
             SubB11Throw()
         End If

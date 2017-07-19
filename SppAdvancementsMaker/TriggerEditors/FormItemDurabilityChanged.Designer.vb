@@ -162,7 +162,6 @@ Partial Class FormItemDurabilityChanged
         '
         'ButtonItem
         '
-        Me.ButtonItem.Enabled = False
         Me.ButtonItem.Location = New System.Drawing.Point(159, 117)
         Me.ButtonItem.Name = "ButtonItem"
         Me.ButtonItem.Size = New System.Drawing.Size(182, 30)

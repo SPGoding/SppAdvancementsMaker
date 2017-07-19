@@ -8,7 +8,9 @@ Public Class FormGlobalDamage
         ButtonDirectEntity.Tag = "{}"
         ButtonSourceEntity.Tag = "{}"
         ButtonType.Tag = "{}"
-        CheckBoxBlocked.Checked = False
+        RadioButtonBlockedNull.Checked = True
+        RadioButtonBlockedFalse.Checked = False
+        RadioButtonBlockedTrue.Checked = False
         NumericUpDownDealtMin.Value = 0
         NumericUpDownDealtMax.Value = 0
         NumericUpDownTakenMin.Value = 0
@@ -16,6 +18,7 @@ Public Class FormGlobalDamage
     End Sub
 
     Public Sub Reading(ByRef ButtonTarget As Button)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show()
@@ -25,7 +28,12 @@ Public Class FormGlobalDamage
         Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("blocked") IsNot Nothing Then
-                CheckBoxBlocked.Checked = CBool(ObjJson.Item("blocked").ToString)
+                Select Case ObjJson.Item("blocked").ToString.ToLower
+                    Case "true"
+                        RadioButtonBlockedTrue.Checked = True
+                    Case "false"
+                        RadioButtonBlockedFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("dealt") IsNot Nothing Then
                 If ObjJson.Item("dealt").Item("max") IsNot Nothing Then
@@ -34,6 +42,12 @@ Public Class FormGlobalDamage
                 If ObjJson.Item("dealt").Item("min") IsNot Nothing Then
                     NumericUpDownDealtMin.Value = ObjJson.Item("dealt").Item("min").ToString
                 End If
+                If ObjJson.Item("dealt").Item("max") Is Nothing And ObjJson.Item("dealt").Item("min") Is Nothing Then
+                    If ObjJson.Item("dealt").ToString <> "{}" Then
+                        NumericUpDownDealtMax.Value = ObjJson.Item("dealt").ToString
+                        NumericUpDownDealtMin.Value = ObjJson.Item("dealt").ToString
+                    End If
+                End If
             End If
             If ObjJson.Item("taken") IsNot Nothing Then
                 If ObjJson.Item("taken").Item("max") IsNot Nothing Then
@@ -41,6 +55,12 @@ Public Class FormGlobalDamage
                 End If
                 If ObjJson.Item("taken").Item("min") IsNot Nothing Then
                     NumericUpDownTakenMin.Value = ObjJson.Item("dealt").Item("min").ToString
+                End If
+                If ObjJson.Item("taken").Item("max") Is Nothing And ObjJson.Item("taken").Item("min") Is Nothing Then
+                    If ObjJson.Item("taken").ToString <> "{}" Then
+                        NumericUpDownTakenMax.Value = ObjJson.Item("taken").ToString
+                        NumericUpDownTakenMin.Value = ObjJson.Item("taken").ToString
+                    End If
                 End If
             End If
             If ObjJson.Item("direct_entity") IsNot Nothing Then
@@ -58,8 +78,10 @@ Public Class FormGlobalDamage
     Private Sub Wirting(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        If CheckBoxBlocked.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "blocked" & Chr(34) & ":" & CheckBoxBlocked.Checked.ToString.ToLower & ","
+        If RadioButtonBlockedFalse.Checked Then
+            StrResult &= Chr(34) & "blocked" & Chr(34) & ":false,"
+        ElseIf RadioButtonBlockedTrue.Checked Then
+            StrResult &= Chr(34) & "blocked" & Chr(34) & ":true,"
         End If
         If NumericUpDownDealtMin.Value <> 0 Or NumericUpDownDealtMax.Value <> 0 Then
             StrResult &= Chr(34) & "dealt" & Chr(34) & ":" & "{"

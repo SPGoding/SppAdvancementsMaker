@@ -32,7 +32,6 @@ Partial Class FormCriteria
         Me.ButtonCriteria = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label2
@@ -133,23 +132,11 @@ Partial Class FormCriteria
         Me.Label5.TabIndex = 41
         Me.Label5.Text = "条件"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(77, 75)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(121, 20)
-        Me.Label6.TabIndex = 47
-        Me.Label6.Text = "更多触发器制作中"
-        '
         'FormCriteria
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(342, 242)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonCriteria)
@@ -181,5 +168,4 @@ Partial Class FormCriteria
     Friend WithEvents ButtonCriteria As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
 End Class

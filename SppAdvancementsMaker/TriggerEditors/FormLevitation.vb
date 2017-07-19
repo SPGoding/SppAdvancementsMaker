@@ -3,71 +3,102 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormLevitation
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
         ' 读取传送过来的 Json 文本
         Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(StrJson), JObject)
         If ObjJson.ToString <> "{}" Then
-            If ObjJson.Item("disatance") IsNot Nothing Then
-                If ObjJson.Item("disatance").Item("absolute") IsNot Nothing Then
-                    If ObjJson.Item("disatance").Item("absolute").Item("max") IsNot Nothing Then
-                        NumericUpDownAbsoluteMax.Value = ObjJson.Item("disatance").Item("absolute").Item("max").ToString
+            If ObjJson.Item("distance") IsNot Nothing Then
+                If ObjJson.Item("distance").Item("absolute") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("absolute").Item("max") IsNot Nothing Then
+                        NumericUpDownAbsoluteMax.Value = ObjJson.Item("distance").Item("absolute").Item("max").ToString
                     Else
                         NumericUpDownAbsoluteMax.Value = 0
                     End If
-                    If ObjJson.Item("disatance").Item("absolute").Item("min") IsNot Nothing Then
-                        NumericUpDownAbsoluteMin.Value = ObjJson.Item("disatance").Item("absolute").Item("min").ToString
+                    If ObjJson.Item("distance").Item("absolute").Item("min") IsNot Nothing Then
+                        NumericUpDownAbsoluteMin.Value = ObjJson.Item("distance").Item("absolute").Item("min").ToString
                     Else
                         NumericUpDownAbsoluteMin.Value = 0
                     End If
+                    If ObjJson.Item("distance").Item("absolute").Item("max") Is Nothing And ObjJson.Item("distance").Item("absolute").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("absolute").ToString <> "{}" Then
+                            NumericUpDownAbsoluteMax.Value = ObjJson.Item("distance").Item("absolute").ToString
+                            NumericUpDownAbsoluteMin.Value = ObjJson.Item("distance").Item("absolute").ToString
+                        End If
+                    End If
                 End If
-                If ObjJson.Item("disatance").Item("horizontal") IsNot Nothing Then
-                    If ObjJson.Item("disatance").Item("horizontal").Item("max") IsNot Nothing Then
-                        NumericUpDownHorizontalMax.Value = ObjJson.Item("disatance").Item("horizontal").Item("max").ToString
+                If ObjJson.Item("distance").Item("horizontal") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("horizontal").Item("max") IsNot Nothing Then
+                        NumericUpDownHorizontalMax.Value = ObjJson.Item("distance").Item("horizontal").Item("max").ToString
                     Else
                         NumericUpDownHorizontalMax.Value = 0
                     End If
-                    If ObjJson.Item("disatance").Item("horizontal").Item("min") IsNot Nothing Then
-                        NumericUpDownHorizontalMin.Value = ObjJson.Item("disatance").Item("horizontal").Item("min").ToString
+                    If ObjJson.Item("distance").Item("horizontal").Item("min") IsNot Nothing Then
+                        NumericUpDownHorizontalMin.Value = ObjJson.Item("distance").Item("horizontal").Item("min").ToString
                     Else
                         NumericUpDownHorizontalMin.Value = 0
                     End If
+                    If ObjJson.Item("distance").Item("horizontal").Item("max") Is Nothing And ObjJson.Item("distance").Item("horizontal").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("horizontal").ToString <> "{}" Then
+                            NumericUpDownHorizontalMax.Value = ObjJson.Item("distance").Item("horizontal").ToString
+                            NumericUpDownHorizontalMin.Value = ObjJson.Item("distance").Item("horizontal").ToString
+                        End If
+                    End If
                 End If
-                If ObjJson.Item("disatance").Item("x") IsNot Nothing Then
-                    If ObjJson.Item("disatance").Item("x").Item("max") IsNot Nothing Then
-                        NumericUpDownXMax.Value = ObjJson.Item("disatance").Item("x").Item("max").ToString
+                If ObjJson.Item("distance").Item("x") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("x").Item("max") IsNot Nothing Then
+                        NumericUpDownXMax.Value = ObjJson.Item("distance").Item("x").Item("max").ToString
                     Else
                         NumericUpDownXMax.Value = 0
                     End If
-                    If ObjJson.Item("disatance").Item("x").Item("min") IsNot Nothing Then
-                        NumericUpDownXMin.Value = ObjJson.Item("disatance").Item("x").Item("min").ToString
+                    If ObjJson.Item("distance").Item("x").Item("min") IsNot Nothing Then
+                        NumericUpDownXMin.Value = ObjJson.Item("distance").Item("x").Item("min").ToString
                     Else
                         NumericUpDownXMin.Value = 0
                     End If
+                    If ObjJson.Item("distance").Item("x").Item("max") Is Nothing And ObjJson.Item("distance").Item("x").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("x").ToString <> "{}" Then
+                            NumericUpDownXMax.Value = ObjJson.Item("distance").Item("x").ToString
+                            NumericUpDownXMin.Value = ObjJson.Item("distance").Item("x").ToString
+                        End If
+                    End If
                 End If
-                If ObjJson.Item("disatance").Item("y") IsNot Nothing Then
-                    If ObjJson.Item("disatance").Item("y").Item("max") IsNot Nothing Then
-                        NumericUpDownYMax.Value = ObjJson.Item("disatance").Item("y").Item("max").ToString
+                If ObjJson.Item("distance").Item("y") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("y").Item("max") IsNot Nothing Then
+                        NumericUpDownYMax.Value = ObjJson.Item("distance").Item("y").Item("max").ToString
                     Else
                         NumericUpDownYMax.Value = 0
                     End If
-                    If ObjJson.Item("disatance").Item("y").Item("min") IsNot Nothing Then
-                        NumericUpDownYMin.Value = ObjJson.Item("disatance").Item("y").Item("min").ToString
+                    If ObjJson.Item("distance").Item("y").Item("min") IsNot Nothing Then
+                        NumericUpDownYMin.Value = ObjJson.Item("distance").Item("y").Item("min").ToString
                     Else
                         NumericUpDownYMin.Value = 0
                     End If
+                    If ObjJson.Item("distance").Item("y").Item("max") Is Nothing And ObjJson.Item("distance").Item("y").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("y").ToString <> "{}" Then
+                            NumericUpDownYMax.Value = ObjJson.Item("distance").Item("y").ToString
+                            NumericUpDownYMin.Value = ObjJson.Item("distance").Item("y").ToString
+                        End If
+                    End If
                 End If
-                If ObjJson.Item("disatance").Item("z") IsNot Nothing Then
-                    If ObjJson.Item("disatance").Item("z").Item("max") IsNot Nothing Then
-                        NumericUpDownZMax.Value = ObjJson.Item("disatance").Item("z").Item("max").ToString
+                If ObjJson.Item("distance").Item("z") IsNot Nothing Then
+                    If ObjJson.Item("distance").Item("z").Item("max") IsNot Nothing Then
+                        NumericUpDownZMax.Value = ObjJson.Item("distance").Item("z").Item("max").ToString
                     Else
                         NumericUpDownZMax.Value = 0
                     End If
-                    If ObjJson.Item("disatance").Item("z").Item("min") IsNot Nothing Then
-                        NumericUpDownZMin.Value = ObjJson.Item("disatance").Item("z").Item("min").ToString
+                    If ObjJson.Item("distance").Item("z").Item("min") IsNot Nothing Then
+                        NumericUpDownZMin.Value = ObjJson.Item("distance").Item("z").Item("min").ToString
                     Else
                         NumericUpDownZMin.Value = 0
+                    End If
+                    If ObjJson.Item("distance").Item("z").Item("max") Is Nothing And ObjJson.Item("distance").Item("z").Item("min") Is Nothing Then
+                        If ObjJson.Item("distance").Item("z").ToString <> "{}" Then
+                            NumericUpDownZMax.Value = ObjJson.Item("distance").Item("z").ToString
+                            NumericUpDownZMin.Value = ObjJson.Item("distance").Item("z").ToString
+                        End If
                     End If
                 End If
             End If
@@ -81,6 +112,12 @@ Public Class FormLevitation
                     NumericUpDownDurationMin.Value = ObjJson.Item("duration").Item("min").ToString
                 Else
                     NumericUpDownDurationMin.Value = 0
+                End If
+                If ObjJson.Item("duration").Item("max") Is Nothing And ObjJson.Item("distance").Item("min") Is Nothing Then
+                    If ObjJson.Item("duration").ToString <> "{}" Then
+                        NumericUpDownDurationMax.Value = ObjJson.Item("duration").ToString
+                        NumericUpDownDurationMin.Value = ObjJson.Item("duration").ToString
+                    End If
                 End If
             End If
         End If

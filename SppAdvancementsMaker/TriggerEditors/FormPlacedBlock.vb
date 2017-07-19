@@ -11,6 +11,7 @@ Public Class FormPlacedBlock
     End Sub
 
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)

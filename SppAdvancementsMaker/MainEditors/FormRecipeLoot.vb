@@ -5,6 +5,7 @@ Public Class FormRecipeLoot
     Private IntRewardType As Int16
 
     Public Sub Reading(StrJson As String, IntRewardType As Int16)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormMain)

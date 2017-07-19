@@ -34,6 +34,7 @@ Public Class FormGlobalLocation
     End Sub
 
     Public Sub Reading(ByRef ButtonTarget As Button)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show()
@@ -59,6 +60,12 @@ Public Class FormGlobalLocation
                     If ObjJson.Item("position").Item("x").Item("min") IsNot Nothing Then
                         NumericUpDownXMin.Value = ObjJson.Item("position").Item("x").Item("min").ToString
                     End If
+                    If ObjJson.Item("position").Item("x").Item("max") Is Nothing And ObjJson.Item("position").Item("x").Item("min") Is Nothing Then
+                        If ObjJson.Item("position").Item("x").ToString <> "{}" Then
+                            NumericUpDownXMax.Value = ObjJson.Item("position").Item("x").ToString
+                            NumericUpDownXMin.Value = ObjJson.Item("position").Item("x").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("position").Item("y") IsNot Nothing Then
                     If ObjJson.Item("position").Item("y").Item("max") IsNot Nothing Then
@@ -67,6 +74,12 @@ Public Class FormGlobalLocation
                     If ObjJson.Item("position").Item("y").Item("min") IsNot Nothing Then
                         NumericUpDownYMin.Value = ObjJson.Item("position").Item("y").Item("min").ToString
                     End If
+                    If ObjJson.Item("position").Item("y").Item("max") Is Nothing And ObjJson.Item("position").Item("y").Item("min") Is Nothing Then
+                        If ObjJson.Item("position").Item("y").ToString <> "{}" Then
+                            NumericUpDownYMax.Value = ObjJson.Item("position").Item("y").ToString
+                            NumericUpDownYMin.Value = ObjJson.Item("position").Item("y").ToString
+                        End If
+                    End If
                 End If
                 If ObjJson.Item("position").Item("z") IsNot Nothing Then
                     If ObjJson.Item("position").Item("z").Item("max") IsNot Nothing Then
@@ -74,6 +87,12 @@ Public Class FormGlobalLocation
                     End If
                     If ObjJson.Item("position").Item("z").Item("min") IsNot Nothing Then
                         NumericUpDownZMin.Value = ObjJson.Item("position").Item("z").Item("min").ToString
+                    End If
+                    If ObjJson.Item("position").Item("z").Item("max") Is Nothing And ObjJson.Item("position").Item("z").Item("min") Is Nothing Then
+                        If ObjJson.Item("position").Item("z").ToString <> "{}" Then
+                            NumericUpDownZMax.Value = ObjJson.Item("position").Item("z").ToString
+                            NumericUpDownZMin.Value = ObjJson.Item("position").Item("z").ToString
+                        End If
                     End If
                 End If
             End If

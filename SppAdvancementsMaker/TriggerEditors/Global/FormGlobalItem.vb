@@ -27,6 +27,7 @@ Public Class FormGlobalItem
         ComboBoxPotion.Enabled = True
     End Sub
     Public Sub Reading(ByRef ButtonTarget As Button, StrItem As String())
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show()
@@ -40,6 +41,9 @@ Public Class FormGlobalItem
             ComboBoxPotion.Enabled = False
         Else
             ComboBoxItem.Items.Add("")
+            For i = 0 To UBound(ZhBlocks)
+                ComboBoxItem.Items.Add(ZhBlocks(i))
+            Next
             For i = 0 To UBound(ZhItems)
                 ComboBoxItem.Items.Add(ZhItems(i))
             Next
@@ -66,6 +70,12 @@ Public Class FormGlobalItem
                 If ObjJson.Item("count").Item("min") IsNot Nothing Then
                     NumericUpDownCountMin.Value = ObjJson.Item("count").Item("min").ToString
                 End If
+                If ObjJson.Item("count").Item("max") Is Nothing And ObjJson.Item("count").Item("min") Is Nothing Then
+                    If ObjJson.Item("count").ToString <> "{}" Then
+                        NumericUpDownCountMax.Value = ObjJson.Item("count").ToString
+                        NumericUpDownCountMin.Value = ObjJson.Item("count").ToString
+                    End If
+                End If
             End If
             If ObjJson.Item("data") IsNot Nothing Then
                 If ObjJson.Item("data").Item("max") IsNot Nothing Then
@@ -73,6 +83,12 @@ Public Class FormGlobalItem
                 End If
                 If ObjJson.Item("data").Item("min") IsNot Nothing Then
                     NumericUpDownDataMin.Value = ObjJson.Item("data").Item("min").ToString
+                End If
+                If ObjJson.Item("data").Item("max") Is Nothing And ObjJson.Item("data").Item("min") Is Nothing Then
+                    If ObjJson.Item("data").ToString <> "{}" Then
+                        NumericUpDownDataMax.Value = ObjJson.Item("data").ToString
+                        NumericUpDownDataMin.Value = ObjJson.Item("data").ToString
+                    End If
                 End If
             End If
             If ObjJson.Item("durability") IsNot Nothing Then
@@ -82,9 +98,19 @@ Public Class FormGlobalItem
                 If ObjJson.Item("durability").Item("min") IsNot Nothing Then
                     NumericUpDownDurabilityMin.Value = ObjJson.Item("durability").Item("min").ToString
                 End If
+                If ObjJson.Item("durability").Item("max") Is Nothing And ObjJson.Item("durability").Item("min") Is Nothing Then
+                    If ObjJson.Item("durability").ToString <> "{}" Then
+                        NumericUpDownDurabilityMax.Value = ObjJson.Item("durability").ToString
+                        NumericUpDownDurabilityMin.Value = ObjJson.Item("durability").ToString
+                    End If
+                End If
             End If
             If ObjJson.Item("item") IsNot Nothing Then
-                ComboBoxItem.Text = EnToZh(ObjJson.Item("item").ToString, ZhItems, EnItems)
+                ComboBoxItem.Tag = EnToZh(ObjJson.Item("item").ToString, ZhItems, EnItems)
+                If ComboBoxItem.Tag = ObjJson.Item("item").ToString Then
+                    ComboBoxItem.Tag = EnToZh(ObjJson.Item("item").ToString, ZhBlocks, EnBlocks)
+                End If
+                ComboBoxItem.Text = ComboBoxItem.Tag
             End If
             If ObjJson.Item("potion") IsNot Nothing Then
                 ComboBoxPotion.Text = EnToZh(ObjJson.Item("potion").ToString, ZhPotions, EnPotions)
@@ -214,6 +240,12 @@ Public Class FormGlobalItem
                             NumericUpDownLevelsMin.Value = ObjJson.Item("levels").Item("min").ToString
                         Else
                             NumericUpDownLevelsMin.Value = 0
+                        End If
+                        If ObjJson.Item("levels").Item("max") Is Nothing And ObjJson.Item("levels").Item("min") Is Nothing Then
+                            If ObjJson.Item("levels").ToString <> "{}" Then
+                                NumericUpDownLevelsMax.Value = ObjJson.Item("levels").ToString
+                                NumericUpDownLevelsMin.Value = ObjJson.Item("levels").ToString
+                            End If
                         End If
                     Else
                         NumericUpDownLevelsMax.Value = 0

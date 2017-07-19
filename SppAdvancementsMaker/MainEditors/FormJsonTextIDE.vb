@@ -9,6 +9,7 @@ Public Class FormJsonTextIDE
     End Sub
 
     Public Sub Reading(ByRef ButtonTarget As Button)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormMain)

@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormUsedEnderEye
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -16,8 +17,14 @@ Public Class FormUsedEnderEye
                 If ObjJson.Item("disatance").Item("min") IsNot Nothing Then
                     NumericUpDownMin.Value = ObjJson.Item("disatance").Item("min").ToString
                 End If
+                If ObjJson.Item("disatance").Item("max") Is Nothing And ObjJson.Item("disatance").Item("min") Is Nothing Then
+                    If ObjJson.Item("disatance").ToString <> "{}" Then
+                        NumericUpDownMax.Value = ObjJson.Item("disatance").ToString
+                        NumericUpDownMin.Value = ObjJson.Item("disatance").ToString
+                    End If
+                End If
             End If
-        End If
+            End If
     End Sub
 
     Private Sub Writing(sender As Object, e As EventArgs) Handles ButtonEnter.Click

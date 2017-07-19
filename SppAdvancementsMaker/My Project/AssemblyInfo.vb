@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports System.Resources
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -8,10 +9,10 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("SppAdvancementsMaker")>
+<Assembly: AssemblyTitle("进度修改者")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("SpaceBang")>
-<Assembly: AssemblyProduct("SppAdvancementsMaker")>
+<Assembly: AssemblyProduct("进度修改者")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
 <Assembly: AssemblyTrademark("")>
 
@@ -33,3 +34,4 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("2.0.0.0")>
 <Assembly: AssemblyFileVersion("2.0.0.0")>
+<Assembly: NeutralResourcesLanguage("zh-CN")>

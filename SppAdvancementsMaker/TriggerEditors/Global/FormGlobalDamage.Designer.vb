@@ -26,7 +26,6 @@ Partial Class FormGlobalDamage
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ButtonDirectEntity = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.CheckBoxBlocked = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ButtonEnter = New System.Windows.Forms.Button()
@@ -41,6 +40,10 @@ Partial Class FormGlobalDamage
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.RadioButtonBlockedTrue = New System.Windows.Forms.RadioButton()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.RadioButtonBlockedFalse = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonBlockedNull = New System.Windows.Forms.RadioButton()
         CType(Me.NumericUpDownTakenMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownDealtMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownTakenMin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,16 +89,6 @@ Partial Class FormGlobalDamage
         Me.Label2.Size = New System.Drawing.Size(131, 20)
         Me.Label2.TabIndex = 138
         Me.Label2.Text = "伤害直接来源(如箭)"
-        '
-        'CheckBoxBlocked
-        '
-        Me.CheckBoxBlocked.AutoSize = True
-        Me.CheckBoxBlocked.Location = New System.Drawing.Point(39, 225)
-        Me.CheckBoxBlocked.Name = "CheckBoxBlocked"
-        Me.CheckBoxBlocked.Size = New System.Drawing.Size(98, 24)
-        Me.CheckBoxBlocked.TabIndex = 131
-        Me.CheckBoxBlocked.Text = "被成功阻挡"
-        Me.CheckBoxBlocked.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -239,11 +232,58 @@ Partial Class FormGlobalDamage
         Me.Label3.TabIndex = 158
         Me.Label3.Text = "最小值"
         '
+        'RadioButtonBlockedTrue
+        '
+        Me.RadioButtonBlockedTrue.AutoSize = True
+        Me.RadioButtonBlockedTrue.Location = New System.Drawing.Point(190, 221)
+        Me.RadioButtonBlockedTrue.Name = "RadioButtonBlockedTrue"
+        Me.RadioButtonBlockedTrue.Size = New System.Drawing.Size(41, 24)
+        Me.RadioButtonBlockedTrue.TabIndex = 166
+        Me.RadioButtonBlockedTrue.TabStop = True
+        Me.RadioButtonBlockedTrue.Text = "是"
+        Me.RadioButtonBlockedTrue.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(36, 223)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 20)
+        Me.Label9.TabIndex = 167
+        Me.Label9.Text = "被成功阻挡"
+        '
+        'RadioButtonBlockedFalse
+        '
+        Me.RadioButtonBlockedFalse.AutoSize = True
+        Me.RadioButtonBlockedFalse.Location = New System.Drawing.Point(265, 221)
+        Me.RadioButtonBlockedFalse.Name = "RadioButtonBlockedFalse"
+        Me.RadioButtonBlockedFalse.Size = New System.Drawing.Size(41, 24)
+        Me.RadioButtonBlockedFalse.TabIndex = 168
+        Me.RadioButtonBlockedFalse.Text = "否"
+        Me.RadioButtonBlockedFalse.UseVisualStyleBackColor = True
+        '
+        'RadioButtonBlockedNull
+        '
+        Me.RadioButtonBlockedNull.AutoSize = True
+        Me.RadioButtonBlockedNull.Checked = True
+        Me.RadioButtonBlockedNull.Location = New System.Drawing.Point(333, 221)
+        Me.RadioButtonBlockedNull.Name = "RadioButtonBlockedNull"
+        Me.RadioButtonBlockedNull.Size = New System.Drawing.Size(69, 24)
+        Me.RadioButtonBlockedNull.TabIndex = 169
+        Me.RadioButtonBlockedNull.TabStop = True
+        Me.RadioButtonBlockedNull.Text = "不限制"
+        Me.RadioButtonBlockedNull.UseVisualStyleBackColor = True
+        '
         'FormGlobalDamage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(423, 325)
+        Me.Controls.Add(Me.RadioButtonBlockedNull)
+        Me.Controls.Add(Me.RadioButtonBlockedFalse)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.RadioButtonBlockedTrue)
         Me.Controls.Add(Me.NumericUpDownTakenMax)
         Me.Controls.Add(Me.NumericUpDownDealtMax)
         Me.Controls.Add(Me.Label12)
@@ -259,7 +299,6 @@ Partial Class FormGlobalDamage
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ButtonDirectEntity)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.CheckBoxBlocked)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButtonEnter)
@@ -281,7 +320,6 @@ Partial Class FormGlobalDamage
     Friend WithEvents Label4 As Label
     Friend WithEvents ButtonDirectEntity As Button
     Friend WithEvents Label2 As Label
-    Friend WithEvents CheckBoxBlocked As CheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents ButtonEnter As Button
@@ -296,4 +334,8 @@ Partial Class FormGlobalDamage
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents RadioButtonBlockedTrue As RadioButton
+    Friend WithEvents Label9 As Label
+    Friend WithEvents RadioButtonBlockedFalse As RadioButton
+    Friend WithEvents RadioButtonBlockedNull As RadioButton
 End Class

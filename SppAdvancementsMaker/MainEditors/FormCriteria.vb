@@ -12,6 +12,7 @@ Public Class FormCriteria
     End Sub
 
     Public Sub Reading(StrCriteriaName As String, StrCriteriaJson As String, StrGroupJson As String)
+        On Error Resume Next
         Dim ObjJson As Object = CType(JsonConvert.DeserializeObject("{" & StrCriteriaJson & "}"), JObject)
         '读取条件名
         TextBoxName.Tag = StrCriteriaName

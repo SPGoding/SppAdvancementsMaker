@@ -78,7 +78,7 @@ Partial Class FormConsumeItem
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(299, 19)
         Me.Label1.TabIndex = 58
-        Me.Label1.Text = "本触发器在玩家消耗了物品(非工具损耗)时触发"
+        Me.Label1.Text = "本触发器在玩家消耗了物品(非工具损害)时触发"
         '
         'FormConsumeItem
         '

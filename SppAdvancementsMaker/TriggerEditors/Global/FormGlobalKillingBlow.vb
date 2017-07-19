@@ -5,18 +5,19 @@ Public Class FormGlobalKillingBlow
     Private ButtonTarget As Button
 
     Private Sub Reset()
-        CheckBoxBypassesArmor.Checked = False
-        CheckBoxBypassesInvulnerability.Checked = False
-        CheckBoxBypassesMagic.Checked = False
-        CheckBoxIsExplosion.Checked = False
-        CheckBoxIsFire.Checked = False
-        CheckBoxIsMagic.Checked = False
-        CheckBoxIsProjectile.Checked = False
+        BypassesArmorNull.Checked = True
+        BypassesInvulnerabilityNull.Checked = True
+        BypassesMagicNull.Checked = True
+        IsExplosionNull.Checked = True
+        IsFireNull.Checked = True
+        IsMagicNull.Checked = True
+        IsProjectileNull.Checked = True
         ButtonDirectEntity.Tag = "{}"
         ButtonSourceEntity.Tag = "{}"
     End Sub
 
     Public Sub Reading(ByRef ButtonTarget As Button)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show()
@@ -26,25 +27,60 @@ Public Class FormGlobalKillingBlow
         Dim ObjJson As JObject = CType(JsonConvert.DeserializeObject(ButtonTarget.Tag), JObject)
         If ObjJson.ToString <> "{}" Then
             If ObjJson.Item("bypasses_armor") IsNot Nothing Then
-                CheckBoxBypassesArmor.Checked = CBool(ObjJson.Item("bypasses_armor").ToString)
+                Select Case ObjJson.Item("bypasses_armor").ToString.ToLower
+                    Case "true"
+                        BypassesArmorTrue.Checked = True
+                    Case "false"
+                        BypassesArmorFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("bypasses_invulnerability") IsNot Nothing Then
-                CheckBoxBypassesInvulnerability.Checked = CBool(ObjJson.Item("bypasses_invulnerability").ToString)
+                Select Case ObjJson.Item("bypasses_invulnerability").ToString.ToLower
+                    Case "true"
+                        BypassesInvulnerabilityTrue.Checked = True
+                    Case "false"
+                        BypassesInvulnerabilityFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("bypasses_magic") IsNot Nothing Then
-                CheckBoxBypassesMagic.Checked = CBool(ObjJson.Item("bypasses_magic").ToString)
+                Select Case ObjJson.Item("bypasses_magic").ToString.ToLower
+                    Case "true"
+                        BypassesMagicTrue.Checked = True
+                    Case "false"
+                        BypassesMagicFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("is_explosion") IsNot Nothing Then
-                CheckBoxIsExplosion.Checked = CBool(ObjJson.Item("is_explosion").ToString)
+                Select Case ObjJson.Item("is_explosion").ToString.ToLower
+                    Case "true"
+                        IsExplosionTrue.Checked = True
+                    Case "false"
+                        IsExplosionFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("is_fire") IsNot Nothing Then
-                CheckBoxIsFire.Checked = CBool(ObjJson.Item("is_fire").ToString)
+                Select Case ObjJson.Item("is_fire").ToString.ToLower
+                    Case "true"
+                        IsFireTrue.Checked = True
+                    Case "false"
+                        IsFireFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("is_magic") IsNot Nothing Then
-                CheckBoxIsMagic.Checked = CBool(ObjJson.Item("is_magic").ToString)
+                Select Case ObjJson.Item("is_magic").ToString.ToLower
+                    Case "true"
+                        IsMagicTrue.Checked = True
+                    Case "false"
+                        IsMagicFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("is_projectile") IsNot Nothing Then
-                CheckBoxIsProjectile.Checked = CBool(ObjJson.Item("is_projectile").ToString)
+                Select Case ObjJson.Item("is_projectile").ToString.ToLower
+                    Case "true"
+                        IsProjectileTrue.Checked = True
+                    Case "false"
+                        IsProjectileFalse.Checked = True
+                End Select
             End If
             If ObjJson.Item("direct_entity") IsNot Nothing Then
                 ButtonDirectEntity.Tag = ObjJson.Item("direct_entity").ToString
@@ -58,26 +94,40 @@ Public Class FormGlobalKillingBlow
     Private Sub Wirting(sender As Object, e As EventArgs) Handles ButtonEnter.Click
         Dim StrResult As String
         StrResult = "{"
-        If CheckBoxBypassesArmor.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "bypasses_armor" & Chr(34) & ":" & CheckBoxBypassesArmor.Checked.ToString.ToLower & ","
+        If BypassesArmorTrue.Checked Then
+            StrResult &= Chr(34) & "bypasses_armor" & Chr(34) & ":true,"
+        ElseIf BypassesArmorFalse.Checked Then
+            StrResult &= Chr(34) & "bypasses_armor" & Chr(34) & ":false,"
         End If
-        If CheckBoxBypassesInvulnerability.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "bypasses_invulnerability" & Chr(34) & ":" & CheckBoxBypassesInvulnerability.Checked.ToString.ToLower & ","
+        If BypassesInvulnerabilityTrue.Checked Then
+            StrResult &= Chr(34) & "bypasses_invulnerability" & Chr(34) & ":true,"
+        ElseIf BypassesInvulnerabilityFalse.Checked Then
+            StrResult &= Chr(34) & "bypasses_invulnerability" & Chr(34) & ":false,"
         End If
-        If CheckBoxBypassesMagic.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "bypasses_magic" & Chr(34) & ":" & CheckBoxBypassesMagic.Checked.ToString.ToLower & ","
+        If BypassesMagicTrue.Checked Then
+            StrResult &= Chr(34) & "bypasses_magic" & Chr(34) & ":true,"
+        ElseIf BypassesMagicFalse.Checked Then
+            StrResult &= Chr(34) & "bypasses_magic" & Chr(34) & ":false,"
         End If
-        If CheckBoxIsExplosion.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "is_explosion" & Chr(34) & ":" & CheckBoxIsExplosion.Checked.ToString.ToLower & ","
+        If IsExplosionTrue.Checked Then
+            StrResult &= Chr(34) & "is_explosion" & Chr(34) & ":true,"
+        ElseIf IsExplosionFalse.Checked Then
+            StrResult &= Chr(34) & "is_explosion" & Chr(34) & ":false,"
         End If
-        If CheckBoxIsFire.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "is_fire" & Chr(34) & ":" & CheckBoxIsFire.Checked.ToString.ToLower & ","
+        If IsFireTrue.Checked Then
+            StrResult &= Chr(34) & "is_fire" & Chr(34) & ":true,"
+        ElseIf IsFireFalse.Checked Then
+            StrResult &= Chr(34) & "is_fire" & Chr(34) & ":false,"
         End If
-        If CheckBoxIsMagic.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "is_magic" & Chr(34) & ":" & CheckBoxIsMagic.Checked.ToString.ToLower & ","
+        If IsMagicTrue.Checked Then
+            StrResult &= Chr(34) & "is_magic" & Chr(34) & ":true,"
+        ElseIf IsMagicFalse.Checked Then
+            StrResult &= Chr(34) & "is_magic" & Chr(34) & ":false,"
         End If
-        If CheckBoxIsProjectile.Checked.ToString.ToLower <> "false" Then
-            StrResult &= Chr(34) & "is_projectile" & Chr(34) & ":" & CheckBoxIsProjectile.Checked.ToString.ToLower & ","
+        If IsProjectileTrue.Checked Then
+            StrResult &= Chr(34) & "is_projectile" & Chr(34) & ":true,"
+        ElseIf IsProjectileFalse.Checked Then
+            StrResult &= Chr(34) & "is_projectile" & Chr(34) & ":false,"
         End If
         If ButtonDirectEntity.Tag <> "{}" Then
             StrResult &= Chr(34) & "direct_entity" & Chr(34) & ":" & ButtonDirectEntity.Tag & ","
@@ -100,5 +150,12 @@ Public Class FormGlobalKillingBlow
 
     Private Sub ButtonSourceEntity_Click(sender As Object, e As EventArgs) Handles ButtonSourceEntity.Click
         FormGlobalEntity.Reading(ButtonSourceEntity, {"N/A"})
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        MessageBox.Show("伤害直接来源只有在骷髅的箭、恶魂的火球、烈焰人的火球等情况下才有必要设置，其余情况都设置到根本伤害来源")
+    End Sub
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        MessageBox.Show("绝大多数伤害来源都设置在这里，如僵尸打、爬行者爆炸等")
     End Sub
 End Class

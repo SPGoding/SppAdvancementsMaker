@@ -3,6 +3,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class FormConstruckBeacon
     Public Sub Reading(StrJson As String)
+        On Error Resume Next
         ' 显示本窗体
         Visible = False
         Show(FormCriteria)
@@ -19,6 +20,12 @@ Public Class FormConstruckBeacon
                     NumericUpDownMin.Value = ObjJson.Item("level").Item("min").ToString
                 Else
                     NumericUpDownMin.Value = 0
+                End If
+                If ObjJson.Item("level").Item("max") Is Nothing And ObjJson.Item("level").Item("min") Is Nothing Then
+                    If ObjJson.Item("level").ToString <> "{}" Then
+                        NumericUpDownMax.Value = ObjJson.Item("level").ToString
+                        NumericUpDownMin.Value = ObjJson.Item("level").ToString
+                    End If
                 End If
             Else
 
