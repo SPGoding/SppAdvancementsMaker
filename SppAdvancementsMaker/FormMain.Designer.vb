@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("组0")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -60,6 +60,7 @@ Partial Class FormMain
         Me.TextBoxFunction = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.CheckBoxOnlyCommand = New System.Windows.Forms.CheckBox()
+        Me.PictureBoxOnlyCommand = New System.Windows.Forms.PictureBox()
         Me.LabelHelper = New System.Windows.Forms.Label()
         Me.TextBoxId = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -70,15 +71,14 @@ Partial Class FormMain
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBoxCommandGrant = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.PictureBoxOnlyCommand = New System.Windows.Forms.PictureBox()
         Me.LabelOpenJson = New System.Windows.Forms.Label()
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.GroupBoxCommands.SuspendLayout()
         CType(Me.PictureBoxOnlyCommand, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBoxCommands.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -254,9 +254,9 @@ Partial Class FormMain
         Me.TreeViewCriterias.HideSelection = False
         Me.TreeViewCriterias.Location = New System.Drawing.Point(11, 46)
         Me.TreeViewCriterias.Name = "TreeViewCriterias"
-        TreeNode4.Name = "组"
-        TreeNode4.Text = "组0"
-        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
+        TreeNode1.Name = "组"
+        TreeNode1.Text = "组0"
+        Me.TreeViewCriterias.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
         Me.TreeViewCriterias.Size = New System.Drawing.Size(400, 443)
         Me.TreeViewCriterias.TabIndex = 40
         '
@@ -462,6 +462,17 @@ Partial Class FormMain
         Me.CheckBoxOnlyCommand.Text = "只能用命令获得此进度"
         Me.CheckBoxOnlyCommand.UseVisualStyleBackColor = True
         '
+        'PictureBoxOnlyCommand
+        '
+        Me.PictureBoxOnlyCommand.Image = CType(resources.GetObject("PictureBoxOnlyCommand.Image"), System.Drawing.Image)
+        Me.PictureBoxOnlyCommand.Location = New System.Drawing.Point(11, 93)
+        Me.PictureBoxOnlyCommand.Name = "PictureBoxOnlyCommand"
+        Me.PictureBoxOnlyCommand.Size = New System.Drawing.Size(400, 348)
+        Me.PictureBoxOnlyCommand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxOnlyCommand.TabIndex = 48
+        Me.PictureBoxOnlyCommand.TabStop = False
+        Me.PictureBoxOnlyCommand.Visible = False
+        '
         'LabelHelper
         '
         Me.LabelHelper.AutoSize = True
@@ -560,17 +571,6 @@ Partial Class FormMain
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "获得该进度"
         '
-        'PictureBoxOnlyCommand
-        '
-        Me.PictureBoxOnlyCommand.Image = CType(resources.GetObject("PictureBoxOnlyCommand.Image"), System.Drawing.Image)
-        Me.PictureBoxOnlyCommand.Location = New System.Drawing.Point(11, 93)
-        Me.PictureBoxOnlyCommand.Name = "PictureBoxOnlyCommand"
-        Me.PictureBoxOnlyCommand.Size = New System.Drawing.Size(400, 348)
-        Me.PictureBoxOnlyCommand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBoxOnlyCommand.TabIndex = 48
-        Me.PictureBoxOnlyCommand.TabStop = False
-        Me.PictureBoxOnlyCommand.Visible = False
-        '
         'LabelOpenJson
         '
         Me.LabelOpenJson.AutoSize = True
@@ -606,7 +606,6 @@ Partial Class FormMain
         Me.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.Name = "FormMain"
         Me.ShowIcon = False
-        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_编辑进度"
         CType(Me.NumericUpDownData, System.ComponentModel.ISupportInitialize).EndInit()
@@ -617,9 +616,9 @@ Partial Class FormMain
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBoxOnlyCommand, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxCommands.ResumeLayout(False)
         Me.GroupBoxCommands.PerformLayout()
-        CType(Me.PictureBoxOnlyCommand, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

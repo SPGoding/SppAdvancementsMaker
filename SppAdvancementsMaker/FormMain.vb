@@ -496,17 +496,16 @@ Public Class FormMain
             Process.Start(GetParentPath(StrEditingAdvancementName))
         End If
     End Sub
-
-    'Private Sub ButtonCopyGrant_Click(sender As Object, e As EventArgs) Handles ButtonCopyGrant.Click
-    '    Clipboard.Clear()
-    '    Clipboard.SetText(TextBoxCommandGrant.Text)
-    '    MessageBox.Show("已复制")
-    'End Sub
-    'Private Sub ButtonCopyRevoke_Click(sender As Object, e As EventArgs) Handles ButtonCopyRevoke.Click
-    '    Clipboard.Clear()
-    '    Clipboard.SetText(TextBoxCommandRevoke.Text)
-    '    MessageBox.Show("已复制")
-    'End Sub
+    Private Sub ButtonCopyGrant_Click(sender As Object, e As EventArgs) Handles ButtonCopyGrant.Click
+        Clipboard.Clear()
+        Clipboard.SetText(TextBoxCommandGrant.Text)
+        MessageBox.Show("已复制")
+    End Sub
+    Private Sub ButtonCopyRevoke_Click(sender As Object, e As EventArgs) Handles ButtonCopyRevoke.Click
+        Clipboard.Clear()
+        Clipboard.SetText(TextBoxCommandRevoke.Text)
+        MessageBox.Show("已复制")
+    End Sub
 
     'Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
     '    MessageBox.Show("内部ID用于让Minecraft识别这个进度，组成格式为'命名空间:进度名称'，" & vbNewLine &
