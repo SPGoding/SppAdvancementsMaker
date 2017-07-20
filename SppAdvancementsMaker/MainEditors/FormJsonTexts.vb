@@ -87,4 +87,29 @@ Public Class FormJsonTexts
         FormMain.Hide()
         FormMain.Show()
     End Sub
+
+    Private Function EnObfuscated() As Boolean
+        If CheckBoxObfuscated.Checked Then
+            For i = 1 To TextBoxText.TextLength
+                If Asc(Mid(TextBoxText.Text, i, 1)) < 0 Then
+                    Return False
+                    Exit Function
+                End If
+            Next
+            Return True
+        Else
+            Return True
+        End If
+    End Function
+
+    Private Sub CheckBoxObfuscated_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxObfuscated.CheckedChanged
+        If Not EnObfuscated() Then
+            MessageBox.Show("中文在'模糊'选项下无效")
+        End If
+    End Sub
+    Private Sub TextBoxText_TextChanged(sender As Object, e As EventArgs) Handles TextBoxText.TextChanged
+        If Not EnObfuscated() Then
+            MessageBox.Show("中文在'模糊'选项下无效")
+        End If
+    End Sub
 End Class

@@ -572,6 +572,7 @@ Partial Class FormGlobalKillingBlow
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormGlobalKillingBlow"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         Me.Panel1.ResumeLayout(False)

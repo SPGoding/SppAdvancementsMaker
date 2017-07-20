@@ -22,6 +22,7 @@ Partial Class FormSelectAdvancement
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormSelectAdvancement))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ListBoxAdvancements = New System.Windows.Forms.ListBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -113,6 +114,7 @@ Partial Class FormSelectAdvancement
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormSelectAdvancement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

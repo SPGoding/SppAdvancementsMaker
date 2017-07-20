@@ -6,6 +6,7 @@ Public Class FormMain
     '条件列表 一些数据
     Private IntGroupCount As Int16 = 0
     Private IntCriteriaCount As Int32 = 0
+    Private BoolEditing As Boolean
     ' 窗体拖动
     Private bFormDragging As Boolean = False
     Private oPointClicked As Point
@@ -39,14 +40,6 @@ Public Class FormMain
         For i = 0 To UBound(ZhBackgrounds)
             ComboBoxBackground.Items.Add(ZhBackgrounds(i))
         Next
-        ' 上一个进度
-        ComboBoxParent.Items.Add("")
-        GetAdvancementsInSave()
-        For i = 0 To UBound(ZhAdvancements)
-            If Not IsReplacedByUser(ZhAdvancements(i)) Then
-                ComboBoxParent.Items.Add(ZhAdvancements(i))
-            End If
-        Next
         ' 物品ID
         '   加载方块
         For i = 0 To UBound(ZhBlocks)
@@ -77,6 +70,16 @@ Public Class FormMain
         Next
     End Sub
     Private Sub Reset(BoolEditing As Boolean)
+        ' 读取上一个进度ComboBox
+        ComboBoxParent.Items.Clear()
+        ComboBoxParent.Items.Add("")
+        GetAdvancementsInSave()
+        For i = 0 To UBound(ZhAdvancements)
+            If Not IsReplacedByUser(ZhAdvancements(i)) Then
+                ComboBoxParent.Items.Add(ZhAdvancements(i))
+            End If
+        Next
+        ' 初始化其他
         If BoolEditing Then
             TextBoxId.Text = StrEditingAdvancementName
             TextBoxId.ReadOnly = True
@@ -107,11 +110,18 @@ Public Class FormMain
         SaveGroupJson()
         IntGroupCount = 0
         IntCriteriaCount = 0
+        LabelResult.Text = "等待生成..."
+        LabelResult.ForeColor = Color.Black
+        LabelHelper.Visible = False
+        LabelOpenJson.Visible = False
+        GroupBoxCommands.Visible = False
+        CheckBoxOnlyCommand.Checked = False
     End Sub
 
     ' 读取
     Public Sub Reading(StrJson As String, BoolEditing As Boolean)
         Show()
+        Me.BoolEditing = BoolEditing
         Reset(BoolEditing)
         Try
             StrJson = StrJson.Replace(vbNewLine, "").Replace("  ", "")
@@ -182,7 +192,6 @@ Public Class FormMain
                             IntCriteriaCount += 1
                         Next
                     Next
-                    SaveGroupJson()
                 End If
                 If ObjJson.Item("criteria") IsNot Nothing Then
                     Dim StrTemp As String = ObjJson.Item("criteria").ToString
@@ -213,6 +222,7 @@ Public Class FormMain
                         End If
                     Next
                 End If
+                SaveGroupJson()
                 If ObjJson.Item("rewards") IsNot Nothing Then
                     If ObjJson.Item("rewards").Item("recipes") IsNot Nothing Then
                         ButtonRecipes.Tag = ObjJson.Item("rewards").Item("recipes").ToString
@@ -241,6 +251,16 @@ Public Class FormMain
         Dim StrRewards As String = ""
         Dim i As Int16
         Dim j As Int16
+        If Not BoolEditing Then
+            ' 不在编辑
+            If File.Exists(GetAdvancementPath(StrEditingAdvancementName)) Then
+                ' 内部ID重复
+                Dim TempDialogResult As DialogResult = MessageBox.Show(Me, "内部ID为'" & StrEditingAdvancementName & "'的进度已经存在，是否覆盖？", "覆盖提示", MessageBoxButtons.YesNo)
+                If TempDialogResult = DialogResult.No Then
+                    Exit Sub
+                End If
+            End If
+        End If
         ' 把条件并列起来
         For i = 0 To TreeViewCriterias.GetNodeCount(False) - 1
             For j = 0 To TreeViewCriterias.Nodes.Item(i).GetNodeCount(False) - 1
@@ -285,13 +305,19 @@ Public Class FormMain
             LabelResult.Text = "已生成"
             LabelResult.ForeColor = Color.Green
             LabelHelper.Visible = True
+            LabelOpenJson.Visible = True
             GroupBoxCommands.Visible = True
             TextBoxCommandGrant.Text = "/advancement grant @p only " & StrEditingAdvancementName
             TextBoxCommandRevoke.Text = "/advancement revoke @p only " & StrEditingAdvancementName
+            ' 把当前进度改成正在编辑
+            TextBoxId.Text = StrEditingAdvancementName
+            TextBoxId.ReadOnly = True
+            BoolEditing = True
         Catch ex As Exception
             LabelResult.Text = "生成不能: " & ex.Message
             LabelResult.ForeColor = Color.Red
             LabelHelper.Visible = False
+            LabelOpenJson.Visible = False
             GroupBoxCommands.Visible = False
         End Try
     End Sub
@@ -319,7 +345,7 @@ Public Class FormMain
             ComboBoxBackground.Tag = ""
         End If
     End Sub
-    Private Sub ComboBoxItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem.SelectedIndexChanged
+    Private Sub ComboBoxItem_TextChanged(sender As Object, e As EventArgs) Handles ComboBoxItem.TextChanged
         If ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks) <> ComboBoxItem.Text Then
             ComboBoxItem.Tag = ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks)
         Else
@@ -327,6 +353,9 @@ Public Class FormMain
         End If
     End Sub
     Private Sub TextBoxId_TextChanged(sender As Object, e As EventArgs) Handles TextBoxId.TextChanged
+        Dim TempStart As Int16 = TextBoxId.SelectionStart
+        TextBoxId.Text = TextBoxId.Text.ToLower
+        TextBoxId.SelectionStart = TempStart
         TextBoxFunction.Tag = TextBoxId.Text
         StrEditingAdvancementName = TextBoxId.Text
     End Sub
@@ -377,23 +406,25 @@ Public Class FormMain
         IntGroupCount += 1
     End Sub
     Private Sub ButtonAddCriteria_Click(sender As Object, e As EventArgs) Handles ButtonAddCriteria.Click
-        Dim Node As TreeNode
-        Select Case TreeViewCriterias.SelectedNode.Name
-            Case "组"
-                Node = TreeViewCriterias.SelectedNode.Nodes.Add("条件" & IntCriteriaCount)
-                Node.Name = "条"
-            Case Else
-                Node = TreeViewCriterias.SelectedNode.Parent.Nodes.Add("条件" & IntCriteriaCount)
-                Node.Name = "条"
-        End Select
-        ' 编辑条件的 Json
-        '    不包含 criteria 层级的大括号
-        Node.Tag = Chr(34) & Node.Text & Chr(34) & ":{"
-        Node.Tag &= Chr(34) & "trigger" & Chr(34) & ":" & Chr(34) & "minecraft:bred_animals" & Chr(34) & ","
-        Node.Tag &= Chr(34) & "conditions" & Chr(34) & ":{}"
-        Node.Tag &= "}"
-        SaveGroupJson()
-        IntCriteriaCount += 1
+        If TreeViewCriterias.SelectedNode IsNot Nothing Then
+            Dim Node As TreeNode
+            Select Case TreeViewCriterias.SelectedNode.Name
+                Case "组"
+                    Node = TreeViewCriterias.SelectedNode.Nodes.Add("条件" & IntCriteriaCount)
+                    Node.Name = "条"
+                Case Else
+                    Node = TreeViewCriterias.SelectedNode.Parent.Nodes.Add("条件" & IntCriteriaCount)
+                    Node.Name = "条"
+            End Select
+            ' 编辑条件的 Json
+            '    不包含 criteria 层级的大括号
+            Node.Tag = Chr(34) & Node.Text & Chr(34) & ":{"
+            Node.Tag &= Chr(34) & "trigger" & Chr(34) & ":" & Chr(34) & "minecraft:bred_animals" & Chr(34) & ","
+            Node.Tag &= Chr(34) & "conditions" & Chr(34) & ":{}"
+            Node.Tag &= "}"
+            SaveGroupJson()
+            IntCriteriaCount += 1
+        End If
     End Sub
     Private Sub ButtonRemove_Click(sender As Object, e As EventArgs) Handles ButtonRemove.Click
         Select Case TreeViewCriterias.SelectedNode.Name
@@ -419,9 +450,6 @@ Public Class FormMain
     End Sub
     Private Sub ButtonLoot_Click(sender As Object, e As EventArgs) Handles ButtonLoot.Click
         FormRecipeLoot.Reading(ButtonLoot.Tag, RewardType.Loot)
-    End Sub
-    Private Sub LabelHelper_Click(sender As Object, e As EventArgs) Handles LabelHelper.Click
-        FormHelper.Reading()
     End Sub
 
     ' 细节
@@ -460,74 +488,114 @@ Public Class FormMain
         FormSelectAdvancement.Hide()
         FormSelectAdvancement.Show()
     End Sub
-
-    Private Sub ButtonCopyGrant_Click(sender As Object, e As EventArgs) Handles ButtonCopyGrant.Click
-        Clipboard.Clear()
-        Clipboard.SetText(TextBoxCommandGrant.Text)
-        MessageBox.Show("已复制")
+    Private Sub LabelHelper_Click(sender As Object, e As EventArgs) Handles LabelHelper.Click
+        FormHelper.Reading()
     End Sub
-    Private Sub ButtonCopyRevoke_Click(sender As Object, e As EventArgs) Handles ButtonCopyRevoke.Click
-        Clipboard.Clear()
-        Clipboard.SetText(TextBoxCommandRevoke.Text)
-        MessageBox.Show("已复制")
+    Private Sub LabelOpenJson_Click(sender As Object, e As EventArgs) Handles LabelOpenJson.Click
+        If Directory.Exists(GetParentPath(StrEditingAdvancementName)) Then
+            Process.Start(GetParentPath(StrEditingAdvancementName))
+        End If
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        MessageBox.Show("内部ID用于让Minecraft识别这个进度，组成格式为'命名空间:进度名称'，" & vbNewLine &
-                        "'命名空间'部分你可以用自己名字或是该进度所属进度树的名称(例如'story')" & vbNewLine &
-                        "'进度名称'部分你可以用任何自己喜欢的名字命名，如果是根进度则建议使用root" & vbNewLine &
-                        "'food:root'就是一个合格的内部ID" & vbNewLine &
-                        "'进度名称'部分可以有多层嵌套，例如'food:animals/beef'、'food:animals/chicken'等")
-    End Sub
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-        MessageBox.Show("Minecraft的进度拥有一个图标，在这里选择的物品就将作为这个图标" & vbNewLine &
-                        "在游戏中按 F3+H 后，把鼠标挥到物品上可以看到它的ID。利用这一点你可以在这里设置Mod物品作为图标")
-    End Sub
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        MessageBox.Show("该值是给上一空的物品作补充用的，例如'地毯'等物品拥有多种颜色，这些颜色就是由该值决定的")
-    End Sub
-    Private Sub LabelBackground_Click(sender As Object, e As EventArgs) Handles LabelBackground.Click
-        MessageBox.Show("在Minecraft的进度界面(默认按L打开)中不同页签有不同的背景，这些背景是由根进度(每页第一个进度)所设置的" & vbNewLine &
-                        "如果设置了该值，将不能够设定'上一个进度'，因为根进度没有上一个进度")
-    End Sub
-    Private Sub LabelParent_Click(sender As Object, e As EventArgs) Handles LabelParent.Click
-        MessageBox.Show("Minecraft不会知道你所制作的进度应该放到进度界面的哪个位置，设置该值就可以让Minecraft把你的进度固定连接在某个进度后面" & vbNewLine &
-                        "如果设置了该值，将不能够设定'根进度图片'，因为有上一个进度的进度不是根进度")
-    End Sub
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-        MessageBox.Show("进度拥有三种边框: 普通进度、目标进度和挑战进度" & vbNewLine &
-                        "该值决定进度使用哪种边框")
-    End Sub
-    Private Sub CheckBoxShow_Toast_DoubleClick(sender As Object, e As EventArgs) Handles CheckBoxShow_Toast.DoubleClick
-        MessageBox.Show("该值决定进度完成后是否在右上角提示")
-    End Sub
-    Private Sub CheckBoxAnnounce_To_Chat_DoubleClick(sender As Object, e As EventArgs) Handles CheckBoxAnnounce_To_Chat.DoubleClick
-        MessageBox.Show("该值决定进度在完成后是否在左下角的聊天栏广播" & vbNewLine &
-                        "该值的优先级低于/gamerule announceAdvancements的设定")
-    End Sub
-    Private Sub CheckBoxHidden_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxHidden.DoubleClick
-        MessageBox.Show("该值使得进度在完成前不能在进度界面中查看到，完成后才会出现" & vbNewLine &
-                        "该值对根进度(每页第一个进度)无效，但是会影响根进度后的所有子进度")
-    End Sub
-    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
-        MessageBox.Show("进度完成后，玩家将会解锁这些配方" & vbNewLine &
-                        "这个奖励结合命令/gamerule doLimitedCrafting true (玩家需要解锁合成配方才能使用)效果出奇")
-    End Sub
-    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
-        MessageBox.Show("进度完成后，玩家将会获得这些战利品" & vbNewLine &
-                        "如果你会制作战利品表，将战利品表放到当前存档的./data/loot_tables路径后软件会自动读取")
-    End Sub
-    Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
-        MessageBox.Show("进度完成后，玩家将获得这些经验" & vbNewLine &
-                        "事实上，这里可以设置为负值，但没有实际效果")
-    End Sub
-    Private Sub Label15_Click(sender As Object, e As EventArgs) Handles Label15.Click
-        MessageBox.Show("进度完成后，玩家将会执行以下这些命令，并忽略权限" & vbNewLine &
-                        "请注意，实际上游戏并不能设置奖励命令，只是本软件为方便考虑，江这些命令自动写成函数")
-    End Sub
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        MessageBox.Show("这里设置的是要完成该进度需要达成的条件，每一组各达成一个条件就可以完成进度" & vbNewLine &
-                        "例如在'组0'内设置'杀死爬行者''杀死僵尸'两个条件，只要达成一个就会完成进度" & vbNewLine &
-                        "但在'组0'设置'杀死爬行者'，'组1'设置'杀死僵尸'，就要求必须达成这两个条件才能完成进度")
+    'Private Sub ButtonCopyGrant_Click(sender As Object, e As EventArgs) Handles ButtonCopyGrant.Click
+    '    Clipboard.Clear()
+    '    Clipboard.SetText(TextBoxCommandGrant.Text)
+    '    MessageBox.Show("已复制")
+    'End Sub
+    'Private Sub ButtonCopyRevoke_Click(sender As Object, e As EventArgs) Handles ButtonCopyRevoke.Click
+    '    Clipboard.Clear()
+    '    Clipboard.SetText(TextBoxCommandRevoke.Text)
+    '    MessageBox.Show("已复制")
+    'End Sub
+
+    'Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+    '    MessageBox.Show("内部ID用于让Minecraft识别这个进度，组成格式为'命名空间:进度名称'，" & vbNewLine &
+    '                    "'命名空间'部分你可以用自己名字或是该进度所属进度树的名称(例如'story')" & vbNewLine &
+    '                    "'进度名称'部分你可以用任何自己喜欢的名字命名，如果是根进度则建议使用root" & vbNewLine &
+    '                    "'food:root'就是一个合格的内部ID" & vbNewLine &
+    '                    "'进度名称'部分可以有多层嵌套，例如'food:animals/beef'、'food:animals/chicken'等")
+    'End Sub
+    'Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+    '    MessageBox.Show("Minecraft的进度拥有一个图标，在这里选择的物品就将作为这个图标" & vbNewLine &
+    '                    "在游戏中按 F3+H 后，把鼠标挥到物品上可以看到它的ID。利用这一点你可以在这里设置Mod物品作为图标")
+    'End Sub
+    'Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+    '    MessageBox.Show("该值是给上一空的物品作补充用的，例如'地毯'等物品拥有多种颜色，这些颜色就是由该值决定的")
+    'End Sub
+    'Private Sub LabelBackground_Click(sender As Object, e As EventArgs) Handles LabelBackground.Click
+    '    MessageBox.Show("在Minecraft的进度界面(默认按L打开)中不同页签有不同的背景，这些背景是由根进度(每页第一个进度)所设置的" & vbNewLine &
+    '                    "如果设置了该值，将不能够设定'上一个进度'，因为根进度没有上一个进度")
+    'End Sub
+    'Private Sub LabelParent_Click(sender As Object, e As EventArgs) Handles LabelParent.Click
+    '    MessageBox.Show("Minecraft不会知道你所制作的进度应该放到进度界面的哪个位置，设置该值就可以让Minecraft把你的进度固定连接在某个进度后面" & vbNewLine &
+    '                    "如果设置了该值，将不能够设定'根进度图片'，因为有上一个进度的进度不是根进度")
+    'End Sub
+    'Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+    '    MessageBox.Show("进度拥有三种边框: 普通进度、目标进度和挑战进度" & vbNewLine &
+    '                    "该值决定进度使用哪种边框")
+    'End Sub
+    'Private Sub CheckBoxShow_Toast_DoubleClick(sender As Object, e As EventArgs) Handles CheckBoxShow_Toast.DoubleClick
+    '    MessageBox.Show("该值决定进度完成后是否在右上角提示")
+    'End Sub
+    'Private Sub CheckBoxAnnounce_To_Chat_DoubleClick(sender As Object, e As EventArgs) Handles CheckBoxAnnounce_To_Chat.DoubleClick
+    '    MessageBox.Show("该值决定进度在完成后是否在左下角的聊天栏广播" & vbNewLine &
+    '                    "该值的优先级低于/gamerule announceAdvancements的设定")
+    'End Sub
+    'Private Sub CheckBoxHidden_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxHidden.DoubleClick
+    '    MessageBox.Show("该值使得进度在完成前不能在进度界面中查看到，完成后才会出现" & vbNewLine &
+    '                    "该值对根进度(每页第一个进度)无效，但是会影响根进度后的所有子进度")
+    'End Sub
+    'Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+    '    MessageBox.Show("进度完成后，玩家将会解锁这些配方" & vbNewLine &
+    '                    "这个奖励结合命令/gamerule doLimitedCrafting true (玩家需要解锁合成配方才能使用)效果出奇")
+    'End Sub
+    'Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+    '    MessageBox.Show("进度完成后，玩家将会获得这些战利品" & vbNewLine &
+    '                    "如果你会制作战利品表，将战利品表放到当前存档的./data/loot_tables路径后软件会自动读取")
+    'End Sub
+    'Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
+    '    MessageBox.Show("进度完成后，玩家将获得这些经验" & vbNewLine &
+    '                    "事实上，这里可以设置为负值，但没有实际效果")
+    'End Sub
+    'Private Sub Label15_Click(sender As Object, e As EventArgs) Handles Label15.Click
+    '    MessageBox.Show("进度完成后，玩家将会执行以下这些命令，并忽略权限" & vbNewLine &
+    '                    "请注意，实际上游戏并不能设置奖励命令，只是本软件为方便考虑，江这些命令自动写成函数")
+    'End Sub
+    'Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    '    MessageBox.Show("这里设置的是要完成该进度需要达成的条件，每一组各达成一个条件就可以完成进度" & vbNewLine &
+    '                    "例如在'组0'内设置'杀死爬行者''杀死僵尸'两个条件，只要达成一个就会完成进度" & vbNewLine &
+    '                    "但在'组0'设置'杀死爬行者'，'组1'设置'杀死僵尸'，就要求必须达成这两个条件才能完成进度")
+    'End Sub
+
+    Private Sub CheckBoxOnlyCommand_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxOnlyCommand.CheckedChanged
+        TreeViewCriterias.Nodes.Clear()
+        Select Case CheckBoxOnlyCommand.Checked
+            Case True
+                TreeViewCriterias.Visible = False
+                ButtonAddCriteria.Visible = False
+                ButtonAddGroup.Visible = False
+                ButtonRemove.Visible = False
+                PictureBoxOnlyCommand.Visible = True
+                Dim NodeGroup As TreeNode = TreeViewCriterias.Nodes.Add("组0")
+                NodeGroup.Name = "组"
+                Dim NodeCritaria As TreeNode = NodeGroup.Nodes.Add("喵帕斯")
+                NodeCritaria.Name = "条"
+                Dim StrResult As String
+                StrResult = Chr(34) & "喵帕斯" & Chr(34) & ":{"
+                StrResult &= Chr(34) & "trigger" & Chr(34) & ":" & Chr(34) & "minecraft:impossible" & Chr(34)
+                StrResult &= "}"
+                NodeCritaria.Tag = StrResult
+            Case False
+                IntGroupCount = 0
+                IntCriteriaCount = 0
+                TreeViewCriterias.Visible = True
+                ButtonAddCriteria.Visible = True
+                ButtonAddGroup.Visible = True
+                ButtonRemove.Visible = True
+                PictureBoxOnlyCommand.Visible = False
+                ButtonAddCriteria.Enabled = False
+                ButtonRemove.Enabled = False
+        End Select
+        SaveGroupJson()
     End Sub
 End Class

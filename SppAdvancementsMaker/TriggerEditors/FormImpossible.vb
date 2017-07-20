@@ -10,4 +10,8 @@
         FormCriteria.Hide()
         FormCriteria.Show(FormMain)
     End Sub
+
+    Private Sub FormImpossible_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

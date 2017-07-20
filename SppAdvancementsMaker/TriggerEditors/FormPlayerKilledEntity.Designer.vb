@@ -118,6 +118,7 @@ Partial Class FormPlayerKilledEntity
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.Name = "FormPlayerKilledEntity"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "#2进度修改者_条件编辑器"
         Me.ResumeLayout(False)

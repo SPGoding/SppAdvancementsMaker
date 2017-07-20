@@ -16,12 +16,14 @@ Public Class FormSelectAdvancement
         Dim StrFileNames As String()
         Dim StrTempPath As String = StrSavePath & "\data\advancements"
         ' 获取存档目录下所有进度
-        StrFileNames = IO.Directory.GetFileSystemEntries(StrTempPath, "*.json", System.IO.SearchOption.AllDirectories)
-        ' 格式化路径
-        For Each StrFileName As String In StrFileNames
-            StrFileName = GetAdvancementName(StrFileName)
-            ListBoxAdvancements.Items.Add("[自制]" & StrFileName)
-        Next
+        If Directory.Exists(StrTempPath) Then
+            StrFileNames = Directory.GetFileSystemEntries(StrTempPath, "*.json", SearchOption.AllDirectories)
+            ' 格式化路径
+            For Each StrFileName As String In StrFileNames
+                StrFileName = GetAdvancementName(StrFileName)
+                ListBoxAdvancements.Items.Add("[自制]" & StrFileName)
+            Next
+        End If
     End Sub
     Private Function IsReplacedByUser(StrZh As String) As Boolean
         For i As Int16 = 0 To ListBoxAdvancements.Items.Count - 1
