@@ -6,15 +6,22 @@ Public Class FormSelectAdvancement
         ' 读取原版进度和现有进度
         ListBoxAdvancements.Items.Clear()
         GetAdvancementsInSave()
-        For i As Int16 = 0 To UBound(ZhAdvancements)
-            If Not IsReplacedByUser(ZhAdvancements(i)) Then
-                ListBoxAdvancements.Items.Add("[原版]" & ZhAdvancements(i))
-            End If
-        Next
+        If StrVersion = 1.12 Then
+            For i As Int16 = 0 To UBound(ZhAdvancements)
+                If Not IsReplacedByUser(ZhAdvancements(i)) Then
+                    ListBoxAdvancements.Items.Add("[原版]" & ZhAdvancements(i))
+                End If
+            Next
+        End If
     End Sub
     Private Sub GetAdvancementsInSave()
         Dim StrFileNames As String()
-        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        Dim StrTempPath As String
+        If StrVersion = "1.12" Then
+            StrTempPath = StrSavePath & "\data\advancements"
+        Else
+            StrTempPath = StrSavePath & "\advancements"
+        End If
         ' 获取存档目录下所有进度
         If Directory.Exists(StrTempPath) Then
             StrFileNames = Directory.GetFileSystemEntries(StrTempPath, "*.json", SearchOption.AllDirectories)
@@ -46,14 +53,19 @@ Public Class FormSelectAdvancement
     End Sub
     Private Sub ButtonEdit_Click(sender As Object, e As EventArgs) Handles ButtonEdit.Click
         If ListBoxAdvancements.SelectedIndex >= 0 Then
-            Dim StrTempPath As String = GetAdvancementPath(ZhToEn(Microsoft.VisualBasic.Right(ListBoxAdvancements.SelectedItem.ToString, ListBoxAdvancements.SelectedItem.ToString.Length - 4), ZhAdvancements, EnAdvancements))
+            Dim StrTempPath As String
+            StrTempPath = GetAdvancementPath(ZhToEn(Microsoft.VisualBasic.Right(ListBoxAdvancements.SelectedItem.ToString, ListBoxAdvancements.SelectedItem.ToString.Length - 4), ZhAdvancements, EnAdvancements))
             Dim StrTempJson As String
             Try
                 If Not File.Exists(StrTempPath) Then
                     If Not Directory.Exists(GetParentPath(StrTempPath)) Then
                         MkDir(GetParentPath(StrTempPath))
                     End If
-                    File.Copy(StrTempPath.Replace(StrSavePath & "\data\advancements\minecraft", Application.StartupPath & "\advancements"), StrTempPath)
+                    If StrVersion = "1.12" Then
+                        File.Copy(StrTempPath.Replace(StrSavePath & "\data\advancements\minecraft", Application.StartupPath & "\advancements"), StrTempPath)
+                    Else
+                        File.Copy(StrTempPath.Replace(StrSavePath & "\advancements\minecraft", Application.StartupPath & "\advancements"), StrTempPath)
+                    End If
                 End If
                 StrEditingAdvancementName = ZhToEn(Microsoft.VisualBasic.Right(ListBoxAdvancements.SelectedItem.ToString, ListBoxAdvancements.SelectedItem.ToString.Length - 4), ZhAdvancements, EnAdvancements)
                 StrTempJson = File.ReadAllText(StrTempPath)

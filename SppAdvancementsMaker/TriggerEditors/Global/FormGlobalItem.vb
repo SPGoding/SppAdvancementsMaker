@@ -165,9 +165,13 @@ Public Class FormGlobalItem
             StrResult &= "},"
         End If
         If ComboBoxItem.Text <> "" Then
-            StrResult &= Chr(34) & "item" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) & Chr(34) & ","
+            If ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) <> ComboBoxItem.Text Then
+                StrResult &= Chr(34) & "item" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxItem.Text, ZhItems, EnItems) & Chr(34) & ","
+            Else
+                StrResult &= Chr(34) & "item" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxItem.Text, ZhBlocks, EnBlocks) & Chr(34) & ","
+            End If
         End If
-        If ComboBoxPotion.Text <> "" Then
+            If ComboBoxPotion.Text <> "" Then
             StrResult &= Chr(34) & "potion" & Chr(34) & ":" & Chr(34) & ZhToEn(ComboBoxPotion.Text, ZhPotions, EnPotions) & Chr(34) & ","
         End If
         If TextBoxNbt.Text <> "" Then

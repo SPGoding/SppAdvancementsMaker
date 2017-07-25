@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.SppAdvancementsMaker.FormSelectSave
+            Me.MainForm = Global.SppAdvancementsMaker.FormSelectVersion
         End Sub
     End Class
 End Namespace

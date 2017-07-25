@@ -60,7 +60,12 @@ Public Class FormMain
     End Sub
     Private Sub GetAdvancementsInSave()
         Dim StrFileNames As String()
-        Dim StrTempPath As String = StrSavePath & "\data\advancements"
+        Dim StrTempPath As String
+        If StrVersion = "1.12" Then
+            StrTempPath = StrSavePath & "\data\advancements"
+        Else
+            StrTempPath = StrSavePath & "\advancements"
+        End If
         ' 获取存档目录下所有进度
         StrFileNames = IO.Directory.GetFileSystemEntries(StrTempPath, "*.json", System.IO.SearchOption.AllDirectories)
         ' 格式化路径
@@ -307,8 +312,13 @@ Public Class FormMain
             LabelHelper.Visible = True
             LabelOpenJson.Visible = True
             GroupBoxCommands.Visible = True
-            TextBoxCommandGrant.Text = "/advancement grant @p only " & StrEditingAdvancementName
-            TextBoxCommandRevoke.Text = "/advancement revoke @p only " & StrEditingAdvancementName
+            If StrVersion = "1.12" Then
+                TextBoxCommandGrant.Text = "/advancement grant @p only " & StrEditingAdvancementName
+                TextBoxCommandRevoke.Text = "/advancement revoke @p only " & StrEditingAdvancementName
+            Else
+                TextBoxCommandGrant.Text = "/advancement grant @p only " & StrNamespace & ":" & StrEditingAdvancementName
+                TextBoxCommandRevoke.Text = "/advancement revoke @p only " & StrNamespace & ":" & StrEditingAdvancementName
+            End If
             ' 把当前进度改成正在编辑
             TextBoxId.Text = StrEditingAdvancementName
             TextBoxId.ReadOnly = True
@@ -356,7 +366,11 @@ Public Class FormMain
         Dim TempStart As Int16 = TextBoxId.SelectionStart
         TextBoxId.Text = TextBoxId.Text.ToLower
         TextBoxId.SelectionStart = TempStart
-        TextBoxFunction.Tag = TextBoxId.Text
+        If StrVersion = "1.12" Then
+            TextBoxFunction.Tag = TextBoxId.Text
+        Else
+            TextBoxFunction.Tag = StrNamespace & ":" & TextBoxId.Text
+        End If
         StrEditingAdvancementName = TextBoxId.Text
     End Sub
 
@@ -459,6 +473,10 @@ Public Class FormMain
                 e.KeyChar = ""
             Case "\"
                 e.KeyChar = "/"
+            Case ":"
+                If StrVersion = "1.13" Then
+                    e.KeyChar = "/"
+                End If
         End Select
     End Sub
     Private Function IsReplacedByUser(StrZh As String) As Boolean
