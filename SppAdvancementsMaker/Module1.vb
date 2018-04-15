@@ -4,7 +4,7 @@ Imports System.Text
 Module Module1
     Public StrSavePath As String
     Public StrEditingAdvancementName As String
-    Public StrVersion As String
+    Public StrVersion As String = "1.12"
     Public StrNamespace As String
 
     ' 奖励类型 用于   FormRecipeLoot

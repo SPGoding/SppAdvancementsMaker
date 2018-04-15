@@ -906,7 +906,7 @@
 "minecraft:beacon",
 "minecraft:cobblestone_wall",
 "minecraft:flower_pot",
-"minecraft:carrots",
+"minecraft:carrot",
 "minecraft:potatoes",
 "minecraft:wooden_button",
 "minecraft:skull",
@@ -1310,8 +1310,8 @@
 "minecraft:portal",
 "minecraft:end_portal",
 "minecraft:cocoa",
-"minecraft:carrots",
-"minecraft:potatoes"
+"minecraft:carrot",
+"minecraft:potato"
     }
 
     ' 物品ID

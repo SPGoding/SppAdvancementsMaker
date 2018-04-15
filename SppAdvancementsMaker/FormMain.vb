@@ -424,10 +424,10 @@ Public Class FormMain
             Dim Node As TreeNode
             Select Case TreeViewCriterias.SelectedNode.Name
                 Case "组"
-                    Node = TreeViewCriterias.SelectedNode.Nodes.Add("条件" & IntCriteriaCount)
+                    Node = TreeViewCriterias.SelectedNode.Nodes.Add("criteria_" & IntCriteriaCount)
                     Node.Name = "条"
                 Case Else
-                    Node = TreeViewCriterias.SelectedNode.Parent.Nodes.Add("条件" & IntCriteriaCount)
+                    Node = TreeViewCriterias.SelectedNode.Parent.Nodes.Add("criteria_" & IntCriteriaCount)
                     Node.Name = "条"
             End Select
             ' 编辑条件的 Json

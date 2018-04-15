@@ -111,6 +111,7 @@ Public Class FormPlacedBlock
             End If
         End If
         StrResult &= "}"
+        StrResult &= "}"
         StrResult = StrResult.Replace(",}", "}")
         StrResult = StrResult.Replace(",]", "]")
         ' 将处理后的 Json 文本返回条件窗体
